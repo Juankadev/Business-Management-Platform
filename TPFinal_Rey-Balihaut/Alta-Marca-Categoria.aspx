@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="AltaArticulo.aspx.cs" Inherits="TPFinal_Rey_Balihaut.Compras" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Alta-Marca-Categoria.aspx.cs" Inherits="TPFinal_Rey_Balihaut.Compras" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -11,7 +11,7 @@
 
 
     <div class="row">
-        <h1>Alta de Articulos</h1>
+        <h1>Alta de Marcas/Categorias</h1>
         <div class="col-2">
 
             <div class="mb-3">

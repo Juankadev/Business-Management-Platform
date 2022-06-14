@@ -46,17 +46,13 @@
                                     <hr class="dropdown-divider">
                                 </li>
 
-                                <li><a class="dropdown-item" href="Marca-Categoria.aspx">Marcas/Categorias</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-   
+                                <li><a class="dropdown-item" href="Alta-Marca-Categoria.aspx">Marcas/Categorias</a></li>
 
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
 
-                                <li><a class="dropdown-item" href="#">Proveedores</a></li>
+                                <li><a class="dropdown-item" href="AltaProveedor.aspx">Proveedores</a></li>
 
 
 
