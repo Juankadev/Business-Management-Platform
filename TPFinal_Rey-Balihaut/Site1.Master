@@ -28,28 +28,20 @@
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
                         </li>
 
-                                                <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Compras.aspx">Compras</a>
                         </li>
 
-                                                <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Ventas.aspx">Ventas</a>
                         </li>
 
-                                                                    <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Altas.aspx">Altas</a>
-                        </li>
 
-                                                <li class="nav-item">
-                            <a class="nav-link active btn btn-primary navlogin" aria-current="page" href="Login.aspx">Login</a>
-                        </li>
-
-                        <!--
-                            <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="Altas.aspx" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Altas
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Articulos</a></li>
+                                <li><a class="dropdown-item" href="AltaArticulo.aspx">Articulos</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -65,11 +57,19 @@
                                 </li>
 
                                 <li><a class="dropdown-item" href="#">Proveedores</a></li>
-                            -->
+
+
+
+
+
+
+
 
                             </ul>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link active btn btn-primary navlogin" aria-current="page" href="Login.aspx">Login</a>
+                        </li>
                     </ul>
 
 
