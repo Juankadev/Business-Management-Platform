@@ -1,0 +1,18 @@
+﻿body {
+    background-color:#151515;
+    color:#fff
+}
+/*
+.row{
+    justify-content:center;
+}
+h1{
+    text-align:center;
+}*/
+.btnlogin{
+    width:100%;
+    display:block;
+}
+.navbar-nav .nav-link.active.navlogin {
+    color: #fff;
+} 
