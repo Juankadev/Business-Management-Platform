@@ -21,6 +21,9 @@ body {
     width:100%;
     display:block;
 }
+.alta{
+    margin-top:20px
+}
 .navbar-nav .nav-link.active.navlogin {
     color: #fff;
 } 
