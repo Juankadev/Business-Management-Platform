@@ -6,8 +6,9 @@
 
     <div class="row">
         <h1>Alta de Proveedor</h1>
-        <div class="col-2">
 
+
+        <div class="col-2">
             <div class="mb-3">
                 <label for="TextBox1" class="form-label">CUIT/CUIL</label>
                 <asp:TextBox ID="TextBox1" class="form-control" runat="server"></asp:TextBox>
@@ -22,8 +23,6 @@
                 <label for="TextBox3" class="form-label">Teléfono</label>
                 <asp:TextBox ID="TextBox3" class="form-control" runat="server"></asp:TextBox>
             </div>
-
-
         </div>
 
 

@@ -71,11 +71,11 @@
     <Content Include="AltaCliente.aspx" />
     <Content Include="AltaProveedor.aspx" />
     <Content Include="AltaArticulo.aspx" />
+    <Content Include="Ventas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Altas.aspx" />
     <Content Include="Compras.aspx" />
     <Content Include="sitemaster.css" />
-    <Content Include="Ventas.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -107,6 +107,13 @@
     </Compile>
     <Compile Include="AltaArticulo.aspx.designer.cs">
       <DependentUpon>AltaArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas.aspx.cs">
+      <DependentUpon>Ventas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventas.aspx.designer.cs">
+      <DependentUpon>Ventas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -143,13 +150,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ventas.aspx.cs">
-      <DependentUpon>Ventas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ventas.aspx.designer.cs">
-      <DependentUpon>Ventas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
