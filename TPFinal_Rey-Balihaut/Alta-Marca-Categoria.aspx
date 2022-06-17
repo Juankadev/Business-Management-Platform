@@ -1,14 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Alta-Marca-Categoria.aspx.cs" Inherits="TPFinal_Rey_Balihaut.Compras" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Alta-Marca-Categoria.aspx.cs" Inherits="TPFinal_Rey_Balihaut.Alta_Marca_Categoria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-  
-
-
-
-
+    
 
     <div class="row">
         <h1>Alta de Marcas/Categorias</h1>

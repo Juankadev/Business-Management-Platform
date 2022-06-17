@@ -68,14 +68,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alta-Marca-Categoria.aspx" />
+    <Content Include="AltaArticulo.aspx" />
     <Content Include="AltaCliente.aspx" />
     <Content Include="AltaProveedor.aspx" />
-    <Content Include="AltaArticulo.aspx" />
-    <Content Include="Ventas.aspx" />
-    <Content Include="Login.aspx" />
     <Content Include="Altas.aspx" />
     <Content Include="Compras.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="sitemaster.css" />
+    <Content Include="Ventas.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -86,6 +86,13 @@
     </Compile>
     <Compile Include="Alta-Marca-Categoria.aspx.designer.cs">
       <DependentUpon>Alta-Marca-Categoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaArticulo.aspx.cs">
+      <DependentUpon>AltaArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaArticulo.aspx.designer.cs">
+      <DependentUpon>AltaArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaCliente.aspx.cs">
       <DependentUpon>AltaCliente.aspx</DependentUpon>
@@ -101,27 +108,6 @@
     <Compile Include="AltaProveedor.aspx.designer.cs">
       <DependentUpon>AltaProveedor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AltaArticulo.aspx.cs">
-      <DependentUpon>AltaArticulo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AltaArticulo.aspx.designer.cs">
-      <DependentUpon>AltaArticulo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ventas.aspx.cs">
-      <DependentUpon>Ventas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ventas.aspx.designer.cs">
-      <DependentUpon>Ventas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Altas.aspx.cs">
       <DependentUpon>Altas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,6 +121,13 @@
     </Compile>
     <Compile Include="Compras.aspx.designer.cs">
       <DependentUpon>Compras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
@@ -150,6 +143,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas.aspx.cs">
+      <DependentUpon>Ventas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventas.aspx.designer.cs">
+      <DependentUpon>Ventas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,7 @@ namespace TPFinal_Rey_Balihaut
 {
 
 
-    public partial class Compras
+    public partial class Alta_Marca_Categoria
     {
 
         /// <summary>
