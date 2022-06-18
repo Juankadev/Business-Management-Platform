@@ -2,9 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    
     <div class="row">
         <h1>Alta de Articulos</h1>
+
+
+
         <div class="col-2">
 
             <div class="mb-3">
@@ -28,8 +31,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="DropDownList1" class="form-label">Marca</label>
-                <asp:DropDownList ID="DropDownList4" CssClass="form-select" runat="server"></asp:DropDownList>
+                <label for="ddlmarca" class="form-label">Marca</label>
+                <asp:DropDownList ID="ddlmarca" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
 
         </div>
@@ -37,8 +40,8 @@
         <div class="col-2">
 
             <div class="mb-3">
-                <label for="DropDownList2" class="form-label">Categoria</label>
-                <asp:DropDownList ID="DropDownList5" CssClass="form-select" runat="server"></asp:DropDownList>
+                <label for="ddlcategoria" class="form-label">Categoria</label>
+                <asp:DropDownList ID="ddlcategoria" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
 
             <div class="mb-3">

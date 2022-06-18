@@ -51,22 +51,22 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
 
         /// <summary>
-        /// Control DropDownList4.
+        /// Control ddlmarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.DropDownList ddlmarca;
 
         /// <summary>
-        /// Control DropDownList5.
+        /// Control ddlcategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::System.Web.UI.WebControls.DropDownList ddlcategoria;
 
         /// <summary>
         /// Control DropDownList6.
