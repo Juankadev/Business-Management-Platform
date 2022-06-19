@@ -9,7 +9,7 @@
 
             <div class="mb-3">
                 <label for="TextBox1" class="form-label">CUIT/CUIL</label>
-                <asp:TextBox ID="TextBox1" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
@@ -19,7 +19,7 @@
 
             <div class="mb-3">
                 <label for="TextBox3" class="form-label">Teléfono</label>
-                <asp:TextBox ID="TextBox3" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox3" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
 

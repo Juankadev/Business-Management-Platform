@@ -10,25 +10,22 @@
         <div class="col-2">
 
             <div class="mb-3">
-                <label for="TextBox1" class="form-label">ID</label>
-                <asp:TextBox ID="TextBox5" class="form-control" runat="server"></asp:TextBox>
-            </div>
-
-            <div class="mb-3">
-                <label for="DropDownList1" class="form-label">Nombre</label>
-                <asp:DropDownList ID="DropDownList1" CssClass="form-select" runat="server"></asp:DropDownList>
+                <label for="nombre" class="form-label">Nombre</label>
+                <asp:TextBox ID="nombre" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <p>Es una:</p>
-            <asp:RadioButton ID="RadioButton1" Text="Marca" GroupName="es" runat="server" />
-            <asp:RadioButton ID="RadioButton2" Text="Categoria" GroupName="es" runat="server" />
+            <asp:RadioButton ID="rdbmarca" Text="Marca" GroupName="es" runat="server" />
+            <asp:RadioButton ID="rdbcategoria" Text="Categoria" GroupName="es" runat="server" />
+            
+            <asp:Label ID="ninguno" runat="server" Text="Selecciona el tipo"></asp:Label>
         </div>
     </div>
 
     <!--AGREGAR-->
     <div class="row">
         <div class="col-2">
-            <asp:Button ID="altaMarcaCategoria" class="btn btn-primary btn-lg btnlogin alta" runat="server" Text="Agregar" />
+            <asp:Button ID="altaMarcaCategoria" OnClick="altaMarcaCategoria_Click" class="btn btn-primary btn-lg btnlogin alta" runat="server" Text="Agregar" />
         </div>
     </div>
 
