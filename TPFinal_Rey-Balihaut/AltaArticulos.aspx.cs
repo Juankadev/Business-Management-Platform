@@ -9,11 +9,12 @@ using Negocio;
 
 namespace TPFinal_Rey_Balihaut
 {
-    public partial class AltaArticulo : System.Web.UI.Page
+    public partial class AltaArticulos : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+
+            if (!IsPostBack)
             {
                 MarcaNegocio marca_negocio = new MarcaNegocio();
                 ddlmarca.DataSource = marca_negocio.listar();
@@ -26,6 +27,15 @@ namespace TPFinal_Rey_Balihaut
                 ddlcategoria.DataValueField = "IDCategoria";
                 ddlcategoria.DataTextField = "DescripcionCategoria";
                 ddlcategoria.DataBind();
+
+                _ProveedorNegocio proveedor_negocio = new _ProveedorNegocio();
+                ddlproveedor.DataSource = proveedor_negocio.listar();
+                ddlproveedor.DataValueField = "CUIT";
+                ddlproveedor.DataTextField = "Nombre";
+                ddlproveedor.DataBind();
+
+                Label1.Text = "prueba";
+
             }
         }
     }

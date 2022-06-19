@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alta-Marca-Categoria.aspx" />
-    <Content Include="AltaArticulo.aspx" />
+    <Content Include="AltaArticulos.aspx" />
     <Content Include="AltaCliente.aspx" />
     <Content Include="AltaProveedor.aspx" />
     <Content Include="Altas.aspx" />
@@ -87,12 +87,12 @@
     <Compile Include="Alta-Marca-Categoria.aspx.designer.cs">
       <DependentUpon>Alta-Marca-Categoria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AltaArticulo.aspx.cs">
-      <DependentUpon>AltaArticulo.aspx</DependentUpon>
+    <Compile Include="AltaArticulos.aspx.cs">
+      <DependentUpon>AltaArticulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AltaArticulo.aspx.designer.cs">
-      <DependentUpon>AltaArticulo.aspx</DependentUpon>
+    <Compile Include="AltaArticulos.aspx.designer.cs">
+      <DependentUpon>AltaArticulos.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaCliente.aspx.cs">
       <DependentUpon>AltaCliente.aspx</DependentUpon>

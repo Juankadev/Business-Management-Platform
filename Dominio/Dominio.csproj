@@ -48,7 +48,7 @@
     <Compile Include="_Marca.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proveedores.cs" />
+    <Compile Include="_Proveedor2.cs" />
     <Compile Include="Usuarios.cs" />
     <Compile Include="Ventas.cs" />
   </ItemGroup>

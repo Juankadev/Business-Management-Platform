@@ -11,8 +11,17 @@ namespace TPFinal_Rey_Balihaut
 {
 
 
-    public partial class AltaArticulo
+    public partial class AltaArticulos
     {
+
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// Control TextBox1.
@@ -69,13 +78,13 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.DropDownList ddlcategoria;
 
         /// <summary>
-        /// Control DropDownList6.
+        /// Control ddlproveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
+        protected global::System.Web.UI.WebControls.DropDownList ddlproveedor;
 
         /// <summary>
         /// Control TextBox11.
