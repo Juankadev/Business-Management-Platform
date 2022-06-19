@@ -11,7 +11,7 @@ namespace TPFinal_Rey_Balihaut
 {
 
 
-    public partial class AltaArticulos
+    public partial class Altas1
     {
 
         /// <summary>

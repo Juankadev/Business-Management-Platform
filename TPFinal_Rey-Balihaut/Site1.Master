@@ -38,10 +38,10 @@
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="Altas.aspx" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Altas
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Altas
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="AltaArticulo.aspx">Articulos</a></li>
+                                <li><a class="dropdown-item" href="AltaArticulos.aspx">Articulos</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

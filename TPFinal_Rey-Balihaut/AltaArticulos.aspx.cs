@@ -9,11 +9,10 @@ using Negocio;
 
 namespace TPFinal_Rey_Balihaut
 {
-    public partial class AltaArticulos : System.Web.UI.Page
+    public partial class Altas1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 MarcaNegocio marca_negocio = new MarcaNegocio();
