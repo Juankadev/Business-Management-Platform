@@ -20,12 +20,12 @@
 
             <div class="mb-3">
                 <label for="TextBox3" class="form-label">Porcentaje de Ganancia</label>
-                <asp:TextBox ID="TextBox3" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox3" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
                 <label for="TextBox4" class="form-label">Precio</label>
-                <asp:TextBox ID="TextBox4" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox4" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
@@ -49,13 +49,13 @@
 
             <div class="mb-3">
                 <label for="TextBox5" class="form-label">Stock Actual</label>
-                <asp:TextBox ID="TextBox11" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox11" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
 
                 <label for="TextBox6" class="form-label">Stock Minimo</label>
-                <asp:TextBox ID="TextBox12" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox12" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
         </div>

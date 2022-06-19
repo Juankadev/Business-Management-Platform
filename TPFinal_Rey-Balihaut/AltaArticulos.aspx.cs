@@ -33,7 +33,7 @@ namespace TPFinal_Rey_Balihaut
                 ddlproveedor.DataTextField = "Nombre";
                 ddlproveedor.DataBind();
 
-                Label1.Text = "prueba";
+                //Label1.Text = "prueba";
 
             }
         }
