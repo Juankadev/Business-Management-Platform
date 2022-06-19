@@ -39,12 +39,16 @@ namespace TPFinal_Rey_Balihaut
         {
             ProductoNegocio producto_negocio = new ProductoNegocio();
             _Producto aux = new _Producto();
+            aux.Marca = new _Marca();
+            aux.Categoria = new _Categoria();
+            aux.Proveedor = new _Proveedor2();
+
             aux.Codigo = codigo.Text;
             aux.Nombre = nombre.Text;
-            aux.IDMarca.IDMarca = ddlmarca.SelectedIndex;
-            aux.IDCategoria.IDCategoria = ddlcategoria.SelectedIndex;
-            aux.CUITProveedor.CUIT = ddlproveedor.SelectedValue;
-            aux.Precio = Decimal.Parse(precio.Text);
+            aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
+            aux.Categoria.IDCategoria = ddlcategoria.SelectedIndex + 1;
+            aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
+            aux.Precio = decimal.Parse(precio.Text);
             aux.StockActual = int.Parse(stockactual.Text);
             aux.StockMinimo = int.Parse(stockminimo.Text);
             aux.PorcentajeGanancia = int.Parse(ganancia.Text);

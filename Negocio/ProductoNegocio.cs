@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class ProductoNegocio
     {
-        
+
         //public List<_Producto> listar()
         //{
         //    List<_Producto> lista = new List<_Producto>();
@@ -52,11 +52,11 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,NOMBRE,IDMARCA,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCKACTUAL,STOCKMINIMO,PORCENTAJEGANANCIA) " +
-                    "VALUES ('" + nuevoProducto.Codigo + "', '" + nuevoProducto.Nombre + "', '" + "', @IDMARCA, @IDCATEGORIA, @CUITPROVEEDOR" + nuevoProducto.Precio + "', '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "', '" + nuevoProducto.PorcentajeGanancia + "')");
-                datos.setearParametro("@IDMARCA", nuevoProducto.IDMarca);
-                datos.setearParametro("@IDCATEGORIA", nuevoProducto.IDCategoria);
-                datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.CUITProveedor);
+                datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,NOMBRE,IDMARCA,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN) " +
+                    "VALUES ('" + nuevoProducto.Codigo + "', '" + nuevoProducto.Nombre + "', @IDMARCA, @IDCATEGORIA, @CUITPROVEEDOR, " + nuevoProducto.Precio + ", '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "','" + nuevoProducto.PorcentajeGanancia + "')");
+                datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
+                datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
+                datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
