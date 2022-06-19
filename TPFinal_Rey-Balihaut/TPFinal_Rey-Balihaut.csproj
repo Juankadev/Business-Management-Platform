@@ -72,6 +72,8 @@
     <Content Include="AltaProveedor.aspx" />
     <Content Include="AltaArticulos.aspx" />
     <Content Include="Compras.aspx" />
+    <Content Include="ListadoCategorias.aspx" />
+    <Content Include="ListadoMarcas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="sitemaster.css" />
     <Content Include="Ventas.aspx" />
@@ -113,6 +115,20 @@
     </Compile>
     <Compile Include="Compras.aspx.designer.cs">
       <DependentUpon>Compras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoCategorias.aspx.cs">
+      <DependentUpon>ListadoCategorias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoCategorias.aspx.designer.cs">
+      <DependentUpon>ListadoCategorias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoMarcas.aspx.cs">
+      <DependentUpon>ListadoMarcas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoMarcas.aspx.designer.cs">
+      <DependentUpon>ListadoMarcas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

@@ -32,10 +32,23 @@ namespace TPFinal_Rey_Balihaut
                 ddlproveedor.DataValueField = "CUIT";
                 ddlproveedor.DataTextField = "Nombre";
                 ddlproveedor.DataBind();
-
-                //Label1.Text = "prueba";
-
             }
+        }
+
+        protected void altaArticulo_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio producto_negocio = new ProductoNegocio();
+            _Producto aux = new _Producto();
+            aux.Codigo = codigo.Text;
+            aux.Nombre = nombre.Text;
+            aux.IDMarca.IDMarca = ddlmarca.SelectedIndex;
+            aux.IDCategoria.IDCategoria = ddlcategoria.SelectedIndex;
+            aux.CUITProveedor.CUIT = ddlproveedor.SelectedValue;
+            aux.Precio = Decimal.Parse(precio.Text);
+            aux.StockActual = int.Parse(stockactual.Text);
+            aux.StockMinimo = int.Parse(stockminimo.Text);
+            aux.PorcentajeGanancia = int.Parse(ganancia.Text);
+            producto_negocio.agregar(aux);
         }
     }
 }

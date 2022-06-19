@@ -9,23 +9,23 @@
         <div class="col-2">
 
             <div class="mb-3">
-                <label for="TextBox1" class="form-label">Codigo</label>
-                <asp:TextBox ID="TextBox1" class="form-control" runat="server"></asp:TextBox>
+                <label for="codigo" class="form-label">Codigo</label>
+                <asp:TextBox ID="codigo" maxlength="10" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
-                <label for="TextBox2" class="form-label">Nombre</label>
-                <asp:TextBox ID="TextBox2" class="form-control" runat="server"></asp:TextBox>
+                <label for="nombre" class="form-label">Nombre</label>
+                <asp:TextBox ID="nombre" maxlength="50" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
-                <label for="TextBox3" class="form-label">Porcentaje de Ganancia</label>
-                <asp:TextBox ID="TextBox3" type="number" class="form-control" runat="server"></asp:TextBox>
+                <label for="ganancia" class="form-label">Porcentaje de Ganancia</label>
+                <asp:TextBox ID="ganancia" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
-                <label for="TextBox4" class="form-label">Precio</label>
-                <asp:TextBox ID="TextBox4" type="number" class="form-control" runat="server"></asp:TextBox>
+                <label for="precio" class="form-label">Precio</label>
+                <asp:TextBox ID="precio" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
@@ -48,14 +48,14 @@
             </div>
 
             <div class="mb-3">
-                <label for="TextBox5" class="form-label">Stock Actual</label>
-                <asp:TextBox ID="TextBox11" type="number" class="form-control" runat="server"></asp:TextBox>
+                <label for="stockactual" class="form-label">Stock Actual</label>
+                <asp:TextBox ID="stockactual" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
 
-                <label for="TextBox6" class="form-label">Stock Minimo</label>
-                <asp:TextBox ID="TextBox12" type="number" class="form-control" runat="server"></asp:TextBox>
+                <label for="stockminimo" class="form-label">Stock Minimo</label>
+                <asp:TextBox ID="stockminimo" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
         </div>
@@ -64,7 +64,7 @@
     <!--AGREGAR-->
     <div class="row">
         <div class="col-2">
-            <asp:Button ID="altaArticulo" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
+            <asp:Button ID="altaArticulo" OnCLick="altaArticulo_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
         </div>
     </div>
 </asp:Content>

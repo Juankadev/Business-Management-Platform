@@ -10,7 +10,7 @@ namespace Dominio
     {
         public int NumCompra { get; set; }
         public _Proveedor2 CodigoProveedor { get; set; }
-        public Productos CodigoProducto { get; set; }
+        public _Producto CodigoProducto { get; set; }
         public int Cantidad { get; set; }
         public decimal PrecioCompra { get; set; }
 
