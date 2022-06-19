@@ -44,7 +44,6 @@
     <Compile Include="_Categoria.cs" />
     <Compile Include="Clientes.cs" />
     <Compile Include="Compras.cs" />
-    <Compile Include="Localidades.cs" />
     <Compile Include="_Marca.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

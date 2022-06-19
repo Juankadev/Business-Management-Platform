@@ -14,6 +14,6 @@ namespace Dominio
         public string Telefono { get; set; }
         public string Mail { get; set; }
         public string Direccion { get; set; }
-        public Localidades Codigo_Postal { get; set; }
+        /*public Localidades Codigo_Postal { get; set; }*/
     }
 }

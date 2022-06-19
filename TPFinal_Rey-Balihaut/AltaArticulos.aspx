@@ -5,7 +5,7 @@
 
     <div class="row">
         <h1>Alta de Articulos</h1>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>--%>
         <div class="col-2">
 
             <div class="mb-3">
