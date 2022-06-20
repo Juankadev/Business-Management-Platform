@@ -72,6 +72,7 @@
     <Content Include="AltaProveedor.aspx" />
     <Content Include="AltaArticulos.aspx" />
     <Content Include="Compras.aspx" />
+    <Content Include="ListadoArticulos.aspx" />
     <Content Include="ListadoCategorias.aspx" />
     <Content Include="ListadoMarcas.aspx" />
     <Content Include="Login.aspx" />
@@ -115,6 +116,13 @@
     </Compile>
     <Compile Include="Compras.aspx.designer.cs">
       <DependentUpon>Compras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoArticulos.aspx.cs">
+      <DependentUpon>ListadoArticulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoArticulos.aspx.designer.cs">
+      <DependentUpon>ListadoArticulos.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListadoCategorias.aspx.cs">
       <DependentUpon>ListadoCategorias.aspx</DependentUpon>

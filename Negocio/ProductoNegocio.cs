@@ -11,39 +11,50 @@ namespace Negocio
     public class ProductoNegocio
     {
 
-        //public List<_Producto> listar()
-        //{
-        //    List<_Producto> lista = new List<_Producto>();
-        //    AccesoDatos datos = new AccesoDatos();
+        public List<_Producto> listar()
+        {
+            List<_Producto> lista = new List<_Producto>();
+            AccesoDatos datos = new AccesoDatos();
 
-        //    try
-        //    {
-        //        datos.setearConsulta("select Nombre FROM PRODUCTOS");
-        //        datos.ejecutarLectura();
+            try
+            {
+                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS");
+                datos.ejecutarLectura();
 
-        //        while (datos.Lector.Read())
-        //        {
-        //            _Producto aux = new _Producto();
-        //            /*aux.IDCategoria = (int)datos.Lector["Id"];
-        //            aux.DescripcionCategoria = (string)datos.Lector["Descripcion"];*/
+                while (datos.Lector.Read())
+                {
+                    _Producto aux = new _Producto();
+                    aux.Marca = new _Marca();
+                    aux.Categoria = new _Categoria();
+                    aux.Proveedor = new _Proveedor2();
 
-        //            lista.Add(aux);
-        //        }
+                    aux.Codigo = (string)datos.Lector["CODIGO"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Marca.IDMarca = (int)datos.Lector["IDMARCA"];
+                    aux.Categoria.IDCategoria = (int)datos.Lector["IDCATEGORIA"];
+                    aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
+                    aux.Precio = (decimal)datos.Lector["PRECIO"];
+                    aux.StockActual = (int)datos.Lector["STOCK_ACTUAL"];
+                    aux.StockMinimo = (int)datos.Lector["STOCK_MINIMO"];
+                    aux.PorcentajeGanancia = (int)datos.Lector["PORCENTAJE_GAN"];
 
-        //        return lista;
-        //    }
+                    lista.Add(aux);
+                }
 
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
+                return lista;
+            }
 
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-        //}
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
 
 
 
