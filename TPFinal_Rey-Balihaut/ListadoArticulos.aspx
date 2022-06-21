@@ -8,8 +8,9 @@
             <asp:BoundField HeaderText="Código" DataField="Codigo"/>
             <asp:BoundField HeaderText="Nombre" DataField="Nombre"/>
             <asp:BoundField HeaderText="Marca" DataField="Marca.DescripcionMarca"/>
-<%--            <asp:BoundField HeaderText="Categoria" DataField="Categoria.DescripcionCategoria"/>
-            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre"/>--%>
+            <asp:BoundField HeaderText="Categoria" DataField="Categoria.DescripcionCategoria"/>
+
+            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre"/>
             <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo"/>
             <asp:BoundField HeaderText="Stock Actual" DataField="StockActual"/>
             <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia"/>

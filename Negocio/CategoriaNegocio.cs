@@ -17,14 +17,14 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id, Descripcion FROM CATEGORIAS");
+                datos.setearConsulta("select Id, DESCRIPCION_CATEGORIA FROM CATEGORIAS");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     _Categoria aux = new _Categoria();
                     aux.IDCategoria = (int)datos.Lector["Id"];
-                    aux.DescripcionCategoria = (string)datos.Lector["Descripcion"];
+                    aux.DescripcionCategoria = (string)datos.Lector["DESCRIPCION_CATEGORIA"];
 
                     lista.Add(aux);
                 }

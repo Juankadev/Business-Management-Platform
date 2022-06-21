@@ -18,14 +18,14 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id, Descripcion FROM MARCAS");
+                datos.setearConsulta("select Id, DESCRIPCION_MARCA FROM MARCAS");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     _Marca aux = new _Marca();
                     aux.IDMarca = (int)datos.Lector["Id"];
-                    aux.DescripcionMarca = (string)datos.Lector["Descripcion"];
+                    aux.DescripcionMarca = (string)datos.Lector["DESCRIPCION_MARCA"];
 
                     lista.Add(aux);
                 }

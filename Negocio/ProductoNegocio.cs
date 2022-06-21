@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS INNER JOIN MARCAS M ON IDMARCA = M.ID");
+                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION_MARCA,C.DESCRIPCION_CATEGORIA,IDCATEGORIA,CUITPROVEEDOR,P.NOMBRE_PROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS INNER JOIN MARCAS M ON IDMARCA = M.ID INNER JOIN CATEGORIAS C ON IDCATEGORIA=C.ID INNER JOIN PROVEEDORES P ON CUITPROVEEDOR=P.CUIT");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -31,13 +31,15 @@ namespace Negocio
                     aux.Codigo = (string)datos.Lector["CODIGO"];
                     aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Marca.IDMarca = (int)datos.Lector["IDMARCA"];
-                    aux.Marca.DescripcionMarca = (string)datos.Lector["DESCRIPCION"];
+                    aux.Marca.DescripcionMarca = (string)datos.Lector["DESCRIPCION_MARCA"];
                     aux.Categoria.IDCategoria = (int)datos.Lector["IDCATEGORIA"];
+                    aux.Categoria.DescripcionCategoria = (string)datos.Lector["DESCRIPCION_CATEGORIA"];
                     aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
+                    aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
                     aux.Precio = (decimal)datos.Lector["PRECIO"];
-                    aux.StockActual = (int)datos.Lector["STOCK_ACTUAL"];
-                    aux.StockMinimo = (int)datos.Lector["STOCK_MINIMO"];
-                    aux.PorcentajeGanancia = (int)datos.Lector["PORCENTAJE_GAN"];
+                    aux.StockActual = (decimal)datos.Lector["STOCK_ACTUAL"];
+                    aux.StockMinimo = (decimal)datos.Lector["STOCK_MINIMO"];
+                    aux.PorcentajeGanancia = (decimal)datos.Lector["PORCENTAJE_GAN"];
 
                     lista.Add(aux);
                 }
