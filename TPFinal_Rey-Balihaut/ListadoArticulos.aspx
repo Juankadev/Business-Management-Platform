@@ -3,6 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <h1 style="text-align:center">Tus Articulos</h1>
+
+    <a href="AltaArticulos.aspx" class="btn btn-primary btn-lg btnlogin" style="width:20%; margin:20px auto">Nuevo Articulo</a>
+
     <asp:GridView ID="gvArticulos" CssClass="table table-bordered" style="color:#fff" AutoGenerateColumns="false" runat="server">
         <Columns>
             <asp:BoundField HeaderText="Código" DataField="Codigo"/>

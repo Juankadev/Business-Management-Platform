@@ -18,14 +18,14 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select CUIT, Nombre FROM PROVEEDORES");
+                datos.setearConsulta("select CUIT, NOMBRE_PROVEEDOR FROM PROVEEDORES");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     _Proveedor2 aux = new _Proveedor2();
                     aux.CUIT = (string)datos.Lector["CUIT"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
 
                     lista.Add(aux);
                 }
