@@ -11,7 +11,6 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = "HOLA A TODOS";
         }
     }
 }

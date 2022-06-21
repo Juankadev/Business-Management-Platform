@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS");
+                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS INNER JOIN MARCAS M ON IDMARCA = M.ID");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -31,6 +31,7 @@ namespace Negocio
                     aux.Codigo = (string)datos.Lector["CODIGO"];
                     aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Marca.IDMarca = (int)datos.Lector["IDMARCA"];
+                    aux.Marca.DescripcionMarca = (string)datos.Lector["DESCRIPCION"];
                     aux.Categoria.IDCategoria = (int)datos.Lector["IDCATEGORIA"];
                     aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
                     aux.Precio = (decimal)datos.Lector["PRECIO"];
