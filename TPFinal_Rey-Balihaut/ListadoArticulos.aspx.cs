@@ -17,5 +17,11 @@ namespace TPFinal_Rey_Balihaut
             gvArticulos.DataSource = producto_negocio.listar();
             gvArticulos.DataBind();
         }
+
+        protected void gvArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codigoSelected = gvArticulos.SelectedDataKey.Value.ToString();
+            Response.Redirect("Articulos.aspx?id="+codigoSelected);
+        }
     }
 }

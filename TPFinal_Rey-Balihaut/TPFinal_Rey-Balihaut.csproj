@@ -70,7 +70,7 @@
     <Content Include="Alta-Marca-Categoria.aspx" />
     <Content Include="AltaCliente.aspx" />
     <Content Include="AltaProveedor.aspx" />
-    <Content Include="AltaArticulos.aspx" />
+    <Content Include="Articulos.aspx" />
     <Content Include="Compras.aspx" />
     <Content Include="ListadoArticulos.aspx" />
     <Content Include="ListadoCategorias.aspx" />
@@ -103,12 +103,12 @@
     <Compile Include="AltaProveedor.aspx.designer.cs">
       <DependentUpon>AltaProveedor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AltaArticulos.aspx.cs">
-      <DependentUpon>AltaArticulos.aspx</DependentUpon>
+    <Compile Include="Articulos.aspx.cs">
+      <DependentUpon>Articulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AltaArticulos.aspx.designer.cs">
-      <DependentUpon>AltaArticulos.aspx</DependentUpon>
+    <Compile Include="Articulos.aspx.designer.cs">
+      <DependentUpon>Articulos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compras.aspx.cs">
       <DependentUpon>Compras.aspx</DependentUpon>

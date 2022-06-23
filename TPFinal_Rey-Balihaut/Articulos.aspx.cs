@@ -32,6 +32,28 @@ namespace TPFinal_Rey_Balihaut
                 ddlproveedor.DataValueField = "CUIT";
                 ddlproveedor.DataTextField = "Nombre";
                 ddlproveedor.DataBind();
+
+
+                if (Request.QueryString["id"] != null)
+                {
+                    codigo.ReadOnly = true;
+                    string codigoURL = Request.QueryString["id"].ToString();
+
+                    ProductoNegocio negocio = new ProductoNegocio();
+                    List<_Producto> lista = negocio.listar();
+                    _Producto producto = lista.Find(x => x.Codigo == codigoURL);
+
+                    codigo.Text = producto.Codigo;
+                    nombre.Text = producto.Nombre;
+                    ddlmarca.SelectedIndex = producto.Marca.IDMarca;
+                    ddlcategoria.SelectedIndex = producto.Categoria.IDCategoria;
+                    //ddlproveedor.SelectedIndex = producto.Proveedor.;
+                    //precio.Text = producto.Precio.ToString();
+                    stockactual.Text = producto.StockActual.ToString();
+                    stockminimo.Text = producto.StockMinimo.ToString();
+                    ganancia.Text = producto.PorcentajeGanancia.ToString();
+                }
+
             }
         }
 
@@ -53,6 +75,17 @@ namespace TPFinal_Rey_Balihaut
             aux.StockMinimo = int.Parse(stockminimo.Text);
             aux.PorcentajeGanancia = int.Parse(ganancia.Text);
             producto_negocio.agregar(aux);
+
+
+            codigo.Text = "";
+            nombre.Text = "";
+            //ddlmarca.Text = "";
+            //ddlcategoria.Text = "";
+            //ddlproveedor.Text = "";
+            precio.Text = "";
+            stockactual.Text = "";
+            stockminimo.Text = "";
+            ganancia.Text = "";
         }
     }
 }
