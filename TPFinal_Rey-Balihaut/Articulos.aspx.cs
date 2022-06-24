@@ -45,10 +45,10 @@ namespace TPFinal_Rey_Balihaut
 
                     codigo.Text = producto.Codigo;
                     nombre.Text = producto.Nombre;
-                    ddlmarca.SelectedIndex = producto.Marca.IDMarca;
-                    ddlcategoria.SelectedIndex = producto.Categoria.IDCategoria;
-                    //ddlproveedor.SelectedIndex = producto.Proveedor.;
-                    //precio.Text = producto.Precio.ToString();
+                    ddlmarca.SelectedIndex = producto.Marca.IDMarca -1;
+                    ddlcategoria.SelectedIndex = producto.Categoria.IDCategoria - 1;
+                    ddlproveedor.SelectedValue = producto.Proveedor.CUIT;
+                    precio.Text = producto.Precio.ToString();
                     stockactual.Text = producto.StockActual.ToString();
                     stockminimo.Text = producto.StockMinimo.ToString();
                     ganancia.Text = producto.PorcentajeGanancia.ToString();
@@ -76,12 +76,9 @@ namespace TPFinal_Rey_Balihaut
             aux.PorcentajeGanancia = int.Parse(ganancia.Text);
             producto_negocio.agregar(aux);
 
-
             codigo.Text = "";
             nombre.Text = "";
-            //ddlmarca.Text = "";
-            //ddlcategoria.Text = "";
-            //ddlproveedor.Text = "";
+
             precio.Text = "";
             stockactual.Text = "";
             stockminimo.Text = "";

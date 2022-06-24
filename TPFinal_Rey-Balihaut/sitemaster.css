@@ -4,7 +4,7 @@
     box-sizing:border-box;
 }
 body {
-    background-color:#151515;
+    background-color:#202020;
     color:#fff;
 }
 
@@ -27,3 +27,25 @@ body {
 .navbar-nav .nav-link.active.navlogin {
     color: #fff;
 } 
+
+
+.select {
+    color:#fff;
+    text-decoration:none;
+}
+.select:hover {
+    color: #fff;
+}
+
+td.text-warning .select {
+    color: #ffc107;
+}
+td.text-danger .select {
+    color: #dc3545;
+}
+
+
+
+/*th.bg-primary {*/
+/*    text-align:center;*/
+/*}*/
