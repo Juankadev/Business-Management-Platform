@@ -94,5 +94,17 @@ namespace TPFinal_Rey_Balihaut
                 ganancia.Text = "";
             }
         }
+
+        protected void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio producto_negocio = new ProductoNegocio();
+            if (Request.QueryString["id"] != null)
+            {
+                string codigoURL = Request.QueryString["id"].ToString();
+                producto_negocio.eliminar(codigoURL);
+                Response.Redirect("ListadoArticulos.aspx");
+            }
+
+        }
     }
 }

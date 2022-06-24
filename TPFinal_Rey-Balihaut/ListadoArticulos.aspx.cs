@@ -21,7 +21,25 @@ namespace TPFinal_Rey_Balihaut
         protected void gvArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
             var codigoSelected = gvArticulos.SelectedDataKey.Value.ToString();
+            //Session.Add("codigoSelected", codigoSelected);
             Response.Redirect("Articulos.aspx?id="+codigoSelected);
+        }
+
+        protected void gvArticulos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //var codigoSelected = gvArticulos.SelectedDataKey.Value.ToString();
+            //string cod = Session["codigoSelected"].ToString();
+
+            //gvArticulos.SelectedDataKey.Value.ToString();
+
+            if (e.CommandName == "Eliminar")
+            {          
+                //Response.Redirect("ListadoArticulos.aspx"+cod);
+            }
+            if (e.CommandName == "Modificar")
+            {
+                //Response.Redirect("Articulos.aspx"+cod);
+            }
         }
     }
 }

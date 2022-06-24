@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Articulos.aspx.cs" Inherits="TPFinal_Rey_Balihaut.Altas1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -10,12 +11,12 @@
 
             <div class="mb-3">
                 <label for="codigo" class="form-label">Codigo</label>
-                <asp:TextBox ID="codigo" maxlength="10" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="codigo" MaxLength="10" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <asp:TextBox ID="nombre" maxlength="50" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="nombre" MaxLength="50" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
@@ -64,7 +65,12 @@
     <!--AGREGAR-->
     <div class="row">
         <div class="col-2">
-            <asp:Button ID="btn_articulo" OnCLick="altaArticulo_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
+            <asp:Button ID="btn_articulo" OnClick="altaArticulo_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
         </div>
+
+        <div class="col-2">
+            <asp:Button ID="btn_eliminar" OnClick="btn_eliminar_Click" class="btn btn-danger btn-lg btnlogin" runat="server" Text="Eliminar" />
+        </div>
+
     </div>
 </asp:Content>
