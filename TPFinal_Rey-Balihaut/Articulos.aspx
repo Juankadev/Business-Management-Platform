@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="row">
-        <h1>Alta de Articulos</h1>
+        <h1>Articulos</h1>
         <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>--%>
         <div class="col-2">
 
@@ -25,7 +25,7 @@
 
             <div class="mb-3">
                 <label for="precio" class="form-label">Precio</label>
-                <asp:TextBox ID="precio" type="number" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="precio" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
@@ -64,7 +64,7 @@
     <!--AGREGAR-->
     <div class="row">
         <div class="col-2">
-            <asp:Button ID="altaArticulo" OnCLick="altaArticulo_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
+            <asp:Button ID="btn_articulo" OnCLick="altaArticulo_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
         </div>
     </div>
 </asp:Content>

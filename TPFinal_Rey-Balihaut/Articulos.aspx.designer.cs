@@ -96,12 +96,12 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.TextBox stockminimo;
 
         /// <summary>
-        /// Control altaArticulo.
+        /// Control btn_articulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button altaArticulo;
+        protected global::System.Web.UI.WebControls.Button btn_articulo;
     }
 }

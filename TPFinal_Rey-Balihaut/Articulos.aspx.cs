@@ -33,12 +33,13 @@ namespace TPFinal_Rey_Balihaut
                 ddlproveedor.DataTextField = "Nombre";
                 ddlproveedor.DataBind();
 
+                btn_articulo.Text = "Agregar";
 
                 if (Request.QueryString["id"] != null)
                 {
                     codigo.ReadOnly = true;
                     string codigoURL = Request.QueryString["id"].ToString();
-
+                    btn_articulo.Text = "Modificar";
                     ProductoNegocio negocio = new ProductoNegocio();
                     List<_Producto> lista = negocio.listar();
                     _Producto producto = lista.Find(x => x.Codigo == codigoURL);
@@ -64,7 +65,6 @@ namespace TPFinal_Rey_Balihaut
             aux.Marca = new _Marca();
             aux.Categoria = new _Categoria();
             aux.Proveedor = new _Proveedor2();
-
             aux.Codigo = codigo.Text;
             aux.Nombre = nombre.Text;
             aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
@@ -74,15 +74,25 @@ namespace TPFinal_Rey_Balihaut
             aux.StockActual = int.Parse(stockactual.Text);
             aux.StockMinimo = int.Parse(stockminimo.Text);
             aux.PorcentajeGanancia = int.Parse(ganancia.Text);
-            producto_negocio.agregar(aux);
 
-            codigo.Text = "";
-            nombre.Text = "";
 
-            precio.Text = "";
-            stockactual.Text = "";
-            stockminimo.Text = "";
-            ganancia.Text = "";
+            if (Request.QueryString["id"] != null) //se esta modificando un prod.
+            {
+
+                producto_negocio.modificar(aux);
+            }
+            else //se esta agregando un producto
+            {
+
+                producto_negocio.agregar(aux);
+
+                codigo.Text = "";
+                nombre.Text = "";
+                precio.Text = "";
+                stockactual.Text = "";
+                stockminimo.Text = "";
+                ganancia.Text = "";
+            }
         }
     }
 }
