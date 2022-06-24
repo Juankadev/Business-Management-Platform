@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION_MARCA,C.DESCRIPCION_CATEGORIA,IDCATEGORIA,CUITPROVEEDOR,P.NOMBRE_PROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS INNER JOIN MARCAS M ON IDMARCA = M.ID INNER JOIN CATEGORIAS C ON IDCATEGORIA=C.ID INNER JOIN PROVEEDORES P ON CUITPROVEEDOR=P.CUIT");
+                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION_MARCA,C.DESCRIPCION_CATEGORIA,IDCATEGORIA,CUITPROVEEDOR,P.NOMBRE_PROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS INNER JOIN MARCAS M ON IDMARCA = M.ID INNER JOIN CATEGORIAS C ON IDCATEGORIA=C.ID INNER JOIN PROVEEDORES P ON CUITPROVEEDOR=P.CUIT WHERE ACTIVO=1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -66,8 +66,8 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,NOMBRE,IDMARCA,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN) " +
-                    "VALUES ('" + nuevoProducto.Codigo + "', '" + nuevoProducto.Nombre + "', @IDMARCA, @IDCATEGORIA, @CUITPROVEEDOR, " + nuevoProducto.Precio + ", '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "','" + nuevoProducto.PorcentajeGanancia + "')");
+                datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,NOMBRE,IDMARCA,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN,ACTIVO) " +
+                    "VALUES ('" + nuevoProducto.Codigo + "', '" + nuevoProducto.Nombre + "', @IDMARCA, @IDCATEGORIA, @CUITPROVEEDOR, " + nuevoProducto.Precio + ", '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "','" + nuevoProducto.PorcentajeGanancia + "', '" + 1 + "')");
                 datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
                 datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
                 datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
@@ -123,7 +123,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("DELETE FROM PRODUCTOS WHERE CODIGO = @CODIGO");
+                datos.setearConsulta("UPDATE PRODUCTOS SET ACTIVO = 0 WHERE CODIGO = @CODIGO");
                 datos.setearParametro("@CODIGO", codigoEliminar);
                 datos.ejecutarAccion();
             }
