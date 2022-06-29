@@ -58,7 +58,11 @@
     <!--AGREGAR-->
     <div class="row">
         <div class="col-2">
-            <asp:Button ID="altaProveedor" OnClick="altaProveedor_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
+            <asp:Button ID="btn_alta" OnClick="btn_alta_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
+        </div>
+
+        <div class="col-2">
+            <asp:Button ID="btn_eliminar" OnClick="btn_eliminar_Click" class="btn btn-danger btn-lg btnlogin" runat="server" Text="Eliminar" />
         </div>
     </div>
 </asp:Content>

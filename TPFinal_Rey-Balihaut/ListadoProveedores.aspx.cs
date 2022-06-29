@@ -17,5 +17,11 @@ namespace TPFinal_Rey_Balihaut
             gvProveedores.DataSource = proveedor_negocio.listar();
             gvProveedores.DataBind();
         }
+
+        protected void gvProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codigoSelected = gvProveedores.SelectedDataKey.Value.ToString();
+            Response.Redirect("Proveedores.aspx?id=" + codigoSelected);
+        }
     }
 }

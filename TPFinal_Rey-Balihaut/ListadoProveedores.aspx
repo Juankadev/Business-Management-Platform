@@ -8,7 +8,7 @@
 
     <a href="Proveedores.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Proveedor</a>
 
-    <asp:GridView ID="gvProveedores" CssClass="table table-bordered" DataKeyNames="CUIT" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="gvProveedores" OnSelectedIndexChanged="gvProveedores_SelectedIndexChanged" CssClass="table table-bordered" DataKeyNames="CUIT" Style="color: #fff" AutoGenerateColumns="false" runat="server">
         <Columns>
 
             <asp:BoundField HeaderText="CUIT" DataField="CUIT">

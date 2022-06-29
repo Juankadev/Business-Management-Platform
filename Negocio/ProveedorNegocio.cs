@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION FROM PROVEEDORES");
+                datos.setearConsulta("select CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION FROM PROVEEDORES WHERE ACTIVO=1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -54,7 +54,53 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO PROVEEDORES (CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION) VALUES ('" + nuevoProveedor.CUIT + "','" + nuevoProveedor.Nombre + "','" + nuevoProveedor.Telefono + "','" + nuevoProveedor.Mail + "','" + nuevoProveedor.Direccion + "' )");
+                datos.setearConsulta("INSERT INTO PROVEEDORES (CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION, ACTIVO=1) VALUES ('" + nuevoProveedor.CUIT + "','" + nuevoProveedor.Nombre + "','" + nuevoProveedor.Telefono + "','" + nuevoProveedor.Mail + "','" + nuevoProveedor.Direccion + "','" + 1 +"' )");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void modificar(_Proveedor2 nuevoProveedor)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE PROVEEDORES SET CUIT=@CUIT,NOMBRE=@NOMBRE,TELEFONO=@TELEFONO,MAIL=@MAIL,DIRECCION=@DIRECCION WHERE CUIT=@CUIT");
+                datos.setearParametro("@CUIT", nuevoProveedor.CUIT);
+                datos.setearParametro("@NOMBRE", nuevoProveedor.Nombre);
+                datos.setearParametro("@TELEFONO", nuevoProveedor.Telefono);
+                datos.setearParametro("@MAIL", nuevoProveedor.Mail);
+                datos.setearParametro("@DIRECCION", nuevoProveedor.Direccion);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void eliminar(int cuitEliminar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE PROVEEDORES SET ACTIVO = 0 WHERE CUIT = @CUIT");
+                datos.setearParametro("@CUIT", cuitEliminar);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
