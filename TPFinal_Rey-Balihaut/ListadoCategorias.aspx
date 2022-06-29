@@ -7,7 +7,7 @@
 
     <a href="Categorias.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Categoria</a>
 
-    <asp:GridView ID="gvCategorias" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="gvCategorias" OnSelectedIndexChanged="gvCategorias_SelectedIndexChanged" DataKeyNames="IDCategoria" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false" runat="server">
         <Columns>
 
 <%--            <asp:BoundField HeaderText="ID" DataField="IDCategoria">

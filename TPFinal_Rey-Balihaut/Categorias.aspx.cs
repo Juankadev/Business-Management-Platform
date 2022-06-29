@@ -13,38 +13,59 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //ninguno.Visible = false;
+            if (!IsPostBack)
+            {
+                btn_alta.Text = "Agregar";
+
+                if (Request.QueryString["id"] != null)
+                {
+                    int codigoURL = int.Parse(Request.QueryString["id"].ToString());
+                    btn_alta.Text = "Modificar";
+
+                    CategoriaNegocio negocio = new CategoriaNegocio();
+                    List<_Categoria> lista = negocio.listar();
+                    _Categoria aux = lista.Find(x => x.IDCategoria == codigoURL);
+
+                    nombre.Text = aux.DescripcionCategoria;
+                }
+            }
         }
 
-        protected void altaCategoria_Click(object sender, EventArgs e)
+        protected void btn_alta_Click(object sender, EventArgs e) //para agregar y modificar
         {
             try
             {
-                //if(rdbmarca.Checked)
-                //{
-                //    MarcaNegocio marca_negocio = new MarcaNegocio();
-                //    _Marca marca = new _Marca();
-                //    marca.DescripcionMarca = nombre.Text;
-                //    marca_negocio.agregar(marca);
-                //    ninguno.Visible = false;
-                //}
-                //else if(rdbcategoria.Checked)
-                //{
-                    CategoriaNegocio categoria_negocio = new CategoriaNegocio();
-                    _Categoria categoria = new _Categoria();
-                    categoria.DescripcionCategoria = nombre.Text;
-                    categoria_negocio.agregar(categoria);
-                nombre.Text = "";
-                //    ninguno.Visible = false;
-                //}
-                //else
-                //{
-                //    ninguno.Visible=true;
-                //}
+                CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+                _Categoria aux = new _Categoria();
+
+                aux.DescripcionCategoria = nombre.Text;
+
+                if (Request.QueryString["id"] != null) //se esta modificando un prod.
+                {
+                    aux.IDCategoria = int.Parse(Request.QueryString["id"]);
+                    categoria_negocio.modificar(aux);
+                }
+                else //se esta agregando un producto
+                {
+                    categoria_negocio.agregar(aux);
+                    nombre.Text = "";
+                }
             }
+
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        protected void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+            if (Request.QueryString["id"] != null)
+            {
+                int codigoURL = int.Parse(Request.QueryString["id"].ToString());
+                categoria_negocio.eliminar(codigoURL);
+                Response.Redirect("ListadoCategorias.aspx");
             }
         }
     }

@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id, DESCRIPCION_MARCA FROM MARCAS");
+                datos.setearConsulta("select Id, DESCRIPCION_MARCA FROM MARCAS WHERE ACTIVO=1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -50,7 +50,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO MARCAS (DESCRIPCION_MARCA) VALUES ('" + nuevaMarca.DescripcionMarca + "' )");
+                datos.setearConsulta("INSERT INTO MARCAS (DESCRIPCION_MARCA,ACTIVO) VALUES ('" + nuevaMarca.DescripcionMarca + "','" + 1 + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -62,6 +62,50 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public void modificar(_Marca nuevaMarca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE MARCAS SET DESCRIPCION_MARCA=@DESCRIPCION WHERE ID=@ID");
+                datos.setearParametro("@ID", nuevaMarca.IDMarca);
+                datos.setearParametro("@DESCRIPCION", nuevaMarca.DescripcionMarca);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void eliminar(int idEliminar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE MARCAS SET ACTIVO = 0 WHERE ID = @ID");
+                datos.setearParametro("@ID", idEliminar);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
     }
 }

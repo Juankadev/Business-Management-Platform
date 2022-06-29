@@ -17,5 +17,11 @@ namespace TPFinal_Rey_Balihaut
             gvCategorias.DataSource = categoria_negocio.listar();
             gvCategorias.DataBind();
         }
+
+        protected void gvCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codigoSelected = gvCategorias.SelectedDataKey.Value.ToString();
+            Response.Redirect("Categorias.aspx?id=" + codigoSelected);
+        }
     }
 }

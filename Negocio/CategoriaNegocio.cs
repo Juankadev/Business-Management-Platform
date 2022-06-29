@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id, DESCRIPCION_CATEGORIA FROM CATEGORIAS");
+                datos.setearConsulta("select Id, DESCRIPCION_CATEGORIA FROM CATEGORIAS WHERE ACTIVO=1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -51,7 +51,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO CATEGORIAS (DESCRIPCION_CATEGORIA) VALUES ('" + nuevaCategoria.DescripcionCategoria + "' )");
+                datos.setearConsulta("INSERT INTO CATEGORIAS (DESCRIPCION_CATEGORIA, ACTIVO) VALUES ('" + nuevaCategoria.DescripcionCategoria + "','" + 1 + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -63,5 +63,49 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public void modificar(_Categoria nuevaCategoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE CATEGORIAS SET DESCRIPCION_CATEGORIA=@DESCRIPCION WHERE ID=@ID");
+                datos.setearParametro("@ID", nuevaCategoria.IDCategoria);
+                datos.setearParametro("@DESCRIPCION", nuevaCategoria.DescripcionCategoria);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void eliminar(int idEliminar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE CATEGORIAS SET ACTIVO = 0 WHERE ID = @ID");
+                datos.setearParametro("@ID", idEliminar);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }
