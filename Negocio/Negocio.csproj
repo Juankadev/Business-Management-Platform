@@ -44,7 +44,7 @@
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="CategoriaNegocio.cs" />
     <Compile Include="ProductoNegocio.cs" />
-    <Compile Include="_ProveedorNegocio.cs" />
+    <Compile Include="ProveedorNegocio.cs" />
     <Compile Include="MarcaNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

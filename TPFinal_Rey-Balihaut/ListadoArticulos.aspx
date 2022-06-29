@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1 style="text-align: center">Tus Articulos</h1>
+    <h1 style="text-align: center">Listado de Articulos</h1>
 
     <a href="Articulos.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Articulo</a>
 

@@ -27,7 +27,7 @@ namespace TPFinal_Rey_Balihaut
                 ddlcategoria.DataTextField = "DescripcionCategoria";
                 ddlcategoria.DataBind();
 
-                _ProveedorNegocio proveedor_negocio = new _ProveedorNegocio();
+                ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
                 ddlproveedor.DataSource = proveedor_negocio.listar();
                 ddlproveedor.DataValueField = "CUIT";
                 ddlproveedor.DataTextField = "Nombre";

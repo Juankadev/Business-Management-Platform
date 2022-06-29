@@ -40,11 +40,23 @@
                             <a class="nav-link active" aria-current="page" href="ListadoArticulos.aspx">Articulos</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="ListadoProveedores.aspx">Proveedores</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="ListadoMarcas.aspx">Marcas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="ListadoCategorias.aspx">Categorias</a>
+                        </li>
+
 
 
                         <!-------------MARCAS/CATEGORIAS------------------------>
 
-                        <li class="nav-item dropdown">
+                        <%--<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Marcas/Categorias
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -64,10 +76,10 @@
                                 <li><a class="dropdown-item" href="Alta-Marca-Categoria.aspx">Marcas/Categorias</a></li>
 
                             </ul>
-                        </li>
+                        </li>--%>
 
 
-<%--
+                        <%--
                         <!--------------ARTICULOS----------------------------->
 
                         <li class="nav-item dropdown">

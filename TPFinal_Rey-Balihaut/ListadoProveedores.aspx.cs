@@ -9,13 +9,13 @@ using Negocio;
 
 namespace TPFinal_Rey_Balihaut
 {
-    public partial class Listado_Marca_Categoria : System.Web.UI.Page
+    public partial class ListadoProveedores : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MarcaNegocio marca_negocio = new MarcaNegocio();
-            gvMarcas.DataSource = marca_negocio.listar();
-            gvMarcas.DataBind();
+            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+            gvProveedores.DataSource = proveedor_negocio.listar();
+            gvProveedores.DataBind();
         }
     }
 }

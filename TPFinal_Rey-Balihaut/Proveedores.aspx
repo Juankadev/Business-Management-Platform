@@ -1,12 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="AltaCliente.aspx.cs" Inherits="TPFinal_Rey_Balihaut.AltaCliente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Proveedores.aspx.cs" Inherits="TPFinal_Rey_Balihaut.AltaProveedor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="row">
-        <h1>Alta de Clientes</h1>
-        <div class="col-2">
+        <h1>Alta de Proveedor</h1>
 
+
+        <div class="col-2">
             <div class="mb-3">
                 <label for="TextBox1" class="form-label">CUIT/CUIL</label>
                 <asp:TextBox ID="TextBox1" type="number" class="form-control" runat="server"></asp:TextBox>
@@ -21,8 +22,6 @@
                 <label for="TextBox3" class="form-label">Teléfono</label>
                 <asp:TextBox ID="TextBox3" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
-
-
         </div>
 
 
@@ -51,6 +50,4 @@
             <asp:Button ID="altaArticulo" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
         </div>
     </div>
-
-
 </asp:Content>

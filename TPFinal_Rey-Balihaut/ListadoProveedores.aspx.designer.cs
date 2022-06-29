@@ -11,16 +11,16 @@ namespace TPFinal_Rey_Balihaut
 {
 
 
-    public partial class Listado_Marca_Categoria
+    public partial class ListadoProveedores
     {
 
         /// <summary>
-        /// Control gvMarcas.
+        /// Control gvProveedores.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvMarcas;
+        protected global::System.Web.UI.WebControls.GridView gvProveedores;
     }
 }

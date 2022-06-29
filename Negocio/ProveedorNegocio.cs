@@ -9,7 +9,7 @@ using Dominio;
 
 namespace Negocio
 {
-    public class _ProveedorNegocio
+    public class ProveedorNegocio
     {
         public List<_Proveedor2> listar()
         {
@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select CUIT, NOMBRE_PROVEEDOR FROM PROVEEDORES");
+                datos.setearConsulta("select CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION FROM PROVEEDORES");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -26,6 +26,9 @@ namespace Negocio
                     _Proveedor2 aux = new _Proveedor2();
                     aux.CUIT = (string)datos.Lector["CUIT"];
                     aux.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Mail = (string)datos.Lector["MAIL"];
+                    aux.Direccion = (string)datos.Lector["DIRECCION"];
 
                     lista.Add(aux);
                 }
