@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION FROM CLIENTES");
+                datos.setearConsulta("select DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION FROM CLIENTES WHERE ACTIVO=1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -53,7 +53,54 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO CLIENTES (DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION) VALUES ('" + nuevoCliente.DNI + "','" + nuevoCliente.Apellido + "','" + nuevoCliente.Nombre + "','" + nuevoCliente.Telefono + "','" + nuevoCliente.Mail + "','" + nuevoCliente.Direccion + "' )");
+                datos.setearConsulta("INSERT INTO CLIENTES (DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION,ACTIVO) VALUES ('" + nuevoCliente.DNI + "','" + nuevoCliente.Apellido + "','" + nuevoCliente.Nombre + "','" + nuevoCliente.Telefono + "','" + nuevoCliente.Mail + "','" + nuevoCliente.Direccion + "','" + 1 + "' )");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void modificar(_Cliente nuevoCliente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE CLIENTES SET DNI=@DNI,NOMBRE=@NOMBRE,APELLIDO=@APELLIDO,TELEFONO=@TELEFONO,MAIL=@MAIL,DIRECCION=@DIRECCION WHERE DNI=@DNI");
+                datos.setearParametro("@DNI", nuevoCliente.DNI);
+                datos.setearParametro("@NOMBRE", nuevoCliente.Nombre);
+                datos.setearParametro("@APELLIDO", nuevoCliente.Apellido);
+                datos.setearParametro("@TELEFONO", nuevoCliente.Telefono);
+                datos.setearParametro("@MAIL", nuevoCliente.Mail);
+                datos.setearParametro("@DIRECCION", nuevoCliente.Direccion);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void eliminar(string idEliminar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE CLIENTES SET ACTIVO = 0 WHERE DNI = @DNI");
+                datos.setearParametro("@DNI", idEliminar);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

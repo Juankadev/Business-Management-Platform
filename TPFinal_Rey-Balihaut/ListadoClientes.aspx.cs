@@ -17,5 +17,11 @@ namespace TPFinal_Rey_Balihaut
             gvClientes.DataSource = cliente_negocio.listar();
             gvClientes.DataBind();
         }
+
+        protected void gvClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codigoSelected = gvClientes.SelectedDataKey.Value.ToString();
+            Response.Redirect("Clientes.aspx?id=" + codigoSelected);
+        }
     }
 }

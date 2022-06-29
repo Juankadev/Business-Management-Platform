@@ -8,7 +8,7 @@
 
     <a href="Clientes.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Cliente</a>
 
-    <asp:GridView ID="gvClientes" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="gvClientes" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false" DataKeyNames="DNI" OnSelectedIndexChanged="gvClientes_SelectedIndexChanged" runat="server">
         <Columns>
 
             <asp:BoundField HeaderText="DNI" DataField="DNI">
