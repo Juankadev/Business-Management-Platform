@@ -17,5 +17,11 @@ namespace TPFinal_Rey_Balihaut
             gvMarcas.DataSource = marca_negocio.listar();
             gvMarcas.DataBind();
         }
+
+        protected void gvMarcas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codigoSelected = gvMarcas.SelectedDataKey.Value.ToString();
+            Response.Redirect("Marcas.aspx?id=" + codigoSelected);
+        }
     }
 }

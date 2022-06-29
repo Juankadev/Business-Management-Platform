@@ -7,7 +7,7 @@
 
     <a href="Marcas.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Marca</a>
 
-    <asp:GridView ID="gvMarcas" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="gvMarcas" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged" DataKeyNames="IDMarca" runat="server">
         <Columns>
 
 <%--            <asp:BoundField HeaderText="ID" DataField="IDMarca">
