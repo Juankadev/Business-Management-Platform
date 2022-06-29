@@ -47,7 +47,7 @@ namespace TPFinal_Rey_Balihaut
                 aux.Mail = mail.Text;
                 aux.Direccion = direccion.Text;
 
-                if (Request.QueryString["id"] != null) //se esta editando un cliente.
+                if (Request.QueryString["id"] != null) //se esta editando un proveedor.
                 {
                     proveedor_negocio.modificar(aux);
                 }

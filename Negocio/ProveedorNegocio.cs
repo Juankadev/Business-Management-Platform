@@ -54,7 +54,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO PROVEEDORES (CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION, ACTIVO=1) VALUES ('" + nuevoProveedor.CUIT + "','" + nuevoProveedor.Nombre + "','" + nuevoProveedor.Telefono + "','" + nuevoProveedor.Mail + "','" + nuevoProveedor.Direccion + "','" + 1 +"' )");
+                datos.setearConsulta("INSERT INTO PROVEEDORES (CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION, ACTIVO) VALUES ('" + nuevoProveedor.CUIT + "','" + nuevoProveedor.Nombre + "','" + nuevoProveedor.Telefono + "','" + nuevoProveedor.Mail + "','" + nuevoProveedor.Direccion + "','" + 1 + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -73,7 +73,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE PROVEEDORES SET CUIT=@CUIT,NOMBRE=@NOMBRE,TELEFONO=@TELEFONO,MAIL=@MAIL,DIRECCION=@DIRECCION WHERE CUIT=@CUIT");
+                datos.setearConsulta("UPDATE PROVEEDORES SET CUIT=@CUIT,NOMBRE_PROVEEDOR=@NOMBRE,TELEFONO=@TELEFONO,MAIL=@MAIL,DIRECCION=@DIRECCION WHERE CUIT=@CUIT");
                 datos.setearParametro("@CUIT", nuevoProveedor.CUIT);
                 datos.setearParametro("@NOMBRE", nuevoProveedor.Nombre);
                 datos.setearParametro("@TELEFONO", nuevoProveedor.Telefono);
@@ -94,7 +94,7 @@ namespace Negocio
         }
 
 
-        public void eliminar(int cuitEliminar)
+        public void eliminar(string cuitEliminar)
         {
             AccesoDatos datos = new AccesoDatos();
             try
