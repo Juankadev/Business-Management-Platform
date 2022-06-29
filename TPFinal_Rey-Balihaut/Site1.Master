@@ -52,6 +52,10 @@
                             <a class="nav-link active" aria-current="page" href="ListadoCategorias.aspx">Categorias</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="ListadoClientes.aspx">Clientes</a>
+                        </li>
+
 
 
                         <!-------------MARCAS/CATEGORIAS------------------------>

@@ -51,7 +51,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO CATEGORIAS (Descripcion) VALUES ('" + nuevaCategoria.DescripcionCategoria + "' )");
+                datos.setearConsulta("INSERT INTO CATEGORIAS (DESCRIPCION_CATEGORIA) VALUES ('" + nuevaCategoria.DescripcionCategoria + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

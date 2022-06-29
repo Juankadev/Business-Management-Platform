@@ -1,31 +1,31 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using Dominio;
 
 namespace Negocio
 {
-    public class ProveedorNegocio
+    public class ClienteNegocio
     {
-        public List<_Proveedor2> listar()
+        public List<_Cliente> listar()
         {
-            List<_Proveedor2> lista = new List<_Proveedor2>();
+            List<_Cliente> lista = new List<_Cliente>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("select CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION FROM PROVEEDORES");
+                datos.setearConsulta("select DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION FROM CLIENTES");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    _Proveedor2 aux = new _Proveedor2();
-                    aux.CUIT = (string)datos.Lector["CUIT"];
-                    aux.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    _Cliente aux = new _Cliente();
+   
+                    aux.DNI = (string)datos.Lector["DNI"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Telefono = (string)datos.Lector["TELEFONO"];
                     aux.Mail = (string)datos.Lector["MAIL"];
                     aux.Direccion = (string)datos.Lector["DIRECCION"];
@@ -48,13 +48,12 @@ namespace Negocio
 
         }
 
-
-        public void agregar(_Proveedor2 nuevoProveedor)
+        public void agregar(_Cliente nuevoCliente)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO PROVEEDORES (CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION) VALUES ('" + nuevoProveedor.CUIT + "','" + nuevoProveedor.Nombre + "','" + nuevoProveedor.Telefono + "','" + nuevoProveedor.Mail + "','" + nuevoProveedor.Direccion + "' )");
+                datos.setearConsulta("INSERT INTO CLIENTES (DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION) VALUES ('" + nuevoCliente.DNI + "','" + nuevoCliente.Apellido + "','" + nuevoCliente.Nombre + "','" + nuevoCliente.Telefono + "','" + nuevoCliente.Mail + "','" + nuevoCliente.Direccion + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

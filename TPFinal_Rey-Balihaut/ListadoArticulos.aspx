@@ -38,7 +38,7 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>
 
-            <asp:BoundField HeaderText="Precio" DataField="Precio">
+            <asp:BoundField HeaderText="Precio Venta" DataField="Precio">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>

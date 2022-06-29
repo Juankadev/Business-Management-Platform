@@ -67,9 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ListadoClientes.aspx" />
     <Content Include="ListadoProveedores.aspx" />
-    <Content Include="Marcas-Categorias.aspx" />
+    <Content Include="Categorias.aspx" />
     <Content Include="Clientes.aspx" />
+    <Content Include="Marcas.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Articulos.aspx" />
     <Content Include="Compras.aspx" />
@@ -83,6 +85,13 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListadoClientes.aspx.cs">
+      <DependentUpon>ListadoClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoClientes.aspx.designer.cs">
+      <DependentUpon>ListadoClientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListadoProveedores.aspx.cs">
       <DependentUpon>ListadoProveedores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -90,12 +99,12 @@
     <Compile Include="ListadoProveedores.aspx.designer.cs">
       <DependentUpon>ListadoProveedores.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Marcas-Categorias.aspx.cs">
-      <DependentUpon>Marcas-Categorias.aspx</DependentUpon>
+    <Compile Include="Categorias.aspx.cs">
+      <DependentUpon>Categorias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Marcas-Categorias.aspx.designer.cs">
-      <DependentUpon>Marcas-Categorias.aspx</DependentUpon>
+    <Compile Include="Categorias.aspx.designer.cs">
+      <DependentUpon>Categorias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Clientes.aspx.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
@@ -103,6 +112,13 @@
     </Compile>
     <Compile Include="Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Marcas.aspx.cs">
+      <DependentUpon>Marcas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Marcas.aspx.designer.cs">
+      <DependentUpon>Marcas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Proveedores.aspx.cs">
       <DependentUpon>Proveedores.aspx</DependentUpon>

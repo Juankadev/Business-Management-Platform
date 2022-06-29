@@ -44,14 +44,14 @@ td.text-danger .select {
     color: #dc3545;
 }
 
+.nav-link:active {
+    background-color: #0a58ca;
+    border-radius:5px;
 
-
-/*th.bg-primary {*/
-/*    text-align:center;*/
-/*}*/
-
-
-
+}
+.navbar-nav .nav-link:active {
+    color: #fff;
+}
 .title {
-    text-align:center;
+    text-align: center;
 }
