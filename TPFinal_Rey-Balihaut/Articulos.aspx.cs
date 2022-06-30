@@ -54,8 +54,8 @@ namespace TPFinal_Rey_Balihaut
                     stockminimo.Text = producto.StockMinimo.ToString();
                     ganancia.Text = producto.PorcentajeGanancia.ToString();
 
-                    gvAsociados.DataSource = negocio.listar();
-                    gvAsociados.DataBind();
+                    //gvAsociados.DataSource = negocio.listar();
+                    //gvAsociados.DataBind();
 
                 }
                 else
@@ -73,7 +73,7 @@ namespace TPFinal_Rey_Balihaut
             _Producto aux = new _Producto();
             aux.Marca = new _Marca();
             aux.Categoria = new _Categoria();
-            aux.Proveedor = new _Proveedor2();
+            //aux.Proveedor = new _Proveedor2();
             
             if (codigo.Text != "")
             {

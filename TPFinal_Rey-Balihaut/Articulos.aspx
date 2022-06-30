@@ -18,7 +18,7 @@
                 //document.getElementById('codigo').classList.add('is-valid')
                 //return true;
             }
-            return false;
+            return true;
 
         }
     </script>
@@ -50,14 +50,14 @@
                 <asp:TextBox ID="precio" class="form-control" runat="server"></asp:TextBox>
             </div>
 
+        </div>
+
+        <div class="col-2">
+
             <div class="mb-3">
                 <label for="ddlmarca" class="form-label">Marca</label>
                 <asp:DropDownList ID="ddlmarca" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
-
-        </div>
-
-        <div class="col-2">
 
             <div class="mb-3">
                 <label for="ddlcategoria" class="form-label">Categoria</label>
@@ -91,18 +91,22 @@
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
                     </asp:BoundField>
+
+                    <asp:TemplateField HeaderText="Añadir">
+                        <ItemTemplate>
+                            <asp:CheckBox ID="check1" Text="" runat="server"></asp:CheckBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
+
 
             </asp:GridView>
         </div>
 
         <!--GV PROVEEDORES ASOCIADOS-->
-<%--        <div class="col-3">
+        <%--        <div class="col-3">
             <asp:GridView ID="gvAsociados" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false"></asp:GridView>
         </div>--%>
-
-
-
     </div>
 
     <!--AGREGAR-->

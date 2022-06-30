@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION_MARCA,C.DESCRIPCION_CATEGORIA,IDCATEGORIA,CUITPROVEEDOR,P.NOMBRE_PROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS PR INNER JOIN MARCAS M ON IDMARCA = M.ID INNER JOIN CATEGORIAS C ON IDCATEGORIA=C.ID INNER JOIN PROVEEDORES P ON CUITPROVEEDOR=P.CUIT WHERE PR.ACTIVO=1");
+                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION_MARCA,C.DESCRIPCION_CATEGORIA,IDCATEGORIA,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS PR INNER JOIN MARCAS M ON IDMARCA = M.ID INNER JOIN CATEGORIAS C ON IDCATEGORIA=C.ID WHERE PR.ACTIVO=1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -26,7 +26,7 @@ namespace Negocio
                     _Producto aux = new _Producto();
                     aux.Marca = new _Marca();
                     aux.Categoria = new _Categoria();
-                    aux.Proveedor = new _Proveedor2();
+                    //aux.Proveedor = new _Proveedor2();
 
                     aux.Codigo = (string)datos.Lector["CODIGO"];
                     aux.Nombre = (string)datos.Lector["NOMBRE"];
@@ -34,8 +34,8 @@ namespace Negocio
                     aux.Marca.DescripcionMarca = (string)datos.Lector["DESCRIPCION_MARCA"];
                     aux.Categoria.IDCategoria = (int)datos.Lector["IDCATEGORIA"];
                     aux.Categoria.DescripcionCategoria = (string)datos.Lector["DESCRIPCION_CATEGORIA"];
-                    aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
-                    aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    //aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
+                    //aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
                     aux.Precio = (decimal)datos.Lector["PRECIO"];
                     aux.StockActual = (decimal)datos.Lector["STOCK_ACTUAL"];
                     aux.StockMinimo = (decimal)datos.Lector["STOCK_MINIMO"];
@@ -66,11 +66,11 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,NOMBRE,IDMARCA,IDCATEGORIA,CUITPROVEEDOR,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN,ACTIVO) " +
-                    "VALUES ('" + nuevoProducto.Codigo + "', '" + nuevoProducto.Nombre + "', @IDMARCA, @IDCATEGORIA, @CUITPROVEEDOR, " + nuevoProducto.Precio + ", '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "','" + nuevoProducto.PorcentajeGanancia + "', '" + 1 + "')");
+                datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,NOMBRE,IDMARCA,IDCATEGORIA,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN,ACTIVO) " +
+                    "VALUES ('" + nuevoProducto.Codigo + "', '" + nuevoProducto.Nombre + "', @IDMARCA, @IDCATEGORIA, " + nuevoProducto.Precio + ", '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "','" + nuevoProducto.PorcentajeGanancia + "', '" + 1 + "')");
                 datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
                 datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
-                datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
+                //datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -91,12 +91,12 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {             
-                datos.setearConsulta("UPDATE PRODUCTOS SET NOMBRE = @NOMBRE, IDMARCA = @IDMARCA, IDCATEGORIA = @IDCATEGORIA, CUITPROVEEDOR = @CUITPROVEEDOR, PRECIO = @PRECIO, STOCK_ACTUAL = @STOCKACTUAL, STOCK_MINIMO = @STOCKMINIMO, PORCENTAJE_GAN = @PORCENTAJEGAN WHERE CODIGO = @CODIGO");
+                datos.setearConsulta("UPDATE PRODUCTOS SET NOMBRE = @NOMBRE, IDMARCA = @IDMARCA, IDCATEGORIA = @IDCATEGORIA, PRECIO = @PRECIO, STOCK_ACTUAL = @STOCKACTUAL, STOCK_MINIMO = @STOCKMINIMO, PORCENTAJE_GAN = @PORCENTAJEGAN WHERE CODIGO = @CODIGO");
                 datos.setearParametro("@CODIGO", nuevoProducto.Codigo);
                 datos.setearParametro("@NOMBRE", nuevoProducto.Nombre);
                 datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
                 datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
-                datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
+                //datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
                 datos.setearParametro("@PRECIO", nuevoProducto.Precio);
                 datos.setearParametro("@STOCKMINIMO", nuevoProducto.StockMinimo);
                 datos.setearParametro("@STOCKACTUAL", nuevoProducto.StockActual);

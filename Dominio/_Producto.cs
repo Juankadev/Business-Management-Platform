@@ -12,7 +12,7 @@ namespace Dominio
         public string Nombre { get; set; }
         public _Marca Marca { get; set; }
         public _Categoria Categoria { get; set; }
-        public _Proveedor2 Proveedor { get; set; }
+        //public _Proveedor2 Proveedor { get; set; }
         public decimal Precio { get; set; }
         public decimal StockActual { get; set; }
         public decimal StockMinimo { get; set; }

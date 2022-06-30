@@ -112,5 +112,40 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public List<String> listarAsociados(string buscado)
+        {
+            List<String> lista = new List<String>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select P.NOMBRE_PROVEEDOR FROM PROVEEDORES P INNER JOIN PROVEEDORES_X_PRODUCTO PXP ON P.CUIT=PXP.CUIT_PROVEEDOR WHERE CODIGO_PRODUCTO=@BUSCADO");
+                datos.setearParametro("@BUSCADO", buscado);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    string aux = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
     }
 }
