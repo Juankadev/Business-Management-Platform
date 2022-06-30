@@ -4,6 +4,27 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <script>
+        function validar() {
+
+
+            if (codigo === "") {
+                //document.getElementById('codigo').classList.remove('is-valid')
+                document.getElementById('codigo').classList.add('is-valid')
+
+            }
+            else {
+                //document.getElementById('codigo').classList.remove('is-invalid')
+                //document.getElementById('codigo').classList.add('is-valid')
+                //return true;
+            }
+            return false;
+
+        }
+    </script>
+
+
+
     <div class="row">
         <h1>Articulos</h1>
         <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>--%>
@@ -11,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="codigo" class="form-label">Codigo</label>
-                <asp:TextBox ID="codigo" MaxLength="10" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="codigo" ClientIDMode="Static" MaxLength="10" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
@@ -43,10 +64,10 @@
                 <asp:DropDownList ID="ddlcategoria" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
 
-            <div class="mb-3">
+            <%--            <div class="mb-3">
                 <label for="ddlproveedor" class="form-label">Proveedor</label>
                 <asp:DropDownList ID="ddlproveedor" CssClass="form-select" runat="server"></asp:DropDownList>
-            </div>
+            </div>--%>
 
             <div class="mb-3">
                 <label for="stockactual" class="form-label">Stock Actual</label>
@@ -60,24 +81,49 @@
             </div>
 
         </div>
+
+        <!--GV PROVEEDORES-->
+        <div class="col-3">
+            <asp:GridView ID="gvProveedores" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false">
+
+                <Columns>
+                    <asp:BoundField HeaderText="Proveedores" DataField="Nombre">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
+                </Columns>
+
+            </asp:GridView>
+        </div>
+
+        <!--GV PROVEEDORES ASOCIADOS-->
+<%--        <div class="col-3">
+            <asp:GridView ID="gvAsociados" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false"></asp:GridView>
+        </div>--%>
+
+
+
     </div>
 
     <!--AGREGAR-->
     <div class="row">
         <div class="col-2">
-            <asp:Button ID="btn_articulo" OnClick="altaArticulo_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
+            <asp:Button ID="btn_articulo" OnClientClick="return validar()" OnClick="altaArticulo_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
         </div>
 
         <div class="col-2">
             <asp:Button ID="btn_eliminar" OnClick="btn_eliminar_Click" class="btn btn-danger btn-lg btnlogin" runat="server" Text="Eliminar" />
         </div>
 
+        <div class="col-3">
+        </div>
 
 
 
 
 
-<%--        <!-- Button trigger modal -->
+
+        <%--        <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
@@ -98,7 +144,5 @@
     </div>
   </div>
 </div>--%>
-
-
     </div>
 </asp:Content>

@@ -11,10 +11,10 @@
     <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" OnRowCommand="gvArticulos_RowCommand" CssClass="table table-bordered" DataKeyNames="Codigo" Style="color: #fff" AutoGenerateColumns="false" runat="server">
         <Columns>
 
-            <asp:BoundField HeaderText="Código" DataField="Codigo">
+<%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+            </asp:BoundField>--%>
 
             <asp:BoundField HeaderText="Nombre" DataField="Nombre">
                 <ItemStyle CssClass="" />
@@ -33,34 +33,34 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>
 
-            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
+<%--            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
+                <ItemStyle CssClass="" />
+                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+            </asp:BoundField>--%>
+
+            <asp:BoundField HeaderText="Precio Venta" DataField="Precio" DataFormatString="{0:C}">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>
 
-            <asp:BoundField HeaderText="Precio Venta" DataField="Precio">
+            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia" DataFormatString="{0:0}%">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>
 
-            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia">
+<%--            <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+            </asp:BoundField>--%>
 
-            <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo">
+<%--            <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
-
-            <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+            </asp:BoundField>--%>
 
 
 
-            <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="Editar">
+            <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
                 <ItemStyle CssClass="text-warning" />
                 <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                 <ControlStyle CssClass="select" />

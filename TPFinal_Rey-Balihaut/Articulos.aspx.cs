@@ -28,10 +28,10 @@ namespace TPFinal_Rey_Balihaut
                 ddlcategoria.DataBind();
 
                 ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-                ddlproveedor.DataSource = proveedor_negocio.listar();
-                ddlproveedor.DataValueField = "CUIT";
-                ddlproveedor.DataTextField = "Nombre";
-                ddlproveedor.DataBind();
+                //ddlproveedor.DataSource = proveedor_negocio.listar();
+                //ddlproveedor.DataValueField = "CUIT";
+                //ddlproveedor.DataTextField = "Nombre";
+                //ddlproveedor.DataBind();
 
                 btn_articulo.Text = "Agregar";
 
@@ -48,11 +48,20 @@ namespace TPFinal_Rey_Balihaut
                     nombre.Text = producto.Nombre;
                     ddlmarca.SelectedIndex = producto.Marca.IDMarca -1;
                     ddlcategoria.SelectedIndex = producto.Categoria.IDCategoria - 1;
-                    ddlproveedor.SelectedValue = producto.Proveedor.CUIT;
+                    //ddlproveedor.SelectedValue = producto.Proveedor.CUIT;
                     precio.Text = producto.Precio.ToString();
                     stockactual.Text = producto.StockActual.ToString();
                     stockminimo.Text = producto.StockMinimo.ToString();
                     ganancia.Text = producto.PorcentajeGanancia.ToString();
+
+                    gvAsociados.DataSource = negocio.listar();
+                    gvAsociados.DataBind();
+
+                }
+                else
+                {
+                    gvProveedores.DataSource = proveedor_negocio.listar();
+                    gvProveedores.DataBind();
                 }
 
             }
@@ -65,11 +74,16 @@ namespace TPFinal_Rey_Balihaut
             aux.Marca = new _Marca();
             aux.Categoria = new _Categoria();
             aux.Proveedor = new _Proveedor2();
-            aux.Codigo = codigo.Text;
+            
+            if (codigo.Text != "")
+            {
+                aux.Codigo = codigo.Text;
+            }
+         
             aux.Nombre = nombre.Text;
             aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
             aux.Categoria.IDCategoria = ddlcategoria.SelectedIndex + 1;
-            aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
+            //aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
             aux.Precio = decimal.Parse(precio.Text);
             aux.StockActual = int.Parse(stockactual.Text);
             aux.StockMinimo = int.Parse(stockminimo.Text);
@@ -78,12 +92,10 @@ namespace TPFinal_Rey_Balihaut
 
             if (Request.QueryString["id"] != null) //se esta modificando un prod.
             {
-
                 producto_negocio.modificar(aux);
             }
             else //se esta agregando un producto
             {
-
                 producto_negocio.agregar(aux);
 
                 codigo.Text = "";
@@ -93,6 +105,8 @@ namespace TPFinal_Rey_Balihaut
                 stockminimo.Text = "";
                 ganancia.Text = "";
             }
+            
+            Response.Redirect("ListadoArticulos.aspx");
         }
 
         protected void btn_eliminar_Click(object sender, EventArgs e)
