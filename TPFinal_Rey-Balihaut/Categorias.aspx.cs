@@ -45,18 +45,28 @@ namespace TPFinal_Rey_Balihaut
 
                 aux.DescripcionCategoria = nombre.Text;
 
-                if (Request.QueryString["id"] != null) //se esta modificando un prod.
+                if (nombre.Text != "")
                 {
-                    aux.IDCategoria = int.Parse(Request.QueryString["id"]);
-                    categoria_negocio.modificar(aux);
-                }
-                else //se esta agregando un producto
-                {
-                    categoria_negocio.agregar(aux);
-                    nombre.Text = "";
+                    if (Request.QueryString["id"] != null) //se esta modificando un prod.
+                    {
+                        aux.IDCategoria = int.Parse(Request.QueryString["id"]);
+                        categoria_negocio.modificar(aux);
+                    }
+                    else //se esta agregando un producto
+                    {
+                        categoria_negocio.agregar(aux);
+                        nombre.Text = "";
+                    }
+
+                    Response.Redirect("ListadoCategorias.aspx");
                 }
 
-                Response.Redirect("ListadoCategorias.aspx");
+
+                if (nombre.Text == "")
+                {
+                    //codigo.BackColor = System.Drawing.Color.IndianRed;
+                    nombre.CssClass = "form-control is-invalid";
+                }
             }
 
             catch (Exception ex)
