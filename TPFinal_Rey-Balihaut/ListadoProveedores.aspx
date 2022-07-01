@@ -11,10 +11,10 @@
     <asp:GridView ID="gvProveedores" OnSelectedIndexChanged="gvProveedores_SelectedIndexChanged" CssClass="table table-bordered" DataKeyNames="CUIT" Style="color: #fff" AutoGenerateColumns="false" runat="server">
         <Columns>
 
-            <asp:BoundField HeaderText="CUIT" DataField="CUIT">
+<%--            <asp:BoundField HeaderText="CUIT" DataField="CUIT">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+            </asp:BoundField>--%>
 
             <asp:BoundField HeaderText="Nombre" DataField="Nombre">
                 <ItemStyle CssClass="" />

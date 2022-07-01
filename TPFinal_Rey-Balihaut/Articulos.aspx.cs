@@ -11,6 +11,18 @@ namespace TPFinal_Rey_Balihaut
 {
     public partial class Altas1 : System.Web.UI.Page
     {
+        protected bool existe(ListItem li, List<String> listaAsociados)
+        {
+            string liString = li.Text;
+            for(int i=0; i<listaAsociados.Count;i++)
+            {
+                if(listaAsociados[i]== liString)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -54,14 +66,17 @@ namespace TPFinal_Rey_Balihaut
                     stockminimo.Text = producto.StockMinimo.ToString();
                     ganancia.Text = producto.PorcentajeGanancia.ToString();
 
-                    CheckBoxList.Visible = false;
+                    //CheckBoxList.Visible = false;
 
 
-                    CheckBoxListAsociados.DataSource = proveedor_negocio.listarProveedoresAsociados(codigo.Text);
-                    CheckBoxListAsociados.DataBind();
-                    foreach (ListItem li in CheckBoxListAsociados.Items)
+                    CheckBoxList.DataSource = proveedor_negocio.listarProveedores();
+                    CheckBoxList.DataBind();
+                    List<String> listaAsociados = proveedor_negocio.listarProveedoresAsociados(codigo.Text);
+
+                    foreach (ListItem li in CheckBoxList.Items)
                     {
-                        li.Selected = true;
+                        if(existe(li, listaAsociados))
+                            li.Selected = true;
                     }
 
                 }

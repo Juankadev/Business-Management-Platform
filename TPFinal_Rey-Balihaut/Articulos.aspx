@@ -26,7 +26,7 @@
 
 
     <div class="row">
-        <h1>Articulos</h1>
+        <h1 class="title">Articulos</h1>
         <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>--%>
         <div class="col-2">
 
@@ -103,8 +103,13 @@
 
             </asp:GridView>--%>
 
+            <asp:Label ID="feedback" runat="server" Text="Selecciona Proveedores del Articulo"></asp:Label>
 
-            <asp:CheckBoxList ID="CheckBoxList" runat="server">
+            <asp:CheckBoxList ID="CheckBoxList" class="form-check" runat="server">
+            </asp:CheckBoxList>
+
+
+                        <asp:CheckBoxList ID="CheckBoxListAsociados" runat="server">
             </asp:CheckBoxList>
 
         </div>
@@ -112,7 +117,7 @@
 
 
         <!--GV PROVEEDORES ASOCIADOS-->
-        <div class="col-3">
+        
             <%--            <asp:GridView ID="gvAsociados" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false">
 
                 <%--<Columns>
@@ -125,10 +130,9 @@
             </asp:GridView>--%>
 
 
-            <asp:CheckBoxList ID="CheckBoxListAsociados" runat="server">
-            </asp:CheckBoxList>
 
-        </div>
+
+       
     </div>
 
 
@@ -136,7 +140,7 @@
     <!--AGREGAR-->
     <div class="row">
         <div class="col-2">
-            <asp:Button ID="btn_articulo" OnClientClick="return validar()" OnClick="altaArticulo_Click" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
+            <asp:Button ID="btn_articulo" OnClientClick="return validar()" OnClick="altaArticulo_Click" class="btn btn-success btn-lg btnlogin" runat="server" Text="Agregar" />
         </div>
 
         <div class="col-2">

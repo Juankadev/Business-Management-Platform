@@ -13,10 +13,6 @@ body {
     justify-content:center;
 }
 
-.row > h1 {
-    margin-top: 50px;
-    text-align: center;
-}
 .btnlogin{
     width:100%;
     display:block;
@@ -54,4 +50,35 @@ td.text-danger .select {
 }
 .title {
     text-align: center;
+    margin-top:20px;
+    margin-bottom:40px;
+}
+
+
+
+#ContentPlaceHolder1_CheckBoxList label{
+    /*background-color:#005b9c*/
+    margin-left:10px;
+    margin-bottom:5px;
+    font-size:20px
+}
+#ContentPlaceHolder1_CheckBoxList input {
+    /*background-color:#005b9c*/
+    width:20px;
+    height:20px;
+}
+
+
+
+#ContentPlaceHolder1_CheckBoxListAsociados label {
+    /*background-color:#005b9c*/
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 20px
+}
+
+#ContentPlaceHolder1_CheckBoxListAsociados input {
+    /*background-color:#005b9c*/
+    width: 20px;
+    height: 20px;
 }
