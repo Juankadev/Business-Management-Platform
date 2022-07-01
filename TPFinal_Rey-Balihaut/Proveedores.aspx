@@ -24,6 +24,11 @@
                 <asp:TextBox ID="telefono" MaxLength="15" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
+
+        </div>
+
+
+        <div class="col-2">
             <div class="mb-3">
                 <label for="mail" class="form-label">Mail</label>
                 <asp:TextBox ID="mail" MaxLength="50" class="form-control" runat="server"></asp:TextBox>
@@ -34,7 +39,6 @@
                 <asp:TextBox ID="direccion" MaxLength="50" class="form-control" runat="server"></asp:TextBox>
             </div>
         </div>
-
 
 
         <%--<div class="col-2">

@@ -44,30 +44,48 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-                _Proveedor2 aux = new _Proveedor2();
-                aux.CUIT = cuit.Text;
-                aux.Nombre = nombre.Text;
-                aux.Telefono = telefono.Text;
-                aux.Mail = mail.Text;
-                aux.Direccion = direccion.Text;
-
-                if (Request.QueryString["id"] != null) //se esta editando un proveedor.
+                if(cuit.Text != "" && cuit.Text.Length == 12 && nombre.Text != "")
                 {
-                    proveedor_negocio.modificar(aux);
+                    ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+                    _Proveedor2 aux = new _Proveedor2();
+                    aux.CUIT = cuit.Text;
+                    aux.Nombre = nombre.Text;
+                    aux.Telefono = telefono.Text;
+                    aux.Mail = mail.Text;
+                    aux.Direccion = direccion.Text;
+
+                    if (Request.QueryString["id"] != null) //se esta editando un proveedor.
+                    {
+                        proveedor_negocio.modificar(aux);
+                    }
+
+                    else
+                    {
+                        proveedor_negocio.agregar(aux);
+                    }
+
+                    Response.Redirect("ListadoProveedores.aspx");
                 }
 
+
+                if (cuit.Text == "" || cuit.Text.Length >= 10 && cuit.Text.Length <= 12)
+                {
+                    cuit.CssClass = "form-control is-invalid";
+                }
                 else
                 {
-                    proveedor_negocio.agregar(aux);
-                    cuit.Text = "";
-                    nombre.Text = "";
-                    telefono.Text = ""; ;
-                    mail.Text = ""; ;
-                    direccion.Text = "";
+                    cuit.CssClass = "form-control is-valid";
                 }
 
-                Response.Redirect("ListadoProveedores.aspx");
+
+                if (nombre.Text == "")
+                {
+                    nombre.CssClass = "form-control is-invalid";
+                }
+                else
+                {
+                    nombre.CssClass = "form-control is-valid";
+                }
             }
 
             catch (Exception ex)
