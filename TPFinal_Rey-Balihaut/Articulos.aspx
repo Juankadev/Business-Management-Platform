@@ -45,7 +45,7 @@
 
             <div class="mb-3">
                 <label for="ganancia" class="form-label">Porcentaje de Ganancia</label>
-                <asp:TextBox ID="ganancia" type="number" min="0 class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="ganancia" type="number" min="0" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">

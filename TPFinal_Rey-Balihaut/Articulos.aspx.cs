@@ -25,6 +25,13 @@ namespace TPFinal_Rey_Balihaut
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            codigo.MaxLength = 10;
+            stockactual.Text = "0";
+            stockminimo.Text = "0";
+            ganancia.Text = "0";
+            precio.Text = "0";
+
+
             if (!IsPostBack)
             {
                 MarcaNegocio marca_negocio = new MarcaNegocio();
@@ -77,8 +84,7 @@ namespace TPFinal_Rey_Balihaut
                     {
                         if (existe(li, listaAsociados))
                             li.Selected = true;
-                    }
-
+                    } 
                 }
                 else
                 {
@@ -142,28 +148,54 @@ namespace TPFinal_Rey_Balihaut
 
             else //se esta agregando un producto
             {
-                producto_negocio.agregar(aux);
-
-                //Agregar proveedores_x_producto
-                foreach (ListItem li in CheckBoxList.Items)
+                if(codigo.Text!="" && nombre.Text!="")
                 {
-                    if (li.Selected)
+                    producto_negocio.agregar(aux);
+
+                    //Agregar proveedores_x_producto
+                    foreach (ListItem li in CheckBoxList.Items)
                     {
-                        _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
-                        producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
+                        if (li.Selected)
+                        {
+                            _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
+                            producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
+                        }
                     }
+
+                    //limpiar
+                    //codigo.Text = "";
+                    //nombre.Text = "";
+                    //precio.Text = "";
+                    //stockactual.Text = "";
+                    //stockminimo.Text = "";
+                    //ganancia.Text = "";
+                    Response.Redirect("ListadoArticulos.aspx");
+
+
                 }
 
-                //limpiar
-                codigo.Text = "";
-                nombre.Text = "";
-                precio.Text = "";
-                stockactual.Text = "";
-                stockminimo.Text = "";
-                ganancia.Text = "";
+                if(codigo.Text == "")
+                {
+                    codigo.BackColor = System.Drawing.Color.IndianRed;
+                    //codigo.CssClass = "is-invalid";
+                }
+                else
+                {
+                    codigo.BackColor = System.Drawing.Color.White;
+                }
+
+                if (nombre.Text == "")
+                {
+                    nombre.BackColor = System.Drawing.Color.IndianRed;
+                    //codigo.CssClass = "is-invalid";
+                }
+                else
+                {
+                    nombre.BackColor = System.Drawing.Color.White;
+                }
+
             }
 
-            Response.Redirect("ListadoArticulos.aspx");
         }
 
 
