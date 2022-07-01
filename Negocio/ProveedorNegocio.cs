@@ -177,5 +177,28 @@ namespace Negocio
             }
 
         }
+
+
+        public void eliminarProveedoresAsociados(string cuit_proveedor, string cod_producto)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE CUIT_PROVEEDOR=@CUIT AND CODIGO_PRODUCTO=@CODIGO");
+                datos.setearParametro("@CUIT", cuit_proveedor);
+                datos.setearParametro("@CODIGO", cod_producto);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

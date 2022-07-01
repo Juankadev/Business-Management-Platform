@@ -59,6 +59,10 @@ namespace TPFinal_Rey_Balihaut
 
                     CheckBoxListAsociados.DataSource = proveedor_negocio.listarProveedoresAsociados(codigo.Text);
                     CheckBoxListAsociados.DataBind();
+                    foreach (ListItem li in CheckBoxListAsociados.Items)
+                    {
+                        li.Selected = true;
+                    }
 
                 }
                 else
@@ -76,8 +80,11 @@ namespace TPFinal_Rey_Balihaut
             _Producto aux = new _Producto();
             aux.Marca = new _Marca();
             aux.Categoria = new _Categoria();
+
+            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+            List<_Proveedor2> lista = proveedor_negocio.listar();
             //aux.Proveedor = new _Proveedor2();
-            
+
             if (codigo.Text != "")
             {
                 aux.Codigo = codigo.Text;
@@ -93,33 +100,43 @@ namespace TPFinal_Rey_Balihaut
             aux.PorcentajeGanancia = int.Parse(ganancia.Text);
 
 
+
             if (Request.QueryString["id"] != null) //se esta modificando un prod.
             {
                 producto_negocio.modificar(aux);
+
+                //Modificar proveedores_x_producto
+                foreach (ListItem li in CheckBoxListAsociados.Items)
+                {
+                    if (li.Selected==false)
+                    {
+                        _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
+                        proveedor_negocio.eliminarProveedoresAsociados(proveedor.CUIT, aux.Codigo);
+                    }
+                }
             }
+
             else //se esta agregando un producto
             {
                 producto_negocio.agregar(aux);
 
+                //Agregar proveedores_x_producto
+                foreach (ListItem li in CheckBoxList.Items)
+                {
+                    if (li.Selected)
+                    {
+                        _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
+                        producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
+                    }
+                }
+
+                //limpiar
                 codigo.Text = "";
                 nombre.Text = "";
                 precio.Text = "";
                 stockactual.Text = "";
                 stockminimo.Text = "";
                 ganancia.Text = "";
-            }
-
-            //agregar proveedores_x_producto
-            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-            List<_Proveedor2> lista = proveedor_negocio.listar();
-
-            foreach (ListItem li in CheckBoxList.Items)
-            {
-                if (li.Selected)
-                {
-                    _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
-                    producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
-                }
             }
 
             Response.Redirect("ListadoArticulos.aspx");
