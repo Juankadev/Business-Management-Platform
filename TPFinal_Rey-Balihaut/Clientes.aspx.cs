@@ -13,6 +13,8 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            dni.MaxLength = 10; //contar cantidad de caracteres de la caja de texto con length
+
             if (!IsPostBack)
             {
                 btn_alta.Text = "Agregar";
@@ -46,33 +48,44 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ClienteNegocio cliente_negocio = new ClienteNegocio();
-                _Cliente aux = new _Cliente();
-                aux.DNI = dni.Text;
-                aux.Nombre = nombre.Text;
-                aux.Apellido = apellido.Text;
-                aux.Telefono = telefono.Text;
-                aux.Mail = mail.Text;
-                aux.Direccion = direccion.Text;
-
-                if (Request.QueryString["id"] != null) //se esta editando un cliente.
+                if(dni.Text != "" && nombre.Text != "" && dni.Text.Length == 8)
                 {
-                    cliente_negocio.modificar(aux);
+                    ClienteNegocio cliente_negocio = new ClienteNegocio();
+                    _Cliente aux = new _Cliente();
+                    aux.DNI = dni.Text;
+                    aux.Nombre = nombre.Text;
+                    aux.Apellido = apellido.Text;
+                    aux.Telefono = telefono.Text;
+                    aux.Mail = mail.Text;
+                    aux.Direccion = direccion.Text;
+
+                    if (Request.QueryString["id"] != null) //se esta editando un cliente.
+                        cliente_negocio.modificar(aux);
+
+                    else
+                        cliente_negocio.agregar(aux);
+
+                    Response.Redirect("ListadoClientes.aspx");
                 }
 
+
+                if (dni.Text == "" || dni.Text.Length != 8)
+                {
+                    dni.CssClass = "form-control is-invalid";
+                }
                 else
                 {
-                    cliente_negocio.agregar(aux);
-
-                    dni.Text = "";
-                    nombre.Text = "";
-                    apellido.Text = "";
-                    telefono.Text = "";
-                    mail.Text = "";
-                    direccion.Text = "";
+                    dni.CssClass = "form-control is-valid";
                 }
 
-                Response.Redirect("ListadoClientes.aspx");
+                if (nombre.Text == "")
+                {
+                    nombre.CssClass = "form-control is-invalid";
+                }
+                else
+                {
+                    nombre.CssClass = "form-control is-valid";
+                }
             }
 
             catch (Exception ex)
@@ -80,6 +93,7 @@ namespace TPFinal_Rey_Balihaut
                 throw ex;
             }
         }
+
 
         protected void btn_eliminar_Click(object sender, EventArgs e)
         {

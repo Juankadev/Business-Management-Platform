@@ -6,11 +6,12 @@
 
     <div class="row">
         <h1 class="title">Clientes</h1>
+
         <div class="col-2">
 
             <div class="mb-3">
                 <label for="dni" class="form-label">DNI/CUIT</label>
-                <asp:TextBox ID="dni" MaxLength="10" type="number" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="dni" type="number" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
@@ -22,7 +23,12 @@
                 <label for="apellido" class="form-label">Apellido</label>
                 <asp:TextBox ID="apellido" MaxLength="50" class="form-control" runat="server"></asp:TextBox>
             </div>
+          
+        </div>
 
+
+
+        <div class="col-2">
             <div class="mb-3">
                 <label for="telefono" class="form-label">Teléfono</label>
                 <asp:TextBox ID="telefono" MaxLength="15" type="number" class="form-control" runat="server"></asp:TextBox>
@@ -37,7 +43,6 @@
                 <label for="direccion" class="form-label">Calle y numero</label>
                 <asp:TextBox ID="direccion" MaxLength="50" class="form-control" runat="server"></asp:TextBox>
             </div>
-
         </div>
 
 

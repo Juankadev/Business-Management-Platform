@@ -41,22 +41,31 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                MarcaNegocio marca_negocio = new MarcaNegocio();
-                _Marca aux = new _Marca();
-                aux.DescripcionMarca = nombre.Text;
-
-                if (Request.QueryString["id"] != null) //se esta modificando un prod.
+                if (nombre.Text != "")
                 {
-                    aux.IDMarca = int.Parse(Request.QueryString["id"]);
-                    marca_negocio.modificar(aux);
-                }
-                else //se esta agregando una marca
-                {
-                    marca_negocio.agregar(aux);
-                    nombre.Text = "";
+                    MarcaNegocio marca_negocio = new MarcaNegocio();
+                    _Marca aux = new _Marca();
+                    aux.DescripcionMarca = nombre.Text;
+
+                    if (Request.QueryString["id"] != null) //se esta modificando un prod.
+                    {
+                        aux.IDMarca = int.Parse(Request.QueryString["id"]);
+                        marca_negocio.modificar(aux);
+                    }
+                    else //se esta agregando una marca
+                    {
+                        marca_negocio.agregar(aux);
+                        nombre.Text = "";
+                    }
+                    Response.Redirect("ListadoMarcas.aspx");
                 }
 
-                Response.Redirect("ListadoMarcas.aspx");
+
+                else
+                {
+                    //codigo.BackColor = System.Drawing.Color.IndianRed;
+                    nombre.CssClass = "form-control is-invalid";
+                }
             }
 
             catch (Exception ex)

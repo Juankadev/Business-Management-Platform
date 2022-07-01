@@ -62,7 +62,7 @@ namespace TPFinal_Rey_Balihaut
                 }
 
 
-                if (nombre.Text == "")
+                else
                 {
                     //codigo.BackColor = System.Drawing.Color.IndianRed;
                     nombre.CssClass = "form-control is-invalid";
