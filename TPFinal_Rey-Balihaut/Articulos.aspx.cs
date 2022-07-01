@@ -56,6 +56,8 @@ namespace TPFinal_Rey_Balihaut
 
                 if (Request.QueryString["id"] != null)
                 {
+                    btn_eliminar.Enabled = true;
+                    
                     codigo.ReadOnly = true;
                     string codigoURL = Request.QueryString["id"].ToString();
                     btn_articulo.Text = "Modificar";
@@ -90,6 +92,9 @@ namespace TPFinal_Rey_Balihaut
                 {
                     CheckBoxList.DataSource = proveedor_negocio.listarProveedores();
                     CheckBoxList.DataBind();
+                    //btn_eliminar.Visible = false;
+                    btn_eliminar.Enabled = false;
+                    btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
                 }
             }
         }
@@ -101,54 +106,55 @@ namespace TPFinal_Rey_Balihaut
             if(!Page.IsValid)
                 return;
 
-            ProductoNegocio producto_negocio = new ProductoNegocio();
-            _Producto aux = new _Producto();
-            aux.Marca = new _Marca();
-            aux.Categoria = new _Categoria();
-
-            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-            List<_Proveedor2> lista = proveedor_negocio.listar();
-            //aux.Proveedor = new _Proveedor2();
-
-            //if (codigo.Text != "")
-            //{
-            //    aux.Codigo = codigo.Text;
-            //}
-            aux.Codigo = codigo.Text;
-            aux.Nombre = nombre.Text;
-            aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
-            aux.Categoria.IDCategoria = ddlcategoria.SelectedIndex + 1;
-            //aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
-            aux.Precio = decimal.Parse(precio.Text);
-            aux.StockActual = int.Parse(stockactual.Text);
-            aux.StockMinimo = int.Parse(stockminimo.Text);
-            aux.PorcentajeGanancia = int.Parse(ganancia.Text);
-
-
-
-            if (Request.QueryString["id"] != null) //se esta modificando un prod.
+            //solo se puede agregar o modificar si:
+            if (codigo.Text != "" && nombre.Text != "")
             {
-                producto_negocio.modificar(aux);
+                ProductoNegocio producto_negocio = new ProductoNegocio();
+                _Producto aux = new _Producto();
+                aux.Marca = new _Marca();
+                aux.Categoria = new _Categoria();
 
-                //Modificar proveedores_x_producto
-                foreach (ListItem li in CheckBoxList.Items)
+                ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+                List<_Proveedor2> lista = proveedor_negocio.listar();
+                //aux.Proveedor = new _Proveedor2();
+
+                //if (codigo.Text != "")
+                //{
+                //    aux.Codigo = codigo.Text;
+                //}
+                aux.Codigo = codigo.Text;
+                aux.Nombre = nombre.Text;
+                aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
+                aux.Categoria.IDCategoria = ddlcategoria.SelectedIndex + 1;
+                //aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
+                aux.Precio = decimal.Parse(precio.Text);
+                aux.StockActual = int.Parse(stockactual.Text);
+                aux.StockMinimo = int.Parse(stockminimo.Text);
+                aux.PorcentajeGanancia = int.Parse(ganancia.Text);
+
+
+
+                if (Request.QueryString["id"] != null) //se esta modificando un prod.
                 {
-                    if (li.Selected == false)
+                    producto_negocio.modificar(aux);
+
+                    //Modificar proveedores_x_producto
+                    foreach (ListItem li in CheckBoxList.Items)
                     {
-                        _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
-                        proveedor_negocio.eliminarProveedoresAsociados(proveedor.CUIT, aux.Codigo);
-                    }
-                    else
-                    {
-                        _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
-                        producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
+                        if (li.Selected == false)
+                        {
+                            _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
+                            proveedor_negocio.eliminarProveedoresAsociados(proveedor.CUIT, aux.Codigo);
+                        }
+                        else
+                        {
+                            _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
+                            producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
+                        }
                     }
                 }
-            }
 
-            else //se esta agregando un producto
-            {
-                if(codigo.Text!="" && nombre.Text!="")
+                else //se esta agregando un producto
                 {
                     producto_negocio.agregar(aux);
 
@@ -169,31 +175,33 @@ namespace TPFinal_Rey_Balihaut
                     //stockactual.Text = "";
                     //stockminimo.Text = "";
                     //ganancia.Text = "";
-                    Response.Redirect("ListadoArticulos.aspx");
-
-
                 }
 
-                if(codigo.Text == "")
-                {
-                    codigo.BackColor = System.Drawing.Color.IndianRed;
-                    //codigo.CssClass = "is-invalid";
-                }
-                else
-                {
-                    codigo.BackColor = System.Drawing.Color.White;
-                }
+                Response.Redirect("ListadoArticulos.aspx");
+            }
 
-                if (nombre.Text == "")
-                {
-                    nombre.BackColor = System.Drawing.Color.IndianRed;
-                    //codigo.CssClass = "is-invalid";
-                }
-                else
-                {
-                    nombre.BackColor = System.Drawing.Color.White;
-                }
 
+            //validar
+            if (codigo.Text == "")
+            {
+                //codigo.BackColor = System.Drawing.Color.IndianRed;
+                codigo.CssClass = "form-control is-invalid";
+            }
+            else
+            {
+                //codigo.BorderColor = System.Drawing.Color.White;
+                codigo.CssClass = "form-control is-valid";
+            }
+
+            if (nombre.Text == "")
+            {
+                //nombre.BackColor = System.Drawing.Color.IndianRed;
+                nombre.CssClass = "form-control is-invalid";
+            }
+            else
+            {
+                //nombre.BackColor = System.Drawing.Color.White;
+                nombre.CssClass = "form-control is-valid";
             }
 
         }

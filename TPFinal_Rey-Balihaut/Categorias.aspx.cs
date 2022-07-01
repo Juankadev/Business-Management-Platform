@@ -28,6 +28,11 @@ namespace TPFinal_Rey_Balihaut
 
                     nombre.Text = aux.DescripcionCategoria;
                 }
+                else {
+                    //btn_eliminar.Enabled = false;
+                    btn_eliminar.Enabled = false;
+                    btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
+                }
             }
         }
 

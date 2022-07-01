@@ -7,7 +7,7 @@
 
 
     <div class="row">
-        <h1>Categorias</h1>
+        <h1 class="title">Categorias</h1>
         <div class="col-2">
 
             <div class="mb-3">

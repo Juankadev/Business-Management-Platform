@@ -33,6 +33,11 @@ namespace TPFinal_Rey_Balihaut
                     mail.Text = aux.Mail;
                     direccion.Text = aux.Direccion;
                 }
+                else
+                {
+                    btn_eliminar.Enabled = false;
+                    btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
+                }
             }
         }
 

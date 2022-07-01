@@ -7,13 +7,13 @@
     <script>
         function validar() {
             var nombre = document.getElementById("nombre").value;
-            //var nombre = document.getElementById("<% = nombre.ClientID %>").value;
+
 
             if (nombre === "") {
-                $("#nombre").addClass("is-invalid");
+                $("#nombre").addClass("form-control is-invalid");
             }
             else {
-                $("#nombre").addClass("is-invalid");
+                $("#nombre").addClass("form-control is-valid");
             }
             return false;
             //else {
