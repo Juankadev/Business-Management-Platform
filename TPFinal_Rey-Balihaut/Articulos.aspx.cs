@@ -121,12 +121,17 @@ namespace TPFinal_Rey_Balihaut
                 producto_negocio.modificar(aux);
 
                 //Modificar proveedores_x_producto
-                foreach (ListItem li in CheckBoxListAsociados.Items)
+                foreach (ListItem li in CheckBoxList.Items)
                 {
-                    if (li.Selected==false)
+                    if (li.Selected == false)
                     {
                         _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
                         proveedor_negocio.eliminarProveedoresAsociados(proveedor.CUIT, aux.Codigo);
+                    }
+                    else
+                    {
+                        _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
+                        producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
                     }
                 }
             }

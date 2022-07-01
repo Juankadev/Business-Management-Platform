@@ -138,13 +138,43 @@ namespace Negocio
         }
 
 
+        public void limpiarRegistros(string cuit_proveedor, string cod_producto)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE CODIGO_PRODUCTO=@CODIGO AND CUIT_PROVEEDOR=@CUIT");
+                datos.setearParametro("@CODIGO", cod_producto);
+                datos.setearParametro("@CUIT", cuit_proveedor);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
 
+                datos.setearConsulta("INSERT INTO PROVEEDORES_X_PRODUCTO (CODIGO_PRODUCTO,CUIT_PROVEEDOR) " +
+                    "VALUES ('" + cod_producto + "', '" + cuit_proveedor + "')");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
         public void agregarProveedores(string cuit_proveedor, string cod_producto)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                datos.setearConsulta("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE CODIGO_PRODUCTO=@CODIGO AND CUIT_PROVEEDOR=@CUIT");
+                datos.setearParametro("@CODIGO", cod_producto);
+                datos.setearParametro("@CUIT", cuit_proveedor);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+
                 datos.setearConsulta("INSERT INTO PROVEEDORES_X_PRODUCTO (CODIGO_PRODUCTO,CUIT_PROVEEDOR) " +
                     "VALUES ('" + cod_producto + "', '" + cuit_proveedor + "')");
                 datos.ejecutarAccion();               
