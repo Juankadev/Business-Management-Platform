@@ -54,18 +54,18 @@ namespace TPFinal_Rey_Balihaut
                     stockminimo.Text = producto.StockMinimo.ToString();
                     ganancia.Text = producto.PorcentajeGanancia.ToString();
 
-                    //gvAsociados.DataSource = negocio.listar();
+                    //gvAsociados.DataSource = proveedor_negocio.listar();
                     //gvAsociados.DataBind();
 
                 }
                 else
                 {
-                    gvProveedores.DataSource = proveedor_negocio.listar();
-                    gvProveedores.DataBind();
+                    //gvProveedores.DataSource = proveedor_negocio.listar();
+                    //gvProveedores.DataBind();
                 }
-
             }
         }
+
 
         protected void altaArticulo_Click(object sender, EventArgs e)
         {
@@ -105,9 +105,23 @@ namespace TPFinal_Rey_Balihaut
                 stockminimo.Text = "";
                 ganancia.Text = "";
             }
-            
+
+            //agregar proveedores_x_producto
+            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+            List<_Proveedor2> lista = proveedor_negocio.listar();
+
+            foreach (ListItem li in CheckBoxList1.Items)
+            {
+                if (li.Selected)
+                {
+                    _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
+                    producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
+                }
+            }
+
             Response.Redirect("ListadoArticulos.aspx");
         }
+
 
         protected void btn_eliminar_Click(object sender, EventArgs e)
         {
@@ -118,7 +132,6 @@ namespace TPFinal_Rey_Balihaut
                 producto_negocio.eliminar(codigoURL);
                 Response.Redirect("ListadoArticulos.aspx");
             }
-
         }
     }
 }

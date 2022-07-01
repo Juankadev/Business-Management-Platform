@@ -84,7 +84,7 @@
 
         <!--GV PROVEEDORES-->
         <div class="col-3">
-            <asp:GridView ID="gvProveedores" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false">
+            <%--            <asp:GridView ID="gvProveedores" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false">
 
                 <Columns>
                     <asp:BoundField HeaderText="Proveedores" DataField="Nombre">
@@ -94,13 +94,28 @@
 
                     <asp:TemplateField HeaderText="Añadir">
                         <ItemTemplate>
-                            <asp:CheckBox ID="check1" Text="" runat="server"></asp:CheckBox>
+                            <asp:CheckBox ID="check" runat="server"></asp:CheckBox>
                         </ItemTemplate>
                     </asp:TemplateField>
+
                 </Columns>
 
 
-            </asp:GridView>
+            </asp:GridView>--%>
+
+
+            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
+                <asp:ListItem Text="COCA COLA" Value="1"></asp:ListItem>
+                <asp:ListItem Text="TERRABUSI" Value="1"></asp:ListItem>
+                <asp:ListItem Text="Proveedor 3" Value="1"></asp:ListItem>
+
+<%--                <% foreach (Dominio.Categoria item in categorias)
+            {%>
+                <a id="filtro-a" href="Default.aspx?categoria=<%=item.IdCategoria%>"><%=item.DescripcionCategoria %></a>
+                <%}
+                %>--%>
+            </asp:CheckBoxList>
+
         </div>
 
         <!--GV PROVEEDORES ASOCIADOS-->

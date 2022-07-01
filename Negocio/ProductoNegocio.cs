@@ -90,7 +90,7 @@ namespace Negocio
         {
             AccesoDatos datos = new AccesoDatos();
             try
-            {             
+            {
                 datos.setearConsulta("UPDATE PRODUCTOS SET NOMBRE = @NOMBRE, IDMARCA = @IDMARCA, IDCATEGORIA = @IDCATEGORIA, PRECIO = @PRECIO, STOCK_ACTUAL = @STOCKACTUAL, STOCK_MINIMO = @STOCKMINIMO, PORCENTAJE_GAN = @PORCENTAJEGAN WHERE CODIGO = @CODIGO");
                 datos.setearParametro("@CODIGO", nuevoProducto.Codigo);
                 datos.setearParametro("@NOMBRE", nuevoProducto.Nombre);
@@ -129,6 +129,29 @@ namespace Negocio
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
+
+        public void agregarProveedores(string cuit_proveedor, string cod_producto)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO PROVEEDORES_X_PRODUCTO (CODIGO_PRODUCTO,CUIT_PROVEEDOR) " +
+                    "VALUES ('" + cod_producto + "', '" + cuit_proveedor + "')");
+                datos.ejecutarAccion();               
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
                 throw ex;
             }
             finally
