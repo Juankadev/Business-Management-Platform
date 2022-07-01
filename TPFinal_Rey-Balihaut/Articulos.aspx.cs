@@ -14,9 +14,9 @@ namespace TPFinal_Rey_Balihaut
         protected bool existe(ListItem li, List<String> listaAsociados)
         {
             string liString = li.Text;
-            for(int i=0; i<listaAsociados.Count;i++)
+            for (int i = 0; i < listaAsociados.Count; i++)
             {
-                if(listaAsociados[i]== liString)
+                if (listaAsociados[i] == liString)
                 {
                     return true;
                 }
@@ -58,7 +58,7 @@ namespace TPFinal_Rey_Balihaut
 
                     codigo.Text = producto.Codigo;
                     nombre.Text = producto.Nombre;
-                    ddlmarca.SelectedIndex = producto.Marca.IDMarca -1;
+                    ddlmarca.SelectedIndex = producto.Marca.IDMarca - 1;
                     ddlcategoria.SelectedIndex = producto.Categoria.IDCategoria - 1;
                     //ddlproveedor.SelectedValue = producto.Proveedor.CUIT;
                     precio.Text = producto.Precio.ToString();
@@ -75,7 +75,7 @@ namespace TPFinal_Rey_Balihaut
 
                     foreach (ListItem li in CheckBoxList.Items)
                     {
-                        if(existe(li, listaAsociados))
+                        if (existe(li, listaAsociados))
                             li.Selected = true;
                     }
 
@@ -91,6 +91,10 @@ namespace TPFinal_Rey_Balihaut
 
         protected void altaArticulo_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if(!Page.IsValid)
+                return;
+
             ProductoNegocio producto_negocio = new ProductoNegocio();
             _Producto aux = new _Producto();
             aux.Marca = new _Marca();
@@ -100,11 +104,11 @@ namespace TPFinal_Rey_Balihaut
             List<_Proveedor2> lista = proveedor_negocio.listar();
             //aux.Proveedor = new _Proveedor2();
 
-            if (codigo.Text != "")
-            {
-                aux.Codigo = codigo.Text;
-            }
-         
+            //if (codigo.Text != "")
+            //{
+            //    aux.Codigo = codigo.Text;
+            //}
+            aux.Codigo = codigo.Text;
             aux.Nombre = nombre.Text;
             aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
             aux.Categoria.IDCategoria = ddlcategoria.SelectedIndex + 1;

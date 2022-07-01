@@ -4,23 +4,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
         <div class="row">
-        <h1>Ingresar Compra</h1>
-        <div class="col-4">
-            <div class="mb-3">
-                <label for="TextBox1" class="form-label">Codigo</label>
-                <asp:TextBox ID="TextBox1" class="form-control" runat="server"></asp:TextBox>
-            </div>
+        <h1 class="title">Compras</h1>
+        <div class="col-5">
+<%--            <div class="mb-3">
+                <label for="codigo" class="form-label">Codigo</label>
+                <asp:TextBox ID="codigo" class="form-control" runat="server"></asp:TextBox>
+            </div>--%>
 
             <div class="mb-3">
-                <label for="DropDownList1" class="form-label">Proveedor</label>
-                <asp:DropDownList CssClass="form-select" ID="DropDownList1" runat="server"></asp:DropDownList>
+                <label for="ddlproveedor" class="form-label">Proveedor</label>
+                <asp:DropDownList CssClass="form-select" ID="ddlproveedor" runat="server"></asp:DropDownList>
             </div>
 
 
 
             <div class="mb-3" style="width: 41%; display: inline-block">
-                <label for="DropDownList2" class="form-label">Producto</label>
-                <asp:DropDownList CssClass="form-select dropProd" ID="DropDownList2" runat="server"></asp:DropDownList>
+                <label for="ddlproducto" class="form-label">Producto</label>
+                <asp:DropDownList CssClass="form-select dropProd" ID="ddlproducto" runat="server"></asp:DropDownList>
             </div>
 
             <div class="mb-3" style="width: 30%; display: inline-block">
@@ -47,7 +47,7 @@
 
     <!--AGREGAR-->
     <div class="row">
-        <div class="col-4">
+        <div class="col-5">
             <asp:Button ID="altaArticulo" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Agregar" />
         </div>
     </div>

@@ -4,23 +4,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
         <div class="row">
-        <h1>Ingresar Venta</h1>
+        <h1>Ventas</h1>
         <div class="col-4">
-            <div class="mb-3">
-                <label for="TextBox1" class="form-label">Codigo</label>
-                <asp:TextBox ID="TextBox1" class="form-control" runat="server"></asp:TextBox>
-            </div>
+<%--            <div class="mb-3">
+                <label for="codigo" class="form-label">Codigo</label>
+                <asp:TextBox ID="codigo" class="form-control" runat="server"></asp:TextBox>
+            </div>--%>
 
             <div class="mb-3">
-                <label for="DropDownList1" class="form-label">Cliente</label>
-                <asp:DropDownList CssClass="form-select" ID="DropDownList1" runat="server"></asp:DropDownList>
+                <label for="ddlclientes" class="form-label">Cliente</label>
+                <asp:DropDownList CssClass="form-select" ID="ddlclientes" runat="server"></asp:DropDownList>
             </div>
 
 
 
             <div class="mb-3" style="width: 41%; display: inline-block">
-                <label for="DropDownList2" class="form-label">Producto</label>
-                <asp:DropDownList CssClass="form-select dropProd" ID="DropDownList2" runat="server"></asp:DropDownList>
+                <label for="ddlproductos" class="form-label">Producto</label>
+                <asp:DropDownList CssClass="form-select dropProd" ID="ddlproductos" runat="server"></asp:DropDownList>
             </div>
 
             <div class="mb-3" style="width: 30%; display: inline-block">

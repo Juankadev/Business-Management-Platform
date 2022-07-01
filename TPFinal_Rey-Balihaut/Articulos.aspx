@@ -6,19 +6,22 @@
 
     <script>
         function validar() {
+            var nombre = document.getElementById("nombre").value;
+            //var nombre = document.getElementById("<% = nombre.ClientID %>").value;
 
-
-            if (codigo === "") {
-                //document.getElementById('codigo').classList.remove('is-valid')
-                document.getElementById('codigo').classList.add('is-valid')
-
+            if (nombre === "") {
+                $("#nombre").addClass("is-invalid");
             }
             else {
-                //document.getElementById('codigo').classList.remove('is-invalid')
-                //document.getElementById('codigo').classList.add('is-valid')
-                //return true;
+                $("#nombre").addClass("is-invalid");
             }
-            return true;
+            return false;
+            //else {
+            //    $("#codigo").removeClass("is-invalid");
+            //    $("#codigo").addClass("is-valid");
+            //    alert("Codigo Lleno");
+            //}
+            //return false;
 
         }
     </script>
@@ -37,12 +40,12 @@
 
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <asp:TextBox ID="nombre" MaxLength="50" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="nombre" ClientIDMode="Static" MaxLength="50" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
                 <label for="ganancia" class="form-label">Porcentaje de Ganancia</label>
-                <asp:TextBox ID="ganancia" type="number" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="ganancia" type="number" min="0 class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
@@ -71,13 +74,20 @@
 
             <div class="mb-3">
                 <label for="stockactual" class="form-label">Stock Actual</label>
-                <asp:TextBox ID="stockactual" type="number" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="stockactual" type="number" min="0" class="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="mb-3">
 
                 <label for="stockminimo" class="form-label">Stock Minimo</label>
-                <asp:TextBox ID="stockminimo" type="number" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="stockminimo" type="number" min="0" class="form-control" runat="server"></asp:TextBox>
+
+<%--                <asp:RangeValidator
+                    ErrorMessage="El valor debe ser mayor o igual a 0"
+                    MaximumValue="1000000000000"
+                    MinimumValue="0"
+                    ControlToValidate="stockminimo"
+                    runat="server" />--%>
             </div>
 
         </div>
@@ -109,7 +119,7 @@
             </asp:CheckBoxList>
 
 
-                        <asp:CheckBoxList ID="CheckBoxListAsociados" runat="server">
+            <asp:CheckBoxList ID="CheckBoxListAsociados" runat="server">
             </asp:CheckBoxList>
 
         </div>
@@ -117,8 +127,8 @@
 
 
         <!--GV PROVEEDORES ASOCIADOS-->
-        
-            <%--            <asp:GridView ID="gvAsociados" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false">
+
+        <%--            <asp:GridView ID="gvAsociados" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false">
 
                 <%--<Columns>
                     <asp:BoundField HeaderText="Proveedores Vinculados" DataField="Nombre">
@@ -128,11 +138,6 @@
                 </Columns>
 
             </asp:GridView>--%>
-
-
-
-
-       
     </div>
 
 
@@ -140,7 +145,7 @@
     <!--AGREGAR-->
     <div class="row">
         <div class="col-2">
-            <asp:Button ID="btn_articulo" OnClientClick="return validar()" OnClick="altaArticulo_Click" class="btn btn-success btn-lg btnlogin" runat="server" Text="Agregar" />
+            <asp:Button ID="btn_articulo" OnClientClick="return validar()" OnClick="altaArticulo_Click" autopostback="false" class="btn btn-success btn-lg btnlogin" runat="server" Text="Agregar" />
         </div>
 
         <div class="col-2">
@@ -178,3 +183,7 @@
 </div>--%>
     </div>
 </asp:Content>
+
+
+
+
