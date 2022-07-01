@@ -159,5 +159,41 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+
+
+        //public List<_Proveedor2> listarProveedoresAsociados(string buscado)
+        //{
+        //    List<_Producto> lista = new List<_Producto>();
+        //    AccesoDatos datos = new AccesoDatos();
+
+        //    try
+        //    {
+        //        datos.setearConsulta("select P.NOMBRE_PROVEEDOR FROM PROVEEDORES AS P INNER JOIN PROVEEDORES_X_PRODUCTO PXP ON P.CUIT = PXP.CUIT_PROVEEDOR INNER JOIN PRODUCTOS AS PR ON PR.CODIGO = PXP.CODIGO_PRODUCTO WHERE PR.CODIGO = @BUSCADO");
+        //        datos.setearParametro("@BUSCADO", buscado);
+        //        datos.ejecutarLectura();
+
+        //        while (datos.Lector.Read())
+        //        {
+        //            string aux = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+
+        //            lista.Add(aux);
+        //        }
+
+        //        return lista;
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+
+        //}
     }
 }

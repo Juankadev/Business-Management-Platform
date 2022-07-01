@@ -54,14 +54,17 @@ namespace TPFinal_Rey_Balihaut
                     stockminimo.Text = producto.StockMinimo.ToString();
                     ganancia.Text = producto.PorcentajeGanancia.ToString();
 
-                    //gvAsociados.DataSource = proveedor_negocio.listar();
-                    //gvAsociados.DataBind();
+                    CheckBoxList.Visible = false;
+
+
+                    CheckBoxListAsociados.DataSource = proveedor_negocio.listarProveedoresAsociados(codigo.Text);
+                    CheckBoxListAsociados.DataBind();
 
                 }
                 else
                 {
-                    //gvProveedores.DataSource = proveedor_negocio.listar();
-                    //gvProveedores.DataBind();
+                    CheckBoxList.DataSource = proveedor_negocio.listarProveedores();
+                    CheckBoxList.DataBind();
                 }
             }
         }
@@ -110,7 +113,7 @@ namespace TPFinal_Rey_Balihaut
             ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
             List<_Proveedor2> lista = proveedor_negocio.listar();
 
-            foreach (ListItem li in CheckBoxList1.Items)
+            foreach (ListItem li in CheckBoxList.Items)
             {
                 if (li.Selected)
                 {

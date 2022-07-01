@@ -50,6 +50,8 @@ namespace TPFinal_Rey_Balihaut
                     marca_negocio.agregar(aux);
                     nombre.Text = "";
                 }
+
+                Response.Redirect("ListadoMarcas.aspx");
             }
 
             catch (Exception ex)

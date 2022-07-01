@@ -104,25 +104,34 @@
             </asp:GridView>--%>
 
 
-            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
-                <asp:ListItem Text="COCA COLA" Value="1"></asp:ListItem>
-                <asp:ListItem Text="TERRABUSI" Value="1"></asp:ListItem>
-                <asp:ListItem Text="Proveedor 3" Value="1"></asp:ListItem>
-
-<%--                <% foreach (Dominio.Categoria item in categorias)
-            {%>
-                <a id="filtro-a" href="Default.aspx?categoria=<%=item.IdCategoria%>"><%=item.DescripcionCategoria %></a>
-                <%}
-                %>--%>
+            <asp:CheckBoxList ID="CheckBoxList" runat="server">
             </asp:CheckBoxList>
 
         </div>
 
+
+
         <!--GV PROVEEDORES ASOCIADOS-->
-        <%--        <div class="col-3">
-            <asp:GridView ID="gvAsociados" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false"></asp:GridView>
-        </div>--%>
+        <div class="col-3">
+            <%--            <asp:GridView ID="gvAsociados" runat="server" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false">
+
+                <%--<Columns>
+                    <asp:BoundField HeaderText="Proveedores Vinculados" DataField="Nombre">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
+                </Columns>
+
+            </asp:GridView>--%>
+
+
+            <asp:CheckBoxList ID="CheckBoxListAsociados" runat="server">
+            </asp:CheckBoxList>
+
+        </div>
     </div>
+
+
 
     <!--AGREGAR-->
     <div class="row">

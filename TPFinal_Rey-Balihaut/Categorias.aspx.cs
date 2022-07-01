@@ -50,6 +50,8 @@ namespace TPFinal_Rey_Balihaut
                     categoria_negocio.agregar(aux);
                     nombre.Text = "";
                 }
+
+                Response.Redirect("ListadoCategorias.aspx");
             }
 
             catch (Exception ex)

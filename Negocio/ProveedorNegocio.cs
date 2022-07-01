@@ -114,14 +114,14 @@ namespace Negocio
         }
 
 
-        public List<String> listarAsociados(string buscado)
+        public List<String> listarProveedoresAsociados(string buscado)
         {
             List<String> lista = new List<String>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("select P.NOMBRE_PROVEEDOR FROM PROVEEDORES P INNER JOIN PROVEEDORES_X_PRODUCTO PXP ON P.CUIT=PXP.CUIT_PROVEEDOR WHERE CODIGO_PRODUCTO=@BUSCADO");
+                datos.setearConsulta("select P.NOMBRE_PROVEEDOR FROM PROVEEDORES AS P INNER JOIN PROVEEDORES_X_PRODUCTO PXP ON P.CUIT = PXP.CUIT_PROVEEDOR INNER JOIN PRODUCTOS AS PR ON PR.CODIGO = PXP.CODIGO_PRODUCTO WHERE PR.CODIGO = @BUSCADO");
                 datos.setearParametro("@BUSCADO", buscado);
                 datos.ejecutarLectura();
 
@@ -147,5 +147,35 @@ namespace Negocio
         }
 
 
+        public List<String> listarProveedores()
+        {
+            List<String> lista = new List<String>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select NOMBRE_PROVEEDOR FROM PROVEEDORES WHERE ACTIVO=1");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    string aux = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }

@@ -66,6 +66,8 @@ namespace TPFinal_Rey_Balihaut
                     mail.Text = "";
                     direccion.Text = "";
                 }
+
+                Response.Redirect("ListadoClientes.aspx");
             }
 
             catch (Exception ex)
