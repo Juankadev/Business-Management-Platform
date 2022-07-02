@@ -18,8 +18,7 @@ namespace TPFinal_Rey_Balihaut
         public List<Agregados> lista_agregados { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 cantidad = 0;
                 //contador = 1;
@@ -45,21 +44,37 @@ namespace TPFinal_Rey_Balihaut
             ddlproductos.DataTextField = "NOMBRE";
             ddlproductos.DataBind();
 
-            //ddlproveedor.SelectedValue = "115457845";
+
 
             gvAgregados.DataSource = Session["agregados"];
             gvAgregados.DataBind();
 
+
+            //TOTAL SUMA
+            lista_agregados = (List<Agregados>)Session["agregados"];
+            if (lista_agregados.Count > 0)
+            {
+                decimal suma = 0;
+                foreach (Dominio.Agregados aux in lista_agregados)
+                {
+                    suma += aux.Precio * aux.Cantidad;
+                }
+                txtsuma.Text = "$" + suma.ToString();
+            }
+            else
+            {
+                txtsuma.Text = "$0";
+            }
 
             //if (Session["contador"] != null)
             //{
             //    contador = int.Parse(Session["contador"].ToString());
             //}
 
-            //if(ddlproveedor.Enabled==false)
-            //{
-
-            //}
+            if (ddlproveedor.Enabled==false)
+            {
+                ddlproveedor.SelectedItem.Text = elegido;
+            }
         }
 
         protected void btncant_Click(object sender, EventArgs e)
@@ -84,26 +99,21 @@ namespace TPFinal_Rey_Balihaut
             if(cantidades.Text != "" && precio.Text != "")
             {
                 Agregados aux = new Agregados();
-                aux.Codigo = ddlproductos.SelectedValue;
+                aux.Codigo = ddlproductos.SelectedItem.Text;
                 aux.Cantidad = int.Parse(cantidades.Text);
                 aux.Precio = decimal.Parse(precio.Text);
 
                 lista_agregados = (List<Agregados>)Session["agregados"];
                 lista_agregados.Add(aux);
-
-                ddlproveedor.Enabled = false;
-
-                Response.Redirect("Compras.aspx");
             }
-            //elegido = ddlproveedor.SelectedItem.Value;
+
+            ddlproveedor.Enabled = false;
+
+            elegido = ddlproveedor.SelectedItem.Text;
             cantidades.Text = "";
             precio.Text = "";
 
-
-            foreach (Dominio.Agregados aux in lista_agregados)
-            {
-                txtsuma.Text = aux.Precio.ToString();
-            }
+            Response.Redirect("Compras.aspx");
         }
 
         protected void gvSeleccionados_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,7 +124,7 @@ namespace TPFinal_Rey_Balihaut
             Agregados aux = lista_agregados.Find(x => x.Codigo == codigoSelected);
             lista_agregados.Remove(aux);
 
-            //Response.Redirect("Compras.aspx?" + codigoSelected);
+            Response.Redirect("Compras.aspx");
         }
 
 
