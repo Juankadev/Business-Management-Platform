@@ -7,7 +7,7 @@
 
     <a href="Marcas.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Marca</a>
 
-    <asp:GridView ID="gvMarcas" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged" DataKeyNames="IDMarca" runat="server">
+    <asp:GridView ID="gvMarcas" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged" DataKeyNames="IDMarca" runat="server">
         <Columns>
 
 <%--            <asp:BoundField HeaderText="ID" DataField="IDMarca">
@@ -21,7 +21,7 @@
             </asp:BoundField>
               
           
-            <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="Editar">
+            <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
                 <ItemStyle CssClass="text-warning" />
                 <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                 <ControlStyle CssClass="select" />

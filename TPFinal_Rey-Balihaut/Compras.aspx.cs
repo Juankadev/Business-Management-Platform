@@ -13,39 +13,57 @@ namespace TPFinal_Rey_Balihaut
     {
         public int cantidad { get; set; }
         //public int contador { get; set; }
+        public string elegido { get; set; }
+        public string val { get; set; }
+        public List<Agregados> agregados { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-            ddlproveedor.DataSource = proveedor_negocio.listar();
+            
+            if(!IsPostBack)
+            {
+                cantidad = 0;
+                //contador = 1;
+                agregados = new List<Agregados>();
+            }
+
+            //AgregadoNegocio agregado_negocio = new AgregadoNegocio();
+
+            ProveedorNegocio proveedores_negocio = new ProveedorNegocio();
+            ddlproveedor.DataSource = proveedores_negocio.listar();
             ddlproveedor.DataValueField = "CUIT";
             ddlproveedor.DataTextField = "NOMBRE";
             ddlproveedor.DataBind();
 
             ProductoNegocio producto_negocio = new ProductoNegocio();
-            ddlproducto.DataSource = producto_negocio.listar();
-            ddlproducto.DataValueField = "CODIGO";
-            ddlproducto.DataTextField = "NOMBRE";
-            ddlproducto.DataBind();
+            ddlproductos.DataSource = producto_negocio.listar();
+            ddlproductos.DataValueField = "CODIGO";
+            ddlproductos.DataTextField = "NOMBRE";
+            ddlproductos.DataBind();
 
-            if(!IsPostBack)
-            {
-                cantidad = 0;
-                //contador = 1;
-            }
+            //ddlproveedor.SelectedValue = "115457845";
+
+            
+            gvAgregados.DataSource = agregados;
+            gvAgregados.DataBind();
 
             //if (Session["contador"] != null)
             //{
             //    contador = int.Parse(Session["contador"].ToString());
             //}
+
+            //if(ddlproveedor.Enabled==false)
+            //{
+
+            //}
         }
 
         protected void btncant_Click(object sender, EventArgs e)
         {
-            if(txtcant.Text!="")
-            {
-                int ingresado = int.Parse(txtcant.Text);
-                cantidad = ingresado;
-            }
+            //if(txtcant.Text!="")
+            //{
+            //    int ingresado = int.Parse(txtcant.Text);
+            //    cantidad = ingresado;
+            //}
 
 
             //cantidades.Text = "";
@@ -54,6 +72,24 @@ namespace TPFinal_Rey_Balihaut
             //contador += 1;
             //Session.Add("contador", contador);
             //Response.Redirect("Compras.aspx");
+        }
+
+        protected void btn_nuevo_producto_Click(object sender, EventArgs e)
+        {
+            //List<_Producto> lista = new List<_Producto>();
+            //_Producto aux = new _Producto();
+
+            ddlproveedor.Enabled = false;
+            //elegido = ddlproveedor.SelectedItem.Value;
+            cantidades.Text = "";
+            precio.Text = "";
+        }
+
+        protected void gvSeleccionados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codigoSelected = gvAgregados.SelectedDataKey.Value.ToString();
+            
+            Response.Redirect("Compras.aspx" + codigoSelected);
         }
     }
 }

@@ -24,31 +24,13 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.DropDownList ddlproveedor;
 
         /// <summary>
-        /// Control txtcant.
+        /// Control ddlproductos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcant;
-
-        /// <summary>
-        /// Control btncant.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btncant;
-
-        /// <summary>
-        /// Control ddlproducto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlproducto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlproductos;
 
         /// <summary>
         /// Control cantidades.
@@ -67,6 +49,42 @@ namespace TPFinal_Rey_Balihaut
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox precio;
+
+        /// <summary>
+        /// Control btn_nuevo_producto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_nuevo_producto;
+
+        /// <summary>
+        /// Control gvAgregados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvAgregados;
+
+        /// <summary>
+        /// Control total.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label total;
+
+        /// <summary>
+        /// Control suma.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label suma;
 
         /// <summary>
         /// Control altaArticulo.

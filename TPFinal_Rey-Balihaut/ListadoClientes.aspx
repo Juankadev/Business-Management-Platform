@@ -8,13 +8,13 @@
 
     <a href="Clientes.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Cliente</a>
 
-    <asp:GridView ID="gvClientes" CssClass="table table-bordered" Style="color: #fff" AutoGenerateColumns="false" DataKeyNames="DNI" OnSelectedIndexChanged="gvClientes_SelectedIndexChanged" runat="server">
+    <asp:GridView ID="gvClientes" CssClass="table table-dark table-hover"  Style="color: #fff" AutoGenerateColumns="false" DataKeyNames="DNI" OnSelectedIndexChanged="gvClientes_SelectedIndexChanged" runat="server">
         <Columns>
 
-            <asp:BoundField HeaderText="DNI" DataField="DNI">
+<%--            <asp:BoundField HeaderText="DNI" DataField="DNI">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+            </asp:BoundField>--%>
 
 
             <asp:BoundField HeaderText="Nombre" DataField="Nombre">
@@ -37,13 +37,13 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>
 
-            <asp:BoundField HeaderText="Dirección" DataField="Direccion">
+<%--            <asp:BoundField HeaderText="Dirección" DataField="Direccion">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+            </asp:BoundField>--%>
 
 
-            <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="Editar">
+            <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
                 <ItemStyle CssClass="text-warning" />
                 <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                 <ControlStyle CssClass="select" />

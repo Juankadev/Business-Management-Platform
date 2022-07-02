@@ -8,7 +8,7 @@
 
     <a href="Proveedores.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Proveedor</a>
 
-    <asp:GridView ID="gvProveedores" OnSelectedIndexChanged="gvProveedores_SelectedIndexChanged" CssClass="table table-bordered" DataKeyNames="CUIT" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="gvProveedores" OnSelectedIndexChanged="gvProveedores_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="CUIT" Style="color: #fff" AutoGenerateColumns="false" runat="server">
         <Columns>
 
 <%--            <asp:BoundField HeaderText="CUIT" DataField="CUIT">
@@ -33,12 +33,12 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>
 
-            <asp:BoundField HeaderText="Direccion" DataField="Direccion">
+<%--            <asp:BoundField HeaderText="Direccion" DataField="Direccion">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>           
+            </asp:BoundField>   --%>        
           
-            <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="Editar">
+            <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
                 <ItemStyle CssClass="text-warning" />
                 <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                 <ControlStyle CssClass="select" />

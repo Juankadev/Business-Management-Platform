@@ -8,7 +8,7 @@
 
     <a href="Articulos.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Articulo</a>
 
-    <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" OnRowCommand="gvArticulos_RowCommand" CssClass="table table-bordered" DataKeyNames="Codigo" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" OnRowCommand="gvArticulos_RowCommand" CssClass="table table-dark table-hover" DataKeyNames="Codigo" Style="color: #fff" AutoGenerateColumns="false" runat="server">
         <Columns>
 
 <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
