@@ -11,6 +11,8 @@ namespace TPFinal_Rey_Balihaut
 {
     public partial class Compras1 : System.Web.UI.Page
     {
+        public int cantidad { get; set; }
+        //public int contador { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
@@ -24,6 +26,34 @@ namespace TPFinal_Rey_Balihaut
             ddlproducto.DataValueField = "CODIGO";
             ddlproducto.DataTextField = "NOMBRE";
             ddlproducto.DataBind();
+
+            if(!IsPostBack)
+            {
+                cantidad = 0;
+                //contador = 1;
+            }
+
+            //if (Session["contador"] != null)
+            //{
+            //    contador = int.Parse(Session["contador"].ToString());
+            //}
+        }
+
+        protected void btncant_Click(object sender, EventArgs e)
+        {
+            if(txtcant.Text!="")
+            {
+                int ingresado = int.Parse(txtcant.Text);
+                cantidad = ingresado;
+            }
+
+
+            //cantidades.Text = "";
+            //precio.Text = "";
+
+            //contador += 1;
+            //Session.Add("contador", contador);
+            //Response.Redirect("Compras.aspx");
         }
     }
 }
