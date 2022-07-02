@@ -50,6 +50,7 @@ namespace TPFinal_Rey_Balihaut
             gvAgregados.DataSource = Session["agregados"];
             gvAgregados.DataBind();
 
+
             //if (Session["contador"] != null)
             //{
             //    contador = int.Parse(Session["contador"].ToString());
@@ -97,6 +98,12 @@ namespace TPFinal_Rey_Balihaut
             //elegido = ddlproveedor.SelectedItem.Value;
             cantidades.Text = "";
             precio.Text = "";
+
+
+            foreach (Dominio.Agregados aux in lista_agregados)
+            {
+                txtsuma.Text = aux.Precio.ToString();
+            }
         }
 
         protected void gvSeleccionados_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,7 +114,16 @@ namespace TPFinal_Rey_Balihaut
             Agregados aux = lista_agregados.Find(x => x.Codigo == codigoSelected);
             lista_agregados.Remove(aux);
 
-            Response.Redirect("Compras.aspx?" + codigoSelected);
+            //Response.Redirect("Compras.aspx?" + codigoSelected);
+        }
+
+
+        protected void altaCompra_Click(object sender, EventArgs e)
+        {
+            //limpiar pantalla
+            lista_agregados = new List<Agregados>();
+            Session.Add("agregados", lista_agregados);
+            Response.Redirect("Compras.aspx");
         }
     }
 }

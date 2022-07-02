@@ -78,21 +78,21 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.Label total;
 
         /// <summary>
-        /// Control suma.
+        /// Control txtsuma.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label suma;
+        protected global::System.Web.UI.WebControls.Label txtsuma;
 
         /// <summary>
-        /// Control altaArticulo.
+        /// Control altaCompra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button altaArticulo;
+        protected global::System.Web.UI.WebControls.Button altaCompra;
     }
 }

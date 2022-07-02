@@ -112,11 +112,11 @@
 
             <div class="bg-dark" style="display: flex; justify-content: flex-end; column-gap: 20px; font-size: 1.2rem; margin-bottom: 15px">
                 <asp:Label ID="total" Style="font-weight: bold" runat="server" Text="Total:"></asp:Label>
-                <asp:Label ID="suma" Style="font-weight: bold" runat="server" Text="$0"></asp:Label>
+                <asp:Label ID="txtsuma" Style="font-weight: bold" runat="server" Text="$0"></asp:Label>
             </div>
 
             <!--AGREGAR-->
-            <asp:Button ID="altaArticulo" class="btn btn-success btn-lg btnlogin" runat="server" Text="Registrar Compra" />
+            <asp:Button ID="altaCompra" OnClick="altaCompra_Click" CssClass="btn btn-success btn-lg btnlogin" runat="server" Text="Registrar Compra" />
 
         </div>
 
