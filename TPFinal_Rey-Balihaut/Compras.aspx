@@ -98,7 +98,7 @@
         <div class="col-4">
             <asp:GridView ID="gvAgregados" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvSeleccionados_SelectedIndexChanged" DataKeyNames="Codigo" CssClass="table table-dark table-hover" Style="color: #fff">
                 <Columns>
-                    <asp:BoundField HeaderText="Producto" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Producto" DataField="Codigo" />
                     <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
                     <asp:BoundField HeaderText="Precio" DataFormatString="{0:C}" DataField="Precio" />
 
