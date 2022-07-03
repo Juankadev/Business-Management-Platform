@@ -29,11 +29,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Compras.aspx">Compras</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoCompras.aspx">Compras</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Ventas.aspx">Ventas</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoVentas.aspx">Ventas</a>
                         </li>
 
                         <li class="nav-item">

@@ -44,7 +44,7 @@
     <Compile Include="Agregados.cs" />
     <Compile Include="_Categoria.cs" />
     <Compile Include="_Cliente.cs" />
-    <Compile Include="Compras.cs" />
+    <Compile Include="_Compra.cs" />
     <Compile Include="_Marca.cs" />
     <Compile Include="_Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

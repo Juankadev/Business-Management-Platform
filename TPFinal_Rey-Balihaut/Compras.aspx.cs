@@ -22,6 +22,23 @@ namespace TPFinal_Rey_Balihaut
             {
                 cantidad = 0;
                 //contador = 1;
+
+                ProveedorNegocio proveedores_negocio = new ProveedorNegocio();
+                ddlproveedor.DataSource = proveedores_negocio.listar();
+                ddlproveedor.DataValueField = "CUIT";
+                ddlproveedor.DataTextField = "NOMBRE";
+                ddlproveedor.DataBind();
+
+                ProductoNegocio producto_negocio = new ProductoNegocio();
+                ddlproductos.DataSource = producto_negocio.listar();
+                ddlproductos.DataValueField = "CODIGO";
+                ddlproductos.DataTextField = "NOMBRE";
+                ddlproductos.DataBind();
+
+                ddlcondicion.Items.Add("EFECTIVO");
+                ddlcondicion.Items.Add("15 DIAS");
+                ddlcondicion.Items.Add("30 DIAS");
+                ddlcondicion.Items.Add("60 DIAS");
             }
 
             if (Session["agregados"] == null)
@@ -29,22 +46,6 @@ namespace TPFinal_Rey_Balihaut
                 lista_agregados = new List<Agregados>();
                 Session.Add("agregados", lista_agregados);
             }
-
-            //AgregadoNegocio agregado_negocio = new AgregadoNegocio();
-
-            ProveedorNegocio proveedores_negocio = new ProveedorNegocio();
-            ddlproveedor.DataSource = proveedores_negocio.listar();
-            ddlproveedor.DataValueField = "CUIT";
-            ddlproveedor.DataTextField = "NOMBRE";
-            ddlproveedor.DataBind();
-
-            ProductoNegocio producto_negocio = new ProductoNegocio();
-            ddlproductos.DataSource = producto_negocio.listar();
-            ddlproductos.DataValueField = "CODIGO";
-            ddlproductos.DataTextField = "NOMBRE";
-            ddlproductos.DataBind();
-
-
 
             gvAgregados.DataSource = Session["agregados"];
             gvAgregados.DataBind();
@@ -59,11 +60,11 @@ namespace TPFinal_Rey_Balihaut
                 {
                     suma += aux.Precio * aux.Cantidad;
                 }
-                txtsuma.Text = "$" + suma.ToString();
+                txtsuma.Text = suma.ToString();
             }
             else
             {
-                txtsuma.Text = "$0";
+                txtsuma.Text = "0";
             }
 
             //if (Session["contador"] != null)
@@ -133,6 +134,17 @@ namespace TPFinal_Rey_Balihaut
             //limpiar pantalla
             lista_agregados = new List<Agregados>();
             Session.Add("agregados", lista_agregados);
+
+            CompraNegocio negocio = new CompraNegocio();
+            _Compra aux = new _Compra();
+            aux.Proveedor = new _Proveedor2();
+            //aux.Fecha = DateTime.Now;
+
+            aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
+            aux.Total = decimal.Parse(txtsuma.Text);
+            //aux.Fecha = DateTime.ParseExact(txtfecha.ToString(), "MM/dd/yyyy", null);
+            negocio.agregar(aux);
+
             Response.Redirect("Compras.aspx");
         }
     }

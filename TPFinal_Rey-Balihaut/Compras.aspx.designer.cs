@@ -15,6 +15,15 @@ namespace TPFinal_Rey_Balihaut
     {
 
         /// <summary>
+        /// Control txtfecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtfecha;
+
+        /// <summary>
         /// Control ddlproveedor.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace TPFinal_Rey_Balihaut
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlproveedor;
+
+        /// <summary>
+        /// Control ddlcondicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlcondicion;
 
         /// <summary>
         /// Control ddlproductos.

@@ -4,18 +4,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <script>
+        // Data Picker Initialization
+        $('.datepicker').datepicker({
+            inline: true
+        });
+    </script>
+
     <div class="row">
         <h1 class="title">Compras</h1>
+
         <div class="col-5">
             <%--            <div class="mb-3">
                 <label for="codigo" class="form-label">Codigo</label>
                 <asp:TextBox ID="codigo" class="form-control" runat="server"></asp:TextBox>
             </div>--%>
-
-            <div class="mb-3 proveedor">
-                <label for="ddlproveedor" class="form-label">Proveedor</label>
-                <asp:DropDownList CssClass="form-select" ID="ddlproveedor" runat="server"></asp:DropDownList>
-            </div>
 
 
 
@@ -65,7 +68,20 @@
 
             <%} %>--%>
 
+            <div>
 
+                <asp:TextBox ID="txtfecha" CssClass="form-control" runat="server" placeholder="mm/dd/yyyy" TextMode="Date" ReadOnly="false"></asp:TextBox>
+
+                <div style="width: 49%; display: inline-block">
+                    <label for="ddlproveedor" class="form-label">Proveedor</label>
+                    <asp:DropDownList CssClass="form-select" ID="ddlproveedor" runat="server"></asp:DropDownList>
+                </div>
+
+                <div style="width: 49%; display: inline-block">
+                    <label for="ddlcondicion" class="form-label">Condición</label>
+                    <asp:DropDownList CssClass="form-select" ID="ddlcondicion" runat="server"></asp:DropDownList>
+                </div>
+            </div>
 
 
 
