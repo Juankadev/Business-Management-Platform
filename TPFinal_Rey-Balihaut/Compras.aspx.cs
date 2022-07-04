@@ -145,7 +145,7 @@ namespace TPFinal_Rey_Balihaut
             aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
             aux.Total = decimal.Parse(txtsuma.Text);
             //aux.Fecha = DateTime.ParseExact(txtfecha.ToString(), "MM/dd/yyyy", null);
-            negocio.agregar(aux);
+
 
             //TextBox observaciones = (TextBox)Page.FindControl("observaciones");
             //string strFromTextArea = observaciones.Text;
@@ -153,7 +153,10 @@ namespace TPFinal_Rey_Balihaut
             //INSERTAR DETALLE}
             aux.Condicion = ddlcondicion.SelectedValue;
             aux.Observaciones = observaciones.Text;
+
+            negocio.agregar(aux);
             negocio.agregarDetalle(aux);
+
 
             Response.Redirect("ListadoCompras.aspx");
         }

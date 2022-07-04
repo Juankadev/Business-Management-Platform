@@ -51,7 +51,6 @@ namespace Negocio
         }
 
 
-
         public _Compra listarxnum(int buscado)
         {
             List<_Compra> lista = new List<_Compra>();
@@ -59,7 +58,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select C.NUM_COMPRA, C.COD_PROVEEDOR, P.NOMBRE_PROVEEDOR, C.TOTAL, C.FECHA, D.OBSERVACIONES, D.CONDICION_PAGO FROM COMPRAS C INNER JOIN PROVEEDORES P ON C.COD_PROVEEDOR = P.CUIT INNER JOIN DETALLE_COMPRA D ON D.NUM_COMPRA = C.NUM_COMPRA WHERE C.NUM_COMPRA = @BUSCADO");
+                datos.setearConsulta("select C.NUM_COMPRA, C.COD_PROVEEDOR, P.NOMBRE_PROVEEDOR, C.TOTAL, C.FECHA, D.OBSERVACIONES, D.CONDICION_PAGO FROM COMPRAS C INNER JOIN PROVEEDORES P ON C.COD_PROVEEDOR = P.CUIT INNER JOIN DETALLE_COMPRA D ON D.DETALLE_COMPRA = C.NUM_COMPRA WHERE C.NUM_COMPRA = @BUSCADO");
                 datos.setearParametro("@BUSCADO", buscado);
                 datos.ejecutarLectura();
 
@@ -93,14 +92,12 @@ namespace Negocio
         }
 
 
-
-
         public void agregar(_Compra nuevaCompra)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO COMPRAS (COD_PROVEEDOR,TOTAL,FECHA) VALUES ('" + nuevaCompra.Proveedor.CUIT + "','" + nuevaCompra.Total + "','" + "1900-01-01 00:00:00" + "' )");
+                datos.setearConsulta("INSERT INTO COMPRAS (COD_PROVEEDOR,TOTAL,FECHA) VALUES ('" + nuevaCompra.Proveedor.CUIT + "','" + nuevaCompra.Total + "','" + "1900-01-01 00:00:00" + "' )");             
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -112,15 +109,15 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
 
 
         public void agregarDetalle(_Compra nuevaCompra)
         {
             AccesoDatos datos = new AccesoDatos();
+            int num = ultimoNumCompra();
             try
             {
-                datos.setearConsulta("INSERT INTO DETALLE_COMPRA (NUM_COMPRA,OBSERVACIONES,CONDICION_PAGO) VALUES ('" + nuevaCompra.numcompra + "','" + nuevaCompra.Observaciones + "','" + nuevaCompra.Condicion + "' )");
+                datos.setearConsulta("INSERT INTO DETALLE_COMPRA (DETALLE_COMPRA,OBSERVACIONES,CONDICION_PAGO) VALUES ('" + num + "','" + nuevaCompra.Observaciones + "','" + nuevaCompra.Condicion + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -132,6 +129,35 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public int ultimoNumCompra()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT NUM_COMPRA FROM COMPRAS WHERE NUM_COMPRA = (SELECT max(NUM_COMPRA) FROM COMPRAS)");
+                datos.ejecutarLectura();
+
+                int num=1;
+                while (datos.Lector.Read())
+                {
+                    
+                    num = (int)datos.Lector["NUM_COMPRA"];
+                }
+
+                return num;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }     
 
     }
 }
