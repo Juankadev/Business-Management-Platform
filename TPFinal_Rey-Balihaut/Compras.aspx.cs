@@ -74,7 +74,7 @@ namespace TPFinal_Rey_Balihaut
             //}
 
             //para que empiece con este proveedor al recargar
-            if(Request.QueryString["value"]!=null)
+            if (Request.QueryString["value"] != null)
             {
                 ddlproveedor.Enabled = false;
                 ddlproveedor.SelectedValue = Request.QueryString["value"].ToString();
@@ -110,7 +110,7 @@ namespace TPFinal_Rey_Balihaut
 
         protected void btn_nuevo_producto_Click(object sender, EventArgs e)
         {
-            if(cantidades.Text != "" && precio.Text != "")
+            if (cantidades.Text != "" && precio.Text != "")
             {
                 Agregados aux = new Agregados();
                 aux.Codigo = ddlproductos.SelectedItem.Value;
@@ -128,7 +128,7 @@ namespace TPFinal_Rey_Balihaut
             valueproveedor = ddlproveedor.SelectedValue;
             string cond = ddlcondicion.SelectedValue;
             string obs = observaciones.Text;
-            Response.Redirect("Compras.aspx?value=" + valueproveedor + "&condicion="+cond + "&observacion="+obs);
+            Response.Redirect("Compras.aspx?value=" + valueproveedor + "&condicion=" + cond + "&observacion=" + obs);
         }
 
         protected void gvSeleccionados_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,7 +139,14 @@ namespace TPFinal_Rey_Balihaut
             Agregados aux = lista_agregados.Find(x => x.Codigo == codigoSelected);
             lista_agregados.Remove(aux);
 
-            Response.Redirect("Compras.aspx");
+
+            cantidades.Text = "";
+            precio.Text = "";
+
+            valueproveedor = ddlproveedor.SelectedValue;
+            string cond = ddlcondicion.SelectedValue;
+            string obs = observaciones.Text;
+            Response.Redirect("Compras.aspx?value=" + valueproveedor + "&condicion=" + cond + "&observacion=" + obs);
         }
 
         protected void altaCompra_Click(object sender, EventArgs e)

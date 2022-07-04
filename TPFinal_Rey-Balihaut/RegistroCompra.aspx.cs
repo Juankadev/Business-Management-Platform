@@ -23,12 +23,12 @@ namespace TPFinal_Rey_Balihaut
                 txtfecha.Text = aux.Fecha.ToString();
                 txtobservaciones.Text = aux.Observaciones;
                 txtproveedor.Text = aux.Proveedor.Nombre;
-                txttotal.Text = aux.Total.ToString();
+                txttotal.Text = String.Format("{0:0.00}", aux.Total);
                 txtcondicion.Text = aux.Condicion;
             }
 
-            ProductoNegocio producto_negocio = new ProductoNegocio();
-            gvArticulos.DataSource = producto_negocio.listar();
+            CompraNegocio compra_negocio = new CompraNegocio();
+            gvArticulos.DataSource = compra_negocio.listarDetalleProducto(int.Parse(txtnum.Text));
             gvArticulos.DataBind();
 
         }

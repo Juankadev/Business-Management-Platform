@@ -60,22 +60,22 @@
                 </asp:BoundField>
 
 
-                <asp:BoundField HeaderText="Cantidad" DataField="Marca.DescripcionMarca">
-                    <ItemStyle CssClass="" />
-                    <HeaderStyle CssClass=""></HeaderStyle>
-                </asp:BoundField>
-
-
-                <asp:BoundField HeaderText="Precio" DataField="PorcentajeGanancia" DataFormatString="{0:C}">
-                    <ItemStyle CssClass="" />
-                    <HeaderStyle CssClass=""></HeaderStyle>
-                </asp:BoundField>
-
-
-                <asp:BoundField HeaderText="Total" DataField="PorcentajeGanancia" DataFormatString="{0:C}">
+                <asp:BoundField HeaderText="Cantidad" DataField="Cantidad">
                     <ItemStyle CssClass="rigth" />
                     <HeaderStyle CssClass="rigth"></HeaderStyle>
                 </asp:BoundField>
+
+
+                <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:C}">
+                    <ItemStyle CssClass="rigth" />
+                    <HeaderStyle CssClass="rigth"></HeaderStyle>
+                </asp:BoundField>
+
+
+<%--                <asp:BoundField HeaderText="Total" DataField="" DataFormatString="{0:C}">
+                    <ItemStyle CssClass="rigth" />
+                    <HeaderStyle CssClass="rigth"></HeaderStyle>
+                </asp:BoundField>--%>
             </Columns>
 
         </asp:GridView>

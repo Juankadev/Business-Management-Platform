@@ -130,6 +130,44 @@ namespace Negocio
             }
         }
 
+        public List<Agregados> listarDetalleProducto(int buscado)
+        {
+            List<Agregados> lista = new List<Agregados>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT P.NOMBRE,D.CANTIDAD,D.PRECIO_COMPRA FROM DETALLE_COMPRA D INNER JOIN PRODUCTOS P ON D.COD_PRODUCTO = P.CODIGO WHERE DETALLE_COMPRA = @BUSCADO");
+                datos.setearParametro("@BUSCADO", buscado);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Agregados aux = new Agregados();
+                    //aux.Proveedor = new _Proveedor2();
+
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Cantidad = (int)datos.Lector["CANTIDAD"];
+                    aux.Precio = (decimal)datos.Lector["PRECIO_COMPRA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
 
         public int ultimoNumCompra()
         {
