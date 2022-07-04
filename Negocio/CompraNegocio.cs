@@ -111,13 +111,13 @@ namespace Negocio
         }
 
 
-        public void agregarDetalle(_Compra nuevaCompra)
+        public void agregarDetalle(_Compra nuevaCompra, Agregados agregado)
         {
             AccesoDatos datos = new AccesoDatos();
             int num = ultimoNumCompra();
             try
             {
-                datos.setearConsulta("INSERT INTO DETALLE_COMPRA (DETALLE_COMPRA,OBSERVACIONES,CONDICION_PAGO) VALUES ('" + num + "','" + nuevaCompra.Observaciones + "','" + nuevaCompra.Condicion + "' )");
+                datos.setearConsulta("INSERT INTO DETALLE_COMPRA (DETALLE_COMPRA,COD_PRODUCTO,CANTIDAD,PRECIO_COMPRA,OBSERVACIONES,CONDICION_PAGO) VALUES ('" + num + "','" + agregado.Codigo + "','" + agregado.Precio + "','" + agregado.Cantidad + "','" + nuevaCompra.Observaciones + "','" + nuevaCompra.Condicion + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

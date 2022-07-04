@@ -142,30 +142,33 @@ namespace TPFinal_Rey_Balihaut
             Response.Redirect("Compras.aspx");
         }
 
-
         protected void altaCompra_Click(object sender, EventArgs e)
         {
-            //limpiar lista agregados
-            lista_agregados = new List<Agregados>();
-            Session.Add("agregados", lista_agregados);
-
-
             //INSERTAR COMPRA
             CompraNegocio negocio = new CompraNegocio();
             _Compra aux = new _Compra();
             aux.Proveedor = new _Proveedor2();
             //aux.Fecha = DateTime.Now;          
+            //aux.Fecha = DateTime.ParseExact(txtfecha.ToString(), "MM/dd/yyyy", null);
             aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
             aux.Total = decimal.Parse(txtsuma.Text);
-            //aux.Fecha = DateTime.ParseExact(txtfecha.ToString(), "MM/dd/yyyy", null);
-
-            //INSERTAR DETALLE}
             aux.Condicion = ddlcondicion.SelectedValue;
             aux.Observaciones = observaciones.Text;
 
+            //INSERTAR COMPRA Y DETALLE_COMPRA}
             negocio.agregar(aux);
-            negocio.agregarDetalle(aux);
 
+
+            lista_agregados = (List<Agregados>)Session["agregados"];
+            foreach (Agregados agregado in lista_agregados)
+            {
+                negocio.agregarDetalle(aux, agregado);
+            }
+            //negocio.agregarDetalle(aux,agregado);
+
+            //limpiar lista agregados
+            lista_agregados = new List<Agregados>();
+            Session.Add("agregados", lista_agregados);
 
             Response.Redirect("ListadoCompras.aspx");
         }
