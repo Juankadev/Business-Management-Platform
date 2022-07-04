@@ -51,7 +51,7 @@ td.text-danger .select {
 .title {
     text-align: center;
     margin-top:20px;
-    margin-bottom:20px;
+    margin-bottom:40px;
 }
 
 
@@ -107,13 +107,26 @@ td.text-danger .select {
 .table-dark {
     margin: 30px 0;
     --bs-table-border-color: rgba(0,0,0,0);
+    background-color:#282828;
+    padding:30px;
 }
 
 .centrar{
-    margin: 0 auto;
+    margin: auto auto;
 }
 
 
 .rigth{
     text-align:right
 }
+
+.hoja {
+    background-color:#202020;
+    color:#fff;
+    padding:20px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.15);
+}
+/*
+.header{
+    background-color:#dc3545
+}*/
