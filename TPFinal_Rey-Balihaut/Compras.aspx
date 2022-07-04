@@ -4,12 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <script>
-        // Data Picker Initialization
-        $('.datepicker').datepicker({
-            inline: true
-        });
-    </script>
 
     <div class="row">
         <h1 class="title">Compras</h1>
@@ -122,7 +116,8 @@
         <div class="col-4">
             <asp:GridView ID="gvAgregados" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvSeleccionados_SelectedIndexChanged" DataKeyNames="Codigo" CssClass="table table-dark table-hover" Style="color: #fff">
                 <Columns>
-                    <asp:BoundField HeaderText="Producto" DataField="Codigo" />
+                    <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
+                    <asp:BoundField HeaderText="Producto" DataField="Nombre" />
                     <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
                     <asp:BoundField HeaderText="Precio" DataFormatString="{0:C}" DataField="Precio" />
 
