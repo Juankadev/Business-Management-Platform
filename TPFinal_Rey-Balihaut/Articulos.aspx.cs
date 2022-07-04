@@ -26,11 +26,7 @@ namespace TPFinal_Rey_Balihaut
         protected void Page_Load(object sender, EventArgs e)
         {
             codigo.MaxLength = 10;
-            stockactual.Text = "0";
-            stockminimo.Text = "0";
-            ganancia.Text = "0";
             precio.CssClass = "form-control";
-            precio.Text = "No hay Compras del articulo";
 
 
             if (!IsPostBack)
@@ -128,18 +124,22 @@ namespace TPFinal_Rey_Balihaut
 
                 ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
                 List<_Proveedor2> lista = proveedor_negocio.listar();
-                //aux.Proveedor = new _Proveedor2();
 
-                //if (codigo.Text != "")
-                //{
-                //    aux.Codigo = codigo.Text;
-                //}
                 aux.Codigo = codigo.Text;
                 aux.Nombre = nombre.Text;
                 aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
                 aux.Categoria.IDCategoria = ddlcategoria.SelectedIndex + 1;
-                //aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
-                aux.Precio = 0;
+
+
+                if (precio.Text == "No hay Compras del articulo")
+                {
+                    aux.Precio = 0;
+                }
+                else
+                {
+                    aux.Precio = decimal.Parse(precio.Text);
+                }
+  
                 aux.StockActual = decimal.Parse(stockactual.Text);
                 aux.StockMinimo = decimal.Parse(stockminimo.Text);
                 aux.PorcentajeGanancia = decimal.Parse(ganancia.Text);
@@ -179,14 +179,6 @@ namespace TPFinal_Rey_Balihaut
                             producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
                         }
                     }
-
-                    //limpiar
-                    //codigo.Text = "";
-                    //nombre.Text = "";
-                    //precio.Text = "";
-                    //stockactual.Text = "";
-                    //stockminimo.Text = "";
-                    //ganancia.Text = "";
                 }
 
                 Response.Redirect("ListadoArticulos.aspx");

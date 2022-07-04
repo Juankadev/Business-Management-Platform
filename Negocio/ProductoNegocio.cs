@@ -92,13 +92,14 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE PRODUCTOS SET NOMBRE = @NOMBRE, IDMARCA = @IDMARCA, IDCATEGORIA = @IDCATEGORIA, PRECIO = @PRECIO, STOCK_ACTUAL = @STOCKACTUAL, STOCK_MINIMO = @STOCKMINIMO, PORCENTAJE_GAN = @PORCENTAJEGAN WHERE CODIGO = @CODIGO");
+                datos.setearConsulta("UPDATE PRODUCTOS SET NOMBRE = @NOMBRE, IDMARCA = @IDMARCA, IDCATEGORIA = @IDCATEGORIA, PRECIO = @PRECIO, PRECIO_VENTA=@PRECIOVENTA, STOCK_ACTUAL = @STOCKACTUAL, STOCK_MINIMO = @STOCKMINIMO, PORCENTAJE_GAN = @PORCENTAJEGAN WHERE CODIGO = @CODIGO");
                 datos.setearParametro("@CODIGO", nuevoProducto.Codigo);
                 datos.setearParametro("@NOMBRE", nuevoProducto.Nombre);
                 datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
                 datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
-                //datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
+                
                 datos.setearParametro("@PRECIO", nuevoProducto.Precio);
+                datos.setearParametro("@PRECIOVENTA", nuevoProducto.Precio + (nuevoProducto.Precio *(nuevoProducto.PorcentajeGanancia / 100)));
                 datos.setearParametro("@STOCKMINIMO", nuevoProducto.StockMinimo);
                 datos.setearParametro("@STOCKACTUAL", nuevoProducto.StockActual);
                 datos.setearParametro("@PORCENTAJEGAN", nuevoProducto.PorcentajeGanancia);

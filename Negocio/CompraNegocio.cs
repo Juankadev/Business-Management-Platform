@@ -260,8 +260,8 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("UPDATE PRODUCTOS SET PRECIO_VENTA = @PRECIO WHERE CODIGO = @CODIGO;");
-                datos.setearParametro("@PRECIO", agregado.Precio + (agregado.Precio * (producto.PorcentajeGanancia / 100)));
+                datos.setearConsulta("UPDATE PRODUCTOS SET PRECIO_VENTA = @PRECIOVENTA WHERE CODIGO = @CODIGO;");
+                datos.setearParametro("@PRECIOVENTA", agregado.Precio + (agregado.Precio * (producto.PorcentajeGanancia / 100)));
                 datos.setearParametro("@CODIGO", agregado.Codigo);
                 datos.ejecutarAccion();
             }
