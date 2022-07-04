@@ -7,7 +7,7 @@
     <div class="col-6 centrar hoja">
 
 
-        <h1 class="title">Registro de Compra</h1>
+        <h1 class="title">REGISTRO DE COMPRA</h1>
 
         <div>
 

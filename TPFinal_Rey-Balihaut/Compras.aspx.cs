@@ -170,6 +170,7 @@ namespace TPFinal_Rey_Balihaut
             foreach (Agregados agregado in lista_agregados)
             {
                 negocio.agregarDetalle(aux, agregado);
+                negocio.aumentarStock(agregado);
             }
             //negocio.agregarDetalle(aux,agregado);
 

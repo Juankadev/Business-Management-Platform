@@ -43,20 +43,20 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>
 
-            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia" DataFormatString="{0:0}%">
+<%--            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia" DataFormatString="{0:0}%">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+            </asp:BoundField>--%>
 
 <%--            <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-<%--            <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
+            <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>--%>
+            </asp:BoundField>
 
 
 
