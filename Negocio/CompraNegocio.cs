@@ -249,6 +249,33 @@ namespace Negocio
             }
         }
 
+        public void setearPrecioVenta(Agregados agregado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            //buscar el producto con el id del agregado y obtener el porcentaje
+            ProductoNegocio negocio = new ProductoNegocio();
+            List<_Producto> lista = negocio.listar();
+            _Producto producto = lista.Find(x => x.Codigo == agregado.Codigo);
+
+            try
+            {
+                datos.setearConsulta("UPDATE PRODUCTOS SET PRECIO_VENTA = @PRECIO WHERE CODIGO = @CODIGO;");
+                datos.setearParametro("@PRECIO", agregado.Precio + (agregado.Precio * (producto.PorcentajeGanancia / 100)));
+                datos.setearParametro("@CODIGO", agregado.Codigo);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
         public bool existeCompra(string buscado)
         {
