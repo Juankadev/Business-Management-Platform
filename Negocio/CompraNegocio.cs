@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select NUM_COMPRA, COD_PROVEEDOR, P.NOMBRE_PROVEEDOR, TOTAL, FECHA FROM COMPRAS C INNER JOIN PROVEEDORES P ON C.COD_PROVEEDOR = P.CUIT");
+                datos.setearConsulta("select NUM_COMPRA, COD_PROVEEDOR, P.NOMBRE_PROVEEDOR, TOTAL, FECHA FROM COMPRAS C INNER JOIN PROVEEDORES P ON C.COD_PROVEEDOR = P.CUIT order by NUM_COMPRA desc");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -117,7 +117,7 @@ namespace Negocio
             int num = ultimoNumCompra();
             try
             {
-                datos.setearConsulta("INSERT INTO DETALLE_COMPRA (DETALLE_COMPRA,COD_PRODUCTO,CANTIDAD,PRECIO_COMPRA,OBSERVACIONES,CONDICION_PAGO) VALUES ('" + num + "','" + agregado.Codigo + "','" + agregado.Precio + "','" + agregado.Cantidad + "','" + nuevaCompra.Observaciones + "','" + nuevaCompra.Condicion + "' )");
+                datos.setearConsulta("INSERT INTO DETALLE_COMPRA (DETALLE_COMPRA, COD_PRODUCTO, CANTIDAD, PRECIO_COMPRA, OBSERVACIONES, CONDICION_PAGO) VALUES ('" + num + "','" + agregado.Codigo + "','" + agregado.Cantidad + "','" + agregado.Precio + "','" + nuevaCompra.Observaciones + "','" + nuevaCompra.Condicion + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

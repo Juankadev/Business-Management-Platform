@@ -98,6 +98,7 @@ namespace TPFinal_Rey_Balihaut
                 }
                 else
                 {
+                    precio.Text = "0";
                     CheckBoxList.DataSource = proveedor_negocio.listarProveedores();
                     CheckBoxList.DataBind();
                     //btn_eliminar.Visible = false;
