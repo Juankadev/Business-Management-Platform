@@ -4,29 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <script>
-        function validar() {
-            var nombre = document.getElementById("nombre").value;
-
-
-            if (nombre === "") {
-                $("#nombre").addClass("form-control is-invalid");
-            }
-            else {
-                $("#nombre").addClass("form-control is-valid");
-            }
-            return false;
-            //else {
-            //    $("#codigo").removeClass("is-invalid");
-            //    $("#codigo").addClass("is-valid");
-            //    alert("Codigo Lleno");
-            //}
-            //return false;
-
-        }
-    </script>
-
-
 
     <div class="row">
         <h1 class="title">Articulos</h1>
@@ -49,8 +26,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="precio" class="form-label">Precio</label>
-                <asp:TextBox ID="precio" class="form-control" runat="server"></asp:TextBox>
+                <label for="precio" class="form-label">Precio de Compra</label>
+                <asp:TextBox ID="precio" Enabled="false" class="form-control" runat="server"></asp:TextBox>
             </div>
 
         </div>

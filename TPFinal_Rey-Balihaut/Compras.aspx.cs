@@ -171,6 +171,7 @@ namespace TPFinal_Rey_Balihaut
             {
                 negocio.agregarDetalle(aux, agregado);
                 negocio.aumentarStock(agregado);
+                negocio.setearPrecio(agregado);
             }
             //negocio.agregarDetalle(aux,agregado);
 

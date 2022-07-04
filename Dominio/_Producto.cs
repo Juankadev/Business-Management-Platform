@@ -14,6 +14,7 @@ namespace Dominio
         public _Categoria Categoria { get; set; }
         //public _Proveedor2 Proveedor { get; set; }
         public decimal Precio { get; set; }
+        public decimal PrecioVenta { get; set; }
         public decimal StockActual { get; set; }
         public decimal StockMinimo { get; set; }
         public decimal PorcentajeGanancia { get; set; }

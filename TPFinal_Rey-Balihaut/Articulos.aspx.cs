@@ -29,7 +29,8 @@ namespace TPFinal_Rey_Balihaut
             stockactual.Text = "0";
             stockminimo.Text = "0";
             ganancia.Text = "0";
-            precio.Text = "0";
+            precio.CssClass = "form-control";
+            precio.Text = "No hay Compras del articulo";
 
 
             if (!IsPostBack)
@@ -70,7 +71,18 @@ namespace TPFinal_Rey_Balihaut
                     ddlmarca.SelectedIndex = producto.Marca.IDMarca - 1;
                     ddlcategoria.SelectedIndex = producto.Categoria.IDCategoria - 1;
                     //ddlproveedor.SelectedValue = producto.Proveedor.CUIT;
-                    precio.Text = producto.Precio.ToString();
+                    //precio.Text = producto.Precio.ToString();
+
+                    CompraNegocio negocio_compra = new CompraNegocio();
+                    if (negocio_compra.existeCompra(producto.Codigo))
+                    {
+                        precio.Text = producto.Precio.ToString();
+                    }
+                    else
+                    {
+                        precio.Text = "No hay Compras del articulo";
+                    }
+                    
                     stockactual.Text = producto.StockActual.ToString();
                     stockminimo.Text = producto.StockMinimo.ToString();
                     ganancia.Text = producto.PorcentajeGanancia.ToString();
@@ -127,10 +139,10 @@ namespace TPFinal_Rey_Balihaut
                 aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
                 aux.Categoria.IDCategoria = ddlcategoria.SelectedIndex + 1;
                 //aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
-                aux.Precio = decimal.Parse(precio.Text);
-                aux.StockActual = int.Parse(stockactual.Text);
-                aux.StockMinimo = int.Parse(stockminimo.Text);
-                aux.PorcentajeGanancia = int.Parse(ganancia.Text);
+                aux.Precio = 0;
+                aux.StockActual = decimal.Parse(stockactual.Text);
+                aux.StockMinimo = decimal.Parse(stockminimo.Text);
+                aux.PorcentajeGanancia = decimal.Parse(ganancia.Text);
 
 
 

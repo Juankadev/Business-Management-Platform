@@ -210,7 +210,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("UPDATE PRODUCTOS SET STOCK_ACTUAL = @STOCK WHERE CODIGO = @CODIGO; ");
+                datos.setearConsulta("UPDATE PRODUCTOS SET STOCK_ACTUAL = @STOCK WHERE CODIGO = @CODIGO;");
                 datos.setearParametro("@STOCK", producto.StockActual + agregado.Cantidad);
                 datos.setearParametro("@CODIGO", agregado.Codigo);
                 datos.ejecutarAccion();
@@ -225,5 +225,55 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public void setearPrecio(Agregados agregado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE PRODUCTOS SET PRECIO = @PRECIO WHERE CODIGO = @CODIGO;");
+                datos.setearParametro("@PRECIO", agregado.Precio);
+                datos.setearParametro("@CODIGO", agregado.Codigo);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                //el producto ya existe
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public bool existeCompra(string buscado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select COD_PRODUCTO from DETALLE_COMPRA WHERE COD_PRODUCTO=@BUSCADO");
+                datos.setearParametro("@BUSCADO", buscado);
+                datos.ejecutarLectura();
+
+                return datos.Lector.Read();
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 }
