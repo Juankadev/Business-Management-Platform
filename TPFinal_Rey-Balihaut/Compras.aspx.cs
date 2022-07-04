@@ -79,6 +79,16 @@ namespace TPFinal_Rey_Balihaut
                 ddlproveedor.Enabled = false;
                 ddlproveedor.SelectedValue = Request.QueryString["value"].ToString();
             }
+
+            if (Request.QueryString["condicion"] != null)
+            {
+                ddlcondicion.SelectedValue = Request.QueryString["condicion"].ToString();
+            }
+
+            if (Request.QueryString["observacion"] != null)
+            {
+                observaciones.Text = Request.QueryString["observacion"].ToString();
+            }
         }
 
         protected void btncant_Click(object sender, EventArgs e)
@@ -116,7 +126,9 @@ namespace TPFinal_Rey_Balihaut
             precio.Text = "";
 
             valueproveedor = ddlproveedor.SelectedValue;
-            Response.Redirect("Compras.aspx?value=" + valueproveedor);
+            string cond = ddlcondicion.SelectedValue;
+            string obs = observaciones.Text;
+            Response.Redirect("Compras.aspx?value=" + valueproveedor + "&condicion="+cond + "&observacion="+obs);
         }
 
         protected void gvSeleccionados_SelectedIndexChanged(object sender, EventArgs e)
