@@ -15,15 +15,6 @@ namespace TPFinal_Rey_Balihaut
     {
 
         /// <summary>
-        /// Control txttitle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txttitle;
-
-        /// <summary>
         /// Control txtnum.
         /// </summary>
         /// <remarks>
@@ -42,15 +33,6 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.Label txtproveedor;
 
         /// <summary>
-        /// Control txttotal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txttotal;
-
-        /// <summary>
         /// Control txtfecha.
         /// </summary>
         /// <remarks>
@@ -58,6 +40,24 @@ namespace TPFinal_Rey_Balihaut
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txtfecha;
+
+        /// <summary>
+        /// Control txtcondicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtcondicion;
+
+        /// <summary>
+        /// Control gvArticulos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvArticulos;
 
         /// <summary>
         /// Control txtobservaciones.
@@ -69,12 +69,12 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.Label txtobservaciones;
 
         /// <summary>
-        /// Control txtcondicion.
+        /// Control txttotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtcondicion;
+        protected global::System.Web.UI.WebControls.Label txttotal;
     }
 }

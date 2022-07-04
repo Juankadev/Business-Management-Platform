@@ -27,6 +27,10 @@ namespace TPFinal_Rey_Balihaut
                 txtcondicion.Text = aux.Condicion;
             }
 
+            ProductoNegocio producto_negocio = new ProductoNegocio();
+            gvArticulos.DataSource = producto_negocio.listar();
+            gvArticulos.DataBind();
+
         }
     }
 }
