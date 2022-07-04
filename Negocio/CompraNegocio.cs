@@ -51,12 +51,76 @@ namespace Negocio
         }
 
 
+
+        public _Compra listarxnum(int buscado)
+        {
+            List<_Compra> lista = new List<_Compra>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select C.NUM_COMPRA, C.COD_PROVEEDOR, P.NOMBRE_PROVEEDOR, C.TOTAL, C.FECHA, D.OBSERVACIONES, D.CONDICION_PAGO FROM COMPRAS C INNER JOIN PROVEEDORES P ON C.COD_PROVEEDOR = P.CUIT INNER JOIN DETALLE_COMPRA D ON D.NUM_COMPRA = C.NUM_COMPRA WHERE C.NUM_COMPRA = @BUSCADO");
+                datos.setearParametro("@BUSCADO", buscado);
+                datos.ejecutarLectura();
+
+                _Compra aux = new _Compra();
+                aux.Proveedor = new _Proveedor2();
+
+                while (datos.Lector.Read())
+                {
+                    aux.numcompra = (int)datos.Lector["NUM_COMPRA"];
+                    aux.Proveedor.CUIT = (string)datos.Lector["COD_PROVEEDOR"];
+                    aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    aux.Total = (Decimal)datos.Lector["TOTAL"];
+                    aux.Fecha = (DateTime)datos.Lector["FECHA"];
+                    aux.Observaciones = (string)datos.Lector["OBSERVACIONES"];
+                    aux.Condicion = (string)datos.Lector["CONDICION_PAGO"];
+                }
+
+                return aux;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
+
+
         public void agregar(_Compra nuevaCompra)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearConsulta("INSERT INTO COMPRAS (COD_PROVEEDOR,TOTAL,FECHA) VALUES ('" + nuevaCompra.Proveedor.CUIT + "','" + nuevaCompra.Total + "','" + "1900-01-01 00:00:00" + "' )");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
+        public void agregarDetalle(_Compra nuevaCompra)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO DETALLE_COMPRA (NUM_COMPRA,OBSERVACIONES,CONDICION_PAGO) VALUES ('" + nuevaCompra.numcompra + "','" + nuevaCompra.Observaciones + "','" + nuevaCompra.Condicion + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

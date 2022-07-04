@@ -81,8 +81,16 @@
                     <label for="ddlcondicion" class="form-label">Condición</label>
                     <asp:DropDownList CssClass="form-select" ID="ddlcondicion" runat="server"></asp:DropDownList>
                 </div>
+
+
             </div>
 
+
+            <div>
+                <label style="display: block" for="observaciones" class="form-label">Observaciones</label>
+                <%--                <textarea style="display:block" name="observaciones" maxlength="300" id="observaciones" cols="31" class="form-control" rows="2"></textarea>--%>
+                <asp:TextBox ID="observaciones" MaxLength="300" class="form-control" runat="server"></asp:TextBox>
+            </div>
 
 
             <div>
@@ -126,8 +134,8 @@
                 </Columns>
             </asp:GridView>
 
-            <div class="bg-dark" style="display: flex; justify-content: flex-end; column-gap: 20px; font-size: 1.2rem; margin-bottom: 15px">
-                <asp:Label ID="total" Style="font-weight: bold" runat="server" Text="Total:"></asp:Label>
+            <div class="bg-dark" style="display: flex; justify-content: flex-end; column-gap: 10px; font-size: 1.2rem; margin-bottom: 15px">
+                <asp:Label ID="total" Style="font-weight: bold" runat="server" Text="Total: $"></asp:Label>
                 <asp:Label ID="txtsuma" Style="font-weight: bold" runat="server" Text="$0"></asp:Label>
             </div>
 

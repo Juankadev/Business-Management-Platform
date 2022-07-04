@@ -20,8 +20,8 @@ namespace TPFinal_Rey_Balihaut
 
         protected void gvCompras_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var codigoSelected = gvCompras.SelectedDataKey.Value.ToString();
-            Response.Redirect("Compras.aspx?id=" + codigoSelected);
+            var numSelected = gvCompras.SelectedDataKey.Value.ToString();
+            Response.Redirect("RegistroCompra.aspx?num=" + numSelected);
         }
     }
 }

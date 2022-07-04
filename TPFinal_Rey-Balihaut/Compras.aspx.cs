@@ -135,6 +135,8 @@ namespace TPFinal_Rey_Balihaut
             lista_agregados = new List<Agregados>();
             Session.Add("agregados", lista_agregados);
 
+
+            //INSERTAR COMPRA
             CompraNegocio negocio = new CompraNegocio();
             _Compra aux = new _Compra();
             aux.Proveedor = new _Proveedor2();
@@ -145,7 +147,15 @@ namespace TPFinal_Rey_Balihaut
             //aux.Fecha = DateTime.ParseExact(txtfecha.ToString(), "MM/dd/yyyy", null);
             negocio.agregar(aux);
 
-            Response.Redirect("Compras.aspx");
+            //TextBox observaciones = (TextBox)Page.FindControl("observaciones");
+            //string strFromTextArea = observaciones.Text;
+
+            //INSERTAR DETALLE}
+            aux.Condicion = ddlcondicion.SelectedValue;
+            aux.Observaciones = observaciones.Text;
+            negocio.agregarDetalle(aux);
+
+            Response.Redirect("ListadoCompras.aspx");
         }
     }
 }

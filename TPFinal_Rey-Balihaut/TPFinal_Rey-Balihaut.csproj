@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RegistroCompra.aspx" />
     <Content Include="ListadoClientes.aspx" />
     <Content Include="ListadoCompras.aspx" />
     <Content Include="ListadoProveedores.aspx" />
@@ -86,6 +87,13 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RegistroCompra.aspx.cs">
+      <DependentUpon>RegistroCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroCompra.aspx.designer.cs">
+      <DependentUpon>RegistroCompra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListadoClientes.aspx.cs">
       <DependentUpon>ListadoClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

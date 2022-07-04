@@ -28,7 +28,7 @@
             </asp:BoundField>
 
 
-            <asp:BoundField HeaderText="Total" DataField="Total">
+            <asp:BoundField HeaderText="Total" DataField="Total" DataFormatString="{0:C}">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>

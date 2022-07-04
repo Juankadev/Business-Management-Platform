@@ -12,6 +12,8 @@ namespace Dominio
         public _Proveedor2 Proveedor { get; set; }
         public decimal Total { get; set; }
         public DateTime Fecha { get; set; }
+        public string Observaciones { get; set; }
+        public string Condicion { get; set; }
 
     }
 }
