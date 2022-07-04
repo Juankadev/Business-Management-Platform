@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id, DESCRIPCION_CATEGORIA FROM CATEGORIAS WHERE ACTIVO=1");
+                datos.setearConsulta("select Id, DESCRIPCION_CATEGORIA FROM CATEGORIAS WHERE ACTIVO=1 order by DESCRIPCION_CATEGORIA asc");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

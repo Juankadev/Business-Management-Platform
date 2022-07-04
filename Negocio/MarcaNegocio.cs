@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id, DESCRIPCION_MARCA FROM MARCAS WHERE ACTIVO=1");
+                datos.setearConsulta("select Id, DESCRIPCION_MARCA FROM MARCAS WHERE ACTIVO=1 ORDER BY DESCRIPCION_MARCA ASC");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

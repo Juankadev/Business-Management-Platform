@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION FROM CLIENTES WHERE ACTIVO=1");
+                datos.setearConsulta("select DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION FROM CLIENTES WHERE ACTIVO=1 order by APELLIDO asc");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
