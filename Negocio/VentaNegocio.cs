@@ -48,5 +48,70 @@ namespace Negocio
             }
 
         }
+
+        public void agregar(_Venta nuevaVenta)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO VENTAS (COD_CLIENTE,TOTAL,FECHA) VALUES ('" + nuevaVenta.Cliente.DNI + "','" + nuevaVenta.Total + "','" + nuevaVenta.Fecha + "' )");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregarDetalle(_Venta nuevaVenta, Agregados agregado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int num = ultimoNumVenta();
+            try
+            {
+                datos.setearConsulta("INSERT INTO DETALLE_VENTA (DETALLE_VENTA, COD_PRODUCTO, CANTIDAD, PRECIO_VENTA, OBSERVACIONES, CONDICION_PAGO) VALUES ('" + num + "','" + agregado.Codigo + "','" + agregado.Cantidad + "','" + agregado.Precio + "','" + nuevaVenta.Observaciones + "','" + nuevaVenta.Condicion + "' )");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public int ultimoNumVenta()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT NUM_VENTA FROM VENTAS WHERE NUM_VENTA = (SELECT max(NUM_VENTA) FROM VENTAS)");
+                datos.ejecutarLectura();
+
+                int num = 1;
+                while (datos.Lector.Read())
+                {
+
+                    num = (int)datos.Lector["NUM_COMPRA"];
+                }
+
+                return num;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

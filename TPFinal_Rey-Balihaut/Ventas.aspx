@@ -41,15 +41,15 @@
                     <asp:DropDownList CssClass="form-select dropProd" ID="ddlproductos" runat="server"></asp:DropDownList>
                 </div>
 
-                <div class="mb-3" style="width: 20%; display: inline-block">
+                <div class="mb-3" style="width: 40%; display: inline-block">
                     <label for="cantidades" class="form-label">Cantidad</label>
                     <asp:TextBox ID="cantidades" class="form-control" runat="server"></asp:TextBox>
                 </div>
 
-                <div class="mb-3" style="width: 20%; display: inline-block">
+<%--                <div class="mb-3" style="width: 20%; display: inline-block">
                     <label for="precio" class="form-label">Precio Unit.</label>
                     <asp:TextBox ID="precio" class="form-control" runat="server"></asp:TextBox>
-                </div>
+                </div>--%>
 
                 <div class="mb-3" style="width: 12%; display: inline-block">
                     <asp:Button ID="btn_nuevo_producto" class="btn btn-primary  btnlogin" OnClick="btn_nuevo_producto_Click" runat="server" Text="OK" />

@@ -6,9 +6,9 @@
 
     <h1 style="text-align: center">Listado de Ventas</h1>
 
-    <a href="Compras.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Compra</a>
+    <a href="Ventas.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Venta</a>
 
-    <asp:GridView ID="gvVentas" OnSelectedIndexChanged="gvVentas_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="gvVentas" OnSelectedIndexChanged="gvVentas_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvVentas_PageIndexChanging" PageSize="3" AllowPaging="true">
         <Columns>
 
             <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">

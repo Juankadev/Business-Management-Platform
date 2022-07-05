@@ -193,6 +193,39 @@ namespace Negocio
         }
 
 
-        
+
+        public decimal buscarPrecioVenta(string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            
+            try
+            {
+                datos.setearConsulta("select PRECIO_VENTA from productos where codigo=@codigo");
+                datos.setearParametro("@codigo",codigo);
+                datos.ejecutarLectura();
+
+                if(datos.Lector.Read())
+                {
+                    return (decimal)datos.Lector["PRECIO_VENTA"];
+                }
+                else
+                {
+                    return 0;
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }

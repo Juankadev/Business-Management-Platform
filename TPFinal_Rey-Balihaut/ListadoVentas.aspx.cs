@@ -20,7 +20,17 @@ namespace TPFinal_Rey_Balihaut
 
         protected void gvVentas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var numSelected = gvVentas.SelectedDataKey.Value.ToString();
+            Response.Redirect("RegistroVentas.aspx?num=" + numSelected);
+        }
 
+        protected void gvVentas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvVentas.PageIndex = e.NewPageIndex;
+            gvVentas.DataBind();
         }
     }
 }
+
+
+

@@ -84,20 +84,20 @@ namespace TPFinal_Rey_Balihaut
 
         protected void btn_nuevo_producto_Click(object sender, EventArgs e)
         {
-            if (cantidades.Text != "" && precio.Text != "")
+            ProductoNegocio negocio = new ProductoNegocio();
+            if (cantidades.Text != "")
             {
                 Agregados aux = new Agregados();
                 aux.Codigo = ddlproductos.SelectedItem.Value;
                 aux.Nombre = ddlproductos.SelectedItem.Text;
                 aux.Cantidad = int.Parse(cantidades.Text);
-                aux.Precio = decimal.Parse(precio.Text);
+                aux.Precio = negocio.buscarPrecioVenta(aux.Codigo);
 
                 lista_agregados = (List<Agregados>)Session["agregadosVenta"];
                 lista_agregados.Add(aux);
             }
 
             cantidades.Text = "";
-            precio.Text = "";
 
             valuecliente = ddlclientes.SelectedValue;
             string cond = ddlcondicion.SelectedValue;
@@ -115,7 +115,6 @@ namespace TPFinal_Rey_Balihaut
 
 
             cantidades.Text = "";
-            precio.Text = "";
 
             valuecliente = ddlclientes.SelectedValue;
             string cond = ddlcondicion.SelectedValue;
@@ -136,17 +135,17 @@ namespace TPFinal_Rey_Balihaut
 
             ////INSERTAR VENTA Y DETALLE_VENTA
             VentaNegocio negocio = new VentaNegocio();
-            //negocio.agregar(aux);
+            negocio.agregar(aux);
 
 
-            //lista_agregados = (List<Agregados>)Session["agregados"];
-            //foreach (Agregados agregado in lista_agregados)
-            //{
-            //    negocio.agregarDetalle(aux, agregado);
+            lista_agregados = (List<Agregados>)Session["agregadosVenta"];
+            foreach (Agregados agregado in lista_agregados)
+            {
+                negocio.agregarDetalle(aux, agregado);
             //    negocio.aumentarStock(agregado);
             //    negocio.setearPrecio(agregado);
             //    negocio.setearPrecioVenta(agregado);
-            //}
+            }
             ////negocio.agregarDetalle(aux,agregado);
 
             ////limpiar lista agregados
