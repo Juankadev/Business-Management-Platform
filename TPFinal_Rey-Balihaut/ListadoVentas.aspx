@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ListadoCompras.aspx.cs" Inherits="TPFinal_Rey_Balihaut.ListadoCompras" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ListadoVentas.aspx.cs" Inherits="TPFinal_Rey_Balihaut.ListadoVentas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -8,8 +8,7 @@
 
     <a href="Compras.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Compra</a>
 
-    <asp:GridView ID="gvCompras" OnSelectedIndexChanged="gvCompras_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numcompra" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvCompras_PageIndexChanging"
-        PageSize="3" AllowPaging="true">
+    <asp:GridView ID="gvVentas" OnSelectedIndexChanged="gvVentas_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="" Style="color: #fff" AutoGenerateColumns="false" runat="server">
         <Columns>
 
             <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
@@ -17,13 +16,13 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-            <asp:BoundField HeaderText="Numero Compra" DataField="numcompra">
+            <asp:BoundField HeaderText="Numero Venta" DataField="">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>
 
 
-            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
+            <asp:BoundField HeaderText="Cliente" DataField="">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>

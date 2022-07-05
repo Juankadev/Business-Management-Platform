@@ -23,5 +23,11 @@ namespace TPFinal_Rey_Balihaut
             var numSelected = gvCompras.SelectedDataKey.Value.ToString();
             Response.Redirect("RegistroCompra.aspx?num=" + numSelected);
         }
+
+        protected void gvCompras_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvCompras.PageIndex = e.NewPageIndex;
+            gvCompras.DataBind();
+        }
     }
 }
