@@ -16,6 +16,14 @@ namespace TPFinal_Rey_Balihaut
             ProductoNegocio producto_negocio = new ProductoNegocio();
             gvArticulos.DataSource = producto_negocio.listar();
             gvArticulos.DataBind();
+
+            //pintar stock por debajo del minimo
+            List<_Producto> lista = producto_negocio.listar();
+            for (int i=0;i<gvArticulos.Rows.Count;i++)
+            {
+                if(lista[i].StockActual < lista[i].StockMinimo)
+                    gvArticulos.Rows[i].Cells[4].CssClass = "red";
+            }
         }
 
         protected void gvArticulos_SelectedIndexChanged(object sender, EventArgs e)

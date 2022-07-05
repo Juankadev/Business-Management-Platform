@@ -51,6 +51,7 @@ namespace TPFinal_Rey_Balihaut
             gvAgregados.DataSource = Session["agregados"];
             gvAgregados.DataBind();
 
+            txtfecha.Text = DateTime.Now.ToShortDateString();
 
             //TOTAL SUMA
             lista_agregados = (List<Agregados>)Session["agregados"];

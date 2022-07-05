@@ -63,8 +63,8 @@
             <%} %>--%>
 
             <div>
-
-                <asp:TextBox ID="txtfecha" CssClass="form-control" runat="server" placeholder="dd/mm/yyyy" TextMode="Date" ReadOnly="true"></asp:TextBox>
+                <label for="txtfecha" class="form-label">Fecha</label>
+                <asp:TextBox ID="txtfecha" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
 
                 <div style="width: 49%; display: inline-block">
                     <label for="ddlproveedor" class="form-label">Proveedor</label>
