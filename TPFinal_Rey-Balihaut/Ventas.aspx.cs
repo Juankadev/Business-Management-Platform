@@ -57,7 +57,7 @@ namespace TPFinal_Rey_Balihaut
                 {
                     suma += aux.Precio * aux.Cantidad;
                 }
-                txtsuma.Text = suma.ToString();
+                txtsuma.Text = String.Format("{0:0.00}", suma);
             }
             else
             {
@@ -142,17 +142,17 @@ namespace TPFinal_Rey_Balihaut
             foreach (Agregados agregado in lista_agregados)
             {
                 negocio.agregarDetalle(aux, agregado);
-            //    negocio.aumentarStock(agregado);
+                negocio.descontarStock(agregado);
             //    negocio.setearPrecio(agregado);
             //    negocio.setearPrecioVenta(agregado);
             }
             ////negocio.agregarDetalle(aux,agregado);
 
             ////limpiar lista agregados
-            //lista_agregados = new List<Agregados>();
-            //Session.Add("agregados", lista_agregados);
+            lista_agregados = new List<Agregados>();
+            Session.Add("agregadosVenta", lista_agregados);
 
-            //Response.Redirect("ListadoCompras.aspx");
+            Response.Redirect("ListadoVentas.aspx");
         }
     }
 }

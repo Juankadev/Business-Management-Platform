@@ -62,7 +62,7 @@ namespace TPFinal_Rey_Balihaut
                 {
                     suma += aux.Precio * aux.Cantidad;
                 }
-                txtsuma.Text = suma.ToString();
+                txtsuma.Text = String.Format("{0:0.00}", suma);
             }
             else
             {

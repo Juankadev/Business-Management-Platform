@@ -72,7 +72,7 @@ namespace TPFinal_Rey_Balihaut
                     CompraNegocio negocio_compra = new CompraNegocio();
                     if (negocio_compra.existeCompra(producto.Codigo))
                     {
-                        precio.Text = producto.Precio.ToString();
+                        precio.Text = String.Format("{0:0.00}", producto.Precio);
                     }
                     else
                     {
