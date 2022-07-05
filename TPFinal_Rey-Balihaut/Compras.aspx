@@ -64,7 +64,7 @@
 
             <div>
 
-                <asp:TextBox ID="txtfecha" CssClass="form-control" runat="server" placeholder="mm/dd/yyyy" TextMode="Date" ReadOnly="false"></asp:TextBox>
+                <asp:TextBox ID="txtfecha" CssClass="form-control" runat="server" placeholder="dd/mm/yyyy" TextMode="Date" ReadOnly="true"></asp:TextBox>
 
                 <div style="width: 49%; display: inline-block">
                     <label for="ddlproveedor" class="form-label">Proveedor</label>

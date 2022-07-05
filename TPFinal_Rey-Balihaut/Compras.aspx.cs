@@ -155,8 +155,7 @@ namespace TPFinal_Rey_Balihaut
             CompraNegocio negocio = new CompraNegocio();
             _Compra aux = new _Compra();
             aux.Proveedor = new _Proveedor2();
-            //aux.Fecha = DateTime.Now;          
-            //aux.Fecha = DateTime.ParseExact(txtfecha.ToString(), "MM/dd/yyyy", null);
+            aux.Fecha = DateTime.Now;
             aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
             aux.Total = decimal.Parse(txtsuma.Text);
             aux.Condicion = ddlcondicion.SelectedValue;
