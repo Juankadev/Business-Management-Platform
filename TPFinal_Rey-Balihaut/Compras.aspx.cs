@@ -120,7 +120,24 @@ namespace TPFinal_Rey_Balihaut
                 aux.Precio = decimal.Parse(precio.Text);
 
                 lista_agregados = (List<Agregados>)Session["agregados"];
-                lista_agregados.Add(aux);
+
+                //si el producto ya existe en la lista:
+                Agregados reemplazo = lista_agregados.Find(x => x.Codigo == aux.Codigo);
+
+                //lo modifica
+                if (reemplazo != null)
+                {
+                    int index = lista_agregados.IndexOf(reemplazo);
+
+                    lista_agregados[index].Cantidad += aux.Cantidad;
+                    lista_agregados[index].Precio = aux.Precio;
+                }
+                //y si no, lo agrega
+                else
+                {
+                    lista_agregados.Add(aux);
+                }
+
             }
 
             cantidades.Text = "";

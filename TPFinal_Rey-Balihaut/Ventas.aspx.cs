@@ -11,10 +11,11 @@ namespace TPFinal_Rey_Balihaut
 {
     public partial class Ventas2 : System.Web.UI.Page
     {
-        public string valuecliente { get; set; }
         public List<Agregados> lista_agregados { get; set; }
+        public string condicion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+           lblstock.Visible = false;
 
             if (!IsPostBack)
             {
@@ -36,6 +37,13 @@ namespace TPFinal_Rey_Balihaut
                 ddlcondicion.Items.Add("15 DIAS");
                 ddlcondicion.Items.Add("30 DIAS");
                 ddlcondicion.Items.Add("60 DIAS");
+
+
+                if (Session["condicion"] == null)
+                {
+                    Session.Add("condicion", ddlcondicion.SelectedValue);
+                    condicion = Session["condicion"].ToString();
+                }
             }
 
 
@@ -44,6 +52,8 @@ namespace TPFinal_Rey_Balihaut
                 lista_agregados = new List<Agregados>();
                 Session.Add("agregadosVenta", lista_agregados);
             }
+
+            ddlcondicion.SelectedValue = Session["condicion"].ToString();
 
             gvAgregados.DataSource = Session["agregadosVenta"];
             gvAgregados.DataBind();
@@ -77,11 +87,6 @@ namespace TPFinal_Rey_Balihaut
                 ddlproductos.SelectedValue = Request.QueryString["pr"].ToString();
             }
 
-            //if (Request.QueryString["condicion"] != null)
-            //{
-            //    ddlcondicion.SelectedValue = Request.QueryString["condicion"].ToString();
-            //}
-
             if (Request.QueryString["observacion"] != null)
             {
                 observaciones.Text = Request.QueryString["observacion"].ToString();
@@ -95,6 +100,9 @@ namespace TPFinal_Rey_Balihaut
             {
                 myLabel.Text = "0";
             }
+
+
+            //ddlcondicion.SelectedValue = condicion;
         }
 
         protected void btn_nuevo_producto_Click(object sender, EventArgs e)
@@ -106,24 +114,55 @@ namespace TPFinal_Rey_Balihaut
                 aux.Codigo = ddlproductos.SelectedItem.Value;
                 aux.Nombre = ddlproductos.SelectedItem.Text;
 
-                if(negocio.hayStock(decimal.Parse(cantidades.Text), aux.Codigo))
+                if (negocio.hayStock(decimal.Parse(cantidades.Text), aux.Codigo))
                 {
                     aux.Cantidad = decimal.Parse(cantidades.Text);
                 }
                 else
                 {
+                    lblstock.Visible = true;
                     return;
                 }
 
                 aux.Precio = negocio.buscarPrecioVenta(aux.Codigo);
 
                 lista_agregados = (List<Agregados>)Session["agregadosVenta"];
-                lista_agregados.Add(aux);
+
+                //si el producto ya existe en la lista:
+                Agregados reemplazo = lista_agregados.Find(x => x.Codigo == aux.Codigo);
+                
+                //lo modifica
+                if (reemplazo != null)
+                {
+                    int index = lista_agregados.IndexOf(reemplazo);
+
+                    lista_agregados[index].Cantidad += aux.Cantidad;
+                    lista_agregados[index].Precio = aux.Precio;
+                }
+                //y si no, lo agrega
+                else
+                {
+                    lista_agregados.Add(aux);
+                }
+
+
+                //int index = lista_agregados.IndexOf(aux);
+                //if(index != -1)
+                //{
+                //}
+
+
+
             }
 
             cantidades.Text = "";
 
-            valuecliente = ddlclientes.SelectedValue;
+
+            condicion = ddlcondicion.SelectedValue;
+            Session.Add("condicion", condicion);
+            string condicion2 = Session["condicion"].ToString();
+
+            string valuecliente = ddlclientes.SelectedValue;
             string cond = ddlcondicion.SelectedValue;
             //string pr = ddlproductos.SelectedValue;
             string obs = observaciones.Text;
@@ -141,7 +180,7 @@ namespace TPFinal_Rey_Balihaut
 
             cantidades.Text = "";
 
-            valuecliente = ddlclientes.SelectedValue;
+            string valuecliente = ddlclientes.SelectedValue;
             string cond = ddlcondicion.SelectedValue;
             string obs = observaciones.Text;
             Response.Redirect("Ventas.aspx?value=" + valuecliente + "&condicion=" + cond + "&observacion=" + obs);

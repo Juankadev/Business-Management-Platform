@@ -44,12 +44,13 @@
                 <div class="mb-3" style="width: 40%; display: inline-block">
                     <label for="cantidades">Cantidad Disponible: </label>
 
-                    <asp:label id="myLabel" CssClass="bg-success" runat="server" style="border-radius:20px;padding:2px;"/>
+                    <asp:Label ID="myLabel" CssClass="bg-success" runat="server" Style="border-radius: 20px; padding: 2px;" />
 
-                    <asp:Button ID="verstock" runat="server" Text="Ver Stock" CssClass="btn btn-secondary btn-sm" OnClick="verstock_Click" style="color:#fff" />
+                    <asp:Button ID="verstock" runat="server" Text="Ver Stock" CssClass="btn btn-secondary btn-sm" OnClick="verstock_Click" Style="color: #fff" />
 
-                    <asp:TextBox ID="cantidades" class="form-control" runat="server" type="number" min="0"></asp:TextBox>
+                    <asp:TextBox ID="cantidades" class="form-control" runat="server" type="number" min="1"></asp:TextBox>
                 </div>
+
 
                 <%--                <div class="mb-3" style="width: 20%; display: inline-block">
                     <label for="precio" class="form-label">Precio Unit.</label>
@@ -59,6 +60,8 @@
                 <div class="mb-3" style="width: 12%; display: inline-block">
                     <asp:Button ID="btn_nuevo_producto" class="btn btn-primary  btnlogin" OnClick="btn_nuevo_producto_Click" runat="server" Text="OK" />
                 </div>
+
+                                <asp:Label ID="lblstock" CssClass="text-danger" runat="server" Text="Stock Insuficiente" />
 
             </div>
         </div>
