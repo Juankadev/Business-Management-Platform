@@ -16,10 +16,10 @@ namespace Negocio
         public EmailService()
         {
             server = new SmtpClient();
-            server.Credentials = new NetworkCredential("mispaginasweb21@gmail.com", "#Onepiece01");
+            //server.Credentials = new NetworkCredential("juancruzrey1@hotmail.com", "");
             server.EnableSsl = true;
             server.Port = 587;
-            server.Host = "smtp.gmail.com";
+            server.Host = "smtp.live.com";
         }
 
         public void armarCorreo(string emailDestino, string asunto, string cuerpo)
@@ -41,11 +41,11 @@ namespace Negocio
             //quien envia el correo, en este caso el usuario
             email.From = new MailAddress(emailDestino); 
             //quien recibe (consultar maxi)
-            email.To.Add(emailDestino);
+            email.To.Add("juancruzrey1@hotmail.com");
 
             email.Subject = "Reset Password";
             email.IsBodyHtml = true;
-            email.Body = "<h1>Recibimos tu solicitud de Reseteo de Password</h1> <br> En breve te enviaremos una nueva clave de acceso. Saludos cordiales!";
+            email.Body = "<h1>Solicitud de Reseteo de Password</h1> <br> Requiero una nueva Clave. Saludos cordiales!";
             //email.Body = cuerpo;
         }
 

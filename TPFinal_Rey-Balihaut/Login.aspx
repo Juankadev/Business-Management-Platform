@@ -28,9 +28,14 @@
 
             <div>
 
-                <asp:TextBox ID="resetuser" class="form-control" runat="server" Style="display: inline-block;margin:15px 0" placeholder="Ingresa tu usuario"></asp:TextBox>
+                <asp:TextBox ID="resetuser" class="form-control" runat="server" Style="display: inline-block; margin: 15px 0" placeholder="Ingresa tu usuario"></asp:TextBox>
 
                 <asp:Button ID="resetbtn" OnClick="resetbtn_Click" class="btn btn-primary btn-sm btnlogin" runat="server" Text="OK" />
+
+<%--                <asp:Button ID="enviado" class="btn btn-success btn-sm btnlogin" runat="server" Text="Envio exitoso" />--%>
+
+                <asp:Label ID="myLabel" CssClass="bg-success" runat="server" Style="border-radius: 5px;width:100%;display:block;text-align:center;margin-top:10px" Text="Envio exitoso"/>
+
             </div>
 
         </div>
