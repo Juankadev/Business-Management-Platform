@@ -13,7 +13,16 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString["num"]!=null)
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
+            else if (Session["tipo"].ToString() != "ADMIN")
+            {
+                Response.Redirect("Default.aspx", false);
+            }
+
+            if (Request.QueryString["num"]!=null)
             {
                 int buscado = int.Parse(Request.QueryString["num"]);
                 CompraNegocio negocio = new CompraNegocio();

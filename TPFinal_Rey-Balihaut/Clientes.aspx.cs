@@ -13,6 +13,15 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
+            else if (Session["tipo"].ToString() != "ADMIN")
+            {
+                Response.Redirect("Default.aspx", false);
+            }
+
             dni.MaxLength = 10; //contar cantidad de caracteres de la caja de texto con length
 
             if (!IsPostBack)

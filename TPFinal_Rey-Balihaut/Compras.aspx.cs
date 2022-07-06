@@ -19,6 +19,16 @@ namespace TPFinal_Rey_Balihaut
         public List<Agregados> lista_agregados { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
+            else if (Session["tipo"].ToString() != "ADMIN")
+            {
+                Response.Redirect("Default.aspx", false);
+            }
+
+
             if (!IsPostBack)
             {
                 cantidad = 0;

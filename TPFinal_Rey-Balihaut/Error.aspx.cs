@@ -7,13 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace TPFinal_Rey_Balihaut
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Error : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            if(Session["error"]!=null)
             {
-                Response.Redirect("Login.aspx", false);
+                lblError.Text = Session["error"].ToString();
             }
         }
     }

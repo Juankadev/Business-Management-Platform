@@ -15,7 +15,14 @@ namespace TPFinal_Rey_Balihaut
         public string condicion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-           lblstock.Visible = false;
+
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
+
+
+            lblstock.Visible = false;
 
             if (!IsPostBack)
             {

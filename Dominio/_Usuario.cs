@@ -17,7 +17,7 @@ namespace Dominio
         public string Mail { get; set; }
         public string Contraseña { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
-        public int Activo { get; set; }
+        //public int Activo { get; set; }
 
         public _Usuario(string mail,string pass,bool admin)
         {

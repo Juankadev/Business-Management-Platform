@@ -44,5 +44,32 @@ namespace TPFinal_Rey_Balihaut
                 throw ex;
             }
         }
+
+        protected void login_Click(object sender, EventArgs e)
+        {
+            _Usuario usuario;
+            UsuarioNegocio negocio = new UsuarioNegocio();
+
+            try
+            {
+                usuario = new _Usuario(email.Text,pass.Text,false);
+                if(negocio.loguear(usuario))
+                {
+                    Session.Add("usuario",usuario);
+                    Session.Add("tipo",usuario.TipoUsuario.ToString());
+                    Response.Redirect("Default.aspx",false);
+                }
+                else
+                {
+                    Session.Add("error", "'Usuario' o 'contraseña' incorrectos");
+                    Response.Redirect("Error.aspx",false);
+                }
+            }
+            catch(Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
+            }
+        }
     }
 }

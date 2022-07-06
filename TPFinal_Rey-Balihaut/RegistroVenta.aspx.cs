@@ -13,6 +13,11 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
+
             if (Request.QueryString["num"] != null)
             {
                 int buscado = int.Parse(Request.QueryString["num"]);

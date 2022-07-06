@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Error.aspx" />
     <Content Include="ListadoVentas.aspx" />
     <Content Include="RegistroCompra.aspx" />
     <Content Include="ListadoClientes.aspx" />
@@ -89,6 +90,13 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListadoVentas.aspx.cs">
       <DependentUpon>ListadoVentas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

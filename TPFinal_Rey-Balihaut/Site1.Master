@@ -24,16 +24,29 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <%if (Session["usuario"] != null)
+                            {%>
+
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoCompras.aspx">Compras</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoVentas.aspx">Ventas</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoVentas.aspx">Ventas</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoClientes.aspx">Clientes</a>
+                        </li>
+
+
+
+                        <%if (Session["tipo"].ToString() == "ADMIN") //es admin
+                            { %>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="ListadoCompras.aspx">Compras</a>
                         </li>
 
                         <li class="nav-item">
@@ -52,56 +65,23 @@
                             <a class="nav-link active" aria-current="page" href="ListadoCategorias.aspx">Categorias</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoClientes.aspx">Clientes</a>
-                        </li>
+
+                        <%} %>
+                        <asp:Button ID="btnsalir" CssClass="nav-link active btn btn-primary btn-gradient navlogin" OnClick="btnsalir_Click" runat="server" Text="Desloguearme" />
+                        <%} %>
 
 
-
-                        <!-------------MARCAS/CATEGORIAS------------------------>
-
-                        <%--<li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Marcas/Categorias
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <li><a class="dropdown-item" href="ListadoMarcas.aspx">Listado Marcas</a></li>
-
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
-                                <li><a class="dropdown-item" href="ListadoCategorias.aspx">Listado Categorias</a></li>
-
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
-                                <li><a class="dropdown-item" href="Alta-Marca-Categoria.aspx">Marcas/Categorias</a></li>
-
-                            </ul>
-                        </li>--%>
-
-
-                        <%--
-                        <!--------------ARTICULOS----------------------------->
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Articulos
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="ListadoArticulos.aspx">Articulos</a></li>
-                            </ul>
-                        </li>--%>
-
-
+                        <%else
+                            { %>
 
                         <li class="nav-item">
-                            <a class="nav-link active btn btn-primary navlogin" aria-current="page" href="Login.aspx">Login</a>
+                            <a class="nav-link active btn btn-primary btn-gradient navlogin" aria-current="page" href="Login.aspx">Login</a>
                         </li>
+
+                        <%} %>
                     </ul>
 
-
+                    <%--                    <%if(Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).TipoUsuario==dominio.TipoUsuario.ADMIN){%>--%>
                 </div>
             </div>
         </nav>

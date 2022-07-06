@@ -15,22 +15,22 @@ namespace TPFinal_Rey_Balihaut
     {
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control email.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox email;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control pass.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox pass;
 
         /// <summary>
         /// Control login.

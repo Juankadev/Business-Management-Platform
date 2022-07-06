@@ -13,6 +13,11 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
+
             VentaNegocio negocio_venta = new VentaNegocio();
             gvVentas.DataSource = negocio_venta.listar();
             gvVentas.DataBind();
