@@ -15,6 +15,24 @@ namespace TPFinal_Rey_Balihaut
     {
 
         /// <summary>
+        /// Control nombreArt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nombreArt;
+
+        /// <summary>
+        /// Control stockArt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label stockArt;
+
+        /// <summary>
         /// Control gvArticulos.
         /// </summary>
         /// <remarks>

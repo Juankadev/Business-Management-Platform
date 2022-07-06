@@ -17,12 +17,19 @@ namespace TPFinal_Rey_Balihaut
             gvArticulos.DataSource = producto_negocio.listar();
             gvArticulos.DataBind();
 
-            //pintar stock por debajo del minimo
+            
             List<_Producto> lista = producto_negocio.listar();
             for (int i=0;i<gvArticulos.Rows.Count;i++)
             {
                 if(lista[i].StockActual < lista[i].StockMinimo)
+                {
                     gvArticulos.Rows[i].Cells[4].CssClass = "text-danger";
+
+                    //card articulo menor stock
+                    nombreArt.Text = gvArticulos.Rows[i].Cells[0].Text;
+                    stockArt.Text = "- Stock: " + gvArticulos.Rows[i].Cells[4].Text;
+                }
+
             }
         }
 
