@@ -218,5 +218,35 @@ namespace Negocio
 
         }
 
+
+        public decimal total()
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select SUM(total) AS TOTAL from ventas");
+                datos.ejecutarLectura();
+
+                decimal total = 0;
+                while (datos.Lector.Read())
+                {
+                    total = (decimal)datos.Lector["TOTAL"];
+                }
+                return total;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 }

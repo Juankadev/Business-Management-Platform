@@ -6,7 +6,18 @@
 
     <h1 style="text-align: center">Listado de Compras</h1>
 
+
+    <div class="card text-white bg-secondary mb-3 centrar" style="max-width: 18rem;">
+        <div class="card-header">Total Compras</div>
+        <div class="card-body">
+            <%--            <h5 class="card-title"></h5>--%>
+            <asp:Label ID="total" class="card-text" Style="font-weight: bold; font-size: 1.3rem" runat="server" Text=""></asp:Label>
+        </div>
+    </div>
+
+
     <a href="Compras.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Compra</a>
+
 
     <asp:GridView ID="gvCompras" OnSelectedIndexChanged="gvCompras_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numcompra" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvCompras_PageIndexChanging"
         PageSize="3" AllowPaging="true">

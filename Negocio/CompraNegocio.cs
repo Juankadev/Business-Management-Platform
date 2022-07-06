@@ -179,8 +179,7 @@ namespace Negocio
 
                 int num=1;
                 while (datos.Lector.Read())
-                {
-                    
+                {                   
                     num = (int)datos.Lector["NUM_COMPRA"];
                 }
 
@@ -302,5 +301,33 @@ namespace Negocio
 
         }
 
+        public decimal total()
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select SUM(total) AS TOTAL from compras");
+                datos.ejecutarLectura();
+
+                decimal total = 0;
+                while (datos.Lector.Read())
+                {
+                    total = (decimal)datos.Lector["TOTAL"];
+                }
+                return total;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }

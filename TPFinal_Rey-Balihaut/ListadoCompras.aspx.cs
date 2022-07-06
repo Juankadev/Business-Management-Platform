@@ -16,6 +16,9 @@ namespace TPFinal_Rey_Balihaut
             CompraNegocio compra_negocio = new CompraNegocio();
             gvCompras.DataSource = compra_negocio.listar();
             gvCompras.DataBind();
+
+            total.Text = "$" + String.Format("{0:0.00}", compra_negocio.total());
+
         }
 
         protected void gvCompras_SelectedIndexChanged(object sender, EventArgs e)

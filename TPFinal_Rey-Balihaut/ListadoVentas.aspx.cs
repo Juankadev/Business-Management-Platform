@@ -16,6 +16,8 @@ namespace TPFinal_Rey_Balihaut
             VentaNegocio negocio = new VentaNegocio();
             gvVentas.DataSource = negocio.listar();
             gvVentas.DataBind();
+
+            total.Text = "$" + String.Format("{0:0.00}", negocio.total());
         }
 
         protected void gvVentas_SelectedIndexChanged(object sender, EventArgs e)
