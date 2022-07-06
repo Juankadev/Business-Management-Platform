@@ -96,12 +96,12 @@
 
                 <div class="mb-3" style="width: 20%; display: inline-block">
                     <label for="cantidades" class="form-label">Cantidad</label>
-                    <asp:TextBox ID="cantidades" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="cantidades" type="number" min="0" class="form-control" runat="server"></asp:TextBox>
                 </div>
 
                 <div class="mb-3" style="width: 20%; display: inline-block">
                     <label for="precio" class="form-label">Precio Unit.</label>
-                    <asp:TextBox ID="precio" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="precio" type="number" min="0" class="form-control" runat="server"></asp:TextBox>
                 </div>
 
                 <div class="mb-3" style="width: 12%; display: inline-block">
@@ -113,7 +113,7 @@
 
 
 
-        <div class="col-4">
+        <div class="col-5">
             <asp:GridView ID="gvAgregados" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvSeleccionados_SelectedIndexChanged" DataKeyNames="Codigo" CssClass="table table-dark table-hover" Style="color: #fff">
                 <Columns>
                     <asp:BoundField HeaderText="Codigo" DataField="Codigo" />

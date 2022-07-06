@@ -127,7 +127,6 @@ namespace Negocio
             try
             {
                 datos.setearConsulta("UPDATE PRODUCTOS SET STOCK_ACTUAL = @STOCK WHERE CODIGO = @CODIGO;");
- 
                 datos.setearParametro("@STOCK", producto.StockActual - agregado.Cantidad);
                 datos.setearParametro("@CODIGO", agregado.Codigo);
                 datos.ejecutarAccion();

@@ -22,7 +22,7 @@ namespace TPFinal_Rey_Balihaut
             for (int i=0;i<gvArticulos.Rows.Count;i++)
             {
                 if(lista[i].StockActual < lista[i].StockMinimo)
-                    gvArticulos.Rows[i].Cells[4].CssClass = "red";
+                    gvArticulos.Rows[i].Cells[4].CssClass = "text-danger";
             }
         }
 

@@ -15,6 +15,7 @@ namespace TPFinal_Rey_Balihaut
         public List<Agregados> lista_agregados { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 //cantidad = 0;
@@ -71,14 +72,28 @@ namespace TPFinal_Rey_Balihaut
                 ddlclientes.SelectedValue = Request.QueryString["value"].ToString();
             }
 
-            if (Request.QueryString["condicion"] != null)
+            if (Request.QueryString["pr"] != null)
             {
-                ddlcondicion.SelectedValue = Request.QueryString["condicion"].ToString();
+                ddlproductos.SelectedValue = Request.QueryString["pr"].ToString();
             }
+
+            //if (Request.QueryString["condicion"] != null)
+            //{
+            //    ddlcondicion.SelectedValue = Request.QueryString["condicion"].ToString();
+            //}
 
             if (Request.QueryString["observacion"] != null)
             {
                 observaciones.Text = Request.QueryString["observacion"].ToString();
+            }
+
+            if (Request.QueryString["stock"] != null)
+            {
+                myLabel.Text = Request.QueryString["stock"].ToString();
+            }
+            else
+            {
+                myLabel.Text = "0";
             }
         }
 
@@ -90,7 +105,16 @@ namespace TPFinal_Rey_Balihaut
                 Agregados aux = new Agregados();
                 aux.Codigo = ddlproductos.SelectedItem.Value;
                 aux.Nombre = ddlproductos.SelectedItem.Text;
-                aux.Cantidad = int.Parse(cantidades.Text);
+
+                if(negocio.hayStock(decimal.Parse(cantidades.Text), aux.Codigo))
+                {
+                    aux.Cantidad = decimal.Parse(cantidades.Text);
+                }
+                else
+                {
+                    return;
+                }
+
                 aux.Precio = negocio.buscarPrecioVenta(aux.Codigo);
 
                 lista_agregados = (List<Agregados>)Session["agregadosVenta"];
@@ -101,6 +125,7 @@ namespace TPFinal_Rey_Balihaut
 
             valuecliente = ddlclientes.SelectedValue;
             string cond = ddlcondicion.SelectedValue;
+            //string pr = ddlproductos.SelectedValue;
             string obs = observaciones.Text;
             Response.Redirect("Ventas.aspx?value=" + valuecliente + "&condicion=" + cond + "&observacion=" + obs);
         }
@@ -143,8 +168,6 @@ namespace TPFinal_Rey_Balihaut
             {
                 negocio.agregarDetalle(aux, agregado);
                 negocio.descontarStock(agregado);
-            //    negocio.setearPrecio(agregado);
-            //    negocio.setearPrecioVenta(agregado);
             }
             ////negocio.agregarDetalle(aux,agregado);
 
@@ -153,6 +176,13 @@ namespace TPFinal_Rey_Balihaut
             Session.Add("agregadosVenta", lista_agregados);
 
             Response.Redirect("ListadoVentas.aspx");
+        }
+
+        protected void verstock_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
+            myLabel.Text = (negocio.stockxproducto(ddlproductos.SelectedValue)).ToString();
+            Response.Redirect("Ventas.aspx?stock="+myLabel.Text);
         }
     }
 }

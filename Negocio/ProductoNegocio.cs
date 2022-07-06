@@ -61,7 +61,6 @@ namespace Negocio
         }
 
 
-
         public void agregar(_Producto nuevoProducto)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -84,7 +83,6 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
 
 
         public void modificar(_Producto nuevoProducto)
@@ -115,9 +113,6 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
-
-
 
 
         public void eliminar(string codigoEliminar)
@@ -193,7 +188,6 @@ namespace Negocio
         }
 
 
-
         public decimal buscarPrecioVenta(string codigo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -215,6 +209,80 @@ namespace Negocio
                 {
                     return 0;
                 }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
+        public bool hayStock(decimal ingresado ,string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select stock_actual from productos where codigo=@codigo");
+                datos.setearParametro("@codigo", codigo);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    decimal stockactual = (decimal)datos.Lector["stock_actual"];
+                    if(ingresado <= stockactual)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+
+
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
+        public decimal stockxproducto(string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select stock_actual from productos where codigo=@codigo");
+                datos.setearParametro("@codigo", codigo);
+                datos.ejecutarLectura();
+
+                decimal stockactual=0;
+
+                if (datos.Lector.Read())
+                {
+                    stockactual = (decimal)datos.Lector["stock_actual"];
+                }
+
+                return stockactual;
+
 
 
             }
