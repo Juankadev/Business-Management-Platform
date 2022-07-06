@@ -13,11 +13,14 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            VentaNegocio negocio = new VentaNegocio();
-            gvVentas.DataSource = negocio.listar();
+            VentaNegocio negocio_venta = new VentaNegocio();
+            gvVentas.DataSource = negocio_venta.listar();
             gvVentas.DataBind();
 
-            total.Text = "$" + String.Format("{0:0.00}", negocio.total());
+            total.Text = "$" + String.Format("{0:0.00}", negocio_venta.total());
+
+            CompraNegocio negocio_compra = new CompraNegocio();
+            ganancia.Text = "$" + String.Format("{0:0.00}", negocio_venta.total() - negocio_compra.total());
         }
 
         protected void gvVentas_SelectedIndexChanged(object sender, EventArgs e)

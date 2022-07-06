@@ -7,7 +7,7 @@
     <h1 style="text-align: center">Listado de Compras</h1>
 
 
-    <div class="card text-white bg-secondary mb-3 centrar" style="max-width: 18rem;">
+    <div class="card text-white bg-primary bg-gradient mb-3 centrar" style="max-width: 18rem;">
         <div class="card-header">Total Compras</div>
         <div class="card-body">
             <%--            <h5 class="card-title"></h5>--%>
