@@ -49,6 +49,44 @@ namespace Negocio
 
         }
 
+        public _Venta listarxnum(int buscado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select V.NUM_VENTA, V.COD_CLIENTE, C.APELLIDO + ' ' + C.NOMBRE AS APENOM, V.TOTAL, V.FECHA, VD.OBSERVACIONES, VD.CONDICION_PAGO FROM VENTAS V INNER JOIN CLIENTES C ON C.DNI = V.COD_CLIENTE INNER JOIN DETALLE_VENTA VD ON VD.DETALLE_VENTA = V.NUM_VENTA WHERE V.NUM_VENTA = @BUSCADO");
+                datos.setearParametro("@BUSCADO", buscado);
+                datos.ejecutarLectura();
+
+                _Venta aux = new _Venta();
+                aux.Cliente = new _Cliente();
+
+                while (datos.Lector.Read())
+                {
+                    aux.numventa = (int)datos.Lector["NUM_VENTA"];
+                    aux.Cliente.DNI = (string)datos.Lector["COD_CLIENTE"];
+                    aux.Cliente.Nombre = (string)datos.Lector["APENOM"];
+                    aux.Total = (Decimal)datos.Lector["TOTAL"];
+                    aux.Fecha = (DateTime)datos.Lector["FECHA"];
+                    aux.Observaciones = (string)datos.Lector["OBSERVACIONES"];
+                    aux.Condicion = (string)datos.Lector["CONDICION_PAGO"];
+                }
+
+                return aux;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
         public void agregar(_Venta nuevaVenta)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -142,6 +180,43 @@ namespace Negocio
             }
         }
 
+        public List<Agregados> listarDetalleProducto(int buscado)
+        {
+            List<Agregados> lista = new List<Agregados>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT P.NOMBRE, D.CANTIDAD, D.PRECIO_VENTA FROM DETALLE_VENTA D INNER JOIN PRODUCTOS P ON D.COD_PRODUCTO = P.CODIGO WHERE DETALLE_VENTA = @BUSCADO");
+                datos.setearParametro("@BUSCADO", buscado);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Agregados aux = new Agregados();
+                    //aux.Proveedor = new _Proveedor2();
+
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Cantidad = (int)datos.Lector["CANTIDAD"];
+                    aux.Precio = (decimal)datos.Lector["PRECIO_VENTA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
 
     }
 }
