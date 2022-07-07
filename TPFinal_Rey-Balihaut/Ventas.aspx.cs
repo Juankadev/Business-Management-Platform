@@ -217,6 +217,9 @@ namespace TPFinal_Rey_Balihaut
             }
             ////negocio.agregarDetalle(aux,agregado);
 
+            //agregar el nuevo total de ventas
+            Session.Add("ventas", negocio.total());
+
             ////limpiar lista agregados
             lista_agregados = new List<Agregados>();
             Session.Add("agregadosVenta", lista_agregados);

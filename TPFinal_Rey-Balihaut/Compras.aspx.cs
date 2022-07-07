@@ -203,6 +203,9 @@ namespace TPFinal_Rey_Balihaut
             }
             //negocio.agregarDetalle(aux,agregado);
 
+            //actualizar el total de compras para mostrarlo en el grafico
+            Session.Add("compras", negocio.total());
+
             //limpiar lista agregados
             lista_agregados = new List<Agregados>();
             Session.Add("agregados", lista_agregados);
