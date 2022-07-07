@@ -74,10 +74,11 @@ namespace TPFinal_Rey_Balihaut
 
                     codigo.Text = producto.Codigo;
                     nombre.Text = producto.Nombre;
-                    ddlmarca.SelectedIndex = producto.Marca.IDMarca - 1;
-                    ddlcategoria.SelectedIndex = producto.Categoria.IDCategoria - 1;
-                    //ddlproveedor.SelectedValue = producto.Proveedor.CUIT;
-                    //precio.Text = producto.Precio.ToString();
+                    //(producto.Marca.IDMarca - 1).ToString();
+
+                    //NO PRECARGA LOS DDL
+                    ddlmarca.SelectedValue = (producto.Marca.IDMarca).ToString();
+                    ddlcategoria.SelectedValue = (producto.Categoria.IDCategoria).ToString();
 
                     CompraNegocio negocio_compra = new CompraNegocio();
                     if (negocio_compra.existeCompra(producto.Codigo))
@@ -138,8 +139,10 @@ namespace TPFinal_Rey_Balihaut
 
                 aux.Codigo = codigo.Text;
                 aux.Nombre = nombre.Text;
-                aux.Marca.IDMarca = ddlmarca.SelectedIndex + 1;
-                aux.Categoria.IDCategoria = ddlcategoria.SelectedIndex + 1;
+                MarcaNegocio marca_negocio = new MarcaNegocio();
+
+                aux.Marca.IDMarca = int.Parse(ddlmarca.SelectedValue);
+                aux.Categoria.IDCategoria = int.Parse(ddlcategoria.SelectedValue);
 
 
                 if (precio.Text == "No hay Compras del articulo")
