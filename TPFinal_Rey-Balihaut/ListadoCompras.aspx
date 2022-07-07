@@ -19,6 +19,9 @@
     <a href="Compras.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Compra</a>
 
 
+    <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+
+
     <asp:GridView ID="gvCompras" OnSelectedIndexChanged="gvCompras_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numcompra" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvCompras_PageIndexChanging"
         PageSize="3" AllowPaging="true">
         <Columns>

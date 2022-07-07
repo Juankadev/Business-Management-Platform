@@ -97,7 +97,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO COMPRAS (COD_PROVEEDOR,TOTAL,FECHA) VALUES ('" + nuevaCompra.Proveedor.CUIT + "','" + nuevaCompra.Total + "','" + nuevaCompra.Fecha + "' )");             
+                datos.setearConsulta("INSERT INTO COMPRAS (COD_PROVEEDOR,TOTAL,FECHA) VALUES ('" + nuevaCompra.Proveedor.CUIT + "','" + nuevaCompra.Total + "','" + nuevaCompra.Fecha + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -177,9 +177,9 @@ namespace Negocio
                 datos.setearConsulta("SELECT NUM_COMPRA FROM COMPRAS WHERE NUM_COMPRA = (SELECT max(NUM_COMPRA) FROM COMPRAS)");
                 datos.ejecutarLectura();
 
-                int num=1;
+                int num = 1;
                 while (datos.Lector.Read())
-                {                   
+                {
                     num = (int)datos.Lector["NUM_COMPRA"];
                 }
 
@@ -307,15 +307,23 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select SUM(total) AS TOTAL from compras");
+                //ver si hay registros
+                datos.setearConsulta("select total from compras");
                 datos.ejecutarLectura();
 
                 decimal total = 0;
-                while (datos.Lector.Read())
+                if (datos.Lector.Read())
                 {
-                    total = (decimal)datos.Lector["TOTAL"];
+                    datos.setearConsulta("select SUM(total) AS TOTAL from compras");
+                    datos.ejecutarLectura();
+                    while (datos.Lector.Read())
+                    {
+                        total = (decimal)datos.Lector["TOTAL"];
+                    }
                 }
                 return total;
+
+
             }
 
             catch (Exception ex)

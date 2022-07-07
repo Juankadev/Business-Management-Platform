@@ -30,7 +30,7 @@
 
             <div>
 
-                <asp:TextBox ID="resetuser" class="form-control" runat="server" Style="display: inline-block; margin: 15px 0" placeholder="Ingresa tu usuario"></asp:TextBox>
+                <asp:TextBox ID="resetuser" class="form-control" runat="server" Style="display: inline-block; margin: 15px 0" placeholder="Ingresa tu Email"></asp:TextBox>
 
                 <asp:Button ID="resetbtn" OnClick="resetbtn_Click" class="btn btn-primary btn-sm btnlogin" runat="server" Text="OK" />
 

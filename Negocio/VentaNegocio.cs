@@ -225,15 +225,22 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select SUM(total) AS TOTAL from ventas");
+                //ver si hay registros
+                datos.setearConsulta("select total from ventas");
                 datos.ejecutarLectura();
-
                 decimal total = 0;
-                while (datos.Lector.Read())
+
+                if (datos.Lector.Read())
                 {
-                    total = (decimal)datos.Lector["TOTAL"];
+                    datos.setearConsulta("select SUM(total) AS TOTAL from ventas");
+                    datos.ejecutarLectura();
+                    while (datos.Lector.Read())
+                    {
+                        total = (decimal)datos.Lector["TOTAL"];
+                    }
                 }
                 return total;
+
             }
 
             catch (Exception ex)
