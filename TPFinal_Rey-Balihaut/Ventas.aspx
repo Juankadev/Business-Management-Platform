@@ -38,13 +38,13 @@
                 <div class="mb-3" style="width: 45%; display: inline-block">
                     <label for="ddlproducto" class="form-label">Producto</label>
 
-                    <asp:DropDownList CssClass="form-select dropProd" ID="ddlproductos" runat="server"></asp:DropDownList>
+                    <asp:DropDownList CssClass="form-select dropProd" ID="ddlproductos" AutoPostBack="true" OnSelectedIndexChanged="ddlproductos_SelectedIndexChanged" runat="server"></asp:DropDownList>
                 </div>
 
                 <div class="mb-3" style="width: 40%; display: inline-block">
                     <label for="cantidades">Cantidad Disponible: </label>
 
-                    <asp:Label ID="myLabel" CssClass="bg-success" runat="server" Style="border-radius: 20px; padding: 2px;" />
+                    <asp:Label ID="myLabel" CssClass="bg-success" runat="server" Style="border-radius: 20px" />
 
                     <asp:Button ID="verstock" runat="server" Text="Ver Stock" CssClass="btn btn-secondary btn-sm" OnClick="verstock_Click" Style="color: #fff" />
 

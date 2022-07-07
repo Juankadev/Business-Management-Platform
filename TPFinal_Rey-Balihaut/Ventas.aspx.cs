@@ -15,6 +15,7 @@ namespace TPFinal_Rey_Balihaut
         public string condicion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            verstock.Visible = false;
 
             if (Session["usuario"] == null)
             {
@@ -51,6 +52,9 @@ namespace TPFinal_Rey_Balihaut
                     Session.Add("condicion", ddlcondicion.SelectedValue);
                     condicion = Session["condicion"].ToString();
                 }
+
+                //ProductoNegocio negocio = new ProductoNegocio();
+                //myLabel.Text = (negocio.stockxproducto(ddlproductos.SelectedValue)).ToString();
             }
 
 
@@ -230,8 +234,14 @@ namespace TPFinal_Rey_Balihaut
         protected void verstock_Click(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
+            //myLabel.Text = (negocio.stockxproducto(ddlproductos.SelectedValue)).ToString();
+            //Response.Redirect("Ventas.aspx?stock="+myLabel.Text);
+        }
+
+        protected void ddlproductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
             myLabel.Text = (negocio.stockxproducto(ddlproductos.SelectedValue)).ToString();
-            Response.Redirect("Ventas.aspx?stock="+myLabel.Text);
         }
     }
 }
