@@ -34,36 +34,44 @@
             </div>
 
 
-            <div>
-                <div class="mb-3" style="width: 45%; display: inline-block">
-                    <label for="ddlproducto" class="form-label">Producto</label>
+            <!--Requerido para Update Panel-->
+            <asp:ScriptManager ID="script" runat="server"></asp:ScriptManager>
 
-                    <asp:DropDownList CssClass="form-select dropProd" ID="ddlproductos" AutoPostBack="true" OnSelectedIndexChanged="ddlproductos_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                </div>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <div>
+                        <div class="mb-3" style="width: 45%; display: inline-block">
+                            <label for="ddlproducto" class="form-label">Producto</label>
 
-                <div class="mb-3" style="width: 40%; display: inline-block">
-                    <label for="cantidades">Cantidad Disponible: </label>
+                            <asp:DropDownList CssClass="form-select dropProd" ID="ddlproductos" AutoPostBack="true" OnSelectedIndexChanged="ddlproductos_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                        </div>
 
-                    <asp:Label ID="myLabel" CssClass="bg-success" runat="server" Style="border-radius: 20px" />
+                        <div class="mb-3" style="width: 40%; display: inline-block">
+                            <label for="cantidades">Cantidad Disponible: </label>
 
-                    <asp:Button ID="verstock" runat="server" Text="Ver Stock" CssClass="btn btn-secondary btn-sm" OnClick="verstock_Click" Style="color: #fff" />
+                            <asp:Label ID="myLabel" CssClass="bg-success" runat="server" Style="border-radius: 20px" />
 
-                    <asp:TextBox ID="cantidades" class="form-control" runat="server" type="number" min="1"></asp:TextBox>
-                </div>
+                            <asp:Button ID="verstock" runat="server" Text="Ver Stock" CssClass="btn btn-secondary btn-sm" OnClick="verstock_Click" Style="color: #fff" />
+
+                            <asp:TextBox ID="cantidades" class="form-control" runat="server" type="number" min="1"></asp:TextBox>
+                        </div>
 
 
-                <%--                <div class="mb-3" style="width: 20%; display: inline-block">
+                        <%--                <div class="mb-3" style="width: 20%; display: inline-block">
                     <label for="precio" class="form-label">Precio Unit.</label>
                     <asp:TextBox ID="precio" class="form-control" runat="server"></asp:TextBox>
                 </div>--%>
 
-                <div class="mb-3" style="width: 12%; display: inline-block">
-                    <asp:Button ID="btn_nuevo_producto" class="btn btn-primary  btnlogin" OnClick="btn_nuevo_producto_Click" runat="server" Text="OK" />
-                </div>
+                        <div class="mb-3" style="width: 12%; display: inline-block">
+                            <asp:Button ID="btn_nuevo_producto" class="btn btn-primary  btnlogin" OnClick="btn_nuevo_producto_Click" runat="server" Text="OK" />
+                        </div>
 
-                                <asp:Label ID="lblstock" CssClass="text-danger" runat="server" Text="Stock Insuficiente" />
+                        <asp:Label ID="lblstock" CssClass="text-danger" runat="server" Text="Stock Insuficiente" />
 
-            </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
         </div>
 
 

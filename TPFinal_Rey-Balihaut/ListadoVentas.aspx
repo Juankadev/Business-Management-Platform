@@ -7,7 +7,7 @@
     <h1 style="text-align: center">Listado de Ventas</h1>
 
 
-    <div style="display:flex;justify-content:center">
+    <div style="display: flex; justify-content: center">
         <div style="">
 
             <div class="card text-white bg-primary bg-gradient mb-3 centrar" style="max-width: 18rem; display: inline-block">
@@ -15,6 +15,15 @@
                 <div class="card-body">
                     <%--            <h5 class="card-title"></h5>--%>
                     <asp:Label ID="total" class="card-text" Style="font-weight: bold; font-size: 1.3rem" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+
+
+            <div class="card text-white bg-secondary bg-gradient mb-3 centrar" style="max-width: 18rem; display: inline-block">
+                <div class="card-header">Promedio Ventas</div>
+                <div class="card-body">
+                    <%--            <h5 class="card-title"></h5>--%>
+                    <asp:Label ID="promedio" class="card-text" Style="font-weight: bold; font-size: 1.3rem" runat="server" Text=""></asp:Label>
                 </div>
             </div>
 

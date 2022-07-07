@@ -24,6 +24,8 @@ namespace TPFinal_Rey_Balihaut
 
             total.Text = "$" + String.Format("{0:0.00}", negocio_venta.total());
 
+            promedio.Text = "$" + String.Format("{0:0.00}", negocio_venta.promedio());
+
             CompraNegocio negocio_compra = new CompraNegocio();
             ganancia.Text = "$" + String.Format("{0:0.00}", negocio_venta.total() - negocio_compra.total());
         }

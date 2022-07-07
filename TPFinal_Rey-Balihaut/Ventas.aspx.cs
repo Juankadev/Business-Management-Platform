@@ -25,6 +25,8 @@ namespace TPFinal_Rey_Balihaut
 
             lblstock.Visible = false;
 
+
+            //List<_Producto> lista = producto_negocio.listar();
             if (!IsPostBack)
             {
                 //cantidad = 0;
@@ -36,10 +38,17 @@ namespace TPFinal_Rey_Balihaut
                 ddlclientes.DataBind();
 
                 ProductoNegocio producto_negocio = new ProductoNegocio();
-                ddlproductos.DataSource = producto_negocio.listar();
+                List<_Producto> lista = producto_negocio.listar();
+                _Producto pvacio = new _Producto();
+                pvacio.Codigo = "";
+                pvacio.Nombre = "";
+                lista.Add(pvacio);
+                int index = lista.Count() - 1;
+                ddlproductos.DataSource = lista;
                 ddlproductos.DataValueField = "CODIGO";
                 ddlproductos.DataTextField = "NOMBRE";
                 ddlproductos.DataBind();
+                ddlproductos.SelectedIndex = index;
 
                 ddlcondicion.Items.Add("EFECTIVO");
                 ddlcondicion.Items.Add("15 DIAS");
@@ -56,6 +65,12 @@ namespace TPFinal_Rey_Balihaut
                 //ProductoNegocio negocio = new ProductoNegocio();
                 //myLabel.Text = (negocio.stockxproducto(ddlproductos.SelectedValue)).ToString();
             }
+
+            //else //si no es postback
+            //{ 
+            //    _Producto aux = lista.Find(x => x.Nombre == "");
+            //    lista.Remove(aux);
+            //}
 
 
             if (Session["agregadosVenta"] == null)

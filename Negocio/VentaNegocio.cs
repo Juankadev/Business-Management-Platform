@@ -232,7 +232,49 @@ namespace Negocio
 
                 if (datos.Lector.Read())
                 {
+                    datos.cerrarConexion();
+
                     datos.setearConsulta("select SUM(total) AS TOTAL from ventas");
+                    datos.ejecutarLectura();
+                    while (datos.Lector.Read())
+                    {
+                        total = (decimal)datos.Lector["TOTAL"];
+                    }
+                }
+                return total;
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
+
+        public decimal promedio()
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //ver si hay registros
+                datos.setearConsulta("select total from ventas");
+                datos.ejecutarLectura();
+                decimal total = 0;
+
+                if (datos.Lector.Read())
+                {
+                    datos.cerrarConexion();
+
+                    datos.setearConsulta("select AVG(total) AS TOTAL from ventas");
                     datos.ejecutarLectura();
                     while (datos.Lector.Read())
                     {

@@ -314,6 +314,8 @@ namespace Negocio
                 decimal total = 0;
                 if (datos.Lector.Read())
                 {
+                    datos.cerrarConexion();
+
                     datos.setearConsulta("select SUM(total) AS TOTAL from compras");
                     datos.ejecutarLectura();
                     while (datos.Lector.Read())
