@@ -13,6 +13,7 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             resetuser.Visible = false;
             resetbtn.Visible = false;
             myLabel.Visible = false;
@@ -57,6 +58,13 @@ namespace TPFinal_Rey_Balihaut
                 {
                     Session.Add("usuario",usuario);
                     Session.Add("tipo",usuario.TipoUsuario.ToString());
+
+                    CompraNegocio compra_negocio = new CompraNegocio();
+                    Session.Add("compras", compra_negocio.total());
+                    VentaNegocio venta_negocio = new VentaNegocio();
+                    Session.Add("ventas", venta_negocio.total());
+                    //decimal total = decimal.Parse(Session["compras"].ToString());
+
                     Response.Redirect("Default.aspx",false);
                 }
                 else

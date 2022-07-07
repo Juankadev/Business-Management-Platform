@@ -3,11 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 class="title">Bienvenido a tu Panel!</h1>
 
-    <h3 class="title">Estas son tus Estadisticas del Mes</h3>
+    <h1 class="title" style="margin-bottom:0">Bienvenido al INICIO!</h1>
+    <h3 class="title">Estas son tus Estadisticas</h3>
 
-    <img src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2015/10/125493-como-anadir-nuevas-series-grafico-excel.png?itok=0G0QUj2R" style="width: 49%" />
-
-    <img src="https://cdn.exceltotal.com/wp-content/uploads/2012/03/crear-un-grafico-circular-con-subgrafico-01.png" style="width: 49%" />
+    <div class="grafico" style="display:flex;justify-content:center">
+        <div id="piechart" style="width: 500px; height: 300px;"></div>
+    </div>
 </asp:Content>
