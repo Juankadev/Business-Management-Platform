@@ -13,20 +13,30 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-            {
-                Response.Redirect("Login.aspx", false);
-            }
-            else if (Session["tipo"].ToString() != "ADMIN")
-            {
-                Response.Redirect("Default.aspx", false);
-            }
+            //if (Session["usuario"] == null)
+            //{
+            //    Response.Redirect("Login.aspx", false);
+            //}
+            //else if (Session["tipo"].ToString() != "ADMIN")
+            //{
+            //    Response.Redirect("Default.aspx", false);
+            //}
 
-            CompraNegocio compra_negocio = new CompraNegocio();
-            gvCompras.DataSource = compra_negocio.listar();
-            gvCompras.DataBind();
+          
+            if(!IsPostBack)
+            {
+                CompraNegocio compra_negocio = new CompraNegocio();
+                gvCompras.DataSource = compra_negocio.listar();
+                gvCompras.DataBind();
 
-            total.Text = "$" + String.Format("{0:0.00}", compra_negocio.total());
+                total.Text = "$" + String.Format("{0:0.00}", compra_negocio.total());
+
+                ProveedorNegocio negocio = new ProveedorNegocio();
+                ddlproveedores.DataSource = negocio.listar();
+                ddlproveedores.DataTextField = "Nombre";
+                ddlproveedores.DataValueField = "CUIT";
+                ddlproveedores.DataBind();
+            }
 
         }
 
@@ -39,6 +49,13 @@ namespace TPFinal_Rey_Balihaut
         protected void gvCompras_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvCompras.PageIndex = e.NewPageIndex;
+            gvCompras.DataBind();
+        }
+
+        protected void ddlproveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CompraNegocio compra_negocio = new CompraNegocio();
+            gvCompras.DataSource = compra_negocio.listarxproveedor(ddlproveedores.SelectedValue);
             gvCompras.DataBind();
         }
     }

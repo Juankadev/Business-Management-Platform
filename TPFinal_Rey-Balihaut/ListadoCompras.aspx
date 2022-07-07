@@ -19,48 +19,56 @@
     <a href="Compras.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Compra</a>
 
 
-    <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+    <asp:ScriptManager ID="script" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>
+
+            <asp:DropDownList ID="ddlproveedores" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlproveedores_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
 
 
-    <asp:GridView ID="gvCompras" OnSelectedIndexChanged="gvCompras_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numcompra" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvCompras_PageIndexChanging"
-        PageSize="3" AllowPaging="true">
-        <Columns>
+            <asp:GridView ID="gvCompras" OnSelectedIndexChanged="gvCompras_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numcompra" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvCompras_PageIndexChanging"
+                PageSize="3" AllowPaging="true">
+                <Columns>
 
-            <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
+                    <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-            <asp:BoundField HeaderText="Numero Compra" DataField="numcompra">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+                    <asp:BoundField HeaderText="Numero Compra" DataField="numcompra">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
 
-            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+                    <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
 
-            <asp:BoundField HeaderText="Total" DataField="Total" DataFormatString="{0:C}">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+                    <asp:BoundField HeaderText="Total" DataField="Total" DataFormatString="{0:C}">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
-            <asp:BoundField HeaderText="Fecha" DataField="Fecha">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+                    <asp:BoundField HeaderText="Fecha" DataField="Fecha">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
 
-            <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
-                <ItemStyle CssClass="text-warning" />
-                <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
-                <ControlStyle CssClass="select" />
-            </asp:CommandField>
+                    <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
+                        <ItemStyle CssClass="text-warning" />
+                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <ControlStyle CssClass="select" />
+                    </asp:CommandField>
 
-        </Columns>
-    </asp:GridView>
+                </Columns>
+            </asp:GridView>
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
 
 </asp:Content>

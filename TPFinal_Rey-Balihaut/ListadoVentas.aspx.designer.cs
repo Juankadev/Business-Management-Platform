@@ -42,6 +42,24 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.Label ganancia;
 
         /// <summary>
+        /// Control script.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager script;
+
+        /// <summary>
+        /// Control ddlclientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlclientes;
+
+        /// <summary>
         /// Control gvVentas.
         /// </summary>
         /// <remarks>

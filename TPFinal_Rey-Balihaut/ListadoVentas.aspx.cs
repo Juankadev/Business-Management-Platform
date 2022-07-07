@@ -18,16 +18,26 @@ namespace TPFinal_Rey_Balihaut
                 Response.Redirect("Login.aspx", false);
             }
 
-            VentaNegocio negocio_venta = new VentaNegocio();
-            gvVentas.DataSource = negocio_venta.listar();
-            gvVentas.DataBind();
+            if(!IsPostBack)
+            {
+                VentaNegocio negocio_venta = new VentaNegocio();
+                gvVentas.DataSource = negocio_venta.listar();
+                gvVentas.DataBind();
 
-            total.Text = "$" + String.Format("{0:0.00}", negocio_venta.total());
+                ClienteNegocio negocio_cliente = new ClienteNegocio();
+                ddlclientes.DataSource = negocio_cliente.listar();
+                ddlclientes.DataTextField = "Apellido";
+                ddlclientes.DataValueField = "DNI";
+                ddlclientes.DataBind();
 
-            promedio.Text = "$" + String.Format("{0:0.00}", negocio_venta.promedio());
+                total.Text = "$" + String.Format("{0:0.00}", negocio_venta.total());
 
-            CompraNegocio negocio_compra = new CompraNegocio();
-            ganancia.Text = "$" + String.Format("{0:0.00}", negocio_venta.total() - negocio_compra.total());
+                promedio.Text = "$" + String.Format("{0:0.00}", negocio_venta.promedio());
+
+                CompraNegocio negocio_compra = new CompraNegocio();
+                ganancia.Text = "$" + String.Format("{0:0.00}", negocio_venta.total() - negocio_compra.total());
+            }
+            
         }
 
         protected void gvVentas_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,6 +49,13 @@ namespace TPFinal_Rey_Balihaut
         protected void gvVentas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvVentas.PageIndex = e.NewPageIndex;
+            gvVentas.DataBind();
+        }
+
+        protected void ddlclientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VentaNegocio negocio_venta = new VentaNegocio();
+            gvVentas.DataSource = negocio_venta.listarxcliente(ddlclientes.SelectedValue);
             gvVentas.DataBind();
         }
     }

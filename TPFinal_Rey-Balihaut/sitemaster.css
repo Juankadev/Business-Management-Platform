@@ -138,20 +138,20 @@ td.text-danger .select {
 }
 
 
-#ContentPlaceHolder1_gvCompras tbody > tr:last-child {
-    text-align: center;
-    background-color: #0d6efd;
-    color: #fff;
+/*#ContentPlaceHolder1_gvCompras tbody > tr:last-child {
+    text-align: center;*/
+    /*background-color: #0d6efd;*/
+    /*color: #fff;*/
     /*    margin-top: 20px;*/
-}
+/*}
 
 #ContentPlaceHolder1_gvCompras tbody > tr:last-child > td > table > tbody > tr > td > span {
 
-    margin-right: 10px;
+    margin-right: 10px;*/
     /*background-color: #0d6efd;*/
-    padding: 5px 10px;
+    /*padding: 5px 10px;
     color:#fff;
-}
+}*/
 
 
 tbody a {
