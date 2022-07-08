@@ -24,6 +24,24 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.Label total;
 
         /// <summary>
+        /// Control excel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image excel;
+
+        /// <summary>
+        /// Control btnExcel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnExcel;
+
+        /// <summary>
         /// Control script.
         /// </summary>
         /// <remarks>
@@ -67,15 +85,6 @@ namespace TPFinal_Rey_Balihaut
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnfiltro;
-
-        /// <summary>
-        /// Control btnreset.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnreset;
 
         /// <summary>
         /// Control gvCompras.
