@@ -253,7 +253,7 @@ namespace Negocio
                 if(datos.Lector.Read())
                 {
                     decimal n = (decimal)datos.Lector["PRECIO_VENTA"];
-                    string ns = String.Format("{0:0.00}", n);
+                    string ns = String.Format("{0:0,00}", n);
                     n = decimal.Parse(ns);
                     return n;
                 }

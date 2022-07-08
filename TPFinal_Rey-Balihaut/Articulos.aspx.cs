@@ -83,7 +83,8 @@ namespace TPFinal_Rey_Balihaut
                     CompraNegocio negocio_compra = new CompraNegocio();
                     if (negocio_compra.existeCompra(producto.Codigo))
                     {
-                        precio.Text = String.Format("{0:0.00}", producto.Precio);
+                        //precio.Text = String.Format("{0:0.00}", producto.Precio);
+                        precio.Text = producto.Precio.ToString();
                     }
                     else
                     {
@@ -146,19 +147,26 @@ namespace TPFinal_Rey_Balihaut
 
 
                 if (precio.Text == "No hay Compras del articulo")
-                {
-                    aux.Precio = 0;
-                }
+                { aux.Precio = 0; }
                 else
-                {
-                    aux.Precio = decimal.Parse(precio.Text);
-                }
+                { aux.Precio = decimal.Parse(precio.Text); }
   
-                aux.StockActual = decimal.Parse(stockactual.Text);
-                aux.StockMinimo = decimal.Parse(stockminimo.Text);
-                aux.PorcentajeGanancia = decimal.Parse(ganancia.Text);
+                if(stockactual.Text == "")
+                { aux.StockActual = 0; }
+                else 
+                { aux.StockActual = decimal.Parse(stockactual.Text); }
 
+                if (stockminimo.Text == "")
+                { aux.StockMinimo = 0; }
+                else
+                { aux.StockMinimo = decimal.Parse(stockminimo.Text); }
 
+                if (ganancia.Text == "")
+                { aux.PorcentajeGanancia = 0; }
+                else
+                { aux.PorcentajeGanancia = decimal.Parse(ganancia.Text); }
+
+                
 
                 if (Request.QueryString["id"] != null) //se esta modificando un prod.
                 {

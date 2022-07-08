@@ -19,11 +19,7 @@
     <a href="Compras.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Compra</a>
 
     
-    <div class="col-3" style="margin-left:10px;margin-bottom:10px;display:inline-block">
-        <asp:Image ID="excel" ImageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2086px-Microsoft_Excel_2013-2019_logo.svg.png" runat="server" Height="50px"/>
 
-        <asp:Button ID="btnExcel" runat="server" Text="Exportar a Excel" OnClick="btnExcel_Click" CssClass="btn btn-success" />
-    </div>
     
 
     <asp:ScriptManager ID="script" runat="server"></asp:ScriptManager>
@@ -108,6 +104,13 @@
 
         </ContentTemplate>
     </asp:UpdatePanel>
+
+
+        <div class="col-3" style="margin-left:10px;margin-bottom:10px;display:inline-block">
+        <asp:Image ID="excel" ImageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2086px-Microsoft_Excel_2013-2019_logo.svg.png" runat="server" Height="50px"/>
+
+        <asp:Button ID="btnExcel" runat="server" Text="Exportar a Excel" OnClick="btnExcel_Click" CssClass="btn btn-success" />
+    </div>
 
 
 </asp:Content>

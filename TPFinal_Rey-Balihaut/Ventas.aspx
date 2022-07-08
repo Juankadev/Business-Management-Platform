@@ -82,7 +82,7 @@
                     <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
                     <asp:BoundField HeaderText="Producto" DataField="Nombre" />
                     <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
-                    <asp:BoundField HeaderText="Precio" DataFormatString="{0:C}" DataField="Precio" />
+                    <asp:BoundField HeaderText="Precio" DataField="Precio" />
 
                     <asp:CommandField HeaderText="Eliminar" ShowSelectButton="true" SelectText="Eliminar">
                         <ItemStyle CssClass="text-warning" />
