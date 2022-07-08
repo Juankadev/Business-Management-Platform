@@ -47,6 +47,45 @@ namespace Negocio
             }
 
         }
+        public List<_Cliente> listarxtexto(string texto)
+        {
+            List<_Cliente> lista = new List<_Cliente>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select DNI,APELLIDO,NOMBRE,TELEFONO,MAIL,DIRECCION FROM CLIENTES WHERE ACTIVO=1 AND APELLIDO LIKE CONCAT('%',@TEXTO,'%')");
+                datos.setearParametro("@TEXTO", texto);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Cliente aux = new _Cliente();
+
+                    aux.DNI = (string)datos.Lector["DNI"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Mail = (string)datos.Lector["MAIL"];
+                    aux.Direccion = (string)datos.Lector["DIRECCION"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
 
         public void agregar(_Cliente nuevoCliente)
         {

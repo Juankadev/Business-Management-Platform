@@ -23,15 +23,33 @@ namespace TPFinal_Rey_Balihaut
             }
 
 
-            CategoriaNegocio categoria_negocio = new CategoriaNegocio();
-            gvCategorias.DataSource = categoria_negocio.listar();
-            gvCategorias.DataBind();
+            if(!IsPostBack)
+            {
+                CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+                gvCategorias.DataSource = categoria_negocio.listar();
+                gvCategorias.DataBind();
+            }
         }
 
         protected void gvCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
             var codigoSelected = gvCategorias.SelectedDataKey.Value.ToString();
             Response.Redirect("Categorias.aspx?id=" + codigoSelected);
+        }
+
+
+        protected void buscador_TextChanged(object sender, EventArgs e)
+        {
+            CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+            if (buscador.Text != "")
+            {
+                gvCategorias.DataSource = categoria_negocio.listarxtexto(buscador.Text);
+            }
+            else
+            {
+                gvCategorias.DataSource = categoria_negocio.listar();
+            }
+            gvCategorias.DataBind();
         }
     }
 }

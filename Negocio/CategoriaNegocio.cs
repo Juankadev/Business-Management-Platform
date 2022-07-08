@@ -44,7 +44,40 @@ namespace Negocio
 
         }
 
+        public List<_Categoria> listarxtexto(string texto)
+        {
+            List<_Categoria> lista = new List<_Categoria>();
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.setearConsulta("select Id, DESCRIPCION_CATEGORIA FROM CATEGORIAS WHERE ACTIVO=1 AND DESCRIPCION_CATEGORIA LIKE CONCAT('%',@TEXTO,'%')");
+                datos.setearParametro("@TEXTO", texto);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Categoria aux = new _Categoria();
+                    aux.IDCategoria = (int)datos.Lector["Id"];
+                    aux.DescripcionCategoria = (string)datos.Lector["DESCRIPCION_CATEGORIA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
 
         public void agregar(_Categoria nuevaCategoria)
         {

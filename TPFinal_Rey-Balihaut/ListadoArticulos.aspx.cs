@@ -24,14 +24,16 @@ namespace TPFinal_Rey_Balihaut
 
 
             ProductoNegocio producto_negocio = new ProductoNegocio();
-            gvArticulos.DataSource = producto_negocio.listar();
-            gvArticulos.DataBind();
-
-            
-            List<_Producto> lista = producto_negocio.listar();
-            for (int i=0;i<gvArticulos.Rows.Count;i++)
+            if(!IsPostBack)
             {
-                if(lista[i].StockActual < lista[i].StockMinimo)
+                gvArticulos.DataSource = producto_negocio.listar();
+                gvArticulos.DataBind();
+            }
+
+            List<_Producto> lista = producto_negocio.listar();
+            for (int i = 0; i < gvArticulos.Rows.Count; i++)
+            {
+                if (lista[i].StockActual < lista[i].StockMinimo)
                 {
                     gvArticulos.Rows[i].Cells[4].CssClass = "text-danger";
 
@@ -47,24 +49,21 @@ namespace TPFinal_Rey_Balihaut
         {
             var codigoSelected = gvArticulos.SelectedDataKey.Value.ToString();
             //Session.Add("codigoSelected", codigoSelected);
-            Response.Redirect("Articulos.aspx?id="+codigoSelected);
+            Response.Redirect("Articulos.aspx?id=" + codigoSelected);
         }
 
-        protected void gvArticulos_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void buscador_TextChanged(object sender, EventArgs e)
         {
-            //var codigoSelected = gvArticulos.SelectedDataKey.Value.ToString();
-            //string cod = Session["codigoSelected"].ToString();
-
-            //gvArticulos.SelectedDataKey.Value.ToString();
-
-            if (e.CommandName == "Eliminar")
-            {          
-                //Response.Redirect("ListadoArticulos.aspx"+cod);
-            }
-            if (e.CommandName == "Modificar")
+            ProductoNegocio producto_negocio = new ProductoNegocio();
+            if(buscador.Text!="")
             {
-                //Response.Redirect("Articulos.aspx"+cod);
+                gvArticulos.DataSource = producto_negocio.listarxtexto(buscador.Text);
             }
+            else
+            {
+                gvArticulos.DataSource = producto_negocio.listar();
+            }
+            gvArticulos.DataBind();
         }
     }
 }

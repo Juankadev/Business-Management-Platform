@@ -18,15 +18,33 @@ namespace TPFinal_Rey_Balihaut
                 Response.Redirect("Login.aspx", false);
             }
 
-            ClienteNegocio cliente_negocio = new ClienteNegocio();
-            gvClientes.DataSource = cliente_negocio.listar();
-            gvClientes.DataBind();
+            if(!IsPostBack)
+            {
+                ClienteNegocio cliente_negocio = new ClienteNegocio();
+                gvClientes.DataSource = cliente_negocio.listar();
+                gvClientes.DataBind();
+            }
         }
 
         protected void gvClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             var codigoSelected = gvClientes.SelectedDataKey.Value.ToString();
             Response.Redirect("Clientes.aspx?id=" + codigoSelected);
+        }
+
+
+        protected void buscador_TextChanged(object sender, EventArgs e)
+        {
+            ClienteNegocio cliente_negocio = new ClienteNegocio();
+            if (buscador.Text != "")
+            {
+                gvClientes.DataSource = cliente_negocio.listarxtexto(buscador.Text);
+            }
+            else
+            {
+                gvClientes.DataSource = cliente_negocio.listar();
+            }
+            gvClientes.DataBind();
         }
     }
 }

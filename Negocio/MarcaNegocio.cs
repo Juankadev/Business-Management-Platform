@@ -45,6 +45,41 @@ namespace Negocio
 
         }
 
+        public List<_Marca> listarxtexto(string texto)
+        {
+            List<_Marca> lista = new List<_Marca>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select Id, DESCRIPCION_MARCA FROM MARCAS WHERE ACTIVO=1 AND DESCRIPCION_MARCA LIKE CONCAT('%',@TEXTO,'%') ");
+                datos.setearParametro("@TEXTO", texto);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Marca aux = new _Marca();
+                    aux.IDMarca = (int)datos.Lector["Id"];
+                    aux.DescripcionMarca = (string)datos.Lector["DESCRIPCION_MARCA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
         public void agregar(_Marca nuevaMarca)
         {
             AccesoDatos datos = new AccesoDatos();

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ListadoMarcas.aspx.cs" Inherits="TPFinal_Rey_Balihaut.Listado_Marca_Categoria" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -7,30 +8,43 @@
 
     <a href="Marcas.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Marca</a>
 
-    <asp:GridView ID="gvMarcas" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged" DataKeyNames="IDMarca" runat="server">
-        <Columns>
 
-<%--            <asp:BoundField HeaderText="ID" DataField="IDMarca">
+
+    <asp:ScriptManager ID="script" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>
+
+            <div class="col-3 centrar">
+                <label for="buscador">Buscador de Marcas</label>
+                <asp:TextBox ID="buscador" CssClass="form-control" OnTextChanged="buscador_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
+            </div>
+
+            <asp:GridView ID="gvMarcas" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged" DataKeyNames="IDMarca" runat="server">
+                <Columns>
+
+                    <%--            <asp:BoundField HeaderText="ID" DataField="IDMarca">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-            <asp:BoundField HeaderText="Nombre" DataField="DescripcionMarca">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
-              
-          
-            <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
-                <ItemStyle CssClass="text-warning" />
-                <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
-                <ControlStyle CssClass="select" />
-            </asp:CommandField>
+                    <asp:BoundField HeaderText="Nombre" DataField="DescripcionMarca">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
 
-            <%--<asp:LinkButton id="lbtnServerSelect" runat="server" text="Select" commandname="Select"  />--%>
+                    <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
+                        <ItemStyle CssClass="text-warning" />
+                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <ControlStyle CssClass="select" />
+                    </asp:CommandField>
 
-            </Columns>
-    </asp:GridView>
+
+                    <%--<asp:LinkButton id="lbtnServerSelect" runat="server" text="Select" commandname="Select"  />--%>
+                </Columns>
+            </asp:GridView>
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
 </asp:Content>

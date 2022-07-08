@@ -48,7 +48,43 @@ namespace Negocio
 
         }
 
+        public List<_Proveedor2> listarxtexto(string texto)
+        {
+            List<_Proveedor2> lista = new List<_Proveedor2>();
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.setearConsulta("select CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION FROM PROVEEDORES WHERE ACTIVO=1 AND NOMBRE_PROVEEDOR LIKE CONCAT('%',@TEXTO,'%') ");
+                datos.setearParametro("@TEXTO", texto);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Proveedor2 aux = new _Proveedor2();
+                    aux.CUIT = (string)datos.Lector["CUIT"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Mail = (string)datos.Lector["MAIL"];
+                    aux.Direccion = (string)datos.Lector["DIRECCION"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
         public void agregar(_Proveedor2 nuevoProveedor)
         {
             AccesoDatos datos = new AccesoDatos();

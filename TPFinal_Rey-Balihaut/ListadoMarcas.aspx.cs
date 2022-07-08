@@ -21,16 +21,33 @@ namespace TPFinal_Rey_Balihaut
             {
                 Response.Redirect("Default.aspx", false);
             }
-
-            MarcaNegocio marca_negocio = new MarcaNegocio();
-            gvMarcas.DataSource = marca_negocio.listar();
-            gvMarcas.DataBind();
+            
+            if(!IsPostBack)
+            {
+                MarcaNegocio marca_negocio = new MarcaNegocio();
+                gvMarcas.DataSource = marca_negocio.listar();
+                gvMarcas.DataBind();
+            }
         }
 
         protected void gvMarcas_SelectedIndexChanged(object sender, EventArgs e)
         {
             var codigoSelected = gvMarcas.SelectedDataKey.Value.ToString();
             Response.Redirect("Marcas.aspx?id=" + codigoSelected);
+        }
+
+        protected void buscador_TextChanged(object sender, EventArgs e)
+        {
+            MarcaNegocio marca_negocio = new MarcaNegocio();
+            if (buscador.Text != "")
+            {
+                gvMarcas.DataSource = marca_negocio.listarxtexto(buscador.Text);
+            }
+            else
+            {
+                gvMarcas.DataSource = marca_negocio.listar();
+            }
+            gvMarcas.DataBind();
         }
     }
 }

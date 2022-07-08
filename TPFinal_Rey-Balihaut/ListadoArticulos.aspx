@@ -20,67 +20,82 @@
 
     <a href="Articulos.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Articulo</a>
 
-    <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" OnRowCommand="gvArticulos_RowCommand" CssClass="table table-dark table-hover" DataKeyNames="Codigo" Style="color: #fff" AutoGenerateColumns="false" runat="server">
-        <Columns>
 
-            <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
+    <asp:ScriptManager ID="script" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>
+
+            <div class="col-3 centrar">
+                <label for="buscador">Buscador de Productos</label>
+                <asp:TextBox ID="buscador" CssClass="form-control" OnTextChanged="buscador_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
+            </div>
+
+            <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="Codigo" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+                <Columns>
+
+                    <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-            <asp:BoundField HeaderText="Nombre" DataField="Nombre">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+                    <asp:BoundField HeaderText="Nombre" DataField="Nombre">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
 
-            <asp:BoundField HeaderText="Marca" DataField="Marca.DescripcionMarca">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+                    <asp:BoundField HeaderText="Marca" DataField="Marca.DescripcionMarca">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
 
-            <asp:BoundField HeaderText="Categoria" DataField="Categoria.DescripcionCategoria">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+                    <asp:BoundField HeaderText="Categoria" DataField="Categoria.DescripcionCategoria">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
-            <%--            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>--%>
-
-            <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}">
-                <ItemStyle CssClass="" />
-                <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
-
-            <%--            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia" DataFormatString="{0:0}%">
+                    <%--            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-            <%--            <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo">
+                    <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
+
+                    <%--            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia" DataFormatString="{0:0}%">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-            <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
+                    <%--            <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo">
                 <ItemStyle CssClass="" />
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
-            </asp:BoundField>
+            </asp:BoundField>--%>
+
+                    <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    </asp:BoundField>
 
 
 
-            <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
-                <ItemStyle CssClass="text-warning" />
-                <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
-                <ControlStyle CssClass="select" />
-            </asp:CommandField>
+                    <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
+                        <ItemStyle CssClass="text-warning" />
+                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <ControlStyle CssClass="select" />
+                    </asp:CommandField>
 
 
-            <%--            <asp:LinkButton id="lbtnServerSelect" runat="server" text="Select" commandname="Select"  />--%>
-        </Columns>
-    </asp:GridView>
+                    <%--            <asp:LinkButton id="lbtnServerSelect" runat="server" text="Select" commandname="Select"  />--%>
+                </Columns>
+            </asp:GridView>
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
+
 
 </asp:Content>

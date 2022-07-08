@@ -22,15 +22,33 @@ namespace TPFinal_Rey_Balihaut
                 Response.Redirect("Default.aspx", false);
             }
 
-            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-            gvProveedores.DataSource = proveedor_negocio.listar();
-            gvProveedores.DataBind();
+            if(!IsPostBack)
+            {
+                ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+                gvProveedores.DataSource = proveedor_negocio.listar();
+                gvProveedores.DataBind();
+            }
         }
 
         protected void gvProveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
             var codigoSelected = gvProveedores.SelectedDataKey.Value.ToString();
             Response.Redirect("Proveedores.aspx?id=" + codigoSelected);
+        }
+
+
+        protected void buscador_TextChanged(object sender, EventArgs e)
+        {
+            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+            if (buscador.Text != "")
+            {
+                gvProveedores.DataSource = proveedor_negocio.listarxtexto(buscador.Text);
+            }
+            else
+            {
+                gvProveedores.DataSource = proveedor_negocio.listar();
+            }
+            gvProveedores.DataBind();
         }
     }
 }
