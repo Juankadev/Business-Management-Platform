@@ -58,6 +58,35 @@ namespace TPFinal_Rey_Balihaut
             gvVentas.DataSource = negocio_venta.listarxcliente(ddlclientes.SelectedValue);
             gvVentas.DataBind();
         }
+
+
+        protected void btnfiltro_Click(object sender, EventArgs e)
+        {
+            VentaNegocio venta_negocio = new VentaNegocio();
+
+            if (tboxmin.Text != "" && tboxmax.Text != "")
+            {
+                decimal min = decimal.Parse(tboxmin.Text);
+                decimal max = decimal.Parse(tboxmax.Text);
+                gvVentas.DataSource = venta_negocio.listarxrango(min, max);
+            }
+            else if (tboxmin.Text != "" && tboxmax.Text == "")
+            {
+                decimal min = decimal.Parse(tboxmin.Text);
+                gvVentas.DataSource = venta_negocio.listarxmin(min);
+            }
+            else if (tboxmin.Text == "" && tboxmax.Text != "")
+            {
+                decimal max = decimal.Parse(tboxmax.Text);
+                gvVentas.DataSource = venta_negocio.listarxmax(max);
+            }
+            else
+            {
+                gvVentas.DataSource = venta_negocio.listar();
+            }
+            gvVentas.DataBind();
+
+        }
     }
 }
 

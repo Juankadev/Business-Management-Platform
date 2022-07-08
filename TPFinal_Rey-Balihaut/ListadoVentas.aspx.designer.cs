@@ -60,6 +60,33 @@ namespace TPFinal_Rey_Balihaut
         protected global::System.Web.UI.WebControls.DropDownList ddlclientes;
 
         /// <summary>
+        /// Control tboxmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxmin;
+
+        /// <summary>
+        /// Control tboxmax.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxmax;
+
+        /// <summary>
+        /// Control btnfiltro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnfiltro;
+
+        /// <summary>
         /// Control gvVentas.
         /// </summary>
         /// <remarks>

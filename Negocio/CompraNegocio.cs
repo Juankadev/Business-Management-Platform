@@ -135,6 +135,127 @@ namespace Negocio
 
 
 
+        public List<_Compra> listarxmin(decimal min)
+        {
+            List<_Compra> lista = new List<_Compra>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select NUM_COMPRA, COD_PROVEEDOR, P.NOMBRE_PROVEEDOR, TOTAL, C.FECHA FROM COMPRAS C INNER JOIN PROVEEDORES P ON C.COD_PROVEEDOR = P.CUIT where total >= @min");
+                datos.setearParametro("@min", min);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Compra aux = new _Compra();
+                    aux.Proveedor = new _Proveedor2();
+
+                    aux.numcompra = (int)datos.Lector["NUM_COMPRA"];
+                    aux.Proveedor.CUIT = (string)datos.Lector["COD_PROVEEDOR"];
+                    aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    aux.Total = (Decimal)datos.Lector["TOTAL"];
+                    aux.Fecha = (DateTime)datos.Lector["FECHA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<_Compra> listarxmax(decimal max)
+        {
+            List<_Compra> lista = new List<_Compra>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select NUM_COMPRA, COD_PROVEEDOR, P.NOMBRE_PROVEEDOR, TOTAL, C.FECHA FROM COMPRAS C INNER JOIN PROVEEDORES P ON C.COD_PROVEEDOR = P.CUIT where total <= @max");
+                datos.setearParametro("@max", max);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Compra aux = new _Compra();
+                    aux.Proveedor = new _Proveedor2();
+
+                    aux.numcompra = (int)datos.Lector["NUM_COMPRA"];
+                    aux.Proveedor.CUIT = (string)datos.Lector["COD_PROVEEDOR"];
+                    aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    aux.Total = (Decimal)datos.Lector["TOTAL"];
+                    aux.Fecha = (DateTime)datos.Lector["FECHA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<_Compra> listarxrango(decimal min, decimal max)
+        {
+            List<_Compra> lista = new List<_Compra>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select NUM_COMPRA, COD_PROVEEDOR, P.NOMBRE_PROVEEDOR, TOTAL, C.FECHA FROM COMPRAS C INNER JOIN PROVEEDORES P ON C.COD_PROVEEDOR = P.CUIT where total between @min and @max");
+                datos.setearParametro("@min", min);
+                datos.setearParametro("@max", max);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Compra aux = new _Compra();
+                    aux.Proveedor = new _Proveedor2();
+
+                    aux.numcompra = (int)datos.Lector["NUM_COMPRA"];
+                    aux.Proveedor.CUIT = (string)datos.Lector["COD_PROVEEDOR"];
+                    aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    aux.Total = (Decimal)datos.Lector["TOTAL"];
+                    aux.Fecha = (DateTime)datos.Lector["FECHA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
         public void agregar(_Compra nuevaCompra)
         {
             AccesoDatos datos = new AccesoDatos();

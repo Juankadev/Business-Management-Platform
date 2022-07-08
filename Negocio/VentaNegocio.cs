@@ -127,6 +127,129 @@ namespace Negocio
 
         }
 
+
+        public List<_Venta> listarxmin(decimal min)
+        {
+            List<_Venta> lista = new List<_Venta>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select V.NUM_VENTA, V.COD_CLIENTE, CL.APELLIDO, V.TOTAL, V.FECHA FROM VENTAS V INNER JOIN CLIENTES CL ON V.COD_CLIENTE = CL.DNI where total >= @min");
+                datos.setearParametro("@min", min);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Venta aux = new _Venta();
+                    aux.Cliente = new _Cliente();
+
+                    aux.numventa = (int)datos.Lector["NUM_VENTA"];
+                    aux.Cliente.DNI = (string)datos.Lector["COD_CLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Total = (Decimal)datos.Lector["TOTAL"];
+                    aux.Fecha = (DateTime)datos.Lector["FECHA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<_Venta> listarxmax(decimal max)
+        {
+            List<_Venta> lista = new List<_Venta>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select V.NUM_VENTA, V.COD_CLIENTE, CL.APELLIDO, V.TOTAL, V.FECHA FROM VENTAS V INNER JOIN CLIENTES CL ON V.COD_CLIENTE = CL.DNI where total <= @max");
+                datos.setearParametro("@max", max);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Venta aux = new _Venta();
+                    aux.Cliente = new _Cliente();
+
+                    aux.numventa = (int)datos.Lector["NUM_VENTA"];
+                    aux.Cliente.DNI = (string)datos.Lector["COD_CLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Total = (Decimal)datos.Lector["TOTAL"];
+                    aux.Fecha = (DateTime)datos.Lector["FECHA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<_Venta> listarxrango(decimal min, decimal max)
+        {
+            List<_Venta> lista = new List<_Venta>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select V.NUM_VENTA, V.COD_CLIENTE, CL.APELLIDO, V.TOTAL, V.FECHA FROM VENTAS V INNER JOIN CLIENTES CL ON V.COD_CLIENTE = CL.DNI where total between @min and @max");
+                datos.setearParametro("@min", min);
+                datos.setearParametro("@max", max);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Venta aux = new _Venta();
+                    aux.Cliente = new _Cliente();
+
+                    aux.numventa = (int)datos.Lector["NUM_VENTA"];
+                    aux.Cliente.DNI = (string)datos.Lector["COD_CLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Total = (Decimal)datos.Lector["TOTAL"];
+                    aux.Fecha = (DateTime)datos.Lector["FECHA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
         public void agregar(_Venta nuevaVenta)
         {
             AccesoDatos datos = new AccesoDatos();

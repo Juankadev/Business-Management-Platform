@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1 style="text-align: center">Listado de Compras</h1>
+    <h1 style="text-align: center" class="title">Listado de Compras</h1>
 
 
     <div class="card text-white bg-primary bg-gradient mb-3 centrar" style="max-width: 18rem;">
@@ -23,11 +23,47 @@
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
 
-            <asp:DropDownList ID="ddlproveedores" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlproveedores_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+
+            <!--Filtros-->
+            <form>
+                <div class="row">
+
+                    <div class="col">
+                        <label for="ddlproveedores">Proveedor</label>
+                        <asp:DropDownList ID="ddlproveedores" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlproveedores_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="tboxmin">Min</label>
+                        <asp:TextBox ID="tboxmin" CssClass="form-control" type="number" runat="server" min="0" placeholder="$0"></asp:TextBox>
+                    </div>
+
+
+                    <div class="col-2">
+                        <label for="tboxmax">Max</label>
+                        <asp:TextBox ID="tboxmax" CssClass="form-control" type="number" runat="server" min="0" placeholder="$150000"></asp:TextBox>
+                    </div>
+
+
+                    <div class="col-1" style="">
+                        <label for="btnfiltro" style="display: block">Filtrar</label>
+                        <asp:Button ID="btnfiltro" CssClass="btn btn-primary bajar" OnClick="btnfiltro_Click" Style="display: block" runat="server" Text="Buscar" />
+                    </div>
+
+                    <div class="col-1" style="">
+                        <label for="btnreset" style="display: block">Limpiar</label>
+                        <asp:Button ID="btnreset" CssClass="btn btn-primary bajar" OnClick="btnreset_Click" Style="display: block" runat="server" Text="Resetear" />
+                    </div>
+                </div>
+            </form>
+
+
+
+
 
 
             <asp:GridView ID="gvCompras" OnSelectedIndexChanged="gvCompras_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numcompra" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvCompras_PageIndexChanging"
-                PageSize="3" AllowPaging="true">
+                PageSize="10" AllowPaging="true">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">

@@ -13,19 +13,20 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["usuario"] == null)
-            //{
-            //    Response.Redirect("Login.aspx", false);
-            //}
-            //else if (Session["tipo"].ToString() != "ADMIN")
-            //{
-            //    Response.Redirect("Default.aspx", false);
-            //}
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
+            else if (Session["tipo"].ToString() != "ADMIN")
+            {
+                Response.Redirect("Default.aspx", false);
+            }
 
           
+            CompraNegocio compra_negocio = new CompraNegocio();
+
             if(!IsPostBack)
             {
-                CompraNegocio compra_negocio = new CompraNegocio();
                 gvCompras.DataSource = compra_negocio.listar();
                 gvCompras.DataBind();
 
@@ -58,5 +59,91 @@ namespace TPFinal_Rey_Balihaut
             gvCompras.DataSource = compra_negocio.listarxproveedor(ddlproveedores.SelectedValue);
             gvCompras.DataBind();
         }
+
+        protected void btnfiltro_Click(object sender, EventArgs e)
+        {
+            CompraNegocio compra_negocio = new CompraNegocio();
+
+            if (tboxmin.Text != "" && tboxmax.Text != "")
+            {
+                decimal min = decimal.Parse(tboxmin.Text);
+                decimal max = decimal.Parse(tboxmax.Text);
+                gvCompras.DataSource = compra_negocio.listarxrango(min, max);
+            }
+            else if (tboxmin.Text != "" && tboxmax.Text == "")
+            {
+                decimal min = decimal.Parse(tboxmin.Text);
+                gvCompras.DataSource = compra_negocio.listarxmin(min);
+            }
+            else if (tboxmin.Text == "" && tboxmax.Text != "")
+            {
+                decimal max = decimal.Parse(tboxmax.Text);
+                gvCompras.DataSource = compra_negocio.listarxmax(max);
+            }
+            else
+            {
+                gvCompras.DataSource = compra_negocio.listar();
+            }
+            gvCompras.DataBind();
+
+        }
+
     }
 }
+
+
+
+
+
+///MAX CHANGED
+//CompraNegocio compra_negocio = new CompraNegocio();
+
+//if (tboxmax.Text != "")
+//{
+//    decimal max = decimal.Parse(tboxmax.Text);
+
+//    if (tboxmin.Text != "")
+//    {
+//        decimal min = decimal.Parse(tboxmin.Text);
+//        gvCompras.DataSource = compra_negocio.listarxrango(min, max);
+//    }
+//    else
+//    {
+//        gvCompras.DataSource = compra_negocio.listarxmax(max);
+//    }
+//}
+
+//else
+//{
+//    gvCompras.DataSource = compra_negocio.listar();
+//}
+//gvCompras.DataBind();
+
+
+
+//TBOXMIN
+//CompraNegocio compra_negocio = new CompraNegocio();
+
+//if (tboxmin.Text!="")
+//{
+//    //haymin = true;
+//    decimal min = decimal.Parse(tboxmin.Text);
+
+//    if (tboxmax.Text!="")
+//    {
+//        decimal max = decimal.Parse(tboxmax.Text);
+//        gvCompras.DataSource = compra_negocio.listarxrango(min,max);
+//    }
+//    else
+//    {
+//        gvCompras.DataSource = compra_negocio.listarxmin(min);
+//    }
+//}
+
+//else
+//{
+//    //haymin = false;
+//    gvCompras.DataSource = compra_negocio.listar();
+//}
+
+//gvCompras.DataBind();

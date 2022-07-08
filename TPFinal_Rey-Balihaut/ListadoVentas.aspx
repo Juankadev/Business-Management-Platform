@@ -47,10 +47,39 @@
     <asp:ScriptManager ID="script" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <asp:DropDownList ID="ddlclientes" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlclientes_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+
+            <!--Filtros-->
+            <form>
+                <div class="row">
+
+                    <div class="col">
+                        <label for="ddlclientes">Clientes</label>
+                        <asp:DropDownList ID="ddlclientes" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlclientes_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="tboxmin">Min</label>
+                        <asp:TextBox ID="tboxmin" CssClass="form-control" type="number" runat="server" min="0"  placeholder="$0"></asp:TextBox>
+                    </div>
 
 
-            <asp:GridView ID="gvVentas" OnSelectedIndexChanged="gvVentas_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numventa" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvVentas_PageIndexChanging" PageSize="3" AllowPaging="true">
+                    <div class="col-2">
+                        <label for="tboxmax">Max</label>
+                        <asp:TextBox ID="tboxmax" CssClass="form-control" type="number" runat="server" min="0" placeholder="$150000"></asp:TextBox>
+                    </div>
+
+
+                    <div class="col-1" style="">
+                        <label for="btnfiltro" style="display: block">Filtrar</label>
+                        <asp:Button ID="btnfiltro" CssClass="btn btn-primary bajar" OnClick="btnfiltro_Click" Style="display: block" runat="server" Text="Buscar" />
+                    </div>
+
+
+                </div>
+            </form>
+
+
+            <asp:GridView ID="gvVentas" OnSelectedIndexChanged="gvVentas_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numventa" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvVentas_PageIndexChanging" PageSize="10" AllowPaging="true">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
