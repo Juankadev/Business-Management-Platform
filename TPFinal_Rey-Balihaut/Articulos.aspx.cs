@@ -190,7 +190,7 @@ namespace TPFinal_Rey_Balihaut
 
                 else //se esta agregando un producto
                 {
-                    producto_negocio.agregar(aux);
+                    producto_negocio.agregarConSP(aux);
 
                     //Agregar proveedores_x_producto
                     foreach (ListItem li in CheckBoxList.Items)

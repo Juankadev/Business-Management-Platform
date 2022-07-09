@@ -26,7 +26,7 @@ namespace TPFinal_Rey_Balihaut
             ProductoNegocio producto_negocio = new ProductoNegocio();
             if(!IsPostBack)
             {
-                gvArticulos.DataSource = producto_negocio.listar();
+                gvArticulos.DataSource = producto_negocio.listarConSP();
                 gvArticulos.DataBind();
             }
 

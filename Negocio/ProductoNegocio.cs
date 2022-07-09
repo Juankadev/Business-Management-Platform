@@ -61,16 +61,16 @@ namespace Negocio
         }
 
 
-
-        public List<_Producto> listarxtexto(string texto)
+        public List<_Producto> listarConSP()
         {
             List<_Producto> lista = new List<_Producto>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION_MARCA,C.DESCRIPCION_CATEGORIA,IDCATEGORIA,PRECIO,PR.PRECIO_VENTA,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS PR INNER JOIN MARCAS M ON IDMARCA = M.ID INNER JOIN CATEGORIAS C ON IDCATEGORIA=C.ID WHERE PR.ACTIVO=1 AND PR.NOMBRE LIKE CONCAT('%',@TEXTO,'%') ");
-                datos.setearParametro("@TEXTO",texto);
+                //datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION_MARCA,C.DESCRIPCION_CATEGORIA,IDCATEGORIA,PRECIO,PR.PRECIO_VENTA,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS PR INNER JOIN MARCAS M ON IDMARCA = M.ID INNER JOIN CATEGORIAS C ON IDCATEGORIA=C.ID WHERE PR.ACTIVO=1 ORDER BY NOMBRE ASC");
+
+                datos.setearProcedimiento("storedListarArticulos");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -113,16 +113,78 @@ namespace Negocio
         }
 
 
-        public void agregar(_Producto nuevoProducto)
+        public List<_Producto> listarxtexto(string texto)
+        {
+            List<_Producto> lista = new List<_Producto>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select CODIGO,NOMBRE,IDMARCA,M.DESCRIPCION_MARCA,C.DESCRIPCION_CATEGORIA,IDCATEGORIA,PRECIO,PR.PRECIO_VENTA,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN FROM PRODUCTOS PR INNER JOIN MARCAS M ON IDMARCA = M.ID INNER JOIN CATEGORIAS C ON IDCATEGORIA=C.ID WHERE PR.ACTIVO=1 AND PR.NOMBRE LIKE CONCAT('%',@TEXTO,'%') ");
+                datos.setearParametro("@TEXTO", texto);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    _Producto aux = new _Producto();
+                    aux.Marca = new _Marca();
+                    aux.Categoria = new _Categoria();
+                    //aux.Proveedor = new _Proveedor2();
+
+                    aux.Codigo = (string)datos.Lector["CODIGO"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Marca.IDMarca = (int)datos.Lector["IDMARCA"];
+                    aux.Marca.DescripcionMarca = (string)datos.Lector["DESCRIPCION_MARCA"];
+                    aux.Categoria.IDCategoria = (int)datos.Lector["IDCATEGORIA"];
+                    aux.Categoria.DescripcionCategoria = (string)datos.Lector["DESCRIPCION_CATEGORIA"];
+                    //aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
+                    //aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
+                    aux.Precio = (decimal)datos.Lector["PRECIO"];
+                    aux.PrecioVenta = (decimal)datos.Lector["PRECIO_VENTA"];
+                    aux.StockActual = (decimal)datos.Lector["STOCK_ACTUAL"];
+                    aux.StockMinimo = (decimal)datos.Lector["STOCK_MINIMO"];
+                    aux.PorcentajeGanancia = (decimal)datos.Lector["PORCENTAJE_GAN"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
+        public void agregarConSP(_Producto nuevoProducto)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,PRECIO_VENTA,NOMBRE,IDMARCA,IDCATEGORIA,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN,ACTIVO) " +
-                    "VALUES ('" + nuevoProducto.Codigo + "', '" + 0 + "', '" + nuevoProducto.Nombre + "', @IDMARCA, @IDCATEGORIA, " + nuevoProducto.Precio + ", '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "','" + nuevoProducto.PorcentajeGanancia + "', '" + 1 + "')");
-                datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
-                datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
+                //datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,PRECIO_VENTA,NOMBRE,IDMARCA,IDCATEGORIA,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN,ACTIVO) " +
+                //    "VALUES ('" + nuevoProducto.Codigo + "', '" + 0 + "', '" + nuevoProducto.Nombre + "', @IDMARCA, @IDCATEGORIA, " + nuevoProducto.Precio + ", '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "','" + nuevoProducto.PorcentajeGanancia + "', '" + 1 + "')");
+                //datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
+                //datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
+
                 //datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
+
+                datos.setearProcedimiento("storedAltaArticulos");
+                datos.setearParametro("@CODIGO",nuevoProducto.Codigo);
+                datos.setearParametro("@NOMBRE",nuevoProducto.Nombre);
+                datos.setearParametro("@IDMARCA",nuevoProducto.Marca.IDMarca);
+                datos.setearParametro("@IDCATEGORIA",nuevoProducto.Categoria.IDCategoria);
+                datos.setearParametro("@PRECIO",nuevoProducto.Precio);
+                datos.setearParametro("@STOCKACTUAL",nuevoProducto.StockActual);
+                datos.setearParametro("@STOCKMINIMO",nuevoProducto.StockMinimo);
+                datos.setearParametro("@PORCENTAJE",nuevoProducto.PorcentajeGanancia);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -147,9 +209,9 @@ namespace Negocio
                 datos.setearParametro("@NOMBRE", nuevoProducto.Nombre);
                 datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
                 datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
-                
+
                 datos.setearParametro("@PRECIO", nuevoProducto.Precio);
-                datos.setearParametro("@PRECIOVENTA", nuevoProducto.Precio + (nuevoProducto.Precio *(nuevoProducto.PorcentajeGanancia / 100)));
+                datos.setearParametro("@PRECIOVENTA", nuevoProducto.Precio + (nuevoProducto.Precio * (nuevoProducto.PorcentajeGanancia / 100)));
                 datos.setearParametro("@STOCKMINIMO", nuevoProducto.StockMinimo);
                 datos.setearParametro("@STOCKACTUAL", nuevoProducto.StockActual);
                 datos.setearParametro("@PORCENTAJEGAN", nuevoProducto.PorcentajeGanancia);
@@ -226,7 +288,7 @@ namespace Negocio
 
                 datos.setearConsulta("INSERT INTO PROVEEDORES_X_PRODUCTO (CODIGO_PRODUCTO,CUIT_PROVEEDOR) " +
                     "VALUES ('" + cod_producto + "', '" + cuit_proveedor + "')");
-                datos.ejecutarAccion();               
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
@@ -243,14 +305,14 @@ namespace Negocio
         public decimal buscarPrecioVenta(string codigo)
         {
             AccesoDatos datos = new AccesoDatos();
-            
+
             try
             {
                 datos.setearConsulta("select PRECIO_VENTA from productos where codigo=@codigo");
-                datos.setearParametro("@codigo",codigo);
+                datos.setearParametro("@codigo", codigo);
                 datos.ejecutarLectura();
 
-                if(datos.Lector.Read())
+                if (datos.Lector.Read())
                 {
                     decimal n = (decimal)datos.Lector["PRECIO_VENTA"];
                     string ns = String.Format("{0:0,00}", n);
@@ -278,7 +340,7 @@ namespace Negocio
         }
 
 
-        public bool hayStock(decimal ingresado ,string codigo)
+        public bool hayStock(decimal ingresado, string codigo)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -291,7 +353,7 @@ namespace Negocio
                 if (datos.Lector.Read())
                 {
                     decimal stockactual = (decimal)datos.Lector["stock_actual"];
-                    if(ingresado <= stockactual)
+                    if (ingresado <= stockactual)
                     {
                         return true;
                     }
@@ -326,7 +388,7 @@ namespace Negocio
                 datos.setearParametro("@codigo", codigo);
                 datos.ejecutarLectura();
 
-                decimal stockactual=0;
+                decimal stockactual = 0;
 
                 if (datos.Lector.Read())
                 {

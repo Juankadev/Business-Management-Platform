@@ -34,7 +34,7 @@ namespace TPFinal_Rey_Balihaut
 
                 ProveedorNegocio negocio = new ProveedorNegocio();
                 ddlproveedores.DataSource = negocio.listar();
-                ddlproveedores.DataTextField = "Nombre";
+                ddlproveedores.DataTextField = "Nombre" + "CUIT";
                 ddlproveedores.DataValueField = "CUIT";
                 ddlproveedores.DataBind();
             }
