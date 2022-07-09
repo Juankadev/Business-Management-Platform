@@ -170,7 +170,7 @@ namespace TPFinal_Rey_Balihaut
 
                 if (Request.QueryString["id"] != null) //se esta modificando un prod.
                 {
-                    producto_negocio.modificar(aux);
+                    producto_negocio.modificarConSP(aux);
 
                     //Modificar proveedores_x_producto
                     foreach (ListItem li in CheckBoxList.Items)
