@@ -55,19 +55,19 @@
             <Columns>
                 <asp:BoundField HeaderText="Producto" DataField="Nombre">
                     <ItemStyle CssClass="" />
-                    <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                    <HeaderStyle CssClass="bg-success bg-gradient"></HeaderStyle>
                 </asp:BoundField>
 
 
                 <asp:BoundField HeaderText="Cantidad" DataField="Cantidad">
                     <ItemStyle CssClass="rigth" />
-                    <HeaderStyle CssClass="rigth bg-primary bg-gradient"></HeaderStyle>
+                    <HeaderStyle CssClass="rigth bg-success bg-gradient"></HeaderStyle>
                 </asp:BoundField>
 
 
                 <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:C}">
                     <ItemStyle CssClass="rigth" />
-                    <HeaderStyle CssClass="rigth bg-primary bg-gradient"></HeaderStyle>
+                    <HeaderStyle CssClass="rigth bg-success bg-gradient"></HeaderStyle>
                 </asp:BoundField>
 
 

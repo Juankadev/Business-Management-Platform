@@ -89,30 +89,30 @@
 
                     <asp:BoundField HeaderText="Numero Venta" DataField="numventa">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-success bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Cliente" DataField="Cliente.Apellido">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-success bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Total" DataField="Total" DataFormatString="{0:C}">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-success bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
                     <asp:BoundField HeaderText="Fecha" DataField="Fecha">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-success bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
-                    <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
-                        <ItemStyle CssClass="text-warning" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                    <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver">
+                        <ItemStyle CssClass="text-warning fa-solid fa-eye" />
+                        <HeaderStyle CssClass="bg-success bg-gradient"></HeaderStyle>
                         <ControlStyle CssClass="select" />
                     </asp:CommandField>
 

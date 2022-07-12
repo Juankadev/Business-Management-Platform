@@ -79,14 +79,14 @@
         <div class="col-5">
             <asp:GridView ID="gvAgregados" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvAgregados_SelectedIndexChanged" DataKeyNames="Codigo" CssClass="table table-dark table-hover" Style="color: #fff">
                 <Columns>
-                    <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
-                    <asp:BoundField HeaderText="Producto" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
-                    <asp:BoundField HeaderText="Precio" DataField="Precio" />
+                    <asp:BoundField HeaderText="Codigo" DataField="Codigo" HeaderStyle-CssClass="bg-success bg-gradient"/>
+                    <asp:BoundField HeaderText="Producto" HeaderStyle-CssClass="bg-success bg-gradient" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Cantidad" HeaderStyle-CssClass="bg-success bg-gradient" DataField="Cantidad" />
+                    <asp:BoundField HeaderText="Precio" HeaderStyle-CssClass="bg-success bg-gradient" DataField="Precio" />
 
                     <asp:CommandField HeaderText="Eliminar" ShowSelectButton="true" SelectText="Eliminar">
-                        <ItemStyle CssClass="text-warning" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <ItemStyle CssClass="text-warning fa-solid fa-trash-can" />
+                        <HeaderStyle CssClass="bg-success bg-gradient"></HeaderStyle>
                         <ControlStyle CssClass="select" />
                     </asp:CommandField>
                 </Columns>

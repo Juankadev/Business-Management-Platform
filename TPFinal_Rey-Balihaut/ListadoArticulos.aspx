@@ -84,8 +84,8 @@
 
 
 
-                    <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
-                        <ItemStyle CssClass="text-warning" />
+                    <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver">
+                        <ItemStyle CssClass="text-warning fa-solid fa-eye" />
                         <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
                         <ControlStyle CssClass="select" />
                     </asp:CommandField>
