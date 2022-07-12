@@ -7,18 +7,22 @@
     <link href="CSS/login.css" rel="stylesheet" />
 
 
-    <div class="row justify-content-center" style="margin-top:70px">
+    <div class="row justify-content-center" style="margin-top: 70px">
 
-        <div class="col-6" style="overflow: hidden;background-image:url(https://www.100plandenegocios.com/wp-content/uploads/2021/01/como-emprender-una-tienda-de-ropa-min-scaled.jpg);background-attachment:scroll;background-position:center;background-repeat:no-repeat;background-size:cover;">
-<%--            <img style="border-radius: 10px; position: center" src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />--%>
+        <div class="col-6" style="overflow: hidden; background-image: url(https://www.100plandenegocios.com/wp-content/uploads/2021/01/como-emprender-una-tienda-de-ropa-min-scaled.jpg); background-attachment: scroll; background-position: center; background-repeat: no-repeat; background-size: cover;">
+
+
+            <h1 class="" style="font-size: 2rem; margin: 0;text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">¡Comenzá a controlar tu Negocio!</h1>
+            <h4 class="" style="margin: 0;text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">Sumate a la plataforma de Gestion de Comercios</h4>
+
+
+            <%--            <img style="border-radius: 10px; position: center" src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />--%>
         </div>
 
 
-        <div class="col-4" style="border-radius: 10px; margin-left: -30px; background-color: rgb(27, 30, 31)">
+        <div class="col-4" style="border-radius: 10px; margin-left: -30px; background-color: rgb(27, 30, 31); padding: 15px">
 
-            <h1 class="title" style="font-size:2rem;margin-bottom:15px;margin-top:10px">¡Comenzá a controlar tu Negocio!</h1>
-
-            <div class="col-9 gradient centrar login" style="padding: 25px; border-radius: 10px">
+            <div class="col-9 gradient centrar login" style="padding: 25px; border-radius: 10px;margin-top:30px;margin-bottom:30px">
 
                 <div class="mb-3">
                     <h3>
