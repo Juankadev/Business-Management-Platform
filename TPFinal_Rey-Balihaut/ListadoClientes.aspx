@@ -57,7 +57,7 @@
 
                     <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
                         <ItemStyle CssClass="text-warning" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
                         <ControlStyle CssClass="select" />
                     </asp:CommandField>
 

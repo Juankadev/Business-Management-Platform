@@ -30,19 +30,19 @@
 
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Telefono" DataField="Telefono">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Mail" DataField="Mail">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
                     <%--            <asp:BoundField HeaderText="Direccion" DataField="Direccion">
@@ -52,7 +52,7 @@
 
                     <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
                         <ItemStyle CssClass="text-warning" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
                         <ControlStyle CssClass="select" />
                     </asp:CommandField>
 

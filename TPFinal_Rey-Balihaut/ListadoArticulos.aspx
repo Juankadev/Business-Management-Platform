@@ -42,19 +42,19 @@
 
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Marca" DataField="Marca.DescripcionMarca">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Categoria" DataField="Categoria.DescripcionCategoria">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
                     <%--            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
@@ -64,7 +64,7 @@
 
                     <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
                     <%--            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia" DataFormatString="{0:0}%">
@@ -79,14 +79,14 @@
 
                     <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
 
                     <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Detalle">
                         <ItemStyle CssClass="text-warning" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
                         <ControlStyle CssClass="select" />
                     </asp:CommandField>
 

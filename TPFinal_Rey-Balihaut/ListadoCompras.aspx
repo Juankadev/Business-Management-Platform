@@ -7,7 +7,7 @@
     <h1 style="text-align: center" class="title">Listado de Compras</h1>
 
 
-    <div class="card text-white bg-primary bg-gradient mb-3 centrar" style="max-width: 18rem;">
+    <div class="card text-white bg-warning bg-gradient mb-3 centrar" style="max-width: 18rem;">
         <div class="card-header">Total Compras</div>
         <div class="card-body">
             <%--            <h5 class="card-title"></h5>--%>
@@ -72,24 +72,24 @@
 
                     <asp:BoundField HeaderText="Numero Compra" DataField="numcompra">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Total" DataField="Total" DataFormatString="{0:C}">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
                     <asp:BoundField HeaderText="Fecha" DataField="Fecha">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                     </asp:BoundField>
 
 

@@ -207,3 +207,19 @@ tbody a {
 .centrar-row .login{
     margin-top:20px
 }
+
+.grey {
+    background-color: #101010
+}
+
+#ContentPlaceHolder1_gvProveedores > tbody > tr:first-child {
+    background-color: #6f42c1
+}
+
+
+#ContentPlaceHolder1_gvMarcas > tbody > tr:first-child {
+    background-color: #101010
+}
+#ContentPlaceHolder1_gvCategorias > tbody > tr:first-child {
+    background-color: #101010
+}
