@@ -23,6 +23,7 @@ namespace TPFinal_Rey_Balihaut
                 Response.Redirect("Default.aspx", false);
             }
 
+
             if (!IsPostBack)
             {
                 btn_alta.Text = "Agregar";

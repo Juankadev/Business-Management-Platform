@@ -4,10 +4,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="row">
+    <div class="row centrar-row">
         <h1 class="title">¡Ingresá y controlá tu Negocio!</h1>
 
-        <div class="col-3">
+        <div class="col-3 login">
 
             <%--            <img src="https://d2v1hpltdjq1rf.cloudfront.net/static/account/assets/images/ic-login.png" width="500"/>--%>
             <div class="mb-3">
@@ -20,7 +20,7 @@
                 <asp:TextBox ID="pass" type="password" class="form-control" runat="server"></asp:TextBox>
             </div>
 
-            <asp:Button ID="login" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Login" OnClick="login_Click" />
+            <asp:Button ID="login" class="btn btn-primary btn-lg btnlogin" runat="server" Text="Ingresar" OnClick="login_Click" />
 
 
 

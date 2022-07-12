@@ -9,6 +9,8 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
+    <script src="https://kit.fontawesome.com/6f996bfcbd.js" crossorigin="anonymous"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <link href="sitemaster.css" rel="stylesheet" />
@@ -17,32 +19,29 @@
 
     <%if (Session["usuario"] != null)
         {%>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            google.charts.load('current', { 'packages': ['corechart'] });
-            google.charts.setOnLoadCallback(drawChart);
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
 
-            function drawChart() {
+        function drawChart() {
 
-                var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Compras', <%=decimal.Parse(Session["compras"].ToString())%>],
-                    ['Ventas', <%=decimal.Parse(Session["ventas"].ToString())%>],
-                ]);
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Compras', <%=decimal.Parse(Session["compras"].ToString())%>],
+                ['Ventas', <%=decimal.Parse(Session["ventas"].ToString())%>]
+            ]);
 
-                var options = {
-                    title: 'COMPRAS VS VENTAS'
-                };
+            var options = {
+                title: 'COMPRAS VS VENTAS'
+            };
 
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-                chart.draw(data, options);
-            }
-        </script>
+            chart.draw(data, options);
+        }
+    </script>
     <%} %>
-
-
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -60,15 +59,16 @@
                             {%>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="Default.aspx">
+                                <i class="fa-solid fa-house" style="color: #343a40; fill: #000; margin-right: 3px"></i>Inicio</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoVentas.aspx">Ventas</a>
-                        </li>
+                            <a class="nav-link active" aria-current="page" href="ListadoClientes.aspx">
+                                <i class="fa-solid fa-users" style="color: #0d6efd; fill: #000; margin-right: 3px"></i>Clientes</a></li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoClientes.aspx">Clientes</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoVentas.aspx"><i class="fa-solid fa-sack-dollar" style="color: #198754; fill: #000; margin-right: 3px"></i>Ventas</a>
                         </li>
 
 
@@ -77,23 +77,25 @@
                             { %>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoCompras.aspx">Compras</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoCompras.aspx">
+                                <i class="fa-solid fa-truck" style="color: #ffc107; fill: #000; margin-right: 3px"></i>Compras</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoArticulos.aspx">Articulos</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoArticulos.aspx">
+                                <i class="fa-solid fa-box" style="color: #dc3545; fill: #000; margin-right: 3px"></i>Articulos</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoProveedores.aspx">Proveedores</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoProveedores.aspx"><i class="fa-solid fa-address-book" style="color: #6f42c1; fill: #000; margin-right: 3px"></i>Proveedores</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoMarcas.aspx">Marcas</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoMarcas.aspx"><i class="fa-solid fa-list" style="color: #343a40; fill: #000; margin-right: 3px"></i>Marcas</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="ListadoCategorias.aspx">Categorias</a>
+                            <a class="nav-link active" aria-current="page" href="ListadoCategorias.aspx"><i class="fa-solid fa-list" style="color: #343a40; fill: #000; margin-right: 3px"></i>Categorias</a>
                         </li>
 
 
