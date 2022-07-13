@@ -7,7 +7,7 @@
     <h1 style="text-align: center" class="title">Listado de Compras</h1>
 
 
-    <div class="card text-white bg-warning bg-gradient mb-3 centrar" style="max-width: 18rem;">
+    <div class="card text-white success3 mb-3 centrar" style="max-width: 18rem;">
         <div class="card-header">Total Compras</div>
         <div class="card-body">
             <%--            <h5 class="card-title"></h5>--%>
@@ -16,7 +16,7 @@
     </div>
 
 
-    <a href="Compras.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Compra</a>
+    <a href="Compras.aspx" class="btn success3 btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Compra</a>
 
     
 
@@ -50,7 +50,7 @@
 
                     <div class="col-1" style="">
                         <label for="btnfiltro" style="display: block">Filtrar</label>
-                        <asp:Button ID="btnfiltro" CssClass="btn btn-primary bajar" OnClick="btnfiltro_Click" Style="display: block" runat="server" Text="Buscar" />
+                        <asp:Button ID="btnfiltro" CssClass="btn success2 bajar" OnClick="btnfiltro_Click" Style="display: block" runat="server" Text="Buscar" />
                     </div>
 
                     <%--                    <div class="col-1" style="">
@@ -62,7 +62,7 @@
 
 
             <asp:GridView ID="gvCompras" OnSelectedIndexChanged="gvCompras_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numcompra" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvCompras_PageIndexChanging"
-                PageSize="10" AllowPaging="true">
+                PageSize="10" AllowPaging="true" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
@@ -72,31 +72,31 @@
 
                     <asp:BoundField HeaderText="Numero Compra" DataField="numcompra">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Total" DataField="Total" DataFormatString="{0:C}">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
                     <asp:BoundField HeaderText="Fecha" DataField="Fecha">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver">
-                        <ItemStyle CssClass="text-warning fa-solid fa-eye" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
-                        <ControlStyle CssClass="select" />
+                        <ItemStyle CssClass="success2 fa-solid fa-eye" />
+                        <HeaderStyle CssClass=""></HeaderStyle>
+                        <ControlStyle CssClass="success2" />
                     </asp:CommandField>
 
                 </Columns>

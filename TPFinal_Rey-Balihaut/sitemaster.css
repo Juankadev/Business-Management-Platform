@@ -137,7 +137,9 @@ td.text-danger .select {
 
 
 .red{
-    color:#dc3545;
+    color:#fff;
+    border-radius:100%;
+    background-color:#dc3545;
 }
 
 
@@ -247,6 +249,7 @@ tbody a {
         .gradient li.nav-item:hover {
             border: 1px solid #fff;
 /*            background-color: rgba(255,255,255,0.5);*/
+
         }
 .gradient li.nav-item a.nav-link {
     color: #fff
@@ -256,10 +259,29 @@ tbody a {
         }*/
 
 .btn-ingresar {
-    background-color: rgb(23, 133, 133);
+    /*    background-color: rgb(23, 133, 133);*/
+    background-color: #069C62;
     color: #fff
 }
-.btn-ingresar:hover {
-    background-color: rgb(10, 120, 120);
+    .btn-ingresar:hover {
+        background-color: #069C62;
+        color: #fff
+    }
+    .success2.fa-solid.fa-eye {
+        color: #fff;
+        background-color: #069C62;
+        border-radius:5px
+    }
+        .success2.fa-solid.fa-eye:hover {
+            color: #fff;
+            background-color: #069C62;
+            border-radius:5px
+        }
+.success3 {
+    background-color: #069C62;
+    color:#fff
+}
+.success3:hover {
+    background-color: #069C62;
     color: #fff
 }

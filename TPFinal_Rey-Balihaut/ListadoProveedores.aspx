@@ -7,7 +7,7 @@
 
     <h1 style="text-align: center">Listado de Proveedores</h1>
 
-    <a href="Proveedores.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Proveedor</a>
+    <a href="Proveedores.aspx" class="btn success3 btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Proveedor</a>
 
 
 
@@ -20,7 +20,7 @@
                 <asp:TextBox ID="buscador" CssClass="form-control" OnTextChanged="buscador_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
             </div>
 
-            <asp:GridView ID="gvProveedores" OnSelectedIndexChanged="gvProveedores_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="CUIT" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+            <asp:GridView ID="gvProveedores" OnSelectedIndexChanged="gvProveedores_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="CUIT" Style="color: #fff" AutoGenerateColumns="false" runat="server" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="CUIT" DataField="CUIT">
@@ -30,19 +30,19 @@
 
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Telefono" DataField="Telefono">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Mail" DataField="Mail">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
                     <%--            <asp:BoundField HeaderText="Direccion" DataField="Direccion">
@@ -51,9 +51,9 @@
             </asp:BoundField>   --%>
 
                     <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver">
-                        <ItemStyle CssClass="text-warning fa-solid fa-eye" />
-                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
-                        <ControlStyle CssClass="select" />
+                        <ItemStyle CssClass="success2 fa-solid fa-eye" />
+                        <HeaderStyle CssClass=""></HeaderStyle>
+                        <ControlStyle CssClass="success2" />
                     </asp:CommandField>
 
 

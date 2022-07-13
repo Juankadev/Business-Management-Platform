@@ -6,7 +6,7 @@
 
     <h1 style="text-align: center">Listado de Categorias</h1>
 
-    <a href="Categorias.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Categoria</a>
+    <a href="Categorias.aspx" class="btn success3 btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nueva Categoria</a>
 
 
 
@@ -21,7 +21,7 @@
             </div>
 
 
-            <asp:GridView ID="gvCategorias" OnSelectedIndexChanged="gvCategorias_SelectedIndexChanged" DataKeyNames="IDCategoria" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+            <asp:GridView ID="gvCategorias" OnSelectedIndexChanged="gvCategorias_SelectedIndexChanged" DataKeyNames="IDCategoria" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" runat="server" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="ID" DataField="IDCategoria">
@@ -31,14 +31,14 @@
 
                     <asp:BoundField HeaderText="Nombre" DataField="DescripcionCategoria">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver">
-                        <ItemStyle CssClass="text-warning fa-solid fa-eye" />
-                        <HeaderStyle CssClass="bg-gradient"></HeaderStyle>
-                        <ControlStyle CssClass="select" />
+                        <ItemStyle CssClass="success2 fa-solid fa-eye" />
+                        <HeaderStyle CssClass=""></HeaderStyle>
+                        <ControlStyle CssClass="success2" />
                     </asp:CommandField>
 
 

@@ -35,7 +35,7 @@ namespace TPFinal_Rey_Balihaut
             {
                 if (lista[i].StockActual < lista[i].StockMinimo)
                 {
-                    gvArticulos.Rows[i].Cells[4].CssClass = "text-danger";
+                    gvArticulos.Rows[i].Cells[4].CssClass = "text-danger red";
 
                     //card articulo menor stock
                     nombreArt.Text = gvArticulos.Rows[i].Cells[0].Text;

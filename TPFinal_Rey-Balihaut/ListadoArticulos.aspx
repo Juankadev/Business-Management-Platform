@@ -18,7 +18,7 @@
     </div>
 
 
-    <a href="Articulos.aspx" class="btn btn-success bg-gradient btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Articulo</a>
+    <a href="Articulos.aspx" class="btn success3 btn-lg btnlogin" style="width: 20%; margin: 20px auto">Nuevo Articulo</a>
 
 
 
@@ -32,7 +32,7 @@
                 <asp:TextBox ID="buscador" CssClass="form-control" OnTextChanged="buscador_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
             </div>
 
-            <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="Codigo" Style="color: #fff" AutoGenerateColumns="false" runat="server">
+            <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="Codigo" Style="color: #fff" AutoGenerateColumns="false" runat="server" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
@@ -42,19 +42,19 @@
 
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Marca" DataField="Marca.DescripcionMarca">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
                     <asp:BoundField HeaderText="Categoria" DataField="Categoria.DescripcionCategoria">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
                     <%--            <asp:BoundField HeaderText="Proveedor" DataField="Proveedor.Nombre">
@@ -64,7 +64,7 @@
 
                     <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
                     <%--            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGanancia" DataFormatString="{0:0}%">
@@ -79,15 +79,15 @@
 
                     <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
                         <ItemStyle CssClass="" />
-                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
+                        <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
 
                     <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver">
-                        <ItemStyle CssClass="text-warning fa-solid fa-eye" />
-                        <HeaderStyle CssClass="bg-danger bg-gradient"></HeaderStyle>
-                        <ControlStyle CssClass="select" />
+                        <ItemStyle CssClass="success2 fa-solid fa-eye" />
+                        <HeaderStyle CssClass=""></HeaderStyle>
+                        <ControlStyle CssClass="success2" />
                     </asp:CommandField>
 
 
