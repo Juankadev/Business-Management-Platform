@@ -9,10 +9,10 @@
 
     <div class="row justify-content-center" style="margin-top: 70px">
 
-        <div class="col-6" style="overflow: hidden; background-image: url(https://www.100plandenegocios.com/wp-content/uploads/2021/01/como-emprender-una-tienda-de-ropa-min-scaled.jpg); background-attachment: scroll; background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="col-6" style="overflow: hidden; background-image: url(https://www.100plandenegocios.com/wp-content/uploads/2021/01/como-emprender-una-tienda-de-ropa-min-scaled.jpg); background-attachment: scroll; background-position: center; background-repeat: no-repeat; background-size: cover;border-radius:10px;">
 
 
-            <h1 class="" style="font-size: 2rem; margin: 0;text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">¡Comenzá a controlar tu Negocio!</h1>
+            <h1 class="" style="font-size: 2rem; margin: 0;text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);filter:brightness(1)">¡Comenzá a controlar tu Negocio!</h1>
             <h4 class="" style="margin: 0;text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">Sumate a la plataforma de Gestion de Comercios</h4>
 
 

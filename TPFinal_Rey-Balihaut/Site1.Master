@@ -48,7 +48,7 @@
 
     <%if (Session["usuario"] != null)
         {%>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg gradient">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">COMERCIO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,16 +58,16 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 
-                        <li class="nav-item">
+                        <li class="nav-item btn-gradient">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">
                                 <i class="fa-solid fa-house" style="color: #343a40; fill: #000; margin-right: 3px"></i>Inicio</a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item btn-gradient">
                             <a class="nav-link active" aria-current="page" href="ListadoClientes.aspx">
                                 <i class="fa-solid fa-users" style="color: #0d6efd; fill: #000; margin-right: 3px"></i>Clientes</a></li>
 
-                        <li class="nav-item">
+                        <li class="nav-item btn-gradient">
                             <a class="nav-link active" aria-current="page" href="ListadoVentas.aspx"><i class="fa-solid fa-sack-dollar" style="color: #198754; fill: #000; margin-right: 3px"></i>Ventas</a>
                         </li>
 
@@ -76,31 +76,31 @@
                         <%if (Session["tipo"].ToString() == "ADMIN") //es admin
                             { %>
 
-                        <li class="nav-item">
+                        <li class="nav-item btn-gradient">
                             <a class="nav-link active" aria-current="page" href="ListadoCompras.aspx">
                                 <i class="fa-solid fa-truck" style="color: #ffc107; fill: #000; margin-right: 3px"></i>Compras</a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item btn-gradient">
                             <a class="nav-link active" aria-current="page" href="ListadoArticulos.aspx">
                                 <i class="fa-solid fa-box" style="color: #dc3545; fill: #000; margin-right: 3px"></i>Articulos</a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item btn-gradient">
                             <a class="nav-link active" aria-current="page" href="ListadoProveedores.aspx"><i class="fa-solid fa-address-book" style="color: #6f42c1; fill: #000; margin-right: 3px"></i>Proveedores</a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item btn-gradient">
                             <a class="nav-link active" aria-current="page" href="ListadoMarcas.aspx"><i class="fa-solid fa-list" style="color: #343a40; fill: #000; margin-right: 3px"></i>Marcas</a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item btn-gradient">
                             <a class="nav-link active" aria-current="page" href="ListadoCategorias.aspx"><i class="fa-solid fa-list" style="color: #343a40; fill: #000; margin-right: 3px"></i>Categorias</a>
                         </li>
 
 
                         <%} %>
-                        <asp:Button ID="btnsalir" CssClass="nav-link active btn btn-primary btn-gradient navlogin" OnClick="btnsalir_Click" runat="server" Text="Desloguearme" />
+                        <asp:Button ID="btnsalir" CssClass="btn btn-ingresar btn-gradient" OnClick="btnsalir_Click" runat="server" Text="Desloguearme" />
 
 
 
