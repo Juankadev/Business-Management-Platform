@@ -105,7 +105,7 @@
                 </div>
 
                 <div class="mb-3" style="width: 12%; display: inline-block">
-                    <asp:Button ID="btn_nuevo_producto" class="btn btn-primary  btnlogin" OnClick="btn_nuevo_producto_Click" runat="server" Text="OK" />
+                    <asp:Button ID="btn_nuevo_producto" class="btn success3 btnlogin" OnClick="btn_nuevo_producto_Click" runat="server" Text="OK" />
                 </div>
 
             </div>
@@ -114,17 +114,17 @@
 
 
         <div class="col-5">
-            <asp:GridView ID="gvAgregados" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvSeleccionados_SelectedIndexChanged" DataKeyNames="Codigo" CssClass="table table-dark table-hover" Style="color: #fff">
+            <asp:GridView ID="gvAgregados" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gvSeleccionados_SelectedIndexChanged" DataKeyNames="Codigo" CssClass="table table-dark table-hover" Style="color: #fff" HeaderStyle-CssClass="gradient">
                 <Columns>
-                    <asp:BoundField HeaderText="Codigo" HeaderStyle-CssClass="bg-warning bg-gradient" DataField="Codigo" />
-                    <asp:BoundField HeaderText="Producto" HeaderStyle-CssClass="bg-warning bg-gradient" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Cantidad" HeaderStyle-CssClass="bg-warning bg-gradient" DataField="Cantidad" />
-                    <asp:BoundField HeaderText="Precio" HeaderStyle-CssClass="bg-success bg-warning" DataField="Precio" />
+                    <asp:BoundField HeaderText="Codigo" HeaderStyle-CssClass="" DataField="Codigo" />
+                    <asp:BoundField HeaderText="Producto" HeaderStyle-CssClass="" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Cantidad" HeaderStyle-CssClass="" DataField="Cantidad" />
+                    <asp:BoundField HeaderText="Precio" HeaderStyle-CssClass="" DataField="Precio" />
 
                     <asp:CommandField HeaderText="Eliminar" ShowSelectButton="true" SelectText="Eliminar">
-                        <ItemStyle CssClass="text-warning fa-solid fa-trash-can" />
-                        <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
-                        <ControlStyle CssClass="select" />
+                        <ItemStyle CssClass="" />
+                        <HeaderStyle CssClass=""></HeaderStyle>
+                        <ControlStyle CssClass="fa-solid fa-trash-can select text-warning" />
                     </asp:CommandField>
                 </Columns>
             </asp:GridView>
@@ -135,7 +135,7 @@
             </div>
 
             <!--AGREGAR-->
-            <asp:Button ID="altaCompra" OnClick="altaCompra_Click" CssClass="btn btn-success btn-lg btnlogin" runat="server" Text="Registrar Compra" />
+            <asp:Button ID="altaCompra" OnClick="altaCompra_Click" CssClass="btn success3 btn-lg btnlogin" runat="server" Text="Registrar Compra" />
 
         </div>
 

@@ -51,9 +51,9 @@
             </asp:BoundField>   --%>
 
                     <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver">
-                        <ItemStyle CssClass="success2 fa-solid fa-eye" />
+                        <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
-                        <ControlStyle CssClass="success2" />
+                        <ControlStyle CssClass="fa-solid fa-eye success2" />
                     </asp:CommandField>
 
 

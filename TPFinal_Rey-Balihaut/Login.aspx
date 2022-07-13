@@ -7,22 +7,27 @@
     <link href="CSS/login.css" rel="stylesheet" />
 
 
-    <div class="row justify-content-center" style="margin-top: 70px">
+    <div class="row justify-content-center" style="margin-top: 40px">
 
-        <div class="col-6" style="overflow: hidden; background-image: url(https://www.100plandenegocios.com/wp-content/uploads/2021/01/como-emprender-una-tienda-de-ropa-min-scaled.jpg); background-attachment: scroll; background-position: center; background-repeat: no-repeat; background-size: cover;border-radius:10px;">
+        <div class="col-6" style="overflow: hidden; background-image: url(https://www.100plandenegocios.com/wp-content/uploads/2021/01/como-emprender-una-tienda-de-ropa-min-scaled.jpg); background-attachment: scroll; background-position: center; background-repeat: no-repeat; background-size: cover; border-radius: 10px;">
 
 
-            <h1 class="" style="font-size: 2rem; margin: 0;text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);filter:brightness(1)">¡Comenzá a controlar tu Negocio!</h1>
-            <h4 class="" style="margin: 0;text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">Sumate a la plataforma de Gestion de Comercios</h4>
+            <div style="background-color: rgb(27, 30, 31); margin-left: -14px">
+            </div>
 
 
             <%--            <img style="border-radius: 10px; position: center" src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />--%>
         </div>
 
 
-        <div class="col-4" style="border-radius: 10px; margin-left: -30px; background-color: rgb(27, 30, 31); padding: 15px">
+        <div class="col-5" style="border-radius: 10px; margin-left: -30px; background-color: rgb(27, 30, 31); padding: 15px">
 
-            <div class="col-9 gradient centrar login" style="padding: 25px; border-radius: 10px;margin-top:30px;margin-bottom:30px">
+
+            <h1 class="title" style="font-size: 2rem; margin: 0; text-shadow: 0px 0px 2px rgba(0, 0, 0, 1); filter: brightness(1)">¡Comenzá a controlar tu Negocio!</h1>
+            <h5 class="title" style="margin: 0; text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);">Sumate a la plataforma de Gestion de Comercios</h5>
+
+
+            <div class="col-9 gradient centrar login" style="padding: 25px; border-radius: 10px; margin-top: 30px; margin-bottom: 30px">
 
                 <div class="mb-3">
                     <h3>
@@ -42,11 +47,11 @@
                     <asp:TextBox ID="pass" type="password" class="form-control" runat="server"></asp:TextBox>
                 </div>
 
-                <asp:Button ID="login" class="btn btn-ingresar btn-lg btnlogin" runat="server" Text="Ingresar" OnClick="login_Click" />
+                <asp:Button ID="login" class="btn btn-ingresar btn-md btnlogin" runat="server" Text="Ingresar" OnClick="login_Click" />
 
 
 
-                <a href="Login.aspx?reset=1" class="text-white" style="text-align: center; text-decoration: none; display: block; margin-top: 15px">Olvidé mi Password</a>
+                <a href="Login.aspx?reset=1" class="text-white btn btn-grey" style="text-align: center; text-decoration: none; display: block; margin-top: 15px">Olvidé mi Password</a>
 
 
 
