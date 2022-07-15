@@ -104,7 +104,7 @@
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
-                    <asp:BoundField HeaderText="Fecha" DataField="Fecha">
+                    <asp:BoundField HeaderText="Fecha" DataField="Fecha" DataFormatString="{0:dd/MM/yyyy}">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
