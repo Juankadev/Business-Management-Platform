@@ -251,14 +251,20 @@ namespace Negocio
         }
 
 
-        public int agregar(_Venta nuevaVenta)
+        public void agregar(_Venta nuevaVenta)
         {
             //int r = 0;
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO VENTAS (COD_CLIENTE,TOTAL,FECHA) VALUES ('" + nuevaVenta.Cliente.DNI + "','" + nuevaVenta.Total + "','" + "@fecha" + "' )");
-                datos.setearParametro("@fecha",DateTime.Now);
+                string prueba = DateTime.Now.ToString("yyyy-MM-dd");
+                datos.setearConsulta("INSERT INTO VENTAS (COD_CLIENTE,TOTAL,FECHA) VALUES ('" + nuevaVenta.Cliente.DNI + "','" + nuevaVenta.Total + "','" + prueba + "' )");
+
+                //DateTime p2 = DateTime.Parse(prueba);
+
+                //DateTime p3 = Convert.ToDateTime(prueba, System.Globalization.CultureInfo.InvariantCulture);
+
+                //datos.setearParametro("@fecha", "2022-08-07");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -272,7 +278,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
 
-            return r;
+            //return r;
         }
 
         public void agregarDetalle(_Venta nuevaVenta, Agregados agregado)

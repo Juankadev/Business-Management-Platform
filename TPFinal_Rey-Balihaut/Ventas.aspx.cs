@@ -276,7 +276,7 @@ namespace TPFinal_Rey_Balihaut
                 lista_agregados = new List<Agregados>();
                 Session.Add("agregadosVenta", lista_agregados);
 
-                Response.Redirect("ListadoVentas.aspx");
+                Response.Redirect("ListadoVentas.aspx",false);
             }
             catch (Exception ex)
             {
@@ -303,7 +303,7 @@ namespace TPFinal_Rey_Balihaut
             {
                 Session.Add("error", ex);
                 Response.Redirect("Error.aspx");
-            }
+            } 
         }
     }
 }

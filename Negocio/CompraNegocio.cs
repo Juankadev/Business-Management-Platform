@@ -261,7 +261,8 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO COMPRAS (COD_PROVEEDOR,TOTAL,FECHA) VALUES ('" + nuevaCompra.Proveedor.CUIT + "','" + nuevaCompra.Total + "','" + nuevaCompra.Fecha + "' )");
+                string prueba = DateTime.Now.ToString("yyyy-MM-dd");
+                datos.setearConsulta("INSERT INTO COMPRAS (COD_PROVEEDOR,TOTAL,FECHA) VALUES ('" + nuevaCompra.Proveedor.CUIT + "','" + nuevaCompra.Total + "','" + prueba + "' )");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
