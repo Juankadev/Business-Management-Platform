@@ -66,7 +66,7 @@ namespace TPFinal_Rey_Balihaut
                     if (Request.QueryString["id"] != null)
                     {
                         stockactual.ReadOnly = true;
-                        stockminimo.ReadOnly = true;
+                        //stockminimo.ReadOnly = true;
 
 
                         btn_eliminar.Enabled = true;
