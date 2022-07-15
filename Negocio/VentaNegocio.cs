@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 using Negocio;
+using System.Web;
 
 namespace Negocio
 {
@@ -250,22 +251,28 @@ namespace Negocio
         }
 
 
-        public void agregar(_Venta nuevaVenta)
+        public int agregar(_Venta nuevaVenta)
         {
+            //int r = 0;
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO VENTAS (COD_CLIENTE,TOTAL,FECHA) VALUES ('" + nuevaVenta.Cliente.DNI + "','" + nuevaVenta.Total + "','" + nuevaVenta.Fecha + "' )");
+                datos.setearConsulta("INSERT INTO VENTAS (COD_CLIENTE,TOTAL,FECHA) VALUES ('" + nuevaVenta.Cliente.DNI + "','" + nuevaVenta.Total + "','" + "@fecha" + "' )");
+                datos.setearParametro("@fecha",DateTime.Now);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
+                //Session.Add("error",ex);
+                //r = 1;
                 throw ex;
             }
             finally
             {
                 datos.cerrarConexion();
             }
+
+            return r;
         }
 
         public void agregarDetalle(_Venta nuevaVenta, Agregados agregado)

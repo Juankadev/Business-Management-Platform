@@ -13,60 +13,92 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            try
             {
-                Response.Redirect("Login.aspx", false);
-            }
-            else if (Session["tipo"].ToString() != "ADMIN")
-            {
-                Response.Redirect("Default.aspx", false);
-            }
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("Login.aspx", false);
+                }
+                else if (Session["tipo"].ToString() != "ADMIN")
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
 
 
-            if(!IsPostBack)
+                if (!IsPostBack)
+                {
+                    CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+                    gvCategorias.DataSource = categoria_negocio.listar();
+                    gvCategorias.DataBind();
+                }
+            }
+            catch (Exception ex)
             {
-                CategoriaNegocio categoria_negocio = new CategoriaNegocio();
-                gvCategorias.DataSource = categoria_negocio.listar();
-                gvCategorias.DataBind();
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
 
         protected void gvCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var codigoSelected = gvCategorias.SelectedDataKey.Value.ToString();
-            Response.Redirect("Categorias.aspx?id=" + codigoSelected);
+            try
+            {
+                var codigoSelected = gvCategorias.SelectedDataKey.Value.ToString();
+                Response.Redirect("Categorias.aspx?id=" + codigoSelected);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
+            }
         }
 
 
         protected void buscador_TextChanged(object sender, EventArgs e)
         {
-            CategoriaNegocio categoria_negocio = new CategoriaNegocio();
-            if (buscador.Text != "")
+            try
             {
-                gvCategorias.DataSource = categoria_negocio.listarxtexto(buscador.Text);
+                CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+                if (buscador.Text != "")
+                {
+                    gvCategorias.DataSource = categoria_negocio.listarxtexto(buscador.Text);
+                }
+                else
+                {
+                    gvCategorias.DataSource = categoria_negocio.listar();
+                }
+                gvCategorias.DataBind();
             }
-            else
+            catch (Exception ex)
             {
-                gvCategorias.DataSource = categoria_negocio.listar();
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
-            gvCategorias.DataBind();
         }
 
 
         protected void btnExcel_Click(object sender, EventArgs e)
         {
-            Response.ClearContent();
-            Response.AddHeader("content-disposition", "attachment;filename=Categorias.xls");
-            Response.Charset = "";
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.ContentType = "application/vnd.xls";
+            try
+            {
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment;filename=Categorias.xls");
+                Response.Charset = "";
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.ContentType = "application/vnd.xls";
 
-            System.IO.StringWriter stringWrite = new System.IO.StringWriter();
-            System.Web.UI.HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
+                System.IO.StringWriter stringWrite = new System.IO.StringWriter();
+                System.Web.UI.HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
 
-            gvCategorias.RenderControl(htmlWrite);
-            Response.Write(stringWrite.ToString());
-            Response.End();
+                gvCategorias.RenderControl(htmlWrite);
+                Response.Write(stringWrite.ToString());
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
+            }
         }
 
         public override void VerifyRenderingInServerForm(Control control)

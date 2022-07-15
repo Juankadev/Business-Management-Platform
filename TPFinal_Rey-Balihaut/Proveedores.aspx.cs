@@ -13,40 +13,48 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            try
             {
-                Response.Redirect("Login.aspx", false);
-            }
-            else if (Session["tipo"].ToString() != "ADMIN")
-            {
-                Response.Redirect("Default.aspx", false);
-            }
-
-
-            if (!IsPostBack)
-            {
-                btn_alta.Text = "Agregar";
-
-                if (Request.QueryString["id"] != null)
+                if (Session["usuario"] == null)
                 {
-                    string codigoURL = Request.QueryString["id"].ToString();
-                    btn_alta.Text = "Modificar";
-
-                    ProveedorNegocio negocio = new ProveedorNegocio();
-                    List<_Proveedor2> lista = negocio.listar();
-                    _Proveedor2 aux = lista.Find(x => x.CUIT == codigoURL);
-
-                    cuit.Text = aux.CUIT;
-                    nombre.Text = aux.Nombre;
-                    telefono.Text = aux.Telefono;
-                    mail.Text = aux.Mail;
-                    direccion.Text = aux.Direccion;
+                    Response.Redirect("Login.aspx", false);
                 }
-                else
+                else if (Session["tipo"].ToString() != "ADMIN")
                 {
-                    btn_eliminar.Enabled = false;
-                    btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
+                    Response.Redirect("Default.aspx", false);
                 }
+
+
+                if (!IsPostBack)
+                {
+                    btn_alta.Text = "Agregar";
+
+                    if (Request.QueryString["id"] != null)
+                    {
+                        string codigoURL = Request.QueryString["id"].ToString();
+                        btn_alta.Text = "Modificar";
+
+                        ProveedorNegocio negocio = new ProveedorNegocio();
+                        List<_Proveedor2> lista = negocio.listar();
+                        _Proveedor2 aux = lista.Find(x => x.CUIT == codigoURL);
+
+                        cuit.Text = aux.CUIT;
+                        nombre.Text = aux.Nombre;
+                        telefono.Text = aux.Telefono;
+                        mail.Text = aux.Mail;
+                        direccion.Text = aux.Direccion;
+                    }
+                    else
+                    {
+                        btn_eliminar.Enabled = false;
+                        btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -100,15 +108,16 @@ namespace TPFinal_Rey_Balihaut
 
             catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
 
         protected void btn_eliminar_Click(object sender, EventArgs e)
-        {
-            ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+        {   
             try
             {
+                ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
                 if (Request.QueryString["id"] != null)
                 {
                     string codigoURL = Request.QueryString["id"].ToString();
@@ -116,10 +125,10 @@ namespace TPFinal_Rey_Balihaut
                     Response.Redirect("ListadoProveedores.aspx");
                 }
             }
-
             catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
     }

@@ -13,33 +13,40 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            try
             {
-                Response.Redirect("Login.aspx", false);
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("Login.aspx", false);
+                }
+                else if (Session["tipo"].ToString() != "ADMIN")
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
+
+                if (Request.QueryString["num"] != null)
+                {
+                    int buscado = int.Parse(Request.QueryString["num"]);
+                    CompraNegocio negocio = new CompraNegocio();
+                    _Compra aux = negocio.listarxnum(buscado);
+
+                    txtnum.Text = aux.numcompra.ToString();
+                    txtfecha.Text = aux.Fecha.ToString();
+                    txtobservaciones.Text = aux.Observaciones;
+                    txtproveedor.Text = aux.Proveedor.Nombre;
+                    txttotal.Text = String.Format("{0:0.00}", aux.Total);
+                    txtcondicion.Text = aux.Condicion;
+                }
+
+                CompraNegocio compra_negocio = new CompraNegocio();
+                gvArticulos.DataSource = compra_negocio.listarDetalleProducto(int.Parse(txtnum.Text));
+                gvArticulos.DataBind();
             }
-            else if (Session["tipo"].ToString() != "ADMIN")
+            catch (Exception ex)
             {
-                Response.Redirect("Default.aspx", false);
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
-
-            if (Request.QueryString["num"]!=null)
-            {
-                int buscado = int.Parse(Request.QueryString["num"]);
-                CompraNegocio negocio = new CompraNegocio();
-                _Compra aux = negocio.listarxnum(buscado);
-
-                txtnum.Text = aux.numcompra.ToString();
-                txtfecha.Text = aux.Fecha.ToString();
-                txtobservaciones.Text = aux.Observaciones;
-                txtproveedor.Text = aux.Proveedor.Nombre;
-                txttotal.Text = String.Format("{0:0.00}", aux.Total);
-                txtcondicion.Text = aux.Condicion;
-            }
-
-            CompraNegocio compra_negocio = new CompraNegocio();
-            gvArticulos.DataSource = compra_negocio.listarDetalleProducto(int.Parse(txtnum.Text));
-            gvArticulos.DataBind();
-
         }
     }
 }

@@ -13,96 +13,142 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            try
             {
-                Response.Redirect("Login.aspx", false);
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("Login.aspx", false);
+                }
+                else if (Session["tipo"].ToString() != "ADMIN")
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
+
+
+                CompraNegocio compra_negocio = new CompraNegocio();
+
+                if (!IsPostBack)
+                {
+                    gvCompras.DataSource = compra_negocio.listar();
+                    gvCompras.DataBind();
+
+                    total.Text = "$" + String.Format("{0:0.00}", compra_negocio.total());
+
+                    ProveedorNegocio negocio = new ProveedorNegocio();
+                    ddlproveedores.DataSource = negocio.listar();
+                    ddlproveedores.DataTextField = "Nombre";
+                    ddlproveedores.DataValueField = "CUIT";
+                    ddlproveedores.DataBind();
+                }
             }
-            else if (Session["tipo"].ToString() != "ADMIN")
+            catch (Exception ex)
             {
-                Response.Redirect("Default.aspx", false);
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
-
-          
-            CompraNegocio compra_negocio = new CompraNegocio();
-
-            if(!IsPostBack)
-            {
-                gvCompras.DataSource = compra_negocio.listar();
-                gvCompras.DataBind();
-
-                total.Text = "$" + String.Format("{0:0.00}", compra_negocio.total());
-
-                ProveedorNegocio negocio = new ProveedorNegocio();
-                ddlproveedores.DataSource = negocio.listar();
-                ddlproveedores.DataTextField = "Nombre";
-                ddlproveedores.DataValueField = "CUIT";
-                ddlproveedores.DataBind();
-            }
-
         }
 
         protected void gvCompras_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var numSelected = gvCompras.SelectedDataKey.Value.ToString();
-            Response.Redirect("RegistroCompra.aspx?num=" + numSelected);
+            try
+            {
+                var numSelected = gvCompras.SelectedDataKey.Value.ToString();
+                Response.Redirect("RegistroCompra.aspx?num=" + numSelected);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
+            }
         }
 
         protected void gvCompras_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvCompras.PageIndex = e.NewPageIndex;
-            gvCompras.DataBind();
+            try
+            {
+                gvCompras.PageIndex = e.NewPageIndex;
+                gvCompras.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
+            }
         }
 
         protected void ddlproveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CompraNegocio compra_negocio = new CompraNegocio();
-            gvCompras.DataSource = compra_negocio.listarxproveedor(ddlproveedores.SelectedValue);
-            gvCompras.DataBind();
+            try
+            {
+                CompraNegocio compra_negocio = new CompraNegocio();
+                gvCompras.DataSource = compra_negocio.listarxproveedor(ddlproveedores.SelectedValue);
+                gvCompras.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
+            }
         }
 
         protected void btnfiltro_Click(object sender, EventArgs e)
         {
-            CompraNegocio compra_negocio = new CompraNegocio();
+            try
+            {
+                CompraNegocio compra_negocio = new CompraNegocio();
 
-            if (tboxmin.Text != "" && tboxmax.Text != "")
-            {
-                decimal min = decimal.Parse(tboxmin.Text);
-                decimal max = decimal.Parse(tboxmax.Text);
-                gvCompras.DataSource = compra_negocio.listarxrango(min, max);
+                if (tboxmin.Text != "" && tboxmax.Text != "")
+                {
+                    decimal min = decimal.Parse(tboxmin.Text);
+                    decimal max = decimal.Parse(tboxmax.Text);
+                    gvCompras.DataSource = compra_negocio.listarxrango(min, max);
+                }
+                else if (tboxmin.Text != "" && tboxmax.Text == "")
+                {
+                    decimal min = decimal.Parse(tboxmin.Text);
+                    gvCompras.DataSource = compra_negocio.listarxmin(min);
+                }
+                else if (tboxmin.Text == "" && tboxmax.Text != "")
+                {
+                    decimal max = decimal.Parse(tboxmax.Text);
+                    gvCompras.DataSource = compra_negocio.listarxmax(max);
+                }
+                else
+                {
+                    gvCompras.DataSource = compra_negocio.listar();
+                }
+                gvCompras.DataBind();
             }
-            else if (tboxmin.Text != "" && tboxmax.Text == "")
+            catch (Exception ex)
             {
-                decimal min = decimal.Parse(tboxmin.Text);
-                gvCompras.DataSource = compra_negocio.listarxmin(min);
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
-            else if (tboxmin.Text == "" && tboxmax.Text != "")
-            {
-                decimal max = decimal.Parse(tboxmax.Text);
-                gvCompras.DataSource = compra_negocio.listarxmax(max);
-            }
-            else
-            {
-                gvCompras.DataSource = compra_negocio.listar();
-            }
-            gvCompras.DataBind();
-
         }
 
 
         protected void btnExcel_Click(object sender, EventArgs e)
         {
-            Response.ClearContent();
-            Response.AddHeader("content-disposition", "attachment;filename=Compras.xls");
-            Response.Charset = "";
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.ContentType = "application/vnd.xls";
+            try
+            {
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment;filename=Compras.xls");
+                Response.Charset = "";
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.ContentType = "application/vnd.xls";
 
-            System.IO.StringWriter stringWrite = new System.IO.StringWriter();
-            System.Web.UI.HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
+                System.IO.StringWriter stringWrite = new System.IO.StringWriter();
+                System.Web.UI.HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
 
-            gvCompras.RenderControl(htmlWrite);
-            Response.Write(stringWrite.ToString());
-            Response.End();
+                gvCompras.RenderControl(htmlWrite);
+                Response.Write(stringWrite.ToString());
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
+            }
         }
 
         public override void VerifyRenderingInServerForm(Control control)

@@ -13,35 +13,44 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            try
             {
-                Response.Redirect("Login.aspx", false);
-            }
-            else if (Session["tipo"].ToString() != "ADMIN")
-            {
-                Response.Redirect("Default.aspx", false);
-            }
-
-            if (!IsPostBack)
-            {
-                btn_alta.Text = "Agregar";
-
-                if (Request.QueryString["id"] != null)
+                if (Session["usuario"] == null)
                 {
-                    int codigoURL = int.Parse(Request.QueryString["id"].ToString());
-                    btn_alta.Text = "Modificar";
-
-                    CategoriaNegocio negocio = new CategoriaNegocio();
-                    List<_Categoria> lista = negocio.listar();
-                    _Categoria aux = lista.Find(x => x.IDCategoria == codigoURL);
-
-                    nombre.Text = aux.DescripcionCategoria;
+                    Response.Redirect("Login.aspx", false);
                 }
-                else {
-                    //btn_eliminar.Enabled = false;
-                    btn_eliminar.Enabled = false;
-                    btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
+                else if (Session["tipo"].ToString() != "ADMIN")
+                {
+                    Response.Redirect("Default.aspx", false);
                 }
+
+                if (!IsPostBack)
+                {
+                    btn_alta.Text = "Agregar";
+
+                    if (Request.QueryString["id"] != null)
+                    {
+                        int codigoURL = int.Parse(Request.QueryString["id"].ToString());
+                        btn_alta.Text = "Modificar";
+
+                        CategoriaNegocio negocio = new CategoriaNegocio();
+                        List<_Categoria> lista = negocio.listar();
+                        _Categoria aux = lista.Find(x => x.IDCategoria == codigoURL);
+
+                        nombre.Text = aux.DescripcionCategoria;
+                    }
+                    else
+                    {
+                        //btn_eliminar.Enabled = false;
+                        btn_eliminar.Enabled = false;
+                        btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -80,18 +89,27 @@ namespace TPFinal_Rey_Balihaut
 
             catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
 
         protected void btn_eliminar_Click(object sender, EventArgs e)
         {
-            CategoriaNegocio categoria_negocio = new CategoriaNegocio();
-            if (Request.QueryString["id"] != null)
+            try
             {
-                int codigoURL = int.Parse(Request.QueryString["id"].ToString());
-                categoria_negocio.eliminar(codigoURL);
-                Response.Redirect("ListadoCategorias.aspx");
+                CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+                if (Request.QueryString["id"] != null)
+                {
+                    int codigoURL = int.Parse(Request.QueryString["id"].ToString());
+                    categoria_negocio.eliminar(codigoURL);
+                    Response.Redirect("ListadoCategorias.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
     }

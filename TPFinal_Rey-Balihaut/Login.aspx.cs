@@ -13,29 +13,35 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            resetuser.Visible = false;
-            resetbtn.Visible = false;
-            myLabel.Visible = false;
-
-            if (Request.QueryString["reset"]!=null)
+            try
             {
-                resetuser.Visible = true;
-                resetbtn.Visible = true;
-            }
-            if (Request.QueryString["mail"] != null)
-            {
-                myLabel.Visible = true;
-            }
+                resetuser.Visible = false;
+                resetbtn.Visible = false;
+                myLabel.Visible = false;
 
+                if (Request.QueryString["reset"] != null)
+                {
+                    resetuser.Visible = true;
+                    resetbtn.Visible = true;
+                }
+                if (Request.QueryString["mail"] != null)
+                {
+                    myLabel.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
+            }
         }
 
         protected void resetbtn_Click(object sender, EventArgs e)
         {
-            EmailService emailservice = new EmailService();
             //emailservice.armarCorreoSimple(resetuser.Text);
             try
             {
+                EmailService emailservice = new EmailService();
                 //emailservice.enviarEmail();
                 Response.Redirect("Login.aspx?mail=1");
             }
@@ -48,11 +54,10 @@ namespace TPFinal_Rey_Balihaut
 
         protected void login_Click(object sender, EventArgs e)
         {
-            _Usuario usuario;
-            UsuarioNegocio negocio = new UsuarioNegocio();
-
             try
             {
+                _Usuario usuario;
+                UsuarioNegocio negocio = new UsuarioNegocio();
                 usuario = new _Usuario(email.Text,pass.Text,false);
                 if(negocio.loguear(usuario))
                 {

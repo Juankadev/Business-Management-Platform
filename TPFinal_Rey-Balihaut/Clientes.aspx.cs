@@ -13,42 +13,50 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            try
             {
-                Response.Redirect("Login.aspx", false);
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("Login.aspx", false);
+                }
+                //else if (Session["tipo"].ToString() != "ADMIN")
+                //{
+                //    Response.Redirect("Default.aspx", false);
+                //}
+
+                dni.MaxLength = 10; //contar cantidad de caracteres de la caja de texto con length
+
+                if (!IsPostBack)
+                {
+                    btn_alta.Text = "Agregar";
+
+                    if (Request.QueryString["id"] != null)
+                    {
+                        string codigoURL = Request.QueryString["id"].ToString();
+                        btn_alta.Text = "Modificar";
+
+                        ClienteNegocio negocio = new ClienteNegocio();
+                        List<_Cliente> lista = negocio.listar();
+                        _Cliente aux = lista.Find(x => x.DNI == codigoURL);
+
+                        dni.Text = aux.DNI;
+                        nombre.Text = aux.Nombre;
+                        apellido.Text = aux.Apellido;
+                        telefono.Text = aux.Telefono;
+                        mail.Text = aux.Mail;
+                        direccion.Text = aux.Direccion;
+                    }
+                    else
+                    {
+                        btn_eliminar.Enabled = false;
+                        btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
+                    }
+                }
             }
-            //else if (Session["tipo"].ToString() != "ADMIN")
-            //{
-            //    Response.Redirect("Default.aspx", false);
-            //}
-
-            dni.MaxLength = 10; //contar cantidad de caracteres de la caja de texto con length
-
-            if (!IsPostBack)
+            catch (Exception ex)
             {
-                btn_alta.Text = "Agregar";
-
-                if (Request.QueryString["id"] != null)
-                {
-                    string codigoURL = Request.QueryString["id"].ToString();
-                    btn_alta.Text = "Modificar";
-
-                    ClienteNegocio negocio = new ClienteNegocio();
-                    List<_Cliente> lista = negocio.listar();
-                    _Cliente aux = lista.Find(x => x.DNI == codigoURL);
-
-                    dni.Text = aux.DNI;
-                    nombre.Text = aux.Nombre;
-                    apellido.Text = aux.Apellido;
-                    telefono.Text = aux.Telefono;
-                    mail.Text = aux.Mail;
-                    direccion.Text = aux.Direccion;
-                }
-                else
-                {
-                    btn_eliminar.Enabled = false;
-                    btn_eliminar.CssClass = "btn btn-danger btn-lg btnlogin";
-                }
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -96,19 +104,19 @@ namespace TPFinal_Rey_Balihaut
                     nombre.CssClass = "form-control is-valid";
                 }
             }
-
             catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
 
 
         protected void btn_eliminar_Click(object sender, EventArgs e)
         {
-            ClienteNegocio cliente_negocio = new ClienteNegocio();
             try
             {
+                ClienteNegocio cliente_negocio = new ClienteNegocio();
                 if (Request.QueryString["id"] != null)
                 {
                     string codigoURL = Request.QueryString["id"].ToString();
@@ -116,10 +124,10 @@ namespace TPFinal_Rey_Balihaut
                     Response.Redirect("ListadoClientes.aspx");
                 }
             }
-
             catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
     }

@@ -11,9 +11,16 @@ namespace TPFinal_Rey_Balihaut
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["error"]!=null)
+            try
             {
-                lblError.Text = Session["error"].ToString();
+                if (Session["error"] != null)
+                {
+                    lblError.Text = Session["error"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
             }
         }
     }
