@@ -213,7 +213,7 @@ namespace TPFinal_Rey_Balihaut
                         }
                     }
 
-                    Response.Redirect("ListadoArticulos.aspx");
+                    Response.Redirect("ListadoArticulos.aspx",false);
                 }
 
 
@@ -257,7 +257,7 @@ namespace TPFinal_Rey_Balihaut
                 {
                     string codigoURL = Request.QueryString["id"].ToString();
                     producto_negocio.eliminar(codigoURL);
-                    Response.Redirect("ListadoArticulos.aspx");
+                    Response.Redirect("ListadoArticulos.aspx",false);
                 }
             }
             catch (Exception ex)

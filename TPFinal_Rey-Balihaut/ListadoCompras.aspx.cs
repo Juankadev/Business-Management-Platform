@@ -53,7 +53,7 @@ namespace TPFinal_Rey_Balihaut
             try
             {
                 var numSelected = gvCompras.SelectedDataKey.Value.ToString();
-                Response.Redirect("RegistroCompra.aspx?num=" + numSelected);
+                Response.Redirect("RegistroCompra.aspx?num=" + numSelected,false);
             }
             catch (Exception ex)
             {

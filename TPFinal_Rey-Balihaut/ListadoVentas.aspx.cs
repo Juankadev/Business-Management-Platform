@@ -52,7 +52,7 @@ namespace TPFinal_Rey_Balihaut
             try
             {
                 var numSelected = gvVentas.SelectedDataKey.Value.ToString();
-                Response.Redirect("RegistroVenta.aspx?num=" + numSelected);
+                Response.Redirect("RegistroVenta.aspx?num=" + numSelected,false);
             }
             catch (Exception ex)
             {

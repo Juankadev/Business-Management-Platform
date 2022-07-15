@@ -167,7 +167,7 @@ namespace TPFinal_Rey_Balihaut
                 valueproveedor = ddlproveedor.SelectedValue;
                 string cond = ddlcondicion.SelectedValue;
                 string obs = observaciones.Text;
-                Response.Redirect("Compras.aspx?value=" + valueproveedor + "&condicion=" + cond + "&observacion=" + obs);
+                Response.Redirect("Compras.aspx?value=" + valueproveedor + "&condicion=" + cond + "&observacion=" + obs,false);
             }
             catch (Exception ex)
             {

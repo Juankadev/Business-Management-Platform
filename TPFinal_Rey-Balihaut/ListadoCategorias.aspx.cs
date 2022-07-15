@@ -44,7 +44,7 @@ namespace TPFinal_Rey_Balihaut
             try
             {
                 var codigoSelected = gvCategorias.SelectedDataKey.Value.ToString();
-                Response.Redirect("Categorias.aspx?id=" + codigoSelected);
+                Response.Redirect("Categorias.aspx?id=" + codigoSelected,false);
             }
             catch (Exception ex)
             {

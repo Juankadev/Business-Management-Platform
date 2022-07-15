@@ -43,7 +43,7 @@ namespace TPFinal_Rey_Balihaut
             try
             {
                 var codigoSelected = gvMarcas.SelectedDataKey.Value.ToString();
-                Response.Redirect("Marcas.aspx?id=" + codigoSelected);
+                Response.Redirect("Marcas.aspx?id=" + codigoSelected,false);
             }
             catch (Exception ex)
             {

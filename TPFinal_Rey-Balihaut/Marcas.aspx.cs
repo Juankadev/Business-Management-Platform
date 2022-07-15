@@ -75,7 +75,7 @@ namespace TPFinal_Rey_Balihaut
                         marca_negocio.agregar(aux);
                         nombre.Text = "";
                     }
-                    Response.Redirect("ListadoMarcas.aspx");
+                    Response.Redirect("ListadoMarcas.aspx",false);
                 }
 
 
@@ -102,7 +102,7 @@ namespace TPFinal_Rey_Balihaut
                 {
                     int codigoURL = int.Parse(Request.QueryString["id"].ToString());
                     marca_negocio.eliminar(codigoURL);
-                    Response.Redirect("ListadoMarcas.aspx");
+                    Response.Redirect("ListadoMarcas.aspx",false);
                 }
             }
             catch (Exception ex)

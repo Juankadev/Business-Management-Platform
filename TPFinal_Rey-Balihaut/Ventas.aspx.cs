@@ -203,13 +203,15 @@ namespace TPFinal_Rey_Balihaut
                 string cond = ddlcondicion.SelectedValue;
                 //string pr = ddlproductos.SelectedValue;
                 string obs = observaciones.Text;
-                Response.Redirect("Ventas.aspx?value=" + valuecliente + "&condicion=" + cond + "&observacion=" + obs);
+                Response.Redirect("Ventas.aspx?value=" + valuecliente + "&condicion=" + cond + "&observacion=" + obs,false);
+                //Response.Redirect("Ventas.aspx");
 
             }
             catch(Exception ex)
             {
+                //throw ex;
                 Session.Add("error", ex);
-                Response.Redirect("Error.aspx");
+                Response.Redirect("Error.aspx",false);
             }
         }
 

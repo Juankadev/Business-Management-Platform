@@ -76,7 +76,7 @@ namespace TPFinal_Rey_Balihaut
                         nombre.Text = "";
                     }
 
-                    Response.Redirect("ListadoCategorias.aspx");
+                    Response.Redirect("ListadoCategorias.aspx",false);
                 }
 
 
@@ -103,7 +103,7 @@ namespace TPFinal_Rey_Balihaut
                 {
                     int codigoURL = int.Parse(Request.QueryString["id"].ToString());
                     categoria_negocio.eliminar(codigoURL);
-                    Response.Redirect("ListadoCategorias.aspx");
+                    Response.Redirect("ListadoCategorias.aspx",false);
                 }
             }
             catch (Exception ex)

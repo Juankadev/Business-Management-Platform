@@ -82,7 +82,7 @@ namespace TPFinal_Rey_Balihaut
                     else
                         cliente_negocio.agregar(aux);
 
-                    Response.Redirect("ListadoClientes.aspx");
+                    Response.Redirect("ListadoClientes.aspx",false);
                 }
 
 
@@ -121,7 +121,7 @@ namespace TPFinal_Rey_Balihaut
                 {
                     string codigoURL = Request.QueryString["id"].ToString();
                     cliente_negocio.eliminar(codigoURL);
-                    Response.Redirect("ListadoClientes.aspx");
+                    Response.Redirect("ListadoClientes.aspx",false);
                 }
             }
             catch (Exception ex)

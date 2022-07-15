@@ -20,9 +20,9 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=COMERCIO_DB; integrated security=true");
-            conexion = new SqlConnection();
-            conexion.ConnectionString = "workstation id=COMERCIODB.mssql.somee.com;packet size=4096;user id=juankadev_SQLLogin_1;pwd=5v5f2ikp6m;data source=COMERCIODB.mssql.somee.com;persist security info=False;initial catalog=COMERCIODB";
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=COMERCIO_DB; integrated security=true");
+            //conexion = new SqlConnection();
+            //conexion.ConnectionString = "workstation id=COMERCIODB.mssql.somee.com;packet size=4096;user id=juankadev_SQLLogin_1;pwd=5v5f2ikp6m;data source=COMERCIODB.mssql.somee.com;persist security info=False;initial catalog=COMERCIODB";
             comando = new SqlCommand();
         }
 

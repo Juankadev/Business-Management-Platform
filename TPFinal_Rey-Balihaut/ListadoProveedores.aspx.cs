@@ -43,7 +43,7 @@ namespace TPFinal_Rey_Balihaut
             try
             {
                 var codigoSelected = gvProveedores.SelectedDataKey.Value.ToString();
-                Response.Redirect("Proveedores.aspx?id=" + codigoSelected);
+                Response.Redirect("Proveedores.aspx?id=" + codigoSelected,false);
             }
             catch (Exception ex)
             {
