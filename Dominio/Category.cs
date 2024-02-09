@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class _Categoria
+    public class Category
     {
-        public int IDCategoria { get; set; }
-        public string DescripcionCategoria { get; set; }
+        public int id { get; set; }
+        public string description { get; set; }
     }
 }
