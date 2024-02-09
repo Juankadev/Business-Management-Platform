@@ -21,8 +21,7 @@ namespace Negocio
             server.Port = 587;
             server.Host = "smtp.live.com";
         }
-
-        public void armarCorreo(string emailDestino, string asunto, string cuerpo)
+        public void SetMessage(string emailDestino, string asunto, string cuerpo)
         {
             email = new MailMessage();
             email.From = new MailAddress("noresponder@ecommerceprogramacioniii.com");
@@ -33,9 +32,7 @@ namespace Negocio
             //email.Body = cuerpo;
 
         }
-
-
-        public void armarCorreoSimple(string emailDestino)
+        public void SetMessageResetPassword(string emailDestino)
         {
             email = new MailMessage();
             //quien envia el correo, en este caso el usuario
@@ -48,8 +45,7 @@ namespace Negocio
             email.Body = "<h1>Solicitud de Reseteo de Password</h1> <br> Requiero una nueva Clave. Saludos cordiales!";
             //email.Body = cuerpo;
         }
-
-        public void enviarEmail()
+        public void Send()
         {
             try
             {
