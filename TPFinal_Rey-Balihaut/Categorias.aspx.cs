@@ -33,11 +33,11 @@ namespace TPFinal_Rey_Balihaut
                         int codigoURL = int.Parse(Request.QueryString["id"].ToString());
                         btn_alta.Text = "Modificar";
 
-                        CategoriaNegocio negocio = new CategoriaNegocio();
-                        List<_Categoria> lista = negocio.listar();
-                        _Categoria aux = lista.Find(x => x.IDCategoria == codigoURL);
+                        CategoryController negocio = new CategoryController();
+                        List<Category> lista = negocio.GetAll();
+                        Category aux = lista.Find(x => x.id == codigoURL);
 
-                        nombre.Text = aux.DescripcionCategoria;
+                        nombre.Text = aux.description;
                     }
                     else
                     {
@@ -58,21 +58,21 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                CategoriaNegocio categoria_negocio = new CategoriaNegocio();
-                _Categoria aux = new _Categoria();
+                CategoryController categoria_negocio = new CategoryController();
+                Category aux = new Category();
 
-                aux.DescripcionCategoria = nombre.Text;
+                aux.description = nombre.Text;
 
                 if (nombre.Text != "")
                 {
                     if (Request.QueryString["id"] != null) //se esta modificando un prod.
                     {
-                        aux.IDCategoria = int.Parse(Request.QueryString["id"]);
-                        categoria_negocio.modificar(aux);
+                        aux.id = int.Parse(Request.QueryString["id"]);
+                        categoria_negocio.Modify(aux);
                     }
                     else //se esta agregando un producto
                     {
-                        categoria_negocio.agregar(aux);
+                        categoria_negocio.Add(aux);
                         nombre.Text = "";
                     }
 
@@ -98,11 +98,11 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+                CategoryController categoria_negocio = new CategoryController();
                 if (Request.QueryString["id"] != null)
                 {
                     int codigoURL = int.Parse(Request.QueryString["id"].ToString());
-                    categoria_negocio.eliminar(codigoURL);
+                    categoria_negocio.Delete(codigoURL);
                     Response.Redirect("ListadoCategorias.aspx",false);
                 }
             }

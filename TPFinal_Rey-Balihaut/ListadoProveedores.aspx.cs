@@ -26,8 +26,8 @@ namespace TPFinal_Rey_Balihaut
 
                 if (!IsPostBack)
                 {
-                    ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-                    gvProveedores.DataSource = proveedor_negocio.listar();
+                    SupplierController proveedor_negocio = new SupplierController();
+                    gvProveedores.DataSource = proveedor_negocio.GetAll();
                     gvProveedores.DataBind();
                 }
             }
@@ -57,14 +57,14 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+                SupplierController proveedor_negocio = new SupplierController();
                 if (buscador.Text != "")
                 {
-                    gvProveedores.DataSource = proveedor_negocio.listarxtexto(buscador.Text);
+                    gvProveedores.DataSource = proveedor_negocio.GetAllByPartialDescription(buscador.Text);
                 }
                 else
                 {
-                    gvProveedores.DataSource = proveedor_negocio.listar();
+                    gvProveedores.DataSource = proveedor_negocio.GetAll();
                 }
                 gvProveedores.DataBind();
             }

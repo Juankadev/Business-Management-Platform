@@ -11,7 +11,7 @@ namespace TPFinal_Rey_Balihaut
 {
     public partial class Ventas2 : System.Web.UI.Page
     {
-        public List<Agregados> lista_agregados { get; set; }
+        public List<ProductCart> lista_agregados { get; set; }
         public string condicion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,22 +33,22 @@ namespace TPFinal_Rey_Balihaut
                 {
                     //cantidad = 0;
 
-                    ClienteNegocio cliente_negocio = new ClienteNegocio();
-                    ddlclientes.DataSource = cliente_negocio.listar();
-                    ddlclientes.DataValueField = "DNI";
-                    ddlclientes.DataTextField = "Nombre";
+                    CustomerController cliente_negocio = new CustomerController();
+                    ddlclientes.DataSource = cliente_negocio.GetAll();
+                    ddlclientes.DataValueField = "id";
+                    ddlclientes.DataTextField = "name";
                     ddlclientes.DataBind();
 
-                    ProductoNegocio producto_negocio = new ProductoNegocio();
-                    List<_Producto> lista = producto_negocio.listar();
-                    _Producto pvacio = new _Producto();
-                    pvacio.Codigo = "";
-                    pvacio.Nombre = "";
+                    ProductController producto_negocio = new ProductController();
+                    List<Product> lista = producto_negocio.GetAll();
+                    Product pvacio = new Product();
+                    pvacio.code = "";
+                    pvacio.name = "";
                     lista.Add(pvacio);
                     int index = lista.Count() - 1;
                     ddlproductos.DataSource = lista;
-                    ddlproductos.DataValueField = "CODIGO";
-                    ddlproductos.DataTextField = "NOMBRE";
+                    ddlproductos.DataValueField = "code";
+                    ddlproductos.DataTextField = "name";
                     ddlproductos.DataBind();
                     ddlproductos.SelectedIndex = index;
 
@@ -77,7 +77,7 @@ namespace TPFinal_Rey_Balihaut
 
                 if (Session["agregadosVenta"] == null)
                 {
-                    lista_agregados = new List<Agregados>();
+                    lista_agregados = new List<ProductCart>();
                     Session.Add("agregadosVenta", lista_agregados);
                 }
 
@@ -88,13 +88,13 @@ namespace TPFinal_Rey_Balihaut
 
 
                 //TOTAL SUMA
-                lista_agregados = (List<Agregados>)Session["agregadosVenta"];
+                lista_agregados = (List<ProductCart>)Session["agregadosVenta"];
                 if (lista_agregados.Count > 0)
                 {
                     decimal suma = 0;
-                    foreach (Dominio.Agregados aux in lista_agregados)
+                    foreach (Dominio.ProductCart aux in lista_agregados)
                     {
-                        suma += aux.Precio * aux.Cantidad;
+                        suma += aux.price * aux.quantity;
                     }
                     //txtsuma.Text = String.Format("{0:0.00}", suma);
                     txtsuma.Text = suma.ToString();
@@ -144,16 +144,16 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ProductoNegocio negocio = new ProductoNegocio();
+                ProductController negocio = new ProductController();
                 if (cantidades.Text != "")
                 {
-                    Agregados aux = new Agregados();
-                    aux.Codigo = ddlproductos.SelectedItem.Value;
-                    aux.Nombre = ddlproductos.SelectedItem.Text;
+                    ProductCart aux = new ProductCart();
+                    aux.code = ddlproductos.SelectedItem.Value;
+                    aux.name = ddlproductos.SelectedItem.Text;
 
-                    if (negocio.hayStock(decimal.Parse(cantidades.Text), aux.Codigo))
+                    if (negocio.ExistStock(decimal.Parse(cantidades.Text), aux.code))
                     {
-                        aux.Cantidad = decimal.Parse(cantidades.Text);
+                        aux.quantity = decimal.Parse(cantidades.Text);
                     }
                     else
                     {
@@ -161,20 +161,20 @@ namespace TPFinal_Rey_Balihaut
                         return;
                     }
 
-                    aux.Precio = negocio.buscarPrecioVenta(aux.Codigo);
+                    aux.price = negocio.GetSalePrice(aux.code);
 
-                    lista_agregados = (List<Agregados>)Session["agregadosVenta"];
+                    lista_agregados = (List<ProductCart>)Session["agregadosVenta"];
 
                     //si el producto ya existe en la lista:
-                    Agregados reemplazo = lista_agregados.Find(x => x.Codigo == aux.Codigo);
+                    ProductCart reemplazo = lista_agregados.Find(x => x.code == aux.code);
 
                     //lo modifica
                     if (reemplazo != null)
                     {
                         int index = lista_agregados.IndexOf(reemplazo);
 
-                        lista_agregados[index].Cantidad += aux.Cantidad;
-                        lista_agregados[index].Precio = aux.Precio;
+                        lista_agregados[index].quantity += aux.quantity;
+                        lista_agregados[index].price = aux.price;
                     }
                     //y si no, lo agrega
                     else
@@ -221,8 +221,8 @@ namespace TPFinal_Rey_Balihaut
             {
                 string codigoSelected = gvAgregados.SelectedDataKey.Value.ToString();
 
-                lista_agregados = (List<Agregados>)Session["agregadosVenta"];
-                Agregados aux = lista_agregados.Find(x => x.Codigo == codigoSelected);
+                lista_agregados = (List<ProductCart>)Session["agregadosVenta"];
+                ProductCart aux = lista_agregados.Find(x => x.code == codigoSelected);
                 lista_agregados.Remove(aux);
 
                 cantidades.Text = "";
@@ -245,35 +245,35 @@ namespace TPFinal_Rey_Balihaut
             try
             {
                 ////INSERTAR VENTA
-                _Venta aux = new _Venta();
-                aux.Cliente = new _Cliente();
-                aux.Cliente.DNI = ddlclientes.SelectedValue;
-                aux.Fecha = DateTime.Now;
-                aux.Total = decimal.Parse(txtsuma.Text);
-                aux.Condicion = ddlcondicion.SelectedValue;
-                aux.Observaciones = observaciones.Text;
+                Sale aux = new Sale();
+                aux.customer = new Customer();
+                aux.customer.id = ddlclientes.SelectedValue;
+                aux.date = DateTime.Now;
+                aux.total = decimal.Parse(txtsuma.Text);
+                aux.paymentCondition = ddlcondicion.SelectedValue;
+                aux.observations = observaciones.Text;
 
                 ////INSERTAR VENTA Y DETALLE_VENTA
-                VentaNegocio negocio = new VentaNegocio();
+                SaleController negocio = new SaleController();
                 /*int r =*/
-                negocio.agregar(aux);
+                negocio.Add(aux);
                 //if (r == 1)
                 //    Response.Redirect("Error.aspx");
 
 
-                lista_agregados = (List<Agregados>)Session["agregadosVenta"];
-                foreach (Agregados agregado in lista_agregados)
+                lista_agregados = (List<ProductCart>)Session["agregadosVenta"];
+                foreach (ProductCart agregado in lista_agregados)
                 {
-                    negocio.agregarDetalle(aux, agregado);
-                    negocio.descontarStock(agregado);
+                    negocio.AddDetail(aux, agregado);
+                    negocio.discountStock(agregado);
                 }
                 ////negocio.agregarDetalle(aux,agregado);
 
                 //agregar el nuevo total de ventas
-                Session.Add("ventas", negocio.total());
+                Session.Add("ventas", negocio.GetTotalSumSales());
 
                 ////limpiar lista agregados
-                lista_agregados = new List<Agregados>();
+                lista_agregados = new List<ProductCart>();
                 Session.Add("agregadosVenta", lista_agregados);
 
                 Response.Redirect("ListadoVentas.aspx",false);
@@ -287,7 +287,7 @@ namespace TPFinal_Rey_Balihaut
 
         protected void verstock_Click(object sender, EventArgs e)
         {
-            ProductoNegocio negocio = new ProductoNegocio();
+            ProductController negocio = new ProductController();
             //myLabel.Text = (negocio.stockxproducto(ddlproductos.SelectedValue)).ToString();
             //Response.Redirect("Ventas.aspx?stock="+myLabel.Text);
         }
@@ -296,8 +296,8 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ProductoNegocio negocio = new ProductoNegocio();
-                myLabel.Text = (negocio.stockxproducto(ddlproductos.SelectedValue)).ToString();
+                ProductController negocio = new ProductController();
+                myLabel.Text = (negocio.GetCurrentStock(ddlproductos.SelectedValue)).ToString();
             }
             catch (Exception ex)
             {

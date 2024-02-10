@@ -28,19 +28,19 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-                    <asp:BoundField HeaderText="Nombre" DataField="Nombre">
+                    <asp:BoundField HeaderText="Nombre" DataField="name">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
-                    <asp:BoundField HeaderText="Telefono" DataField="Telefono">
+                    <asp:BoundField HeaderText="Telefono" DataField="phone">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
-                    <asp:BoundField HeaderText="Mail" DataField="Mail">
+                    <asp:BoundField HeaderText="Mail" DataField="email">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>

@@ -20,7 +20,7 @@
                 <asp:TextBox ID="buscador" CssClass="form-control" OnTextChanged="buscador_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
             </div>
 
-            <asp:GridView ID="gvClientes" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" DataKeyNames="DNI" OnSelectedIndexChanged="gvClientes_SelectedIndexChanged" runat="server" HeaderStyle-CssClass="gradient">
+            <asp:GridView ID="gvClientes" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" DataKeyNames="id" OnSelectedIndexChanged="gvClientes_SelectedIndexChanged" runat="server" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="DNI" DataField="DNI">
@@ -29,22 +29,22 @@
             </asp:BoundField>--%>
 
 
-                    <asp:BoundField HeaderText="Nombre" DataField="Nombre">
+                    <asp:BoundField HeaderText="Nombre" DataField="name">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
-                    <asp:BoundField HeaderText="Apellido" DataField="Apellido">
+                    <asp:BoundField HeaderText="Apellido" DataField="lastName">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
-                    <asp:BoundField HeaderText="Telefono" DataField="Telefono">
+                    <asp:BoundField HeaderText="Telefono" DataField="phone">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
-                    <asp:BoundField HeaderText="Mail" DataField="Mail">
+                    <asp:BoundField HeaderText="Mail" DataField="email">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>

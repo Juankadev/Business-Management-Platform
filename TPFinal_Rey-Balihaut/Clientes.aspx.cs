@@ -35,16 +35,16 @@ namespace TPFinal_Rey_Balihaut
                         string codigoURL = Request.QueryString["id"].ToString();
                         btn_alta.Text = "Modificar";
 
-                        ClienteNegocio negocio = new ClienteNegocio();
-                        List<_Cliente> lista = negocio.listar();
-                        _Cliente aux = lista.Find(x => x.DNI == codigoURL);
+                        CustomerController negocio = new CustomerController();
+                        List<Customer> lista = negocio.GetAll();
+                        Customer aux = lista.Find(x => x.id == codigoURL);
 
-                        dni.Text = aux.DNI;
-                        nombre.Text = aux.Nombre;
-                        apellido.Text = aux.Apellido;
-                        telefono.Text = aux.Telefono;
-                        mail.Text = aux.Mail;
-                        direccion.Text = aux.Direccion;
+                        dni.Text = aux.id;
+                        nombre.Text = aux.name;
+                        apellido.Text = aux.lastName;
+                        telefono.Text = aux.phone;
+                        mail.Text = aux.email;
+                        direccion.Text = aux.address;
                     }
                     else
                     {
@@ -67,20 +67,20 @@ namespace TPFinal_Rey_Balihaut
             {
                 if(dni.Text != "" && nombre.Text != "" && dni.Text.Length == 8)
                 {
-                    ClienteNegocio cliente_negocio = new ClienteNegocio();
-                    _Cliente aux = new _Cliente();
-                    aux.DNI = dni.Text;
-                    aux.Nombre = nombre.Text;
-                    aux.Apellido = apellido.Text;
-                    aux.Telefono = telefono.Text;
-                    aux.Mail = mail.Text;
-                    aux.Direccion = direccion.Text;
+                    CustomerController cliente_negocio = new CustomerController();
+                    Customer aux = new Customer();
+                    aux.id = dni.Text;
+                    aux.name = nombre.Text;
+                    aux.lastName = apellido.Text;
+                    aux.phone = telefono.Text;
+                    aux.email = mail.Text;
+                    aux.address = direccion.Text;
 
                     if (Request.QueryString["id"] != null) //se esta editando un cliente.
-                        cliente_negocio.modificar(aux);
+                        cliente_negocio.Modify(aux);
 
                     else
-                        cliente_negocio.agregar(aux);
+                        cliente_negocio.Add(aux);
 
                     Response.Redirect("ListadoClientes.aspx",false);
                 }
@@ -116,11 +116,11 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ClienteNegocio cliente_negocio = new ClienteNegocio();
+                CustomerController cliente_negocio = new CustomerController();
                 if (Request.QueryString["id"] != null)
                 {
                     string codigoURL = Request.QueryString["id"].ToString();
-                    cliente_negocio.eliminar(codigoURL);
+                    cliente_negocio.Delete(codigoURL);
                     Response.Redirect("ListadoClientes.aspx",false);
                 }
             }

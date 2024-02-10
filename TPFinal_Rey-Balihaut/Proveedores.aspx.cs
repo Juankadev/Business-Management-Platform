@@ -34,15 +34,15 @@ namespace TPFinal_Rey_Balihaut
                         string codigoURL = Request.QueryString["id"].ToString();
                         btn_alta.Text = "Modificar";
 
-                        ProveedorNegocio negocio = new ProveedorNegocio();
-                        List<_Proveedor2> lista = negocio.listar();
-                        _Proveedor2 aux = lista.Find(x => x.CUIT == codigoURL);
+                        SupplierController negocio = new SupplierController();
+                        List<Supplier> lista = negocio.GetAll();
+                        Supplier aux = lista.Find(x => x.cuit == codigoURL);
 
-                        cuit.Text = aux.CUIT;
-                        nombre.Text = aux.Nombre;
-                        telefono.Text = aux.Telefono;
-                        mail.Text = aux.Mail;
-                        direccion.Text = aux.Direccion;
+                        cuit.Text = aux.cuit;
+                        nombre.Text = aux.name;
+                        telefono.Text = aux.phone;
+                        mail.Text = aux.email;
+                        direccion.Text = aux.address;
                     }
                     else
                     {
@@ -64,22 +64,22 @@ namespace TPFinal_Rey_Balihaut
             {
                 if(cuit.Text != "" && cuit.Text.Length == 12 && nombre.Text != "")
                 {
-                    ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-                    _Proveedor2 aux = new _Proveedor2();
-                    aux.CUIT = cuit.Text;
-                    aux.Nombre = nombre.Text;
-                    aux.Telefono = telefono.Text;
-                    aux.Mail = mail.Text;
-                    aux.Direccion = direccion.Text;
+                    SupplierController proveedor_negocio = new SupplierController();
+                    Supplier aux = new Supplier();
+                    aux.cuit = cuit.Text;
+                    aux.name = nombre.Text;
+                    aux.phone = telefono.Text;
+                    aux.email = mail.Text;
+                    aux.address = direccion.Text;
 
                     if (Request.QueryString["id"] != null) //se esta editando un proveedor.
                     {
-                        proveedor_negocio.modificar(aux);
+                        proveedor_negocio.Modify(aux);
                     }
 
                     else
                     {
-                        proveedor_negocio.agregar(aux);
+                        proveedor_negocio.Add(aux);
                     }
 
                     Response.Redirect("ListadoProveedores.aspx");
@@ -117,11 +117,11 @@ namespace TPFinal_Rey_Balihaut
         {   
             try
             {
-                ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+                SupplierController proveedor_negocio = new SupplierController();
                 if (Request.QueryString["id"] != null)
                 {
                     string codigoURL = Request.QueryString["id"].ToString();
-                    proveedor_negocio.eliminar(codigoURL);
+                    proveedor_negocio.Delete(codigoURL);
                     Response.Redirect("ListadoProveedores.aspx");
                 }
             }

@@ -22,22 +22,22 @@ namespace TPFinal_Rey_Balihaut
 
                 if (!IsPostBack)
                 {
-                    VentaNegocio negocio_venta = new VentaNegocio();
-                    gvVentas.DataSource = negocio_venta.listar();
+                    SaleController negocio_venta = new SaleController();
+                    gvVentas.DataSource = negocio_venta.GetAll();
                     gvVentas.DataBind();
 
-                    ClienteNegocio negocio_cliente = new ClienteNegocio();
-                    ddlclientes.DataSource = negocio_cliente.listar();
-                    ddlclientes.DataTextField = "Apellido";
-                    ddlclientes.DataValueField = "DNI";
+                    CustomerController negocio_cliente = new CustomerController();
+                    ddlclientes.DataSource = negocio_cliente.GetAll();
+                    ddlclientes.DataTextField = "lastName";
+                    ddlclientes.DataValueField = "id";
                     ddlclientes.DataBind();
 
-                    total.Text = "$" + String.Format("{0:0.00}", negocio_venta.total());
+                    total.Text = "$" + String.Format("{0:0.00}", negocio_venta.GetTotalSumSales());
 
-                    promedio.Text = "$" + String.Format("{0:0.00}", negocio_venta.promedio());
+                    promedio.Text = "$" + String.Format("{0:0.00}", negocio_venta.GetAverageOfTotalSales());
 
-                    CompraNegocio negocio_compra = new CompraNegocio();
-                    ganancia.Text = "$" + String.Format("{0:0.00}", negocio_venta.total() - negocio_compra.total());
+                    PurchaseController negocio_compra = new PurchaseController();
+                    ganancia.Text = "$" + String.Format("{0:0.00}", negocio_venta.GetTotalSumSales() - negocio_compra.GetTotalSumPurchases());
                 }
             }
             catch (Exception ex)
@@ -79,8 +79,8 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                VentaNegocio negocio_venta = new VentaNegocio();
-                gvVentas.DataSource = negocio_venta.listarxcliente(ddlclientes.SelectedValue);
+                SaleController negocio_venta = new SaleController();
+                gvVentas.DataSource = negocio_venta.GetByCustomer(ddlclientes.SelectedValue);
                 gvVentas.DataBind();
             }
             catch (Exception ex)
@@ -95,27 +95,27 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                VentaNegocio venta_negocio = new VentaNegocio();
+                SaleController venta_negocio = new SaleController();
 
                 if (tboxmin.Text != "" && tboxmax.Text != "")
                 {
                     decimal min = decimal.Parse(tboxmin.Text);
                     decimal max = decimal.Parse(tboxmax.Text);
-                    gvVentas.DataSource = venta_negocio.listarxrango(min, max);
+                    gvVentas.DataSource = venta_negocio.GetAllByTotalRange(min, max);
                 }
                 else if (tboxmin.Text != "" && tboxmax.Text == "")
                 {
                     decimal min = decimal.Parse(tboxmin.Text);
-                    gvVentas.DataSource = venta_negocio.listarxmin(min);
+                    gvVentas.DataSource = venta_negocio.GetByMinimumTotal(min);
                 }
                 else if (tboxmin.Text == "" && tboxmax.Text != "")
                 {
                     decimal max = decimal.Parse(tboxmax.Text);
-                    gvVentas.DataSource = venta_negocio.listarxmax(max);
+                    gvVentas.DataSource = venta_negocio.GetByMaximumTotal(max);
                 }
                 else
                 {
-                    gvVentas.DataSource = venta_negocio.listar();
+                    gvVentas.DataSource = venta_negocio.GetAll();
                 }
                 gvVentas.DataBind();
             }

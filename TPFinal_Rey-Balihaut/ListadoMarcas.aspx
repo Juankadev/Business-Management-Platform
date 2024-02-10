@@ -19,7 +19,7 @@
                 <asp:TextBox ID="buscador" CssClass="form-control" OnTextChanged="buscador_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
             </div>
 
-            <asp:GridView ID="gvMarcas" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged" DataKeyNames="IDMarca" runat="server" HeaderStyle-CssClass="gradient">
+            <asp:GridView ID="gvMarcas" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged" DataKeyNames="id" runat="server" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="ID" DataField="IDMarca">
@@ -27,7 +27,7 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-                    <asp:BoundField HeaderText="Nombre" DataField="DescripcionMarca">
+                    <asp:BoundField HeaderText="Nombre" DataField="description">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>

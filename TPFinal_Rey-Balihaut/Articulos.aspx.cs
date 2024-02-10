@@ -43,22 +43,23 @@ namespace TPFinal_Rey_Balihaut
 
                 if (!IsPostBack)
                 {
-                    MarcaNegocio marca_negocio = new MarcaNegocio();
-                    ddlmarca.DataSource = marca_negocio.listar();
-                    ddlmarca.DataValueField = "IDMarca";
-                    ddlmarca.DataTextField = "DescripcionMarca";
+                    BrandController marca_negocio = new BrandController();
+                    ddlmarca.DataSource = marca_negocio.GetAll();
+                    ddlmarca.DataValueField = "id";
+                    ddlmarca.DataTextField = "description";
                     ddlmarca.DataBind();
 
-                    CategoriaNegocio categoria_negocio = new CategoriaNegocio();
-                    ddlcategoria.DataSource = categoria_negocio.listar();
-                    ddlcategoria.DataValueField = "IDCategoria";
-                    ddlcategoria.DataTextField = "DescripcionCategoria";
+                    CategoryController categoria_negocio = new CategoryController();
+                    ddlcategoria.DataSource = categoria_negocio.GetAll();
+                    ddlcategoria.DataValueField = "id";
+                    ddlcategoria.DataTextField = "description";
                     ddlcategoria.DataBind();
 
-                    ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
+                    SupplierController proveedor_negocio = new SupplierController();
                     //ddlproveedor.DataSource = proveedor_negocio.listar();
                     //ddlproveedor.DataValueField = "CUIT";
-                    //ddlproveedor.DataTextField = "Nombre";
+                    //ddlproveedor.DataTextField = "
+                    //";
                     //ddlproveedor.DataBind();
 
                     btn_articulo.Text = "Agregar";
@@ -74,39 +75,39 @@ namespace TPFinal_Rey_Balihaut
                         codigo.ReadOnly = true;
                         string codigoURL = Request.QueryString["id"].ToString();
                         btn_articulo.Text = "Modificar";
-                        ProductoNegocio negocio = new ProductoNegocio();
-                        List<_Producto> lista = negocio.listar();
-                        _Producto producto = lista.Find(x => x.Codigo == codigoURL);
+                        ProductController negocio = new ProductController();
+                        List<Product> lista = negocio.GetAll();
+                        Product producto = lista.Find(x => x.code == codigoURL);
 
-                        codigo.Text = producto.Codigo;
-                        nombre.Text = producto.Nombre;
+                        codigo.Text = producto.code;
+                        nombre.Text = producto.name;
                         //(producto.Marca.IDMarca - 1).ToString();
 
                         //NO PRECARGA LOS DDL
-                        ddlmarca.SelectedValue = (producto.Marca.IDMarca).ToString();
-                        ddlcategoria.SelectedValue = (producto.Categoria.IDCategoria).ToString();
+                        ddlmarca.SelectedValue = (producto.brand.id).ToString();
+                        ddlcategoria.SelectedValue = (producto.category.id).ToString();
 
-                        CompraNegocio negocio_compra = new CompraNegocio();
-                        if (negocio_compra.existeCompra(producto.Codigo))
+                        PurchaseController negocio_compra = new PurchaseController();
+                        if (negocio_compra.ExistProductInPurchase(producto.code))
                         {
                             //precio.Text = String.Format("{0:0.00}", producto.Precio);
-                            precio.Text = producto.Precio.ToString();
+                            precio.Text = producto.price.ToString();
                         }
                         else
                         {
                             precio.Text = "No hay Compras del articulo";
                         }
 
-                        stockactual.Text = producto.StockActual.ToString();
-                        stockminimo.Text = producto.StockMinimo.ToString();
-                        ganancia.Text = producto.PorcentajeGanancia.ToString();
+                        stockactual.Text = producto.currentStock.ToString();
+                        stockminimo.Text = producto.minimumStock.ToString();
+                        ganancia.Text = producto.percentageOfProfit.ToString();
 
                         //CheckBoxList.Visible = false;
 
 
-                        CheckBoxList.DataSource = proveedor_negocio.listarProveedores();
+                        CheckBoxList.DataSource = proveedor_negocio.GetAllNames();
                         CheckBoxList.DataBind();
-                        List<String> listaAsociados = proveedor_negocio.listarProveedoresAsociados(codigo.Text);
+                        List<String> listaAsociados = proveedor_negocio.GetAssociatedSuppliers(codigo.Text);
 
                         foreach (ListItem li in CheckBoxList.Items)
                         {
@@ -117,7 +118,7 @@ namespace TPFinal_Rey_Balihaut
                     else
                     {
                         precio.Text = "0";
-                        CheckBoxList.DataSource = proveedor_negocio.listarProveedores();
+                        CheckBoxList.DataSource = proveedor_negocio.GetAllNames();
                         CheckBoxList.DataBind();
                         //btn_eliminar.Visible = false;
                         btn_eliminar.Enabled = false;
@@ -144,75 +145,75 @@ namespace TPFinal_Rey_Balihaut
                 //solo se puede agregar o modificar si:
                 if (codigo.Text != "" && nombre.Text != "")
                 {
-                    ProductoNegocio producto_negocio = new ProductoNegocio();
-                    _Producto aux = new _Producto();
-                    aux.Marca = new _Marca();
-                    aux.Categoria = new _Categoria();
+                    ProductController producto_negocio = new ProductController();
+                    Product aux = new Product();
+                    aux.brand = new Brand();
+                    aux.category = new Category();
 
-                    ProveedorNegocio proveedor_negocio = new ProveedorNegocio();
-                    List<_Proveedor2> lista = proveedor_negocio.listar();
+                    SupplierController proveedor_negocio = new SupplierController();
+                    List<Supplier> lista = proveedor_negocio.GetAll();
 
-                    aux.Codigo = codigo.Text;
-                    aux.Nombre = nombre.Text;
-                    MarcaNegocio marca_negocio = new MarcaNegocio();
+                    aux.code = codigo.Text;
+                    aux.name = nombre.Text;
+                    BrandController marca_negocio = new BrandController();
 
-                    aux.Marca.IDMarca = int.Parse(ddlmarca.SelectedValue);
-                    aux.Categoria.IDCategoria = int.Parse(ddlcategoria.SelectedValue);
+                    aux.brand.id = int.Parse(ddlmarca.SelectedValue);
+                    aux.category.id = int.Parse(ddlcategoria.SelectedValue);
 
 
                     if (precio.Text == "No hay Compras del articulo")
-                    { aux.Precio = 0; }
+                    { aux.price = 0; }
                     else
-                    { aux.Precio = decimal.Parse(precio.Text); }
+                    { aux.price = decimal.Parse(precio.Text); }
 
                     if (stockactual.Text == "")
-                    { aux.StockActual = 0; }
+                    { aux.currentStock = 0; }
                     else
-                    { aux.StockActual = decimal.Parse(stockactual.Text); }
+                    { aux.currentStock = decimal.Parse(stockactual.Text); }
 
                     if (stockminimo.Text == "")
-                    { aux.StockMinimo = 0; }
+                    { aux.minimumStock = 0; }
                     else
-                    { aux.StockMinimo = decimal.Parse(stockminimo.Text); }
+                    { aux.minimumStock = decimal.Parse(stockminimo.Text); }
 
                     if (ganancia.Text == "")
-                    { aux.PorcentajeGanancia = 0; }
+                    { aux.percentageOfProfit = 0; }
                     else
-                    { aux.PorcentajeGanancia = decimal.Parse(ganancia.Text); }
+                    { aux.percentageOfProfit = decimal.Parse(ganancia.Text); }
 
 
 
                     if (Request.QueryString["id"] != null) //se esta modificando un prod.
                     {
-                        producto_negocio.modificarConSP(aux);
+                        producto_negocio.ModifyFromStoredProcedure(aux);
 
                         //Modificar proveedores_x_producto
                         foreach (ListItem li in CheckBoxList.Items)
                         {
                             if (li.Selected == false)
                             {
-                                _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
-                                proveedor_negocio.eliminarProveedoresAsociados(proveedor.CUIT, aux.Codigo);
+                                Supplier proveedor = lista.Find(x => x.name == li.Text);
+                                proveedor_negocio.DeleteAssociatedSuppliers(proveedor.cuit, aux.code);
                             }
                             else
                             {
-                                _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
-                                producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
+                                Supplier proveedor = lista.Find(x => x.name == li.Text);
+                                producto_negocio.AddSuppliers(proveedor.cuit, aux.code);
                             }
                         }
                     }
 
                     else //se esta agregando un producto
                     {
-                        producto_negocio.agregarConSP(aux);
+                        producto_negocio.AddFromStoredProcedure(aux);
 
                         //Agregar proveedores_x_producto
                         foreach (ListItem li in CheckBoxList.Items)
                         {
                             if (li.Selected)
                             {
-                                _Proveedor2 proveedor = lista.Find(x => x.Nombre == li.Text);
-                                producto_negocio.agregarProveedores(proveedor.CUIT, aux.Codigo);
+                                Supplier proveedor = lista.Find(x => x.name == li.Text);
+                                producto_negocio.AddSuppliers(proveedor.cuit, aux.code);
                             }
                         }
                     }
@@ -256,11 +257,11 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ProductoNegocio producto_negocio = new ProductoNegocio();
+                ProductController producto_negocio = new ProductController();
                 if (Request.QueryString["id"] != null)
                 {
                     string codigoURL = Request.QueryString["id"].ToString();
-                    producto_negocio.eliminar(codigoURL);
+                    producto_negocio.Delete(codigoURL);
                     Response.Redirect("ListadoArticulos.aspx",false);
                 }
             }

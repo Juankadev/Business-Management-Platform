@@ -35,11 +35,11 @@ namespace TPFinal_Rey_Balihaut
                         int codigoURL = int.Parse(Request.QueryString["id"].ToString());
                         btn_alta.Text = "Modificar";
 
-                        MarcaNegocio negocio = new MarcaNegocio();
-                        List<_Marca> lista = negocio.listar();
-                        _Marca aux = lista.Find(x => x.IDMarca == codigoURL);
+                        BrandController negocio = new BrandController();
+                        List<Brand> lista = negocio.GetAll();
+                        Brand aux = lista.Find(x => x.id == codigoURL);
 
-                        nombre.Text = aux.DescripcionMarca;
+                        nombre.Text = aux.description;
                     }
                     else
                     {
@@ -61,18 +61,18 @@ namespace TPFinal_Rey_Balihaut
             {
                 if (nombre.Text != "")
                 {
-                    MarcaNegocio marca_negocio = new MarcaNegocio();
-                    _Marca aux = new _Marca();
-                    aux.DescripcionMarca = nombre.Text;
+                    BrandController marca_negocio = new BrandController();
+                    Brand aux = new Brand();
+                    aux.description = nombre.Text;
 
                     if (Request.QueryString["id"] != null) //se esta modificando un prod.
                     {
-                        aux.IDMarca = int.Parse(Request.QueryString["id"]);
-                        marca_negocio.modificar(aux);
+                        aux.id = int.Parse(Request.QueryString["id"]);
+                        marca_negocio.Modify(aux);
                     }
                     else //se esta agregando una marca
                     {
-                        marca_negocio.agregar(aux);
+                        marca_negocio.Add(aux);
                         nombre.Text = "";
                     }
                     Response.Redirect("ListadoMarcas.aspx",false);
@@ -97,11 +97,11 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                MarcaNegocio marca_negocio = new MarcaNegocio();
+                BrandController marca_negocio = new BrandController();
                 if (Request.QueryString["id"] != null)
                 {
                     int codigoURL = int.Parse(Request.QueryString["id"].ToString());
-                    marca_negocio.eliminar(codigoURL);
+                    marca_negocio.Delete(codigoURL);
                     Response.Redirect("ListadoMarcas.aspx",false);
                 }
             }

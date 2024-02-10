@@ -54,19 +54,19 @@
         <asp:GridView ID="gvArticulos" CssClass="table table-dark" runat="server" AutoGenerateColumns="false">
 
             <Columns>
-                <asp:BoundField HeaderText="Producto" DataField="Nombre">
+                <asp:BoundField HeaderText="Producto" DataField="name">
                     <ItemStyle CssClass="" />
                     <HeaderStyle CssClass="bg-warning bg-gradient"></HeaderStyle>
                 </asp:BoundField>
 
 
-                <asp:BoundField HeaderText="Cantidad" DataField="Cantidad">
+                <asp:BoundField HeaderText="Cantidad" DataField="quantity">
                     <ItemStyle CssClass="rigth" />
                     <HeaderStyle CssClass="rigth bg-warning bg-gradient"></HeaderStyle>
                 </asp:BoundField>
 
 
-                <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:C}">
+                <asp:BoundField HeaderText="Precio" DataField="price" DataFormatString="{0:C}">
                     <ItemStyle CssClass="rigth" />
                     <HeaderStyle CssClass="rigth bg-warning bg-gradient"></HeaderStyle>
                 </asp:BoundField>

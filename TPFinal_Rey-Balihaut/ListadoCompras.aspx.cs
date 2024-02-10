@@ -25,19 +25,19 @@ namespace TPFinal_Rey_Balihaut
                 }
 
 
-                CompraNegocio compra_negocio = new CompraNegocio();
+                PurchaseController compra_negocio = new PurchaseController();
 
                 if (!IsPostBack)
                 {
-                    gvCompras.DataSource = compra_negocio.listar();
+                    gvCompras.DataSource = compra_negocio.GetAll();
                     gvCompras.DataBind();
 
-                    total.Text = "$" + String.Format("{0:0.00}", compra_negocio.total());
+                    total.Text = "$" + String.Format("{0:0.00}", compra_negocio.GetTotalSumPurchases());
 
-                    ProveedorNegocio negocio = new ProveedorNegocio();
-                    ddlproveedores.DataSource = negocio.listar();
-                    ddlproveedores.DataTextField = "Nombre";
-                    ddlproveedores.DataValueField = "CUIT";
+                    SupplierController negocio = new SupplierController();
+                    ddlproveedores.DataSource = negocio.GetAll();
+                    ddlproveedores.DataTextField = "name";
+                    ddlproveedores.DataValueField = "cuit";
                     ddlproveedores.DataBind();
                 }
             }
@@ -80,8 +80,8 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                CompraNegocio compra_negocio = new CompraNegocio();
-                gvCompras.DataSource = compra_negocio.listarxproveedor(ddlproveedores.SelectedValue);
+                PurchaseController compra_negocio = new PurchaseController();
+                gvCompras.DataSource = compra_negocio.GetAllBySupplier(ddlproveedores.SelectedValue);
                 gvCompras.DataBind();
             }
             catch (Exception ex)
@@ -95,27 +95,27 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                CompraNegocio compra_negocio = new CompraNegocio();
+                PurchaseController compra_negocio = new PurchaseController();
 
                 if (tboxmin.Text != "" && tboxmax.Text != "")
                 {
                     decimal min = decimal.Parse(tboxmin.Text);
                     decimal max = decimal.Parse(tboxmax.Text);
-                    gvCompras.DataSource = compra_negocio.listarxrango(min, max);
+                    gvCompras.DataSource = compra_negocio.GetAllByTotalRange(min, max);
                 }
                 else if (tboxmin.Text != "" && tboxmax.Text == "")
                 {
                     decimal min = decimal.Parse(tboxmin.Text);
-                    gvCompras.DataSource = compra_negocio.listarxmin(min);
+                    gvCompras.DataSource = compra_negocio.GetAllByTotalMinimum(min);
                 }
                 else if (tboxmin.Text == "" && tboxmax.Text != "")
                 {
                     decimal max = decimal.Parse(tboxmax.Text);
-                    gvCompras.DataSource = compra_negocio.listarxmax(max);
+                    gvCompras.DataSource = compra_negocio.GetAllByTotalMaximum(max);
                 }
                 else
                 {
-                    gvCompras.DataSource = compra_negocio.listar();
+                    gvCompras.DataSource = compra_negocio.GetAll();
                 }
                 gvCompras.DataBind();
             }

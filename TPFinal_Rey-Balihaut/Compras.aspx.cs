@@ -16,7 +16,7 @@ namespace TPFinal_Rey_Balihaut
         public string elegido { get; set; }
         public string valueproveedor { get; set; }
         public string val { get; set; }
-        public List<Agregados> lista_agregados { get; set; }
+        public List<ProductCart> lista_agregados { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -36,16 +36,16 @@ namespace TPFinal_Rey_Balihaut
                     cantidad = 0;
                     //contador = 1;
 
-                    ProveedorNegocio proveedores_negocio = new ProveedorNegocio();
-                    ddlproveedor.DataSource = proveedores_negocio.listar();
-                    ddlproveedor.DataValueField = "CUIT";
-                    ddlproveedor.DataTextField = "NOMBRE";
+                    SupplierController proveedores_negocio = new SupplierController();
+                    ddlproveedor.DataSource = proveedores_negocio.GetAll();
+                    ddlproveedor.DataValueField = "cuit";
+                    ddlproveedor.DataTextField = "name";
                     ddlproveedor.DataBind();
 
-                    ProductoNegocio producto_negocio = new ProductoNegocio();
-                    ddlproductos.DataSource = producto_negocio.listar();
-                    ddlproductos.DataValueField = "CODIGO";
-                    ddlproductos.DataTextField = "NOMBRE";
+                    ProductController producto_negocio = new ProductController();
+                    ddlproductos.DataSource = producto_negocio.GetAll();
+                    ddlproductos.DataValueField = "code";
+                    ddlproductos.DataTextField = "name";
                     ddlproductos.DataBind();
 
                     ddlcondicion.Items.Add("EFECTIVO");
@@ -56,7 +56,7 @@ namespace TPFinal_Rey_Balihaut
 
                 if (Session["agregados"] == null)
                 {
-                    lista_agregados = new List<Agregados>();
+                    lista_agregados = new List<ProductCart>();
                     Session.Add("agregados", lista_agregados);
                 }
 
@@ -66,13 +66,13 @@ namespace TPFinal_Rey_Balihaut
                 txtfecha.Text = DateTime.Now.ToShortDateString();
 
                 //TOTAL SUMA
-                lista_agregados = (List<Agregados>)Session["agregados"];
+                lista_agregados = (List<ProductCart>)Session["agregados"];
                 if (lista_agregados.Count > 0)
                 {
                     decimal suma = 0;
-                    foreach (Dominio.Agregados aux in lista_agregados)
+                    foreach (Dominio.ProductCart aux in lista_agregados)
                     {
-                        suma += aux.Precio * aux.Cantidad;
+                        suma += aux.price * aux.quantity;
                     }
                     //txtsuma.Text = String.Format("{0:0.00}", suma);
                     txtsuma.Text = suma.ToString();
@@ -134,24 +134,24 @@ namespace TPFinal_Rey_Balihaut
             {
                 if (cantidades.Text != "" && precio.Text != "")
                 {
-                    Agregados aux = new Agregados();
-                    aux.Codigo = ddlproductos.SelectedItem.Value;
-                    aux.Nombre = ddlproductos.SelectedItem.Text;
-                    aux.Cantidad = int.Parse(cantidades.Text);
-                    aux.Precio = decimal.Parse(precio.Text);
+                    ProductCart aux = new ProductCart();
+                    aux.code = ddlproductos.SelectedItem.Value;
+                    aux.name = ddlproductos.SelectedItem.Text;
+                    aux.quantity = int.Parse(cantidades.Text);
+                    aux.price = decimal.Parse(precio.Text);
 
-                    lista_agregados = (List<Agregados>)Session["agregados"];
+                    lista_agregados = (List<ProductCart>)Session["agregados"];
 
                     //si el producto ya existe en la lista:
-                    Agregados reemplazo = lista_agregados.Find(x => x.Codigo == aux.Codigo);
+                    ProductCart reemplazo = lista_agregados.Find(x => x.code == aux.code);
 
                     //lo modifica
                     if (reemplazo != null)
                     {
                         int index = lista_agregados.IndexOf(reemplazo);
 
-                        lista_agregados[index].Cantidad += aux.Cantidad;
-                        lista_agregados[index].Precio = aux.Precio;
+                        lista_agregados[index].quantity += aux.quantity;
+                        lista_agregados[index].price = aux.price;
                     }
                     //y si no, lo agrega
                     else
@@ -182,8 +182,8 @@ namespace TPFinal_Rey_Balihaut
             {
                 string codigoSelected = gvAgregados.SelectedDataKey.Value.ToString();
 
-                lista_agregados = (List<Agregados>)Session["agregados"];
-                Agregados aux = lista_agregados.Find(x => x.Codigo == codigoSelected);
+                lista_agregados = (List<ProductCart>)Session["agregados"];
+                ProductCart aux = lista_agregados.Find(x => x.code == codigoSelected);
                 lista_agregados.Remove(aux);
 
                 cantidades.Text = "";
@@ -207,34 +207,34 @@ namespace TPFinal_Rey_Balihaut
             try
             {
                 //INSERTAR COMPRA
-                CompraNegocio negocio = new CompraNegocio();
-                _Compra aux = new _Compra();
-                aux.Proveedor = new _Proveedor2();
-                aux.Fecha = DateTime.Now;
-                aux.Proveedor.CUIT = ddlproveedor.SelectedValue;
-                aux.Total = decimal.Parse(txtsuma.Text);
-                aux.Condicion = ddlcondicion.SelectedValue;
-                aux.Observaciones = observaciones.Text;
+                PurchaseController negocio = new PurchaseController();
+                Purchase aux = new Purchase();
+                aux.supplier = new Supplier();
+                aux.date = DateTime.Now;
+                aux.supplier.cuit = ddlproveedor.SelectedValue;
+                aux.total = decimal.Parse(txtsuma.Text);
+                aux.paymentCondition = ddlcondicion.SelectedValue;
+                aux.observations = observaciones.Text;
 
                 //INSERTAR COMPRA Y DETALLE_COMPRA}
-                negocio.agregar(aux);
+                negocio.Add(aux);
 
 
-                lista_agregados = (List<Agregados>)Session["agregados"];
-                foreach (Agregados agregado in lista_agregados)
+                lista_agregados = (List<ProductCart>)Session["agregados"];
+                foreach (ProductCart agregado in lista_agregados)
                 {
-                    negocio.agregarDetalle(aux, agregado);
-                    negocio.aumentarStock(agregado);
-                    negocio.setearPrecio(agregado);
-                    negocio.setearPrecioVenta(agregado);
+                    negocio.AddDetail(aux, agregado);
+                    negocio.AddStock(agregado);
+                    negocio.SetPrice(agregado);
+                    negocio.SetSalesPrice(agregado);
                 }
                 //negocio.agregarDetalle(aux,agregado);
 
                 //actualizar el total de compras para mostrarlo en el grafico
-                Session.Add("compras", negocio.total());
+                Session.Add("compras", negocio.GetTotalSumPurchases());
 
                 //limpiar lista agregados
-                lista_agregados = new List<Agregados>();
+                lista_agregados = new List<ProductCart>();
                 Session.Add("agregados", lista_agregados);
 
                 Response.Redirect("ListadoCompras.aspx",false);

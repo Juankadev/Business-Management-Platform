@@ -25,17 +25,17 @@ namespace TPFinal_Rey_Balihaut
                 }
 
 
-                ProductoNegocio producto_negocio = new ProductoNegocio();
+                ProductController producto_negocio = new ProductController();
                 if (!IsPostBack)
                 {
-                    gvArticulos.DataSource = producto_negocio.listarConSP();
+                    gvArticulos.DataSource = producto_negocio.GetAll();
                     gvArticulos.DataBind();
                 }
 
-                List<_Producto> lista = producto_negocio.listar();
+                List<Product> lista = producto_negocio.GetAll();
                 for (int i = 0; i < gvArticulos.Rows.Count; i++)
                 {
-                    if (lista[i].StockActual < lista[i].StockMinimo)
+                    if (lista[i].currentStock < lista[i].minimumStock)
                     {
                         gvArticulos.Rows[i].Cells[4].CssClass = "text-danger red";
 
@@ -64,14 +64,14 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ProductoNegocio producto_negocio = new ProductoNegocio();
+                ProductController producto_negocio = new ProductController();
                 if (buscador.Text != "")
                 {
-                    gvArticulos.DataSource = producto_negocio.listarxtexto(buscador.Text);
+                    gvArticulos.DataSource = producto_negocio.GetAllByPartialDescription(buscador.Text);
                 }
                 else
                 {
-                    gvArticulos.DataSource = producto_negocio.listar();
+                    gvArticulos.DataSource = producto_negocio.GetAll();
                 }
                 gvArticulos.DataBind();
             }

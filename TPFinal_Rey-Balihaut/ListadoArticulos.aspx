@@ -32,7 +32,7 @@
                 <asp:TextBox ID="buscador" CssClass="form-control" OnTextChanged="buscador_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
             </div>
 
-            <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="Codigo" Style="color: #fff" AutoGenerateColumns="false" runat="server" HeaderStyle-CssClass="gradient">
+            <asp:GridView ID="gvArticulos" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="code" Style="color: #fff" AutoGenerateColumns="false" runat="server" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
@@ -40,19 +40,19 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-                    <asp:BoundField HeaderText="Nombre" DataField="Nombre">
+                    <asp:BoundField HeaderText="Nombre" DataField="name">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
-                    <asp:BoundField HeaderText="Marca" DataField="Marca.DescripcionMarca">
+                    <asp:BoundField HeaderText="Marca" DataField="brand.description">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
-                    <asp:BoundField HeaderText="Categoria" DataField="Categoria.DescripcionCategoria">
+                    <asp:BoundField HeaderText="Categoria" DataField="category.description">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
@@ -62,7 +62,7 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-                    <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}">
+                    <asp:BoundField HeaderText="Precio Venta" DataField="price" DataFormatString="{0:C}">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
@@ -77,7 +77,7 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-                    <asp:BoundField HeaderText="Stock Actual" DataField="StockActual">
+                    <asp:BoundField HeaderText="Stock Actual" DataField="currentStock">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>

@@ -43,7 +43,7 @@
     </script>
     <%} %>
 </head>
-<body>
+<body style="">
     <form id="form1" runat="server">
 
     <%if (Session["usuario"] != null)

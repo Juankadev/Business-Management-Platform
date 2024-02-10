@@ -27,19 +27,19 @@ namespace TPFinal_Rey_Balihaut
                 if (Request.QueryString["num"] != null)
                 {
                     int buscado = int.Parse(Request.QueryString["num"]);
-                    CompraNegocio negocio = new CompraNegocio();
-                    _Compra aux = negocio.listarxnum(buscado);
+                    PurchaseController negocio = new PurchaseController();
+                    Purchase aux = negocio.GetByNumber(buscado);
 
-                    txtnum.Text = aux.numcompra.ToString();
-                    txtfecha.Text = aux.Fecha.ToString();
-                    txtobservaciones.Text = aux.Observaciones;
-                    txtproveedor.Text = aux.Proveedor.Nombre;
-                    txttotal.Text = String.Format("{0:0.00}", aux.Total);
-                    txtcondicion.Text = aux.Condicion;
+                    txtnum.Text = aux.number.ToString();
+                    txtfecha.Text = aux.date.ToString();
+                    txtobservaciones.Text = aux.observations;
+                    txtproveedor.Text = aux.supplier.name;
+                    txttotal.Text = String.Format("{0:0.00}", aux.total);
+                    txtcondicion.Text = aux.paymentCondition;
                 }
 
-                CompraNegocio compra_negocio = new CompraNegocio();
-                gvArticulos.DataSource = compra_negocio.listarDetalleProducto(int.Parse(txtnum.Text));
+                PurchaseController compra_negocio = new PurchaseController();
+                gvArticulos.DataSource = compra_negocio.GetProductsFromPurchaseDetail(int.Parse(txtnum.Text));
                 gvArticulos.DataBind();
             }
             catch (Exception ex)

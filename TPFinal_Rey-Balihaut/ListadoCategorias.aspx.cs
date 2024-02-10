@@ -27,8 +27,8 @@ namespace TPFinal_Rey_Balihaut
 
                 if (!IsPostBack)
                 {
-                    CategoriaNegocio categoria_negocio = new CategoriaNegocio();
-                    gvCategorias.DataSource = categoria_negocio.listar();
+                    CategoryController categoria_negocio = new CategoryController();
+                    gvCategorias.DataSource = categoria_negocio.GetAll();
                     gvCategorias.DataBind();
                 }
             }
@@ -58,14 +58,14 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                CategoriaNegocio categoria_negocio = new CategoriaNegocio();
+                CategoryController categoria_negocio = new CategoryController();
                 if (buscador.Text != "")
                 {
-                    gvCategorias.DataSource = categoria_negocio.listarxtexto(buscador.Text);
+                    gvCategorias.DataSource = categoria_negocio.GetAllByPartialDescription(buscador.Text);
                 }
                 else
                 {
-                    gvCategorias.DataSource = categoria_negocio.listar();
+                    gvCategorias.DataSource = categoria_negocio.GetAll();
                 }
                 gvCategorias.DataBind();
             }

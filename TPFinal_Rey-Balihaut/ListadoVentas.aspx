@@ -79,7 +79,7 @@
             </form>
 
 
-            <asp:GridView ID="gvVentas" OnSelectedIndexChanged="gvVentas_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="numventa" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvVentas_PageIndexChanging" PageSize="10" AllowPaging="true" HeaderStyle-CssClass="gradient">
+            <asp:GridView ID="gvVentas" OnSelectedIndexChanged="gvVentas_SelectedIndexChanged" CssClass="table table-dark table-hover" DataKeyNames="number" Style="color: #fff" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="gvVentas_PageIndexChanging" PageSize="10" AllowPaging="true" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="Código" DataField="Codigo">
@@ -87,24 +87,24 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-                    <asp:BoundField HeaderText="Numero Venta" DataField="numventa">
+                    <asp:BoundField HeaderText="Numero Venta" DataField="number">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
-                    <asp:BoundField HeaderText="Cliente" DataField="Cliente.Apellido">
+                    <asp:BoundField HeaderText="Cliente" DataField="Customer.lastName">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
 
-                    <asp:BoundField HeaderText="Total" DataField="Total" DataFormatString="{0:C}">
+                    <asp:BoundField HeaderText="Total" DataField="total" DataFormatString="{0:C}">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>
 
-                    <asp:BoundField HeaderText="Fecha" DataField="Fecha" DataFormatString="{0:dd/MM/yyyy}">
+                    <asp:BoundField HeaderText="Fecha" DataField="date" DataFormatString="{0:dd/MM/yyyy}">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>

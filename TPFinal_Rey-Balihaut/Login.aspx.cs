@@ -56,18 +56,18 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                _Usuario usuario;
-                UsuarioNegocio negocio = new UsuarioNegocio();
-                usuario = new _Usuario(email.Text,pass.Text,false);
-                if(negocio.loguear(usuario))
+                User usuario;
+                UserController negocio = new UserController();
+                usuario = new User(email.Text, pass.Text, UserTypes.CLIENT);
+                if(negocio.Login(usuario))
                 {
                     Session.Add("usuario",usuario);
-                    Session.Add("tipo",usuario.TipoUsuario.ToString());
+                    Session.Add("tipo",usuario.userType.ToString());
 
-                    CompraNegocio compra_negocio = new CompraNegocio();
-                    Session.Add("compras", compra_negocio.total());
-                    VentaNegocio venta_negocio = new VentaNegocio();
-                    Session.Add("ventas", venta_negocio.total());
+                    PurchaseController compra_negocio = new PurchaseController();
+                    Session.Add("compras", compra_negocio.GetTotalSumPurchases());
+                    SaleController venta_negocio = new SaleController();
+                    Session.Add("ventas", venta_negocio.GetTotalSumSales());
                     //decimal total = decimal.Parse(Session["compras"].ToString());
 
                     Response.Redirect("Default.aspx",false);

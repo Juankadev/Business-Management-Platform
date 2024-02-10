@@ -26,8 +26,8 @@ namespace TPFinal_Rey_Balihaut
 
                 if (!IsPostBack)
                 {
-                    MarcaNegocio marca_negocio = new MarcaNegocio();
-                    gvMarcas.DataSource = marca_negocio.listar();
+                    BrandController marca_negocio = new BrandController();
+                    gvMarcas.DataSource = marca_negocio.GetAll();
                     gvMarcas.DataBind();
                 }
             }
@@ -56,14 +56,14 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                MarcaNegocio marca_negocio = new MarcaNegocio();
+                BrandController marca_negocio = new BrandController();
                 if (buscador.Text != "")
                 {
-                    gvMarcas.DataSource = marca_negocio.listarxtexto(buscador.Text);
+                    gvMarcas.DataSource = marca_negocio.GetAllByPartialDescription(buscador.Text);
                 }
                 else
                 {
-                    gvMarcas.DataSource = marca_negocio.listar();
+                    gvMarcas.DataSource = marca_negocio.GetAll();
                 }
                 gvMarcas.DataBind();
             }

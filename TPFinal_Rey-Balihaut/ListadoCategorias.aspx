@@ -21,7 +21,7 @@
             </div>
 
 
-            <asp:GridView ID="gvCategorias" OnSelectedIndexChanged="gvCategorias_SelectedIndexChanged" DataKeyNames="IDCategoria" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" runat="server" HeaderStyle-CssClass="gradient">
+            <asp:GridView ID="gvCategorias" OnSelectedIndexChanged="gvCategorias_SelectedIndexChanged" DataKeyNames="id" CssClass="table table-dark table-hover" Style="color: #fff" AutoGenerateColumns="false" runat="server" HeaderStyle-CssClass="gradient">
                 <Columns>
 
                     <%--            <asp:BoundField HeaderText="ID" DataField="IDCategoria">
@@ -29,7 +29,7 @@
                 <HeaderStyle CssClass="bg-primary bg-gradient"></HeaderStyle>
             </asp:BoundField>--%>
 
-                    <asp:BoundField HeaderText="Nombre" DataField="DescripcionCategoria">
+                    <asp:BoundField HeaderText="Nombre" DataField="description">
                         <ItemStyle CssClass="" />
                         <HeaderStyle CssClass=""></HeaderStyle>
                     </asp:BoundField>

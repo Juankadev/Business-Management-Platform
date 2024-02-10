@@ -22,8 +22,8 @@ namespace TPFinal_Rey_Balihaut
 
                 if (!IsPostBack)
                 {
-                    ClienteNegocio cliente_negocio = new ClienteNegocio();
-                    gvClientes.DataSource = cliente_negocio.listar();
+                    CustomerController cliente_negocio = new CustomerController();
+                    gvClientes.DataSource = cliente_negocio.GetAll();
                     gvClientes.DataBind();
                 }
             }
@@ -53,14 +53,14 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                ClienteNegocio cliente_negocio = new ClienteNegocio();
+                CustomerController cliente_negocio = new CustomerController();
                 if (buscador.Text != "")
                 {
-                    gvClientes.DataSource = cliente_negocio.listarxtexto(buscador.Text);
+                    gvClientes.DataSource = cliente_negocio.GetAllByPartialLastName(buscador.Text);
                 }
                 else
                 {
-                    gvClientes.DataSource = cliente_negocio.listar();
+                    gvClientes.DataSource = cliente_negocio.GetAll();
                 }
                 gvClientes.DataBind();
             }
