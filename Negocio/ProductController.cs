@@ -10,10 +10,10 @@ namespace Negocio
 {
     public class ProductController
     {
+        DataAccess data = new DataAccess();
         public List<Product> GetAll()
         {
             List<Product> list = new List<Product>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -22,46 +22,39 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Product aux = new Product();
-                    aux.brand = new Brand();
-                    aux.category = new Category();
-                    //aux.Proveedor = new _Proveedor2();
+                    Product product = new Product();
+                    product.brand = new Brand();
+                    product.category = new Category();
+  
+                    product.code = (string)data.Reader["CODIGO"];
+                    product.name = (string)data.Reader["NOMBRE"];
+                    product.brand.id = (int)data.Reader["IDMARCA"];
+                    product.brand.description = (string)data.Reader["DESCRIPCION_MARCA"];
+                    product.category.id = (int)data.Reader["IDCATEGORIA"];
+                    product.category.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
+                    product.price = (decimal)data.Reader["PRECIO"];
+                    product.salePrice = (decimal)data.Reader["PRECIO_VENTA"];
+                    product.currentStock = (decimal)data.Reader["STOCK_ACTUAL"];
+                    product.minimumStock = (decimal)data.Reader["STOCK_MINIMO"];
+                    product.percentageOfProfit = (decimal)data.Reader["PORCENTAJE_GAN"];
 
-                    aux.code = (string)data.Reader["CODIGO"];
-                    aux.name = (string)data.Reader["NOMBRE"];
-                    aux.brand.id = (int)data.Reader["IDMARCA"];
-                    aux.brand.description = (string)data.Reader["DESCRIPCION_MARCA"];
-                    aux.category.id = (int)data.Reader["IDCATEGORIA"];
-                    aux.category.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
-                    //aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
-                    //aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
-                    aux.price = (decimal)data.Reader["PRECIO"];
-                    aux.PrecioVenta = (decimal)data.Reader["PRECIO_VENTA"];
-                    aux.currentStock = (decimal)data.Reader["STOCK_ACTUAL"];
-                    aux.minimumStock = (decimal)data.Reader["STOCK_MINIMO"];
-                    aux.percentageOfProfit = (decimal)data.Reader["PORCENTAJE_GAN"];
-
-                    list.Add(aux);
+                    list.Add(product);
                 }
 
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public List<Product> GetAllFromStoredProcedure()
         {
             List<Product> list = new List<Product>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -72,36 +65,31 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Product aux = new Product();
-                    aux.brand = new Brand();
-                    aux.category = new Category();
-                    //aux.Proveedor = new _Proveedor2();
+                    Product product = new Product();
+                    product.brand = new Brand();
+                    product.category = new Category();
 
-                    aux.code = (string)data.Reader["CODIGO"];
-                    aux.name = (string)data.Reader["NOMBRE"];
-                    aux.brand.id = (int)data.Reader["IDMARCA"];
-                    aux.brand.description = (string)data.Reader["DESCRIPCION_MARCA"];
-                    aux.category.id = (int)data.Reader["IDCATEGORIA"];
-                    aux.category.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
-                    //aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
-                    //aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
-                    aux.price = (decimal)data.Reader["PRECIO"];
-                    aux.PrecioVenta = (decimal)data.Reader["PRECIO_VENTA"];
-                    aux.currentStock = (decimal)data.Reader["STOCK_ACTUAL"];
-                    aux.minimumStock = (decimal)data.Reader["STOCK_MINIMO"];
-                    aux.percentageOfProfit = (decimal)data.Reader["PORCENTAJE_GAN"];
+                    product.code = (string)data.Reader["CODIGO"];
+                    product.name = (string)data.Reader["NOMBRE"];
+                    product.brand.id = (int)data.Reader["IDMARCA"];
+                    product.brand.description = (string)data.Reader["DESCRIPCION_MARCA"];
+                    product.category.id = (int)data.Reader["IDCATEGORIA"];
+                    product.category.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
+                    product.price = (decimal)data.Reader["PRECIO"];
+                    product.salePrice = (decimal)data.Reader["PRECIO_VENTA"];
+                    product.currentStock = (decimal)data.Reader["STOCK_ACTUAL"];
+                    product.minimumStock = (decimal)data.Reader["STOCK_MINIMO"];
+                    product.percentageOfProfit = (decimal)data.Reader["PORCENTAJE_GAN"];
 
-                    list.Add(aux);
+                    list.Add(product);
                 }
 
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
@@ -110,7 +98,6 @@ namespace Negocio
         public List<Product> GetAllByPartialDescription(string description)
         {
             List<Product> list = new List<Product>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -120,68 +107,53 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Product aux = new Product();
-                    aux.brand = new Brand();
-                    aux.category = new Category();
-                    //aux.Proveedor = new _Proveedor2();
+                    Product product = new Product();
+                    product.brand = new Brand();
+                    product.category = new Category();
 
-                    aux.code = (string)data.Reader["CODIGO"];
-                    aux.name = (string)data.Reader["NOMBRE"];
-                    aux.brand.id = (int)data.Reader["IDMARCA"];
-                    aux.brand.description = (string)data.Reader["DESCRIPCION_MARCA"];
-                    aux.category.id = (int)data.Reader["IDCATEGORIA"];
-                    aux.category.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
-                    //aux.Proveedor.CUIT = (string)datos.Lector["CUITPROVEEDOR"];
-                    //aux.Proveedor.Nombre = (string)datos.Lector["NOMBRE_PROVEEDOR"];
-                    aux.price = (decimal)data.Reader["PRECIO"];
-                    aux.PrecioVenta = (decimal)data.Reader["PRECIO_VENTA"];
-                    aux.currentStock = (decimal)data.Reader["STOCK_ACTUAL"];
-                    aux.minimumStock = (decimal)data.Reader["STOCK_MINIMO"];
-                    aux.percentageOfProfit = (decimal)data.Reader["PORCENTAJE_GAN"];
+                    product.code = (string)data.Reader["CODIGO"];
+                    product.name = (string)data.Reader["NOMBRE"];
+                    product.brand.id = (int)data.Reader["IDMARCA"];
+                    product.brand.description = (string)data.Reader["DESCRIPCION_MARCA"];
+                    product.category.id = (int)data.Reader["IDCATEGORIA"];
+                    product.category.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
+                    product.price = (decimal)data.Reader["PRECIO"];
+                    product.salePrice = (decimal)data.Reader["PRECIO_VENTA"];
+                    product.currentStock = (decimal)data.Reader["STOCK_ACTUAL"];
+                    product.minimumStock = (decimal)data.Reader["STOCK_MINIMO"];
+                    product.percentageOfProfit = (decimal)data.Reader["PORCENTAJE_GAN"];
 
-                    list.Add(aux);
+                    list.Add(product);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
-        public void AddFromStoredProcedure(Product product)
+        public void Add(Product product)
         {
-            DataAccess data = new DataAccess();
             try
             {
-                //datos.setearConsulta("INSERT INTO PRODUCTOS (CODIGO,PRECIO_VENTA,NOMBRE,IDMARCA,IDCATEGORIA,PRECIO,STOCK_ACTUAL,STOCK_MINIMO,PORCENTAJE_GAN,ACTIVO) " +
-                //    "VALUES ('" + nuevoProducto.Codigo + "', '" + 0 + "', '" + nuevoProducto.Nombre + "', @IDMARCA, @IDCATEGORIA, " + nuevoProducto.Precio + ", '" + nuevoProducto.StockActual + "', '" + nuevoProducto.StockMinimo + "','" + nuevoProducto.PorcentajeGanancia + "', '" + 1 + "')");
-                //datos.setearParametro("@IDMARCA", nuevoProducto.Marca.IDMarca);
-                //datos.setearParametro("@IDCATEGORIA", nuevoProducto.Categoria.IDCategoria);
-
-                //datos.setearParametro("@CUITPROVEEDOR", nuevoProducto.Proveedor.CUIT);
-
-                data.SetProcedure("storedAltaArticulos");
+                data.SetProcedure("SP_ADD_PRODUCTO");
                 data.SetParameter("@CODIGO",product.code);
+                data.SetParameter("@PRECIO_VENTA", product.salePrice);
                 data.SetParameter("@NOMBRE",product.name);
                 data.SetParameter("@IDMARCA",product.brand.id);
                 data.SetParameter("@IDCATEGORIA",product.category.id);
                 data.SetParameter("@PRECIO",product.price);
-                data.SetParameter("@STOCKACTUAL",product.currentStock);
-                data.SetParameter("@STOCKMINIMO",product.minimumStock);
-                data.SetParameter("@PORCENTAJE",product.percentageOfProfit);
+                data.SetParameter("@STOCK_ACTUAL",product.currentStock);
+                data.SetParameter("@STOCK_MINIMO",product.minimumStock);
+                data.SetParameter("@PORCENTAJE_GAN", product.percentageOfProfit);
                 data.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                //el producto ya existe
                 throw ex;
             }
             finally
@@ -191,7 +163,6 @@ namespace Negocio
         }
         public void Modify(Product product)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("UPDATE PRODUCTOS SET NOMBRE = @NOMBRE, IDMARCA = @IDMARCA, IDCATEGORIA = @IDCATEGORIA, PRECIO = @PRECIO, PRECIO_VENTA=@PRECIOVENTA, STOCK_ACTUAL = @STOCKACTUAL, STOCK_MINIMO = @STOCKMINIMO, PORCENTAJE_GAN = @PORCENTAJEGAN WHERE CODIGO = @CODIGO");
@@ -199,7 +170,6 @@ namespace Negocio
                 data.SetParameter("@NOMBRE", product.name);
                 data.SetParameter("@IDMARCA", product.brand.id);
                 data.SetParameter("@IDCATEGORIA", product.category.id);
-
                 data.SetParameter("@PRECIO", product.price);
                 data.SetParameter("@PRECIOVENTA", product.price + (product.price * (product.percentageOfProfit / 100)));
                 data.SetParameter("@STOCKMINIMO", product.minimumStock);
@@ -209,7 +179,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                //el producto ya existe
                 throw ex;
             }
             finally
@@ -219,26 +188,22 @@ namespace Negocio
         }
         public void ModifyFromStoredProcedure(Product product)
         {
-            DataAccess data = new DataAccess();
             try
             {
-                //datos.setearConsulta("UPDATE PRODUCTOS SET NOMBRE = @NOMBRE, IDMARCA = @IDMARCA, IDCATEGORIA = @IDCATEGORIA, PRECIO = @PRECIO, PRECIO_VENTA=@PRECIOVENTA, STOCK_ACTUAL = @STOCKACTUAL, STOCK_MINIMO = @STOCKMINIMO, PORCENTAJE_GAN = @PORCENTAJEGAN WHERE CODIGO = @CODIGO");
-                data.SetProcedure("storedUpdateArticulos");
+                data.SetProcedure("SP_UPDATE_PRODUCTO");
                 data.SetParameter("@CODIGO", product.code);
                 data.SetParameter("@NOMBRE", product.name);
                 data.SetParameter("@IDMARCA", product.brand.id);
                 data.SetParameter("@IDCATEGORIA", product.category.id);
-
                 data.SetParameter("@PRECIO", product.price);
-                data.SetParameter("@PRECIOVENTA", product.price + (product.price * (product.percentageOfProfit / 100)));
-                data.SetParameter("@STOCKMINIMO", product.minimumStock);
-                data.SetParameter("@STOCKACTUAL", product.currentStock);
-                data.SetParameter("@PORCENTAJE", product.percentageOfProfit);
+                data.SetParameter("@PRECIO_VENTA", product.price + (product.price * (product.percentageOfProfit / 100)));
+                data.SetParameter("@STOCK_MINIMO", product.minimumStock);
+                data.SetParameter("@STOCK_ACTUAL", product.currentStock);
+                data.SetParameter("@PORCENTAJE_GAN", product.percentageOfProfit);
                 data.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                //el producto ya existe
                 throw ex;
             }
             finally
@@ -248,7 +213,6 @@ namespace Negocio
         }
         public void Delete(string productCode)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("UPDATE PRODUCTOS SET ACTIVO = 0 WHERE CODIGO = @CODIGO");
@@ -291,7 +255,6 @@ namespace Negocio
         //}
         public void AddSuppliers(string cuit, string productCode)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE CODIGO_PRODUCTO=@CODIGO AND CUIT_PROVEEDOR=@CUIT");
@@ -315,8 +278,6 @@ namespace Negocio
         }
         public decimal GetSalePrice(string productCode)
         {
-            DataAccess data = new DataAccess();
-
             try
             {
                 data.SetQuery("select PRECIO_VENTA from productos where codigo=@codigo");
@@ -333,12 +294,10 @@ namespace Negocio
 
                 return 0;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
@@ -346,8 +305,6 @@ namespace Negocio
         }
         public bool ExistStock(decimal quantity, string productCode)
         {
-            DataAccess data = new DataAccess();
-
             try
             {
                 data.SetQuery("select stock_actual from productos where codigo=@codigo");
@@ -362,10 +319,8 @@ namespace Negocio
                         return true;
                     }
                 }
-
                 return false;
             }
-
             catch (Exception ex)
             {
                 throw ex;
@@ -377,8 +332,6 @@ namespace Negocio
         }
         public decimal GetCurrentStock(string productCode)
         {
-            DataAccess data = new DataAccess();
-
             try
             {
                 data.SetQuery("select stock_actual from productos where codigo=@codigo");
@@ -401,7 +354,6 @@ namespace Negocio
             {
                 data.Close();
             }
-
         }
     }
 }

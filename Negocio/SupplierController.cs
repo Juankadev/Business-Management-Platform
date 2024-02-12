@@ -11,10 +11,10 @@ namespace Negocio
 {
     public class SupplierController
     {
+        DataAccess data = new DataAccess();
         public List<Supplier> GetAll()
         {
             List<Supplier> list = new List<Supplier>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -23,34 +23,29 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Supplier aux = new Supplier();
-                    aux.cuit = (string)data.Reader["CUIT"];
-                    aux.name = (string)data.Reader["NOMBRE_PROVEEDOR"];
-                    aux.phone = (string)data.Reader["TELEFONO"];
-                    aux.email = (string)data.Reader["MAIL"];
-                    aux.address = (string)data.Reader["DIRECCION"];
+                    Supplier supplier = new Supplier();
+                    supplier.cuit = (string)data.Reader["CUIT"];
+                    supplier.name = (string)data.Reader["NOMBRE_PROVEEDOR"];
+                    supplier.phone = (string)data.Reader["TELEFONO"];
+                    supplier.email = (string)data.Reader["MAIL"];
+                    supplier.address = (string)data.Reader["DIRECCION"];
 
-                    list.Add(aux);
+                    list.Add(supplier);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public List<Supplier> GetAllByPartialDescription(string description)
         {
             List<Supplier> list = new List<Supplier>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -60,33 +55,28 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Supplier aux = new Supplier();
-                    aux.cuit = (string)data.Reader["CUIT"];
-                    aux.name = (string)data.Reader["NOMBRE_PROVEEDOR"];
-                    aux.phone = (string)data.Reader["TELEFONO"];
-                    aux.email = (string)data.Reader["MAIL"];
-                    aux.address = (string)data.Reader["DIRECCION"];
+                    Supplier supplier = new Supplier();
+                    supplier.cuit = (string)data.Reader["CUIT"];
+                    supplier.name = (string)data.Reader["NOMBRE_PROVEEDOR"];
+                    supplier.phone = (string)data.Reader["TELEFONO"];
+                    supplier.email = (string)data.Reader["MAIL"];
+                    supplier.address = (string)data.Reader["DIRECCION"];
 
-                    list.Add(aux);
+                    list.Add(supplier);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public void Add(Supplier supplier)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("INSERT INTO PROVEEDORES (CUIT,NOMBRE_PROVEEDOR,TELEFONO,MAIL,DIRECCION, ACTIVO) VALUES ('" + supplier.cuit + "','" + supplier.name + "','" + supplier.phone + "','" + supplier.email + "','" + supplier.address + "','" + 1 + "' )");
@@ -103,7 +93,6 @@ namespace Negocio
         }
         public void Modify(Supplier supplier)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("UPDATE PROVEEDORES SET CUIT=@CUIT,NOMBRE_PROVEEDOR=@NOMBRE,TELEFONO=@TELEFONO,MAIL=@MAIL,DIRECCION=@DIRECCION WHERE CUIT=@CUIT");
@@ -126,12 +115,11 @@ namespace Negocio
         }
         public void Delete(string cuit)
         {
-            DataAccess datos = new DataAccess();
             try
             {
-                datos.SetQuery("UPDATE PROVEEDORES SET ACTIVO = 0 WHERE CUIT = @CUIT");
-                datos.SetParameter("@CUIT", cuit);
-                datos.ExecuteNonQuery();
+                data.SetQuery("UPDATE PROVEEDORES SET ACTIVO = 0 WHERE CUIT = @CUIT");
+                data.SetParameter("@CUIT", cuit);
+                data.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -139,13 +127,12 @@ namespace Negocio
             }
             finally
             {
-                datos.Close();
+                data.Close();
             }
         }
         public List<String> GetAssociatedSuppliers(string productCode)
         {
             List<String> list = new List<String>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -158,25 +145,20 @@ namespace Negocio
                     string aux = (string)data.Reader["NOMBRE_PROVEEDOR"];
                     list.Add(aux);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public List<String> GetAllNames()
         {
             List<String> list = new List<String>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -188,24 +170,19 @@ namespace Negocio
                     string aux = (string)data.Reader["NOMBRE_PROVEEDOR"];
                     list.Add(aux);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public void DeleteAssociatedSuppliers(string cuit, string productCode)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE CUIT_PROVEEDOR=@CUIT AND CODIGO_PRODUCTO=@CODIGO");

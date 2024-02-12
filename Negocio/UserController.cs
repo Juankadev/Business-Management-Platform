@@ -9,9 +9,9 @@ namespace Negocio
 {
     public class UserController
     {
+        DataAccess data = new DataAccess();
         public bool Login(User user)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("select ID_USUARIO, tipo_usuario from usuarios where mail = @mail and contraseña = @contraseña");
@@ -23,7 +23,6 @@ namespace Negocio
                 {
                     user.id = (int)data.Reader["ID_USUARIO"];
                     user.userType = (int)data.Reader["tipo_usuario"] == 2 ? UserTypes.ADMIN : UserTypes.CLIENT;
-                    //usuario.Activo = (int)datos.Lector["activo"];
                     return true;
                 }
                 return false;

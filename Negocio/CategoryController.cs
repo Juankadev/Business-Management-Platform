@@ -10,10 +10,10 @@ namespace Negocio
 {
     public class CategoryController
     {
+        DataAccess data = new DataAccess();
         public List<Category> GetAll()
         {
             List<Category> list = new List<Category>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -22,31 +22,27 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Category aux = new Category();
-                    aux.id = (int)data.Reader["Id"];
-                    aux.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
+                    Category category = new Category();
+                    category.id = (int)data.Reader["Id"];
+                    category.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
 
-                    list.Add(aux);
+                    list.Add(category);
                 }
 
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public List<Category> GetAllByPartialDescription(string description)
         {
             List<Category> list = new List<Category>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -56,30 +52,25 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Category aux = new Category();
-                    aux.id = (int)data.Reader["Id"];
-                    aux.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
+                    Category category = new Category();
+                    category.id = (int)data.Reader["Id"];
+                    category.description = (string)data.Reader["DESCRIPCION_CATEGORIA"];
 
-                    list.Add(aux);
+                    list.Add(category);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public void Add(Category category)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("INSERT INTO CATEGORIAS (DESCRIPCION_CATEGORIA, ACTIVO) VALUES ('" + category.description + "','" + 1 + "' )");
@@ -96,7 +87,6 @@ namespace Negocio
         }
         public void Modify(Category category)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("UPDATE CATEGORIAS SET DESCRIPCION_CATEGORIA=@DESCRIPCION WHERE ID=@ID");
@@ -107,7 +97,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                //el producto ya existe
                 throw ex;
             }
             finally
@@ -117,7 +106,6 @@ namespace Negocio
         }
         public void Delete(int id)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("UPDATE CATEGORIAS SET ACTIVO = 0 WHERE ID = @ID");
@@ -133,6 +121,5 @@ namespace Negocio
                 data.Close();
             }
         }
-
     }
 }

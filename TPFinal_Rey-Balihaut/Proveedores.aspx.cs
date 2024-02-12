@@ -62,48 +62,36 @@ namespace TPFinal_Rey_Balihaut
         {
             try
             {
-                if(cuit.Text != "" && cuit.Text.Length == 12 && nombre.Text != "")
-                {
-                    SupplierController proveedor_negocio = new SupplierController();
-                    Supplier aux = new Supplier();
-                    aux.cuit = cuit.Text;
-                    aux.name = nombre.Text;
-                    aux.phone = telefono.Text;
-                    aux.email = mail.Text;
-                    aux.address = direccion.Text;
-
-                    if (Request.QueryString["id"] != null) //se esta editando un proveedor.
-                    {
-                        proveedor_negocio.Modify(aux);
-                    }
-
-                    else
-                    {
-                        proveedor_negocio.Add(aux);
-                    }
-
-                    Response.Redirect("ListadoProveedores.aspx");
-                }
-
-
-                if (cuit.Text == "" || cuit.Text.Length >= 10 && cuit.Text.Length <= 12)
+                if (cuit.Text.Length < 12)
                 {
                     cuit.CssClass = "form-control is-invalid";
+                    return;
                 }
-                else
-                {
+                else 
                     cuit.CssClass = "form-control is-valid";
-                }
-
 
                 if (nombre.Text == "")
                 {
                     nombre.CssClass = "form-control is-invalid";
+                    return;
                 }
-                else
-                {
+                else 
                     nombre.CssClass = "form-control is-valid";
-                }
+
+                SupplierController proveedor_negocio = new SupplierController();
+                Supplier aux = new Supplier();
+                aux.cuit = cuit.Text;
+                aux.name = nombre.Text;
+                aux.phone = telefono.Text;
+                aux.email = mail.Text;
+                aux.address = direccion.Text;
+
+                if (Request.QueryString["id"] != null) //se esta editando un proveedor.
+                    proveedor_negocio.Modify(aux);
+                else
+                    proveedor_negocio.Add(aux);
+
+                Response.Redirect("ListadoProveedores.aspx",false);
             }
 
             catch (Exception ex)
@@ -122,7 +110,7 @@ namespace TPFinal_Rey_Balihaut
                 {
                     string codigoURL = Request.QueryString["id"].ToString();
                     proveedor_negocio.Delete(codigoURL);
-                    Response.Redirect("ListadoProveedores.aspx");
+                    Response.Redirect("ListadoProveedores.aspx",false);
                 }
             }
             catch (Exception ex)

@@ -43,7 +43,7 @@
     </script>
     <%} %>
 </head>
-<body style="">
+<body style=" background-color: #202020;">
     <form id="form1" runat="server">
 
     <%if (Session["usuario"] != null)

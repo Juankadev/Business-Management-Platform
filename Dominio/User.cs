@@ -17,7 +17,6 @@ namespace Dominio
         public string email { get; set; }
         public string password { get; set; }
         public UserTypes userType { get; set; }
-        //public int active { get; set; }
 
         public User(string email, string password, UserTypes userType)
         {

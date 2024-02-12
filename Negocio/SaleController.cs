@@ -11,10 +11,10 @@ namespace Negocio
 {
     public class SaleController
     {
+        DataAccess data = new DataAccess();
         public List<Sale> GetAll()
         {
             List<Sale> list = new List<Sale>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -23,73 +23,64 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Sale aux = new Sale();
-                    aux.customer = new Customer();
+                    Sale sale = new Sale();
+                    sale.customer = new Customer();
 
-                    aux.number = (int)data.Reader["NUM_VENTA"];
-                    aux.customer.id = (string)data.Reader["COD_CLIENTE"];
-                    aux.customer.lastName = (string)data.Reader["APELLIDO"];
-                    aux.total = (Decimal)data.Reader["TOTAL"];
-                    aux.date = (DateTime)data.Reader["FECHA"];
+                    sale.number = (int)data.Reader["NUM_VENTA"];
+                    sale.customer.id = (string)data.Reader["COD_CLIENTE"];
+                    sale.customer.lastName = (string)data.Reader["APELLIDO"];
+                    sale.total = (Decimal)data.Reader["TOTAL"];
+                    sale.date = (DateTime)data.Reader["FECHA"];
 
-                    list.Add(aux);
+                    list.Add(sale);
                 }
 
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public Sale GetByNumber(int number)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("select V.NUM_VENTA, V.COD_CLIENTE, C.APELLIDO + ' ' + C.NOMBRE AS APENOM, V.TOTAL, V.FECHA, VD.OBSERVACIONES, VD.CONDICION_PAGO FROM VENTAS V INNER JOIN CLIENTES C ON C.DNI = V.COD_CLIENTE INNER JOIN DETALLE_VENTA VD ON VD.DETALLE_VENTA = V.NUM_VENTA WHERE V.NUM_VENTA = @BUSCADO");
                 data.SetParameter("@BUSCADO", number);
                 data.ExecuteReader();
 
-                Sale aux = new Sale();
-                aux.customer = new Customer();
+                Sale sale = new Sale();
+                sale.customer = new Customer();
 
                 while (data.Reader.Read())
                 {
-                    aux.number = (int)data.Reader["NUM_VENTA"];
-                    aux.customer.id = (string)data.Reader["COD_CLIENTE"];
-                    aux.customer.name = (string)data.Reader["APENOM"];
-                    aux.total = (Decimal)data.Reader["TOTAL"];
-                    aux.date = (DateTime)data.Reader["FECHA"];
-                    aux.observations = (string)data.Reader["OBSERVACIONES"];
-                    aux.paymentCondition = (string)data.Reader["CONDICION_PAGO"];
+                    sale.number = (int)data.Reader["NUM_VENTA"];
+                    sale.customer.id = (string)data.Reader["COD_CLIENTE"];
+                    sale.customer.name = (string)data.Reader["APENOM"];
+                    sale.total = (Decimal)data.Reader["TOTAL"];
+                    sale.date = (DateTime)data.Reader["FECHA"];
+                    sale.observations = (string)data.Reader["OBSERVACIONES"];
+                    sale.paymentCondition = (string)data.Reader["CONDICION_PAGO"];
                 }
-
-                return aux;
+                return sale;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public List<Sale> GetByCustomer(string id)
         {
             List<Sale> list = new List<Sale>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -110,25 +101,20 @@ namespace Negocio
 
                     list.Add(aux);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public List<Sale> GetByMinimumTotal(decimal minimumTotal)
         {
             List<Sale> list = new List<Sale>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -138,36 +124,31 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Sale aux = new Sale();
-                    aux.customer = new Customer();
+                    Sale sale = new Sale();
+                    sale.customer = new Customer();
 
-                    aux.number = (int)data.Reader["NUM_VENTA"];
-                    aux.customer.id = (string)data.Reader["COD_CLIENTE"];
-                    aux.customer.lastName = (string)data.Reader["APELLIDO"];
-                    aux.total = (Decimal)data.Reader["TOTAL"];
-                    aux.date = (DateTime)data.Reader["FECHA"];
+                    sale.number = (int)data.Reader["NUM_VENTA"];
+                    sale.customer.id = (string)data.Reader["COD_CLIENTE"];
+                    sale.customer.lastName = (string)data.Reader["APELLIDO"];
+                    sale.total = (Decimal)data.Reader["TOTAL"];
+                    sale.date = (DateTime)data.Reader["FECHA"];
 
-                    list.Add(aux);
+                    list.Add(sale);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public List<Sale> GetByMaximumTotal(decimal maximunTotal)
         {
             List<Sale> list = new List<Sale>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -177,36 +158,31 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Sale aux = new Sale();
-                    aux.customer = new Customer();
+                    Sale sale = new Sale();
+                    sale.customer = new Customer();
 
-                    aux.number = (int)data.Reader["NUM_VENTA"];
-                    aux.customer.id = (string)data.Reader["COD_CLIENTE"];
-                    aux.customer.lastName = (string)data.Reader["APELLIDO"];
-                    aux.total = (Decimal)data.Reader["TOTAL"];
-                    aux.date = (DateTime)data.Reader["FECHA"];
+                    sale.number = (int)data.Reader["NUM_VENTA"];
+                    sale.customer.id = (string)data.Reader["COD_CLIENTE"];
+                    sale.customer.lastName = (string)data.Reader["APELLIDO"];
+                    sale.total = (Decimal)data.Reader["TOTAL"];
+                    sale.date = (DateTime)data.Reader["FECHA"];
 
-                    list.Add(aux);
+                    list.Add(sale);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public List<Sale> GetAllByTotalRange(decimal minTotal, decimal maxTotal)
         {
             List<Sale> list = new List<Sale>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -217,64 +193,47 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Sale aux = new Sale();
-                    aux.customer = new Customer();
+                    Sale sale = new Sale();
+                    sale.customer = new Customer();
 
-                    aux.number = (int)data.Reader["NUM_VENTA"];
-                    aux.customer.id = (string)data.Reader["COD_CLIENTE"];
-                    aux.customer.lastName = (string)data.Reader["APELLIDO"];
-                    aux.total = (Decimal)data.Reader["TOTAL"];
-                    aux.date = (DateTime)data.Reader["FECHA"];
+                    sale.number = (int)data.Reader["NUM_VENTA"];
+                    sale.customer.id = (string)data.Reader["COD_CLIENTE"];
+                    sale.customer.lastName = (string)data.Reader["APELLIDO"];
+                    sale.total = (Decimal)data.Reader["TOTAL"];
+                    sale.date = (DateTime)data.Reader["FECHA"];
 
-                    list.Add(aux);
+                    list.Add(sale);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public void Add(Sale sale)
         {
-            //int r = 0;
-            DataAccess data = new DataAccess();
             try
             {
                 string prueba = DateTime.Now.ToString("yyyy-MM-dd");
                 data.SetQuery("INSERT INTO VENTAS (COD_CLIENTE,TOTAL,FECHA) VALUES ('" + sale.customer.id + "','" + sale.total + "','" + prueba + "' )");
-
-                //DateTime p2 = DateTime.Parse(prueba);
-
-                //DateTime p3 = Convert.ToDateTime(prueba, System.Globalization.CultureInfo.InvariantCulture);
-
-                //datos.setearParametro("@fecha", "2022-08-07");
                 data.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                //Session.Add("error",ex);
-                //r = 1;
                 throw ex;
             }
             finally
             {
                 data.Close();
             }
-
-            //return r;
         }
         public void AddDetail(Sale sale, ProductCart productCart)
         {
-            DataAccess data = new DataAccess();
             int lastNumber = GetLastSaleNumber();
             try
             {
@@ -292,7 +251,6 @@ namespace Negocio
         }
         public int GetLastSaleNumber()
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("SELECT NUM_VENTA FROM VENTAS WHERE NUM_VENTA = (SELECT max(NUM_VENTA) FROM VENTAS)");
@@ -306,7 +264,6 @@ namespace Negocio
 
                 return number;
             }
-
             catch (Exception ex)
             {
                 throw ex;
@@ -318,8 +275,6 @@ namespace Negocio
         }
         public void discountStock(ProductCart productCart)
         {
-            DataAccess data = new DataAccess();
-
             //buscar el producto con el id del agregado y obtener el stock
             ProductController controller = new ProductController();
             List<Product> list = controller.GetAll();
@@ -334,7 +289,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                //el producto ya existe
                 throw ex;
             }
             finally
@@ -345,7 +299,6 @@ namespace Negocio
         public List<ProductCart> GetProductsFromPurchaseDetail(int detailNumber)
         {
             List<ProductCart> list = new List<ProductCart>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -356,33 +309,25 @@ namespace Negocio
                 while (data.Reader.Read())
                 {
                     ProductCart aux = new ProductCart();
-                    //aux.Proveedor = new _Proveedor2();
-
                     aux.name = (string)data.Reader["NOMBRE"];
                     aux.quantity = (int)data.Reader["CANTIDAD"];
                     aux.price = (decimal)data.Reader["PRECIO_VENTA"];
 
                     list.Add(aux);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public decimal GetTotalSumSales()
         {
-            DataAccess data = new DataAccess();
-
             try
             {
                 data.SetQuery("select total from ventas");
@@ -403,22 +348,17 @@ namespace Negocio
                 return total;
 
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
         public decimal GetAverageOfTotalSales()
         {
-            DataAccess data = new DataAccess();
-
             try
             {
                 data.SetQuery("select total from ventas");
@@ -437,20 +377,15 @@ namespace Negocio
                     }
                 }
                 return total;
-
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
             }
-
         }
-
     }
 }

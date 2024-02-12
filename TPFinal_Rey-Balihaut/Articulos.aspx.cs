@@ -187,25 +187,25 @@ namespace TPFinal_Rey_Balihaut
                     {
                         producto_negocio.ModifyFromStoredProcedure(aux);
 
-                        //Modificar proveedores_x_producto
-                        foreach (ListItem li in CheckBoxList.Items)
-                        {
-                            if (li.Selected == false)
-                            {
-                                Supplier proveedor = lista.Find(x => x.name == li.Text);
-                                proveedor_negocio.DeleteAssociatedSuppliers(proveedor.cuit, aux.code);
-                            }
-                            else
-                            {
-                                Supplier proveedor = lista.Find(x => x.name == li.Text);
-                                producto_negocio.AddSuppliers(proveedor.cuit, aux.code);
-                            }
-                        }
+                        ////Modificar proveedores_x_producto
+                        //foreach (ListItem li in CheckBoxList.Items)
+                        //{
+                        //    if (li.Selected == false)
+                        //    {
+                        //        Supplier proveedor = lista.Find(x => x.name == li.Text);
+                        //        proveedor_negocio.DeleteAssociatedSuppliers(proveedor.cuit, aux.code);
+                        //    }
+                        //    else
+                        //    {
+                        //        Supplier proveedor = lista.Find(x => x.name == li.Text);
+                        //        producto_negocio.AddSuppliers(proveedor.cuit, aux.code);
+                        //    }
+                        //}
                     }
 
                     else //se esta agregando un producto
                     {
-                        producto_negocio.AddFromStoredProcedure(aux);
+                        producto_negocio.Add(aux);
 
                         //Agregar proveedores_x_producto
                         foreach (ListItem li in CheckBoxList.Items)

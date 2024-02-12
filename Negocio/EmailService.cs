@@ -29,21 +29,16 @@ namespace Negocio
             email.Subject = asunto;
             email.IsBodyHtml = true;
             email.Body = "<h1>Hola, recibiste un mail exitoso!!</h1>";
-            //email.Body = cuerpo;
 
         }
         public void SetMessageResetPassword(string emailDestino)
         {
             email = new MailMessage();
-            //quien envia el correo, en este caso el usuario
             email.From = new MailAddress(emailDestino); 
-            //quien recibe (consultar maxi)
             email.To.Add("juancruzrey1@hotmail.com");
-
             email.Subject = "Reset Password";
             email.IsBodyHtml = true;
             email.Body = "<h1>Solicitud de Reseteo de Password</h1> <br> Requiero una nueva Clave. Saludos cordiales!";
-            //email.Body = cuerpo;
         }
         public void Send()
         {

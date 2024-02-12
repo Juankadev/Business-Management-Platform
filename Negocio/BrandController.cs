@@ -11,25 +11,24 @@ namespace Negocio
 {
     public class BrandController
     {
+        DataAccess data = new DataAccess();
         public List<Brand> GetAll()
         {
             List<Brand> list = new List<Brand>();
-            DataAccess data = new DataAccess();
 
             try
             {
-                data.SetQuery("select Id, DESCRIPCION_MARCA FROM MARCAS WHERE ACTIVO=1 ORDER BY DESCRIPCION_MARCA ASC");
+                data.SetProcedure("SP_GET_MARCAS");
                 data.ExecuteReader();
 
                 while (data.Reader.Read())
                 {
-                    Brand aux = new Brand();
-                    aux.id = (int)data.Reader["Id"];
-                    aux.description = (string)data.Reader["DESCRIPCION_MARCA"];
+                    Brand brand = new Brand();
+                    brand.id = (int)data.Reader["Id"];
+                    brand.description = (string)data.Reader["DESCRIPCION_MARCA"];
 
-                    list.Add(aux);
+                    list.Add(brand);
                 }
-
                 return list;
             }
 
@@ -47,7 +46,6 @@ namespace Negocio
         public List<Brand> GetAllByPartialDescription(string description)
         {
             List<Brand> list = new List<Brand>();
-            DataAccess data = new DataAccess();
 
             try
             {
@@ -57,21 +55,18 @@ namespace Negocio
 
                 while (data.Reader.Read())
                 {
-                    Brand aux = new Brand();
-                    aux.id = (int)data.Reader["Id"];
-                    aux.description = (string)data.Reader["DESCRIPCION_MARCA"];
+                    Brand brand = new Brand();
+                    brand.id = (int)data.Reader["Id"];
+                    brand.description = (string)data.Reader["DESCRIPCION_MARCA"];
 
-                    list.Add(aux);
+                    list.Add(brand);
                 }
-
                 return list;
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 data.Close();
@@ -80,7 +75,6 @@ namespace Negocio
         }
         public void Add(Brand brand)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("INSERT INTO MARCAS (DESCRIPCION_MARCA,ACTIVO) VALUES ('" + brand.description + "','" + 1 + "' )");
@@ -97,7 +91,6 @@ namespace Negocio
         }
         public void Modify(Brand brand)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("UPDATE MARCAS SET DESCRIPCION_MARCA=@DESCRIPCION WHERE ID=@ID");
@@ -117,7 +110,6 @@ namespace Negocio
         }
         public void Delete(int id)
         {
-            DataAccess data = new DataAccess();
             try
             {
                 data.SetQuery("UPDATE MARCAS SET ACTIVO = 0 WHERE ID = @ID");

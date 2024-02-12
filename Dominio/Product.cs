@@ -12,9 +12,9 @@ namespace Dominio
         public string name { get; set; }
         public Brand brand { get; set; }
         public Category category { get; set; }
-        //public _Proveedor2 Proveedor { get; set; }
+        //public List<Supplier> suppliers { get; set; }
         public decimal price { get; set; }
-        public decimal PrecioVenta { get; set; }
+        public decimal salePrice { get; set; }
         public decimal currentStock { get; set; }
         public decimal minimumStock { get; set; }
         public decimal percentageOfProfit { get; set; }
